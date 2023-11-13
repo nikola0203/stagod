@@ -1,0 +1,23 @@
+{
+  "name": "acf/cta",
+  "title": "CTA",
+  "description": "CTA Block",
+  "category": "acf-blocks",
+  "icon": "cover-image",
+  "keywords": [
+    "cta",
+    "call to action",
+    "action"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "cta.php",
+    "postTypes": [
+      "page",
+      "services"
+    ]
+  },
+  "supports": {
+    "align": false
+  }
+}
