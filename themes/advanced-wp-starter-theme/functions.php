@@ -160,6 +160,6 @@ function cb_edit_user_department_section( $user ) {
   </table>
 <?php }
 
-add_action( 'show_user_profile', 'cb_edit_user_department_section' );
-add_action( 'edit_user_profile', 'cb_edit_user_department_section' );
-add_action( 'user_new_form', 'cb_edit_user_department_section' );
+// add_action( 'show_user_profile', 'cb_edit_user_department_section' );
+// add_action( 'edit_user_profile', 'cb_edit_user_department_section' );
+// add_action( 'user_new_form', 'cb_edit_user_department_section' );

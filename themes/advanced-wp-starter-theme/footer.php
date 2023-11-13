@@ -9,9 +9,13 @@
  * @package awpt
  */
 
+use Awpt\Custom\Footer;
 ?>
 
 	<footer id="colophon" class="site-footer">
+		<div class="container">
+			<?php Footer::copy(); ?>
+		</div>
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'awpt' ) ); ?>">
 				<?php
