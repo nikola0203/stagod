@@ -73,7 +73,10 @@
 // 		}
 // 	}
 // }
-
+.site-footer {
+  background-color: $dark-gray;
+  padding-bottom: 100px;
+}
 body {
   &.page-template-default,
   &.post-template-default {

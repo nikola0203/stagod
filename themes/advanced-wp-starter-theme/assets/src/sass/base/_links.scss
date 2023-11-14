@@ -15,27 +15,35 @@ button {
 
 a {
   &.txt-primary {
+    color: $secondary;
+    @include font-size(16px);
     &:hover,
     &:focus {
-      color: $secondary;
-      svg {
-        fill: $secondary;
-      }
+      text-decoration: underline 2px;
     }
   }
 }
 
 a {
   &.txt-secondary {
+    color: $white;
     &:hover,
     &:focus {
-      color: $primary;
-      svg {
-        fill: $primary;
-      }
+      text-decoration: underline 2px;
     }
   }
 }
+a {
+  &.txt-small {
+    color: $secondary;
+    @include font-size(14px);
+    &:hover,
+    &:focus {
+      text-decoration: underline 2px;
+    }
+  }
+}
+
 
 .hover-text-primary {
   transition: color $time $ease;
