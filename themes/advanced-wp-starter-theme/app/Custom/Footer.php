@@ -29,7 +29,7 @@ class Footer
     $settings = get_field( 'footer', 'option' );
     if ( ! empty( $settings['copyright'] ) ) {
       ?>
-      <div class="footer-copyright-text text-small py-6 text-center border-top">
+      <div class="footer-copyright-text text-small py-6">
         <?php echo wp_kses_post( $settings['copyright'] ); ?>  
       </div>
       <?php

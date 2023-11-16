@@ -15,7 +15,7 @@ use Awpt\Custom\Footer;
 	<footer id="colophon" class="site-footer">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-1">
+				<div class="col-md-2">
 					<a href="#"><?php the_custom_logo(); ?></a>
 				</div>
 				<?php if( is_active_sidebar( 'footer-menu-1' ) ) : ?>
@@ -33,14 +33,18 @@ use Awpt\Custom\Footer;
 						<?php dynamic_sidebar( 'footer-menu-3' ); ?>
 					</div>
 				<?php endif; ?>
-					<div class="col-md-2">
+					<div class="col-md-1">
 						<?php Footer::footer_contact(); ?>
 					</div>
-					<div class="col-6">
-						<?php Footer::copy(); ?>
-					</div>
-					<div class="col-6">
-						<?php Footer::footer_links(); ?>
+					<div class="col-12 border-top">
+						<div class="row">
+							<div class="col-6 text-left">
+								<?php Footer::copy(); ?>
+							</div>
+							<div class="col-6 py-6 text-end">
+								<?php Footer::footer_links(); ?>
+							</div>
+						</div>
 					</div>
 			</div>
 		</div>
