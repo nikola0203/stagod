@@ -38,11 +38,15 @@ class Footer
 
   public static function footer_contact(){
     $settings = get_field('footer','option');
-    $contact = $settings['footer_contact'];
-    $links = $contact['links'];
-    foreach( $links as $key) { ?>
-      <a href="<?php echo esc_url($key['link']['url']); ?>"><?php echo esc_html($key['link']['title']); ?></a><br>
-    <?php
+    $contact  = ( ! empty( $settings['footer_contact'] ) ) ? $settings['footer_contact'] : '';
+    $links    = ( ! empty( $contact['links'] ) ) ? $contact['links'] : '';
+
+    if ( ! empty( $links ) ) {
+      foreach ( $links as $key ) {
+        ?>
+        <a href="<?php echo esc_url($key['link']['url']); ?>"><?php echo esc_html($key['link']['title']); ?></a><br>
+        <?php
+      }
     }
     ?>
       <a href="<?php echo esc_url($contact['facebook_link']); ?>"><?php echo icon_facebook(); ?></a>
