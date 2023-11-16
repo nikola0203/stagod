@@ -40,7 +40,6 @@ class Footer
     $settings = get_field('footer','option');
     $contact  = ( ! empty( $settings['footer_contact'] ) ) ? $settings['footer_contact'] : '';
     $links    = ( ! empty( $contact['links'] ) ) ? $contact['links'] : '';
-
     if ( ! empty( $links ) ) {
       foreach ( $links as $key ) {
         ?>
@@ -49,19 +48,28 @@ class Footer
       }
     }
     ?>
-      <a href="<?php echo esc_url($contact['facebook_link']); ?>"><?php echo icon_facebook(); ?></a>
-      <a href="<?php echo esc_url($contact['instagram_link']); ?>"><?php echo icon_instagram(); ?></a>
-      <a href="<?php echo esc_url($contact['twitter_link']); ?>"><?php echo icon_twitter(); ?></a>
+      <a href="<?php //echo esc_url($contact['facebook_link']); ?>"><?php echo icon_facebook(); ?></a>
+      <a href="<?php //echo esc_url($contact['instagram_link']); ?>"><?php echo icon_instagram(); ?></a>
+      <a href="<?php //echo esc_url($contact['twitter_link']); ?>"><?php echo icon_twitter(); ?></a>
     <?php
 
   }
 
   public static function footer_links() {
-    $settings = get_field( 'footer', 'option');
-    $links = $settings['links'];
-    foreach( $links as $key ) { 
+    $settings    = get_field( 'footer', 'option');
+    $links       = $settings['links'];
+    $count_links = count( $links );
+    if ( ! empty( $links ) ) {
+      ?>
+      <ul>
+        <?php
+        foreach ( $links as $link_key => $link ) {
+          ?>
+          <li class="<?php echo ( $link_key == $count_links-1 ) ? 'border-start' : ''; ?>"><a href="<?php echo esc_url( $link['link']['url'] ); ?>"><?php echo esc_html($link['link']['title']); ?></a></li>
+          <?php
+        }
         ?>
-        <a href="<?php echo esc_url( $key['link']['url']); ?>"><?php echo esc_html($key['link']['title']); ?></a> 
+      </ul>
       <?php
     }
   }
