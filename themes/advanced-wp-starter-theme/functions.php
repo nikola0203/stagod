@@ -163,3 +163,45 @@ function cb_edit_user_department_section( $user ) {
 // add_action( 'show_user_profile', 'cb_edit_user_department_section' );
 // add_action( 'edit_user_profile', 'cb_edit_user_department_section' );
 // add_action( 'user_new_form', 'cb_edit_user_department_section' );
+
+
+// Register Custom Widgets
+
+function cb_widgets_init() {
+    register_sidebar(
+      array(
+        'name' => esc_html__( 'footer-menu-1', 'text_domain'),
+        'id' => 'footer-menu-1',
+        'description' => esc_html__( 'Add widgets here.', 'text_domain'),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+      )
+      );
+    register_sidebar(
+      array(
+        'name' => esc_html__( 'footer-menu-2', 'text_domain'),
+        'id' => 'footer-menu-2',
+        'description' => esc_html__( 'Add widgets here.', 'text_domain'),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+      )
+    );
+    register_sidebar(
+      array(
+        'name' => esc_html__( 'footer-menu-3', 'text_domain'),
+        'id' => 'footer-menu-3',
+        'description' => esc_html__( 'Add widgets here.', 'text_domain'),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+      )
+    );
+}
+add_action( 'widgets_init', 'cb_widgets_init' );
+
+add_theme_support( 'custom-logo' );

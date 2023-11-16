@@ -14,13 +14,35 @@ use Awpt\Custom\Footer;
 
 	<footer id="colophon" class="site-footer">
 		<div class="container">
-			<?php Footer::copy(); ?>
-			<button class="btn btn-primary">Test</button>
-			<button class="btn btn-transparent">Test</button>
-			<button class="btn btn-orange-ghost">Test</button>
-			<a href="" class="txt-primary">Test link primary</a>
-			<a href="" class="txt-secondary">Test link secondary</a>
-			<a href="" class="txt-small">Test link small</a>
+			<div class="row">
+				<div class="col-md-1">
+					<a href="#"><?php the_custom_logo(); ?></a>
+				</div>
+				<?php if( is_active_sidebar( 'footer-menu-1' ) ) : ?>
+					<div class="col-md-3">
+						<?php dynamic_sidebar( 'footer-menu-1' ); ?>
+					</div>
+				<?php endif; ?>
+				<?php if( is_active_sidebar( 'footer-menu-2' ) ) : ?>
+					<div class="col-md-3">
+						<?php dynamic_sidebar( 'footer-menu-2' ); ?>
+					</div>
+				<?php endif; ?>
+				<?php if( is_active_sidebar( 'footer-menu-3' ) ) : ?>
+					<div class="col-md-3">
+						<?php dynamic_sidebar( 'footer-menu-3' ); ?>
+					</div>
+				<?php endif; ?>
+					<div class="col-md-2">
+						<?php Footer::footer_contact(); ?>
+					</div>
+					<div class="col-6">
+						<?php Footer::copy(); ?>
+					</div>
+					<div class="col-6">
+						<?php Footer::footer_links(); ?>
+					</div>
+			</div>
 		</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
