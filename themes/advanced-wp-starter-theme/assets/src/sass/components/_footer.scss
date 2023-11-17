@@ -1,8 +1,22 @@
 footer {
 	position: relative;
 	background-color: $primary;
-	padding: 80px 0 32px;
 	color: $white;
+	ul {
+		list-style-type: none;
+	}
+	.footer-copyright-text {
+		p {
+			margin: 0;
+		}
+	}
+	.footer_links {
+		ul {
+			li {
+				display: inline;
+			}
+		}
+	}
 	a {
 		color: $white;
 		@include font-size(16px);

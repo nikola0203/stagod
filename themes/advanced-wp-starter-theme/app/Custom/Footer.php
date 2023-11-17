@@ -29,7 +29,7 @@ class Footer
     $settings = get_field( 'footer', 'option' );
     if ( ! empty( $settings['copyright'] ) ) {
       ?>
-      <div class="footer-copyright-text text-small py-6">
+      <div class="footer-copyright-text text-small pt-7 pb-8">
         <?php echo wp_kses_post( $settings['copyright'] ); ?>  
       </div>
       <?php
@@ -40,19 +40,35 @@ class Footer
     $settings = get_field('footer','option');
     $contact  = ( ! empty( $settings['footer_contact'] ) ) ? $settings['footer_contact'] : '';
     $links    = ( ! empty( $contact['links'] ) ) ? $contact['links'] : '';
+    ?>
+    <ul class="p-0">
+    <?php
     if ( ! empty( $links ) ) {
       foreach ( $links as $key ) {
         ?>
-        <a href="<?php echo esc_url($key['link']['url']); ?>"><?php echo esc_html($key['link']['title']); ?></a><br>
+        <li class="pb-5"><a href="<?php echo esc_url($key['link']['url']); ?>"><?php echo esc_html($key['link']['title']); ?></a></li>
         <?php
       }
     }
+    if ( ! empty($contact['facebook_link'])) {
+      ?>
+      <li class="d-inline"><a href="<?php echo esc_url($contact['facebook_link']); ?>"><?php echo icon_facebook(); ?></a></li>
+      
+      <?php
+    }
+      if ( ! empty($contact['instagram_link'])) {
+      ?>
+        <li class="d-inline px-5"><a href="<?php echo esc_url($contact['instagram_link']); ?>"><?php echo icon_instagram(); ?></a></li>
+      <?php
+    }
+      if ( ! empty($contact['twitter_link'])) {
+      ?>
+        <li class="d-inline"><a href="<?php echo esc_url($contact['twitter_link']); ?>"><?php echo icon_twitter(); ?></a></li>
+      <?php
+    }
     ?>
-      <a href="<?php //echo esc_url($contact['facebook_link']); ?>"><?php echo icon_facebook(); ?></a>
-      <a href="<?php //echo esc_url($contact['instagram_link']); ?>"><?php echo icon_instagram(); ?></a>
-      <a href="<?php //echo esc_url($contact['twitter_link']); ?>"><?php echo icon_twitter(); ?></a>
-    <?php
-
+    </ul>
+    <?php 
   }
 
   public static function footer_links() {
@@ -61,11 +77,11 @@ class Footer
     $count_links = count( $links );
     if ( ! empty( $links ) ) {
       ?>
-      <ul>
+      <ul class="m-0">
         <?php
         foreach ( $links as $link_key => $link ) {
           ?>
-          <li class="<?php echo ( $link_key == $count_links-1 ) ? 'border-start' : ''; ?>"><a href="<?php echo esc_url( $link['link']['url'] ); ?>"><?php echo esc_html($link['link']['title']); ?></a></li>
+          <li class="<?php echo ( $link_key == $count_links-1 ) ? 'border-start ps-5 ms-5' : ''; ?>"><a href="<?php echo esc_url( $link['link']['url'] ); ?>"><?php echo esc_html($link['link']['title']); ?></a></li>
           <?php
         }
         ?>
