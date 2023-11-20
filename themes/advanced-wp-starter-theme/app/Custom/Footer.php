@@ -81,7 +81,7 @@ class Footer
         <?php
         foreach ( $links as $link_key => $link ) {
           ?>
-          <li class="<?php echo ( $link_key == $count_links-1 ) ? 'border-start ps-5 ms-5' : ''; ?>"><a href="<?php echo esc_url( $link['link']['url'] ); ?>"><?php echo esc_html($link['link']['title']); ?></a></li>
+          <li class="<?php echo ( $link_key == $count_links-1 ) ? 'border-start ps-5 ms-5' : ''; ?>"><a href="<?php echo esc_url( $link['link']['url'] ); ?>" class="txt-white"><?php echo esc_html($link['link']['title']); ?></a></li>
           <?php
         }
         ?>
