@@ -46,7 +46,7 @@ class Footer
     if ( ! empty( $links ) ) {
       foreach ( $links as $key ) {
         ?>
-        <li class="pb-5"><a href="<?php echo esc_url($key['link']['url']); ?>"><?php echo esc_html($key['link']['title']); ?></a></li>
+        <li class="pb-6"><a href="<?php echo esc_url($key['link']['url']); ?>"><?php echo esc_html($key['link']['title']); ?></a></li>
         <?php
       }
     }
@@ -58,7 +58,7 @@ class Footer
     }
       if ( ! empty($contact['instagram_link'])) {
       ?>
-        <li class="d-inline px-5"><a href="<?php echo esc_url($contact['instagram_link']); ?>"><?php echo icon_instagram(); ?></a></li>
+        <li class="d-inline px-6"><a href="<?php echo esc_url($contact['instagram_link']); ?>"><?php echo icon_instagram(); ?></a></li>
       <?php
     }
       if ( ! empty($contact['twitter_link'])) {

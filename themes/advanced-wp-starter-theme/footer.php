@@ -12,11 +12,11 @@
 use Awpt\Custom\Footer;
 ?>
 
-	<footer id="colophon" class="site-footer pt-10 pt-md-18 text-break">
+	<footer id="colophon" class="site-footer pt-10 pt-md-22 text-break">
 		<div class="container">
 			<div class="row">
 				<div class="col-12 col-md-3 pb-6 pb-md-0">
-					<a href="#"><?php the_custom_logo(); ?></a>
+					<a href="<?php echo esc_url(get_home_url()); ?>"><?php the_custom_logo(); ?></a>
 				</div>
 				<?php if( is_active_sidebar( 'footer-menu-1' ) ) : ?>
 					<div class="col-6 col-md-2">
@@ -41,7 +41,7 @@ use Awpt\Custom\Footer;
 							<div class="col-6 text-left">
 								<?php Footer::copy(); ?>
 							</div>
-							<div class="col-6 pt-7 pb-8 text-end footer_links">
+							<div class="col-6 pt-8 pb-10 text-end footer_links">
 								<?php Footer::footer_links(); ?>
 							</div>
 						</div>

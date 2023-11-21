@@ -25,6 +25,7 @@ footer {
 		h2 {
 			color: $white;
 			@include font-size(24px);
+			font-weight: 700;
 		}
 		ul {
 			list-style-type: none;

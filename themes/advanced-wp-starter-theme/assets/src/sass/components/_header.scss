@@ -1,3 +1,18 @@
 header {
 	position: relative;
+	background-color: $primary;
+	color: $white;
+	.custom-logo {
+		max-width: 58px;
+	}
+	ul {
+		list-style-type: none;
+		margin-bottom: 0;
+		li {
+			padding-right: 24px;
+		}
+		a {
+			color: $white;
+		}
+	}
 }
