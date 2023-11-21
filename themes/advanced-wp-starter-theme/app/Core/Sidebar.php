@@ -33,5 +33,38 @@ class Sidebar
         'after_title'   => '</h2>',
       )
     );
+    register_sidebar(
+      array(
+        'name'          => esc_html__( 'footer-menu-1', 'awpt' ),
+        'id'            => 'footer-menu-1',
+        'description'   => esc_html__( 'Add widgets here.', 'awpt' ),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title text-white fw-bold">',
+        'after_title'   => '</h2>',
+      )
+    );
+    register_sidebar(
+      array(
+        'name'          => esc_html__( 'footer-menu-2', 'awpt' ),
+        'id'            => 'footer-menu-2',
+        'description'   => esc_html__( 'Add widgets here.', 'awpt' ),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title text-white fw-bold">',
+        'after_title'   => '</h2>',
+      )
+    );
+    register_sidebar(
+      array(
+        'name'          => esc_html__( 'footer-menu-3', 'awpt' ),
+        'id'            => 'footer-menu-3',
+        'description'   => esc_html__( 'Add widgets here.', 'awpt' ),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title text-white fw-bold">',
+        'after_title'   => '</h2>',
+      )
+    );
   }
 }

@@ -18,7 +18,7 @@ class Footer
     if ( !empty( $settings['footer_logo'] ) ) {
       ?>
       <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name' ) ); ?>">
-        <?php Acf::acfImage( $settings['footer_logo'], 'medium_large', 'footer-logo mb-4 mb-lg-5' ); ?>
+        <?php Acf::image( $settings['footer_logo'], 'medium_large', 'footer-logo mb-4 mb-lg-5' ); ?>
       </a>
       <?php
     }
@@ -26,10 +26,10 @@ class Footer
 
   public static function copy()
   {
-    $settings = get_field( 'footer', 'option' );
+    $settings = get_field( 'footer_settings', 'option' );
     if ( ! empty( $settings['copyright'] ) ) {
       ?>
-      <div class="footer-copyright-text text-small pt-7 pb-8">
+      <div class="footer-copyright-text text-center text-lg-start text-small">
         <?php echo wp_kses_post( $settings['copyright'] ); ?>  
       </div>
       <?php
@@ -37,51 +37,50 @@ class Footer
   }
 
   public static function footer_contact(){
-    $settings = get_field('footer','option');
+    $settings = get_field( 'footer_settings','option' );
     $contact  = ( ! empty( $settings['footer_contact'] ) ) ? $settings['footer_contact'] : '';
     $links    = ( ! empty( $contact['links'] ) ) ? $contact['links'] : '';
     ?>
-    <ul class="p-0">
-    <?php
-    if ( ! empty( $links ) ) {
-      foreach ( $links as $key ) {
+    <ul class="mb-0 py-8 py-md-0 ps-0 text-center text-lg-end">
+      <?php
+      if ( ! empty( $links ) ) {
+        foreach ( $links as $key ) {
+          ?>
+          <li class="mb-6"><a href="<?php echo esc_url($key['link']['url']); ?>"><?php echo esc_html($key['link']['title']); ?></a></li>
+          <?php
+        }
+      }
+      if ( ! empty($contact['facebook_link'])) {
         ?>
-        <li class="pb-6"><a href="<?php echo esc_url($key['link']['url']); ?>"><?php echo esc_html($key['link']['title']); ?></a></li>
+        <li class="d-inline"><a href="<?php echo esc_url($contact['facebook_link']); ?>"><?php echo icon_facebook(); ?></a></li>
         <?php
       }
-    }
-    if ( ! empty($contact['facebook_link'])) {
+        if ( ! empty($contact['instagram_link'])) {
+        ?>
+          <li class="d-inline px-6"><a href="<?php echo esc_url($contact['instagram_link']); ?>"><?php echo icon_instagram(); ?></a></li>
+        <?php
+      }
+        if ( ! empty($contact['twitter_link'])) {
+        ?>
+          <li class="d-inline"><a href="<?php echo esc_url($contact['twitter_link']); ?>"><?php echo icon_twitter(); ?></a></li>
+        <?php
+      }
       ?>
-      <li class="d-inline"><a href="<?php echo esc_url($contact['facebook_link']); ?>"><?php echo icon_facebook(); ?></a></li>
-      
-      <?php
-    }
-      if ( ! empty($contact['instagram_link'])) {
-      ?>
-        <li class="d-inline px-6"><a href="<?php echo esc_url($contact['instagram_link']); ?>"><?php echo icon_instagram(); ?></a></li>
-      <?php
-    }
-      if ( ! empty($contact['twitter_link'])) {
-      ?>
-        <li class="d-inline"><a href="<?php echo esc_url($contact['twitter_link']); ?>"><?php echo icon_twitter(); ?></a></li>
-      <?php
-    }
-    ?>
     </ul>
     <?php 
   }
 
   public static function footer_links() {
-    $settings    = get_field( 'footer', 'option');
+    $settings    = get_field( 'footer_settings', 'option');
     $links       = $settings['links'];
-    $count_links = count( $links );
     if ( ! empty( $links ) ) {
+      $count_links = count( $links );
       ?>
-      <ul class="m-0">
+      <ul class="ps-0 m-0 d-flex justify-content-center justify-content-lg-end lh-1">
         <?php
         foreach ( $links as $link_key => $link ) {
           ?>
-          <li class="<?php echo ( $link_key == $count_links-1 ) ? 'border-start ps-5 ms-5' : ''; ?>"><a href="<?php echo esc_url( $link['link']['url'] ); ?>" class="txt-white"><?php echo esc_html($link['link']['title']); ?></a></li>
+          <li class="<?php echo ( $link_key == $count_links-1 ) ? 'border-start ps-5 ms-5' : 'ps-md-5'; ?>"><a href="<?php echo esc_url( $link['link']['url'] ); ?>" class="txt-white"><?php echo esc_html($link['link']['title']); ?></a></li>
           <?php
         }
         ?>

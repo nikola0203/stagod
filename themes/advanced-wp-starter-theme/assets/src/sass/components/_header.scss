@@ -16,3 +16,196 @@ header {
 		}
 	}
 }
+
+// #masthead {
+//   @include media-breakpoint-down(xl) {
+//     background-color: $secondary;
+//   }
+//   @include media-breakpoint-up(xl) {
+//     transition: padding $time $ease, background-color $time $ease;
+//   }
+// }
+
+#site-navigation {
+  #primary-menu-container {
+    ul.menu,
+    ul.sub-menu {
+      list-style: none;
+      margin-bottom: 0;
+      li.menu-item:not(.btn-menu) {
+        margin-bottom: 0;
+        &.current-menu-item {
+          > a {
+            color: $primary;
+          }
+        }
+        > a {
+          @include font-size(14px);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: $white;
+          i,
+          i svg path {
+            transition: $transition-default;
+          }
+          &.active {
+            i {
+              transform: rotate(180deg);
+            }
+          }
+        }
+      }
+      li.menu-item-has-children {
+        position: relative;
+        ul {
+          padding-left: 5px;
+        }
+      }
+    }
+    ul.menu {
+      padding-left: 0;
+      > li.menu-item-has-children {
+        > ul.sub-menu {
+          li.menu-item {
+            a {
+              @include padding(5px 0);
+            }
+          }
+        }
+      }
+    }
+    ul.sub-menu {
+      display: none;
+    }
+  }
+  @include media-breakpoint-down(xl) {
+    .container-fluid {
+      flex-direction: column;
+    }
+    .nav-logo-btn-wrapper {
+      justify-content: space-between;
+    }
+    #primary-menu-container {
+      display: none;
+      @include padding-top(10px);
+      @include padding-bottom(10px);
+      ul.menu,
+      ul.sub-menu {
+        li.menu-item:not(.btn-menu) {
+          a {
+            display: flex;
+            justify-content: space-between;
+            @include padding(10px 0);
+          }
+        }
+      }
+      ul.menu {
+        > li.menu-item:not(.btn-menu) {
+          > a {
+            @include padding(10px 0);
+            i {
+              svg {
+                width: 18px;
+                height: 18px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @include media-breakpoint-up(xl) {
+    // top: 40px;
+    .container-fluid {
+      align-items: center;
+    }
+    .navbar-toggler {
+      display: none;
+    }
+    #primary-menu-container {
+      ul.sub-menu {
+        li.menu-item:not(.btn-menu) {
+          a {
+            &:hover,
+            &:active,
+            &:focus {
+              color: $primary;
+            }
+          }
+          &.current-menu-item {
+            a {
+              color: $primary;
+            }
+          }
+        }
+      }
+      ul.menu {
+        > li.menu-item:not(.btn-menu) {
+          > a {
+            display: flex;
+            // min-height: 110px;
+            @include padding(39.5px 10px);
+            text-transform: uppercase;
+            color: $white;
+            transition: color $time $ease, background-color $time $ease, min-height $time $ease;
+            &:hover,
+            &:active,
+            &.active,
+            &:focus {
+              color: $primary;
+              // background-color: $primary;
+
+              svg path {
+                fill: $primary;
+              }
+            }
+          }
+        }
+        > li.menu-item-has-children {
+          > ul.sub-menu {
+            position: absolute;
+            left: 0;
+            top: 100px;
+            width: 100%;
+            min-width: 240px;
+            @include padding(0 15px 10px);
+            z-index: 1;
+            background: $secondary;
+            border-bottom-right-radius: 30px;
+          }
+        }
+      }
+    }
+  }
+  @include media-breakpoint-up(xxl) {
+    #primary-menu-container {
+      ul.menu {
+        > li.menu-item:not(.btn-menu) {
+          > a {
+            @include padding(39.5px 20px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  nav.scroll-active {
+    #primary-menu-container {
+      ul.menu {
+        > li.menu-item:not(.btn-menu) {
+          > a {
+            min-height: 70px !important;
+          }
+        }
+        > li.menu-item-has-children {
+          > ul.sub-menu {
+            top: 70px !important;
+          }
+        }
+      }
+    }
+  }
+}

@@ -9,6 +9,8 @@
  * @package seo_one_click_theme
  */
 
+use Awpt\Custom\Custom;
+
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -26,8 +28,8 @@
 
 	<header id="masthead" class="site-header py-8">
 		<nav id="site-navigation" role="navigation" class="container d-lg-flex align-items-lg-center">
-		<div class="nav-logo-btn-wrapper d-flex align-items-center">
-				<a href="<?php echo esc_url(get_home_url()); ?>"><?php the_custom_logo(); ?></a>
+			<div class="nav-logo-btn-wrapper d-flex align-items-center">
+				<?php Custom::site_logo(); ?>
 				<div class="navtoggle relative d-flex justify-content-end align-items-center d-lg-none">
 					<div class="navtoggle__icon"></div>
 				</div>
