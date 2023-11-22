@@ -18,7 +18,7 @@ class Footer
     if ( !empty( $settings['footer_logo'] ) ) {
       ?>
       <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name' ) ); ?>">
-        <?php Acf::image( $settings['footer_logo'], 'medium_large', 'footer-logo mb-4 mb-lg-5' ); ?>
+        <?php Acf::image( $settings['footer_logo'], 'medium_large', 'footer-logo' ); ?>
       </a>
       <?php
     }
@@ -41,7 +41,7 @@ class Footer
     $contact  = ( ! empty( $settings['footer_contact'] ) ) ? $settings['footer_contact'] : '';
     $links    = ( ! empty( $contact['links'] ) ) ? $contact['links'] : '';
     ?>
-    <ul class="mb-0 py-8 py-md-0 ps-0 text-center text-lg-end">
+    <ul class="mb-0 py-8 py-lg-0 ps-0 text-center text-lg-end footer-contact">
       <?php
       if ( ! empty( $links ) ) {
         foreach ( $links as $key ) {

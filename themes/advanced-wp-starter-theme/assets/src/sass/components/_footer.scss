@@ -10,6 +10,19 @@ footer {
 			margin: 0;
 		}
 	}
+	.footer-contact {
+		border-top: 1px solid $border-white-op;
+		border-bottom: 1px solid $border-white-op;
+		@include media-breakpoint-up(lg) {
+			border: none;
+		}
+	}
+	.footer-copy {
+		@include media-breakpoint-up(lg) {
+			border-top: 1px solid $border-white-op;
+			@include padding-top(24px);
+		}
+	}
 	.footer_links {
 		ul {
 			li {
@@ -20,10 +33,22 @@ footer {
 	a {
 		color: $white;
 		@include font-size(16px);
+		@include media-breakpoint-up(lg) {
+			@include font-size(15px);
+		}
+		@include media-breakpoint-up(xl) {
+			@include font-size(16px);
+		}
 	}
 	.widget_nav_menu {
 		h2 {
 			@include font-size(24px);
+			@include media-breakpoint-up(lg) {
+				@include font-size(20px);
+			}
+			@include media-breakpoint-up(xl) {
+				@include font-size(24px);
+			}
 		}
 		ul {
 			margin-bottom: 0;
