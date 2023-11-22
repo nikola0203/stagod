@@ -32,6 +32,9 @@ footer {
 	}
 	a {
 		color: $white;
+		&:hover {
+			color: $secondary;
+		}
 		@include font-size(16px);
 		@include media-breakpoint-up(lg) {
 			@include font-size(15px);

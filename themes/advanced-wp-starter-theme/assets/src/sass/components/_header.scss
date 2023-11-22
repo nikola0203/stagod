@@ -33,14 +33,25 @@ header {
       list-style: none;
       margin-bottom: 0;
       li.menu-item:not(.btn-menu) {
-        margin-bottom: 0;
+        margin-bottom: 10px;
+        @include media-breakpoint-up(lg) {
+          &:nth-child(3){
+            border-left: 1px solid $white;
+            @include padding-left(24px);
+          }
+          &:nth-child(4){
+            border: 1px solid $white;
+            border-radius: 8px;
+            @include padding(16px 24px);
+          }
+        }
         &.current-menu-item {
           > a {
-            color: $primary;
+            color: $white;
           }
         }
         > a {
-          @include font-size(14px);
+          @include font-size(16px);
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -79,7 +90,7 @@ header {
       display: none;
     }
   }
-  @include media-breakpoint-down(xl) {
+  @include media-breakpoint-down(lg) {
     .container-fluid {
       flex-direction: column;
     }
@@ -96,14 +107,12 @@ header {
           a {
             display: flex;
             justify-content: space-between;
-            @include padding(10px 0);
           }
         }
       }
       ul.menu {
         > li.menu-item:not(.btn-menu) {
           > a {
-            @include padding(10px 0);
             i {
               svg {
                 width: 18px;
@@ -130,12 +139,12 @@ header {
             &:hover,
             &:active,
             &:focus {
-              color: $primary;
+              color: $secondary;
             }
           }
           &.current-menu-item {
             a {
-              color: $primary;
+              color: $secondary;
             }
           }
         }
@@ -144,16 +153,13 @@ header {
         > li.menu-item:not(.btn-menu) {
           > a {
             display: flex;
-            // min-height: 110px;
-            @include padding(39.5px 10px);
-            text-transform: uppercase;
             color: $white;
             transition: color $time $ease, background-color $time $ease, min-height $time $ease;
             &:hover,
             &:active,
             &.active,
             &:focus {
-              color: $primary;
+              color: $secondary;
               // background-color: $primary;
 
               svg path {
@@ -173,17 +179,6 @@ header {
             z-index: 1;
             background: $secondary;
             border-bottom-right-radius: 30px;
-          }
-        }
-      }
-    }
-  }
-  @include media-breakpoint-up(xxl) {
-    #primary-menu-container {
-      ul.menu {
-        > li.menu-item:not(.btn-menu) {
-          > a {
-            @include padding(39.5px 20px);
           }
         }
       }
