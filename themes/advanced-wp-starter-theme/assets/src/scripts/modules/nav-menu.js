@@ -11,7 +11,7 @@ class NavMenu {
       thisClass.primaryNavMenuDesktop()
     })
 
-    thisClass.fixTopMenu()
+    // thisClass.fixTopMenu()
   }
 
   primaryNavMenuMobile() {
