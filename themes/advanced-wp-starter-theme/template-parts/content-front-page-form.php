@@ -1,14 +1,42 @@
 <?php
 // get_search_form();
 ?>
-
-<form role="search" ' . $aria_label . 'method="get" class="search-form" action="' . esc_url( home_url( '/' ) ) . '">
-  <label>
-    <span class="screen-reader-text">' .
-    /* translators: Hidden accessibility text. */
-    _x( 'Search for:', 'label' ) .
-    '</span>
-    <input type="search" class="search-field" placeholder="' . esc_attr_x( 'Search &hellip;', 'placeholder' ) . '" value="Probaj 'Nemački jezik'" name="s" />
-  </label>
-  <input type="submit" class="search-submit" value="' . esc_attr_x( 'Search', 'submit button' ) . '" />
-</form> -->
+<section class="header-form pb-8">
+  <div class="container">
+    <h1>Pronađi savršenog profesionalca po tvojoj meri</h1>
+    <form role="search" ' . $aria_label . 'method="get" class="search-form d-flex" action="">
+      <div class="col-8">
+        <label class="w-100">
+          <span class="screen-reader-text"></span>
+          <input type="search" class="search-field" placeholder="Probaj 'Nemački jezik'" name="s" />
+        </label>
+      </div>  
+      <div class="col-3 d-flex">
+        <div class="col-6">
+          <label class="city-label" for="city"><?php echo icon_location(); ?>Izaberi grad:</label>
+        </div>
+        <div class="col-6">
+          <select name="cars" id="cars" class="px-0">
+              <option value="citys">U mojoj blizini</option>
+              <option value="city-1">Leskovac</option>
+              <option value="city-2">Niš</option>
+              <option value="city-3">Beograd</option>
+              <option value="city-4">Novi Sad</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-1">
+        <input type="submit" class="search-submit h-100" value="Pretraži" />
+      </div>
+    </form>
+    <div class="col-8">
+      <span>Popularno: </span>
+      <?php
+        $terms = get_the_terms( $post->ID, 'services');
+        foreach( $myArray as $term) {
+          echo $term['name'];
+        }
+        ?>
+    </div>
+  </div>
+</section>

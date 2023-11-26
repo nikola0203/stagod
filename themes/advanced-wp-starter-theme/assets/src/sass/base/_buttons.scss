@@ -173,7 +173,23 @@ button {
     }
   }
 }
-
+.search-submit {
+  color: $white;
+  background-color: $secondary;
+  border: none;
+  &:hover{
+    background-color: #C03C00;
+  }
+  &:focus,
+  &:active {
+    background-color: #D34200;
+    border: none;
+  }
+  &:disabled {
+    background-color: #EA4900;
+    opacity: 0.4;
+  }
+}
 nav.scroll-active {
   .btn-menu {
     > a {

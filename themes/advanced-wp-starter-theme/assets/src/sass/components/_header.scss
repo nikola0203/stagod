@@ -17,15 +17,6 @@ header {
 	}
 }
 
-// #masthead {
-//   @include media-breakpoint-down(xl) {
-//     background-color: $secondary;
-//   }
-//   @include media-breakpoint-up(xl) {
-//     transition: padding $time $ease, background-color $time $ease;
-//   }
-// }
-
 #site-navigation {
   #primary-menu-container {
     ul.menu,
@@ -201,6 +192,49 @@ header {
           }
         }
       }
+    }
+  }
+}
+
+.header-form {
+  background-color: $primary;
+  color: $white;
+  h1 {
+    color: $white;
+    @include font-size(24px);
+  }
+  svg {
+    margin-right: 8px;
+    margin-top: -3px;
+  }
+  .col-8 {
+    margin-right: 1px;
+  }
+  .search-form {
+    select {
+      border: none;
+      margin-left: -5px;
+      @include font-size(16px);
+      color: $secondary;
+      font-weight: bold;
+      width: fit-content;
+    }
+    .search-field {
+      border-radius: 8px 0 0 8px;
+    }
+    .search-submit {
+      border-radius: 0 8px 8px 0;
+      @include font-size(16px)
+    }
+    .col-6 {
+      background-color: $white;
+    }
+    .city-label {
+      color: $black;
+      align-items: center;
+      padding-top: 13px;
+      padding-left: 24px;
+      font-weight: bold;
     }
   }
 }
