@@ -31,12 +31,6 @@
     </form>
     <div class="col-8">
       <span>Popularno: </span>
-      <?php
-        $terms = get_the_terms( $post->ID, 'services');
-        foreach( $myArray as $term) {
-          echo $term['name'];
-        }
-        ?>
     </div>
   </div>
 </section>

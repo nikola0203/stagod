@@ -1,0 +1,22 @@
+{
+  "name": "acf/about",
+  "title": "ABOUT",
+  "description": "About Block",
+  "category": "acf-blocks",
+  "icon": "cover-image",
+  "keywords": [
+    "about",
+    "aboutus"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "about.php",
+    "postTypes": [
+      "page",
+      "services"
+    ]
+  },
+  "supports": {
+    "align": false
+  }
+}
