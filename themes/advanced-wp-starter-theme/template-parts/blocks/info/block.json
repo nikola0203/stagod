@@ -1,0 +1,22 @@
+{
+  "name": "acf/info",
+  "title": "INFO",
+  "description": "About Block",
+  "category": "acf-blocks",
+  "icon": "cover-image",
+  "keywords": [
+    "info",
+    "information"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "info.php",
+    "postTypes": [
+      "page",
+      "services"
+    ]
+  },
+  "supports": {
+    "align": false
+  }
+}

@@ -30,7 +30,7 @@ class AcfBlocks
 		$blocks_settings = array(
 			'cta' => $blocks_dir . 'cta',
 			'about' => $blocks_dir . 'about',
-
+			'info' => $blocks_dir . 'info',
 		);
 
 		return apply_filters( 'awpt_add_acf_block', $blocks_settings );
