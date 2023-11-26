@@ -5,7 +5,7 @@
  */
 
 ?>
-<section class="about text-center py-12 py-lg-22 my-10 txt-white">
+<section class="about text-center py-12 py-lg-22 txt-white">
   <div class="container">
     <div class="row">
       <?php
