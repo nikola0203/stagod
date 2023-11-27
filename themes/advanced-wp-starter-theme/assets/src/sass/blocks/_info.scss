@@ -4,6 +4,11 @@
       max-width: 80%;
     }
   }
+  p {
+    @include media-breakpoint-up(xl){
+      @include font-size(19px);
+    }
+  }
 }
 .info-two {
   background-color: $light-grey;
