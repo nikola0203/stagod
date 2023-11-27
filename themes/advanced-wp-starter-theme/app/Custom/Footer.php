@@ -46,7 +46,7 @@ class Footer
       if ( ! empty( $links ) ) {
         foreach ( $links as $key ) {
           ?>
-          <li class="mb-6"><a href="<?php echo esc_url($key['link']['url']); ?>"><?php echo esc_html($key['link']['title']); ?></a></li>
+          <li class="mb-6"><a href="<?php echo esc_url($key['link']['url']); ?>"><?php esc_html_e($key['link']['title']); ?></a></li>
           <?php
         }
       }

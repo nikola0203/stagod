@@ -1,0 +1,22 @@
+{
+  "name": "acf/popular-services",
+  "title": "Popular Services",
+  "description": "Popular Services Block",
+  "category": "acf-blocks",
+  "icon": "slides",
+  "keywords": [
+    "popular",
+    "services"
+  ],
+  "viewScript": "popular-services",
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "popular-services.php",
+    "postTypes": [
+      "page"
+    ]
+  },
+  "supports": {
+    "align": false
+  }
+}

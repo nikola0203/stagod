@@ -22,23 +22,23 @@ class UserSlider {
   }
 
   authorGallery() {
-    const slides = document.querySelectorAll(".author-gallery");
+    const slides = document.querySelectorAll(".popular-services");
 
     slides.forEach(function (slider, index) {
-      slider.classList.add("author-gallery-" + index);
+      slider.classList.add("popular-services-" + index);
       slider
         .parentElement.parentElement.getElementsByClassName("swiper-pagination")[0]
         .classList.add("swiper-pagination-" + index);
-      slider.parentElement
+      slider
         .getElementsByClassName("swiper-button-next")[0]
         .classList.add("swiper-button-next-" + index);
-      slider.parentElement
+      slider
         .getElementsByClassName("swiper-button-prev")[0]
         .classList.add("swiper-button-prev-" + index);
 
       // console.log(slider.getElementsByClassName('swiper-pagination')[0])
 
-      new Swiper(".author-gallery-" + index, {
+      new Swiper(".popular-services-" + index, {
         modules: [Pagination, Navigation],
         // autoHeight: true,
         // slidesPerView: "auto",

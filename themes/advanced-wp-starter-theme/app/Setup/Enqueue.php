@@ -58,7 +58,7 @@ class Enqueue
 		// ));
 
 		// ACF Blocks.
-		// wp_register_script( 'faq', mix( 'js/blocks/faq.js' ), array(), '1.0.0', true );
+		wp_register_script( 'popular-services', mix( 'js/blocks/popular-services.js' ), array(), '1.0.0', array( 'strategy' => 'async', 'in_footer' => true ) );
 
 		// Activate browser-sync on development environment
 		// if ( getenv( 'APP_ENV' ) === 'development' ) :

@@ -28,9 +28,10 @@ class AcfBlocks
 		$blocks_dir = get_template_directory() . '/template-parts/blocks/';
 
 		$blocks_settings = array(
-			'cta' => $blocks_dir . 'cta',
-			'about' => $blocks_dir . 'about',
-			'info' => $blocks_dir . 'info',
+			'cta'              => $blocks_dir . 'cta',
+			'about'            => $blocks_dir . 'about',
+			'info'             => $blocks_dir . 'info',
+			'popular_services' => $blocks_dir . 'popular-services',
 		);
 
 		return apply_filters( 'awpt_add_acf_block', $blocks_settings );
