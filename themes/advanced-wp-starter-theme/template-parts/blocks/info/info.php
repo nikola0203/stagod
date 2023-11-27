@@ -8,16 +8,16 @@ $args = get_field('info');
 $count_args = count( $args );
 foreach( $args as $arg_key => $arg ):
 ?>
-  <section class="info pt-12 pt-lg-22 <?php echo ( $arg_key == $count_args-1 ) ? 'info-two' : ''; ?>">
+  <section class="info py-12 py-lg-22 <?php echo ( $arg_key == $count_args-1 ) ? 'info-two' : ''; ?>">
     <div class="container">
       <div class="row">
-        <div class="col-6 <?php echo ( $arg_key == $count_args-1 ) ? 'order-1' : ''; ?>">
-          <h2><?php echo $arg['title']; ?></h2>
-          <p><?php echo $arg['text']; ?></p>
-          <a href="<?php echo $arg['link']['url'] ?>"><input type="button" value="<?php echo $arg['link']['title']; ?>" class="btn btn-primary"></a>
+        <div class="col-12 col-lg-6 <?php echo ( $arg_key == $count_args-1 ) ? 'order-lg-1' : ''; ?> d-flex flex-column justify-content-center">
+          <h2 class="mb-6 fw-bold"><?php echo $arg['title']; ?></h2>
+          <p class="mb-8 p-big"><?php echo $arg['text']; ?></p>
+          <a href="<?php echo $arg['link']['url'] ?>"><input type="button" value="<?php echo $arg['link']['title']; ?>" class="btn btn-primary mb-8 mb-lg-0"></a>
         </div>
-        <div class="col-6 mb-12 mb-lg-22">
-          <img src="<?php echo $arg['image']['url']; ?>" alt="">
+        <div class="col-12 col-lg-6 <?php echo ( $arg_key == $count_args-1 ) ? 'text-lg-start' : 'text-lg-end'; ?>">
+          <img src="<?php echo $arg['image']['url']; ?>" alt="" class="w-lg-75">
         </div>
       </div>
     </div>

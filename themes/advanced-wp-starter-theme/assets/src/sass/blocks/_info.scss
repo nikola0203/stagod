@@ -1,3 +1,10 @@
+.info {
+  img {
+    @include media-breakpoint-up(lg){
+      max-width: 80%;
+    }
+  }
+}
 .info-two {
   background-color: $light-grey;
 }
