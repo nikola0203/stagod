@@ -7,6 +7,7 @@
 use Awpt\Plugins\Acf;
 
 $services = get_field( 'select_services' );
+
 ?>
 <section class="section-popular-services bg-light pt-12 pb-20 py-lg-14 relative">
   <div class="container relative">
@@ -18,14 +19,21 @@ $services = get_field( 'select_services' );
           $image = get_field( 'image', $service );
           ?>
           <div class="swiper-slide bg-white rounded-bottom-3">
-                <div class="image-wrapper mb-6">
-                  <?php
-                    Acf::image( $image, 'large', 'w-lg-75 rounded-top-3 object-fit-cover h-100 w-100', );
-                  ?>
-                </div>
-                <p class="p-big mb-1 ps-8 fw-bold"><?php echo $service->name; ?></p>
-            </div>
-            <?php 
+              <div class="image-wrapper mb-6">
+                <?php Acf::image( $image, 'large', 'w-lg-75 rounded-top-3 object-fit-cover h-100 w-100', ); ?>
+              </div>
+              <p class="p-big mb-1 ps-8 fw-bold"><?php echo $service->name; ?></p>
+              <?php
+              $term_args = array(
+                'taxonomy'   => 'services',
+                'child_of'   => $service->term_id,
+                'hide_empty' => false
+              ); 
+              $terms = count( get_terms( $term_args ) );
+              print_var($terms);
+              ?>
+          </div>
+          <?php 
         endforeach;
         ?>
       </div>
@@ -36,25 +44,25 @@ $services = get_field( 'select_services' );
   <div class="swiper-pagination d-lg-none"></div>
 </section>
 <!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
 
 <!-- Initialize Swiper -->
 <script>
-  var swiper = new Swiper(".popular-services", {
-    slidesPerView: 1,
-      spaceBetween: 24,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      breakpoints: {
-          992: {
-            slidesPerView: 4
-          },
-        }
-    });
+  // var swiper = new Swiper(".popular-services", {
+  //   slidesPerView: 1,
+  //     spaceBetween: 24,
+  //     pagination: {
+  //       el: ".swiper-pagination",
+  //       clickable: true,
+  //     },
+  //     navigation: {
+  //       nextEl: ".swiper-button-next",
+  //       prevEl: ".swiper-button-prev",
+  //     },
+  //     breakpoints: {
+  //         992: {
+  //           slidesPerView: 4
+  //         },
+  //       }
+  //   });
     </script>
