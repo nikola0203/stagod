@@ -17,11 +17,11 @@ class UserSlider {
     const thisClass = this;
 
     window.addEventListener("load", function () {
-      thisClass.authorGallery();
+      thisClass.popularServices();
     });
   }
 
-  authorGallery() {
+  popularServices() {
     const slides = document.querySelectorAll(".popular-services");
 
     slides.forEach(function (slider, index) {

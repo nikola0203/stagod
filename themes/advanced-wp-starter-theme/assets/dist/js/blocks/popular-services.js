@@ -10883,12 +10883,12 @@ var UserSlider = /*#__PURE__*/function () {
     value: function init() {
       var thisClass = this;
       window.addEventListener("load", function () {
-        thisClass.authorGallery();
+        thisClass.popularServices();
       });
     }
   }, {
-    key: "authorGallery",
-    value: function authorGallery() {
+    key: "popularServices",
+    value: function popularServices() {
       var slides = document.querySelectorAll(".popular-services");
       slides.forEach(function (slider, index) {
         slider.classList.add("popular-services-" + index);

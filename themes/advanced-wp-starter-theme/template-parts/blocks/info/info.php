@@ -20,7 +20,7 @@ $allowedHTML = array(
   ),
 );
 ?>
-<section class="info <?php echo ( $background ) ? 'info-two py-12 py-lg-22' : 'my-12 my-lg-22'; ?>">
+<section class="info <?php echo ( $background ) ? 'bg-light py-12 py-lg-22' : 'my-12 my-lg-22'; ?>">
   <div class="container">
     <div class="row">
       <div class="col-12 col-lg-6 d-flex flex-column justify-content-center <?php echo ( $image_left ) ? 'order-lg-1' : ''; ?> ">

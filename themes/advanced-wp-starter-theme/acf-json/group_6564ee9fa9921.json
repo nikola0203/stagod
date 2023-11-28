@@ -3,6 +3,26 @@
     "title": "[Block] Popular Services",
     "fields": [
         {
+            "key": "field_6565e9625f6aa",
+            "label": "Title",
+            "name": "title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_6564ee9f31ae2",
             "label": "Select Services",
             "name": "select_services",
@@ -46,5 +66,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701113775
+    "modified": 1701177714
 }

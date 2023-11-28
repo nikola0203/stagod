@@ -9,7 +9,7 @@
       @include font-size(19px);
     }
   }
-}
-.info-two {
-  background-color: $light-grey;
+  a {
+    width: fit-content;
+  }
 }
