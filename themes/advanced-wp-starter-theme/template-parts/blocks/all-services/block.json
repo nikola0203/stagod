@@ -1,0 +1,22 @@
+{
+  "name": "acf/all-services",
+  "title": "All Services",
+  "description": "All Services Block",
+  "category": "acf-blocks",
+  "icon": "cover-image",
+  "keywords": [
+    "all",
+    "services"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "all-services.php",
+    "postTypes": [
+      "page",
+      "services"
+    ]
+  },
+  "supports": {
+    "align": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "acf/recent-users",
+  "title": "Recent Users",
+  "description": "Recent Users Block",
+  "category": "acf-blocks",
+  "icon": "slides",
+  "keywords": [
+    "recet",
+    "users"
+  ],
+  "viewScript": "popular-services",
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "recent-users.php",
+    "postTypes": [
+      "page"
+    ]
+  },
+  "supports": {
+    "align": false
+  }
+}

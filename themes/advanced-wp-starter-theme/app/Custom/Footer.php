@@ -30,7 +30,7 @@ class Footer
     if ( ! empty( $settings['copyright'] ) ) {
       ?>
       <div class="footer-copyright-text text-center text-lg-start text-small">
-        <?php echo wp_kses_post( $settings['copyright'] ); ?>  
+        <p><?php echo wp_kses_post( $settings['copyright'] ); ?></p>  
       </div>
       <?php
     }
