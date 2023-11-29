@@ -32,6 +32,7 @@ class AcfBlocks
 			'about'            => $blocks_dir . 'about',
 			'info'             => $blocks_dir . 'info',
 			'popular_services' => $blocks_dir . 'popular-services',
+			'find_categories' => $blocks_dir . 'find-categories',
 		);
 
 		return apply_filters( 'awpt_add_acf_block', $blocks_settings );

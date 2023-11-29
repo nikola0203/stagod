@@ -1,0 +1,23 @@
+{
+  "name": "acf/find-categories",
+  "title": "Find categories",
+  "description": "Find Categories Block",
+  "category": "acf-blocks",
+  "icon": "cover-image",
+  "keywords": [
+    "find",
+    "categories"
+  ],
+  "viewScript": "find-services",
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "find-categories.php",
+    "postTypes": [
+      "page",
+      "services"
+    ]
+  },
+  "supports": {
+    "align": false
+  }
+}

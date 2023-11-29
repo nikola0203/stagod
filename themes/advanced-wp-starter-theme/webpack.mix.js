@@ -19,6 +19,7 @@ mix.js('assets/src/scripts/app.js', 'assets/dist/js')
 	.js('assets/src/scripts/admin.js', 'assets/dist/js')
 	.js('assets/src/scripts/user-single.js', 'assets/dist/js')
 	.js('assets/src/scripts/blocks/popular-services', 'assets/dist/js/blocks')
+	.js('assets/src/scripts/blocks/find-services', 'assets/dist/js/blocks')
 	.sass('assets/src/sass/style.scss', 'assets/dist/css')
 	.sass('assets/src/sass/admin.scss', 'assets/dist/css')
 

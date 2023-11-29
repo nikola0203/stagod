@@ -9,10 +9,10 @@ import Swiper from "swiper";
 import { Pagination, Navigation } from "swiper/modules";
 
 window.addEventListener("load", function () {
-  popularServices();
+  findServices();
 });
 
-function popularServices() {
+function findServices() {
   const slides = document.querySelectorAll(".popular-services");
 
   slides.forEach(function (slider, index) {

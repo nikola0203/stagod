@@ -9,17 +9,14 @@ import Swiper from "swiper";
 import { Pagination, Navigation } from "swiper/modules";
 
 window.addEventListener("load", function () {
-  popularServices();
+  findServices();
 });
 
-function popularServices() {
-  const slides = document.querySelectorAll(".popular-services");
+function findServices() {
+  const slides = document.querySelectorAll(".find-services");
 
   slides.forEach(function (slider, index) {
-    slider.classList.add("popular-services-" + index);
-    slider
-      .parentElement.parentElement.getElementsByClassName("swiper-pagination")[0]
-      .classList.add("swiper-pagination-" + index);
+    slider.classList.add("find-services-" + index);
     slider.parentElement
       .getElementsByClassName("swiper-button-next")[0]
       .classList.add("swiper-button-next-" + index);
@@ -29,11 +26,11 @@ function popularServices() {
 
     // console.log(slider.getElementsByClassName('swiper-pagination')[0])
 
-    new Swiper(".popular-services-" + index, {
+    new Swiper(".find-services-" + index, {
       modules: [Pagination, Navigation],
       // autoHeight: true,
       // slidesPerView: "auto",
-      slidesPerView: 1,
+      slidesPerView: 3,
       // freeMode: true,
       // centeredSlides: true,
       // loop: true,
@@ -49,8 +46,11 @@ function popularServices() {
       // Responsive breakpoints
       breakpoints: {
         992: {
-          slidesPerView: 4
+          slidesPerView: 6
         },
+        1200: {
+          slidesPerView: 10
+        }
         // 1400: {
         //   slidesPerView: 3,
         //   spaceBetween: 150

@@ -11,18 +11,26 @@ $services = get_field( 'select_services' );
 ?>
 <section class="section-popular-services bg-light pt-12 pb-20 py-lg-14 relative">
   <div class="container relative">
-    <h3 class="mb-8"><?php echo get_field('title'); ?></h3>
+    <?php
+    $title = get_field( 'title' );
+    if ( $title ):
+    ?>
+      <h3 class="mb-8"><?php esc_html_e($title); ?></h3>
+    <?php
+    endif;
+    ?>
     <div class="swiper popular-services">
       <div class="swiper-wrapper">
         <?php
-        foreach ( $services as $service ) :
-          $image = get_field( 'image', $service );
-          ?>
-          <div class="swiper-slide bg-white rounded-bottom-3">
+        if ( $services ):
+          foreach ( $services as $service ) :
+            $image = get_field( 'image', $service );
+            ?>
+            <div class="swiper-slide bg-white rounded-bottom-3">
               <div class="image-wrapper mb-6">
-                <?php Acf::image( $image, 'large', 'w-lg-75 rounded-top-3 object-fit-cover h-100 w-100', ); ?>
+                <?php Acf::image( $image, 'large', 'rounded-top-3 object-fit-cover h-100 w-100', ); ?>
               </div>
-              <p class="p-big mb-1 ps-8 fw-bold"><?php echo $service->name; ?></p>
+              <a href="<?php echo esc_url( get_term_link( $service, 'services' ) ); ?>"><p class="p-big mb-1 ps-8 fw-bold"><?php esc_html_e( $service->name ); ?></p></a>
               <?php
               $term_args = array(
                 'taxonomy'   => 'services',
@@ -30,39 +38,17 @@ $services = get_field( 'select_services' );
                 'hide_empty' => false
               ); 
               $terms = count( get_terms( $term_args ) );
-              print_var($terms);
               ?>
-          </div>
-          <?php 
-        endforeach;
+              <p class="ms-8 mb-8 txt-light-grey"><?php echo $terms; ?> <?php echo ( $terms < 2 || $terms > 4 ) ? 'veština' : 'veštine' ?></p>
+            </div>
+            <?php 
+          endforeach;
+        endif;
         ?>
       </div>
     </div>
-    <div class="swiper-button-next rounded-circle d-none d-lg-flex"></div>
-    <div class="swiper-button-prev rounded-circle d-none d-lg-flex"></div>
+    <div class="swiper-button-next rounded-circle d-none d-lg-flex bg-white"></div>
+    <div class="swiper-button-prev rounded-circle d-none d-lg-flex bg-white"></div>
   </div>
-  <div class="swiper-pagination d-lg-none"></div>
+  <div class="swiper-pagination d-lg-none mb-6"></div>
 </section>
-<!-- Swiper JS -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
-
-<!-- Initialize Swiper -->
-<script>
-  // var swiper = new Swiper(".popular-services", {
-  //   slidesPerView: 1,
-  //     spaceBetween: 24,
-  //     pagination: {
-  //       el: ".swiper-pagination",
-  //       clickable: true,
-  //     },
-  //     navigation: {
-  //       nextEl: ".swiper-button-next",
-  //       prevEl: ".swiper-button-prev",
-  //     },
-  //     breakpoints: {
-  //         992: {
-  //           slidesPerView: 4
-  //         },
-  //       }
-  //   });
-    </script>

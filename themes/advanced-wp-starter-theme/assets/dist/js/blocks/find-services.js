@@ -10847,9 +10847,9 @@ __webpack_require__.r(__webpack_exports__);
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/*!*******************************************************!*\
-  !*** ./assets/src/scripts/blocks/popular-services.js ***!
-  \*******************************************************/
+/*!****************************************************!*\
+  !*** ./assets/src/scripts/blocks/find-services.js ***!
+  \****************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper/css */ "./.yarn/cache/swiper-npm-11.0.5-152220df64-4a544e9551.zip/node_modules/swiper/swiper.css");
 /* harmony import */ var swiper_css_pagination__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/css/pagination */ "./.yarn/cache/swiper-npm-11.0.5-152220df64-4a544e9551.zip/node_modules/swiper/modules/pagination.css");
@@ -10865,23 +10865,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 window.addEventListener("load", function () {
-  popularServices();
+  findServices();
 });
-function popularServices() {
-  var slides = document.querySelectorAll(".popular-services");
+function findServices() {
+  var slides = document.querySelectorAll(".find-services");
   slides.forEach(function (slider, index) {
-    slider.classList.add("popular-services-" + index);
-    slider.parentElement.parentElement.getElementsByClassName("swiper-pagination")[0].classList.add("swiper-pagination-" + index);
+    slider.classList.add("find-services-" + index);
     slider.parentElement.getElementsByClassName("swiper-button-next")[0].classList.add("swiper-button-next-" + index);
     slider.parentElement.getElementsByClassName("swiper-button-prev")[0].classList.add("swiper-button-prev-" + index);
 
     // console.log(slider.getElementsByClassName('swiper-pagination')[0])
 
-    new swiper__WEBPACK_IMPORTED_MODULE_3__["default"](".popular-services-" + index, {
+    new swiper__WEBPACK_IMPORTED_MODULE_3__["default"](".find-services-" + index, {
       modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_4__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_4__.Navigation],
       // autoHeight: true,
       // slidesPerView: "auto",
-      slidesPerView: 1,
+      slidesPerView: 3,
       // freeMode: true,
       // centeredSlides: true,
       // loop: true,
@@ -10897,7 +10896,10 @@ function popularServices() {
       // Responsive breakpoints
       breakpoints: {
         992: {
-          slidesPerView: 4
+          slidesPerView: 6
+        },
+        1200: {
+          slidesPerView: 10
         }
         // 1400: {
         //   slidesPerView: 3,

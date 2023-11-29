@@ -1,10 +1,8 @@
-.image-wrapper {
-  height: 208px;
-}
-.section-popular-services {
+.section-popular-services, .section-find-services {
+  .image-wrapper {
+    height: 208px;
+  }
   .swiper-button-next, .swiper-button-prev {
-    background-color: $white; 
-    font-size: 16px;
     width: 44px;
     margin-right: -20px;
     margin-left: -20px;
@@ -18,7 +16,6 @@
     display: none !important;
   }
   .swiper-pagination {
-    margin-bottom: 20px;
     .swiper-pagination-bullet {
       background-color: $border-gray;
       border: none;
