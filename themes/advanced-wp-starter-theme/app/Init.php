@@ -35,6 +35,7 @@ final class Init
 			Custom\Custom::class,
 			Plugins\Acf::class,
 			Plugins\AcfBlocks::class,
+			Chat\Chat::class,
 		]; 
 	}
 

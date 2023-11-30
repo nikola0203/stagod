@@ -5,7 +5,7 @@
   );
   $users = get_users($args);
   $name = get_field('phone_number');
-  print_var($users);
+  // print_var($users);
 ?>
 
 <section class="section-recent-users my-22">
@@ -14,7 +14,8 @@
     <?php
     foreach( $users as $user ):
       print_var($user->phone_number);
-      
+      $services = get_field( 'services', $user );
+      print_var($services);
       ?>
       <img src="<?php $user->profile_image; ?>" alt="">
       <h4><?php esc_html_e( $user->display_name ) ?></h4>

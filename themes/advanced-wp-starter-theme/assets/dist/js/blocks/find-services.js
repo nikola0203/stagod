@@ -10871,8 +10871,8 @@ function findServices() {
   var slides = document.querySelectorAll(".find-services");
   slides.forEach(function (slider, index) {
     slider.classList.add("find-services-" + index);
-    slider.parentElement.getElementsByClassName("swiper-button-next")[0].classList.add("swiper-button-next-" + index);
-    slider.parentElement.getElementsByClassName("swiper-button-prev")[0].classList.add("swiper-button-prev-" + index);
+    slider.parentElement.getElementsByClassName("swiper-button-next-find-services")[0].classList.add("swiper-button-next-find-services-" + index);
+    slider.parentElement.getElementsByClassName("swiper-button-prev-find-services")[0].classList.add("swiper-button-prev-find-services-" + index);
 
     // console.log(slider.getElementsByClassName('swiper-pagination')[0])
 
@@ -10890,8 +10890,8 @@ function findServices() {
         clickable: true
       },
       navigation: {
-        nextEl: ".swiper-button-next-" + index,
-        prevEl: ".swiper-button-prev-" + index
+        nextEl: ".swiper-button-next-find-services-" + index,
+        prevEl: ".swiper-button-prev-find-services-" + index
       },
       // Responsive breakpoints
       breakpoints: {
