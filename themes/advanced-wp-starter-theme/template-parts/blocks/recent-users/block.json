@@ -5,10 +5,10 @@
   "category": "acf-blocks",
   "icon": "slides",
   "keywords": [
-    "recet",
+    "recent",
     "users"
   ],
-  "viewScript": "popular-services",
+  "viewScript": "recent-users",
   "acf": {
     "mode": "edit",
     "renderTemplate": "recent-users.php",

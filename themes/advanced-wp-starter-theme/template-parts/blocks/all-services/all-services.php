@@ -16,11 +16,11 @@ $terms = get_field('taxonomy');
       );
       $childred = get_terms($term_args);
       ?>
-      <ul class="d-flex list-style-type-none ps-0 mb-10">
+      <ul class=" list-style-type-none ps-0 mb-10">
       <?php
       foreach ( $childred as $child ):
       ?>
-        <a href="<?php echo esc_url( get_term_link( $child, 'services' ) ); ?>"><li class="bg-blue-transperent py-1 px-5 me-6 rounded-5 fw-bold"><?php esc_html_e( $child->name );?></li></a>
+        <a href="<?php echo esc_url( get_term_link( $child, 'services' ) ); ?>"><li class="bg-blue-transperent py-1 px-5 me-6 rounded-5 fw-bold d-inline-flex mb-6"><?php esc_html_e( $child->name );?></li></a>
       <?php
       endforeach;
       ?>
