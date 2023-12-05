@@ -3,7 +3,8 @@
  * Template part for the user long description.
  */
 
-$current_user = wp_get_current_user();
+ 
+$current_user = get_user_by( 'id', get_queried_object_id() );
 $long_desc    = get_field( 'long_description' );
 ?>
 <div class="author-desc-wrapper">

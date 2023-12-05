@@ -3,7 +3,7 @@
  * Template part for the user categories.
  */
 
-$current_user = wp_get_current_user();
+$current_user = get_user_by( 'id', get_queried_object_id() );
 $services     = get_field( 'services' );
 ?>
 <div class="author-desc-wrapper">
