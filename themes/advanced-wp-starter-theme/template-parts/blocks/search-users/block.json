@@ -1,0 +1,22 @@
+{
+  "name": "acf/search-users",
+  "title": "Search Users",
+  "description": "Search Users Block",
+  "category": "acf-blocks",
+  "icon": "slides",
+  "keywords": [
+    "search",
+    "users"
+  ],
+  "viewScript": "search-users",
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "search-users.php",
+    "postTypes": [
+      "page"
+    ]
+  },
+  "supports": {
+    "align": false
+  }
+}

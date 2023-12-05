@@ -114,13 +114,14 @@ button {
     }
   }
   &.btn-secondary {
-    background-color: $blue-600;
-    color: $white;
+    background-color: $transparent;
+    color: $primary;
     &:hover,
     &:focus,
     &:active {
       // border: 2px solid $secondary;
-      background-color: $blue-700;
+      background-color: $primary;
+      color: $white;
     }
   }
   &.btn-transparent {

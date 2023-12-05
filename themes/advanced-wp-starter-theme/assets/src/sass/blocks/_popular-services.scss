@@ -1,4 +1,4 @@
-.section-popular-services, .section-find-services, .section-recent-users {
+.section-popular-services, .section-find-services, .section-recent-users, .section-search-users {
   .image-wrapper {
     height: 208px;
   }
@@ -11,6 +11,9 @@
       font-weight: bold;
       color: $primary;
     }
+  }
+  .swiper-button-next-search-users, .swiper-button-prev-search-users {
+    top: 67%;
   }
   .swiper-button-disabled {
     display: none !important;

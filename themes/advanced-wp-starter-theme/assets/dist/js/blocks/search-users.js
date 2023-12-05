@@ -10847,9 +10847,9 @@ __webpack_require__.r(__webpack_exports__);
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/*!*******************************************************!*\
-  !*** ./assets/src/scripts/blocks/popular-services.js ***!
-  \*******************************************************/
+/*!***************************************************!*\
+  !*** ./assets/src/scripts/blocks/search-users.js ***!
+  \***************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper/css */ "./.yarn/cache/swiper-npm-11.0.5-152220df64-4a544e9551.zip/node_modules/swiper/swiper.css");
 /* harmony import */ var swiper_css_pagination__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/css/pagination */ "./.yarn/cache/swiper-npm-11.0.5-152220df64-4a544e9551.zip/node_modules/swiper/modules/pagination.css");
@@ -10865,19 +10865,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 window.addEventListener("load", function () {
-  popularServices();
+  serachUsers();
 });
-function popularServices() {
-  var slides = document.querySelectorAll(".popular-services");
+function serachUsers() {
+  var slides = document.querySelectorAll(".search-users");
   slides.forEach(function (slider, index) {
-    slider.classList.add("popular-services-" + index);
-    slider.parentElement.parentElement.getElementsByClassName("swiper-pagination")[0].classList.add("swiper-pagination-" + index);
-    slider.parentElement.getElementsByClassName("swiper-button-next-popular-services")[0].classList.add("swiper-button-next-popular-services-" + index);
-    slider.parentElement.getElementsByClassName("swiper-button-prev-popular-services")[0].classList.add("swiper-button-prev-popular-services-" + index);
+    slider.classList.add("search-users-" + index);
+    slider.parentElement.getElementsByClassName("swiper-button-next-search-users")[0].classList.add("swiper-button-next-search-users-" + index);
+    slider.parentElement.getElementsByClassName("swiper-button-prev-search-users")[0].classList.add("swiper-button-prev-search-users-" + index);
 
     // console.log(slider.getElementsByClassName('swiper-pagination')[0])
 
-    new swiper__WEBPACK_IMPORTED_MODULE_3__["default"](".popular-services-" + index, {
+    new swiper__WEBPACK_IMPORTED_MODULE_3__["default"](".search-users-" + index, {
       modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_4__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_4__.Navigation],
       // autoHeight: true,
       // slidesPerView: "auto",
@@ -10891,11 +10890,14 @@ function popularServices() {
         clickable: true
       },
       navigation: {
-        nextEl: ".swiper-button-next-" + index,
-        prevEl: ".swiper-button-prev-" + index
+        nextEl: ".swiper-button-next-search-users-" + index,
+        prevEl: ".swiper-button-prev-search-users-" + index
       },
       // Responsive breakpoints
       breakpoints: {
+        768: {
+          slidesPerView: 2
+        },
         992: {
           slidesPerView: 4
         }

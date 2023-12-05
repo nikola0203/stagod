@@ -47,8 +47,8 @@ $services = get_field( 'select_services' );
         ?>
       </div>
     </div>
-    <div class="swiper-button-next rounded-circle d-none d-lg-flex bg-white"></div>
-    <div class="swiper-button-prev rounded-circle d-none d-lg-flex bg-white"></div>
+    <div class="swiper-button-next swiper-button-next-popular-services rounded-circle d-none d-lg-flex bg-white"></div>
+    <div class="swiper-button-prev swiper-button-prev-popular-services rounded-circle d-none d-lg-flex bg-white"></div>
   </div>
   <div class="swiper-pagination d-lg-none mb-6"></div>
 </section>

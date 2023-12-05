@@ -35,6 +35,7 @@ class AcfBlocks
 			'find_categories'  => $blocks_dir . 'find-categories',
 			'recent_users'     => $blocks_dir . 'recent-users',
 			'all_services'     => $blocks_dir . 'all-services',
+			'search_users'     => $blocks_dir . 'search-users',
 		);
 
 		return apply_filters( 'awpt_add_acf_block', $blocks_settings );
