@@ -1,0 +1,17 @@
+{
+  "name": "acf/faq",
+  "title": "FAQ",
+  "description": "FAQ Block",
+  "category": "acf-blocks",
+  "icon": "editor-help",
+  "keywords": ["faq"],
+  "viewScript": "faq",
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "faq.php",
+    "postTypes": ["page"]
+  },
+  "supports": {
+    "align": false
+  }
+}

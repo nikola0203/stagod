@@ -9,13 +9,13 @@ $services = get_field( 'taxonomy' );
     <h2 class="mb-8"><?php esc_html_e( $title ); ?></h2>
     <div class="col-12 col-lg-8 mx-auto mb-12">
       <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-      <?php
-        foreach( $services as $serviceKey => $service ):
+        <?php
+        foreach( $services as $serviceKey => $service ) :
           ?>
           <li class="nav-item" role="presentation">
-            <button class="btn btn-secondary py-2 px-5 mb-4 me-4 rounded-5 <?php echo ( $serviceKey == 0 ) ? 'active' : ''; ?>" id="<?php esc_html_e( $service->slug ); ?>-tab" data-bs-toggle="pill" data-bs-target="#<?php esc_html_e($service->slug); ?>" type="button" role="tab" aria-controls="<?php esc_html_e($service->slug); ?>" aria-selected="true""><?php esc_html_e( $service->name ); ?></button>
+            <button class="btn btn-secondary py-2 px-5 mb-4 me-4 rounded-5 <?php echo ( $serviceKey == 0 ) ? 'active' : ''; ?>" id="<?php esc_html_e( $service->slug ); ?>-tab" data-bs-toggle="pill" data-bs-target="#<?php esc_html_e($service->slug); ?>" type="button" role="tab" aria-controls="<?php esc_html_e($service->slug); ?>" aria-selected="true"><?php esc_html_e( $service->name ); ?></button>
           </li>
-        <?php
+          <?php
         endforeach;
         ?>
       </ul>
@@ -23,16 +23,17 @@ $services = get_field( 'taxonomy' );
     <div class="tab-content" id="pills-tabContent">    
       <?php
       foreach ( $services as $serviceKey => $service ) :
-        $usersID = get_objects_in_term( $service->term_id, 'services', array( 'order' => 'DESC' ) );?>
-        <div class="tab-pane fade <?php echo ( $serviceKey == 0 ) ? 'active show' : ''; ?>" id="<?php echo $service->slug; ?>" role="tabpanel" aria-labelledby="<?php echo $service->slug; ?>-tab" tabindex="0">
+        $usersID = get_objects_in_term( $service->term_id, 'services', array( 'order' => 'DESC' ) );
+        ?>
+        <div class="tab-pane fade <?php echo ( $serviceKey == 0 ) ? 'active show' : ''; ?>" id="<?php esc_attr_e( $service->slug ); ?>" role="tabpanel" aria-labelledby="<?php esc_attr_e( $service->slug ); ?>-tab" tabindex="0">
           <div class="swiper search-users text-center">
             <div class="swiper-wrapper"><?php
             foreach ( $usersID as $usersIDkey => $userID ) :
               if ( $usersIDkey < 10 ) :
-                $user = get_user_by('id', $userID);
-                $image         = get_field('profile_image', $user);
-                $user_services = get_field('services', $user);
-                $more_services = count($services) - 4;
+                $user          = get_user_by( 'id', $userID );
+                $image         = get_field( 'profile_image', $user );
+                $user_services = get_field( 'services', $user );
+                $more_services = count( $services ) - 4;
                 ?>
                 <div class="swiper-slide border border-2 border-light rounded-3">
                   <div class="image-wrapper-users mb-6 ">
@@ -55,7 +56,7 @@ $services = get_field( 'taxonomy' );
                     endif;
                     ?>
                   </ul>
-                  <a href="<?php echo esc_url( $user->user_url ); ?>" class="btn btn-orange-ghost mb-8">Pogledaj profil</a>
+                  <a href="<?php echo esc_url( get_author_posts_url( $userID ) ); ?>" class="btn btn-orange-ghost mb-8">Pogledaj profil</a>
                 </div>
                 <?php
               endif;
@@ -67,7 +68,7 @@ $services = get_field( 'taxonomy' );
         <div class="swiper-pagination d-lg-none mb-6"></div>
         </div>
         <?php
-        endforeach;
+      endforeach;
       ?>
     </div>
   </div>
