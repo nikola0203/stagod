@@ -43,8 +43,8 @@ function popularServices() {
         clickable: true
       },
       navigation: {
-        nextEl: ".swiper-button-next-" + index,
-        prevEl: ".swiper-button-prev-" + index
+        nextEl: ".swiper-button-next-popular-services-" + index,
+        prevEl: ".swiper-button-prev-popular-services-" + index
       },
       // Responsive breakpoints
       breakpoints: {
