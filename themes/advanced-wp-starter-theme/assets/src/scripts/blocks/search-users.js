@@ -5,11 +5,14 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
+// import Tab from 'bootstrap'
+import BsTab from "../modules/bsTabs";
 import Swiper from "swiper";
 import { Pagination, Navigation } from "swiper/modules";
 
 window.addEventListener("load", function () {
   serachUsers();
+  new BsTab();
 });
 
 function serachUsers() {

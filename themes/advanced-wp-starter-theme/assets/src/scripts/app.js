@@ -15,7 +15,6 @@ import "lazysizes/plugins/respimg/ls.respimg";
 // Import custom modules
 import App from './modules/app.js';
 import NavMenu from "./modules/nav-menu";
-import BsTab from "./modules/bsTabs";
 // import Slider from './modules/slider.js';
 
 const app = new App();
