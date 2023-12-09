@@ -8,7 +8,7 @@ $services = get_field( 'taxonomy' );
   <div class="container relative">
     <h2 class="mb-8"><?php esc_html_e( $title ); ?></h2>
     <div class="col-12 col-lg-8 mx-auto mb-12">
-      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
         <?php
         foreach( $services as $serviceKey => $service ) :
           ?>

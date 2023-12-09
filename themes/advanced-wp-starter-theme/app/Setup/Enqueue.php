@@ -62,6 +62,7 @@ class Enqueue
 		wp_register_script( 'find-services', mix( 'js/blocks/find-services.js' ), array(), '1.0.0', array( 'strategy' => 'async', 'in_footer' => true ) );
 		wp_register_script( 'recent-users', mix( 'js/blocks/recent-users.js' ), array(), '1.0.0', array( 'strategy' => 'async', 'in_footer' => true ) );
 		wp_register_script( 'search-users', mix( 'js/blocks/search-users.js' ), array(), '1.0.0', array( 'strategy' => 'async', 'in_footer' => true ) );
+		wp_register_script( 'faq', mix( 'js/blocks/faq.js' ), array(), '1.0.0', array( 'strategy' => 'async', 'in_footer' => true ) );
 
 		// Activate browser-sync on development environment
 		// if ( getenv( 'APP_ENV' ) === 'development' ) :
