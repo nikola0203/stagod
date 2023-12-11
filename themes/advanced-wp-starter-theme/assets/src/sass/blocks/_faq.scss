@@ -1,7 +1,8 @@
 section.faq {
   .faq__wrapper {
     &-question {
-      color: $secondary;
+      color: $black;
+      @include font-size(24px);
       cursor: pointer;
       transition: color $time $ease;
       .icon {
@@ -12,7 +13,8 @@ section.faq {
       }
       &:hover,
       &.active {
-        color: $primary;
+        color: $secondary;
+        text-decoration: underline;
       }
       &.active {
         .icon {
@@ -21,8 +23,9 @@ section.faq {
       }
     }
     &-answer {
-      @include margin-top(10px);
-      @include margin-bottom(10px);
+      @include margin-top(16px);
+      @include margin-bottom(16px);
+      color: rgba(0, 0, 0, 0.75);
       max-height: 0;
       overflow: hidden;
       transition: max-height 500ms ease-in-out;

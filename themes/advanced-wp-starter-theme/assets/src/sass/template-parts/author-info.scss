@@ -1,0 +1,13 @@
+.author-info-wrapper {
+  .img-wrapper {
+    height: 128px;
+    width: 128px;
+  }
+  h3 {
+    @include font-size(19px);
+    color: $light-grey;
+  }
+  hr {
+    color: $light;
+  }
+}

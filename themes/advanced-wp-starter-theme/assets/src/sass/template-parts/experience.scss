@@ -1,0 +1,15 @@
+.author-experience-wrap {
+  li {
+    .active {
+      color: $secondary !important;
+      border: none !important;
+      border-bottom: 2px solid $secondary !important;
+      padding-left: 0px;
+    }
+  }
+  button:hover {
+    color: $secondary !important;
+    border: none !important;
+    border-bottom: 2px solid $secondary !important;
+  }
+}

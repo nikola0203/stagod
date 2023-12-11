@@ -16,8 +16,8 @@ $long_desc    = get_field( 'long_description' );
   endif;
   if ( $long_desc ) :
     ?>
-    <h2 class="h4 mb-6">O Meni</h2>
-    <div class="mb-8 mb-lg-14">
+    <h2 class="h4 mb-6 text-primary">O Meni</h2>
+    <div class="mb-8 mb-lg-14 fw-normal">
       <?php echo wp_kses_post( $long_desc ); ?>
     </div>
     <?php

@@ -9,7 +9,7 @@ $images = get_field( 'gallery' );
 
 if ( ! empty( $images ) ) :
   ?>
-  <div class="author-gallery-wrapper relative">
+  <div class="author-gallery-wrapper relative mb-22">
     <div class="swiper author-gallery">
       <div class="swiper-wrapper">
         <?php
@@ -25,8 +25,8 @@ if ( ! empty( $images ) ) :
         ?>
       </div>
     </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next rounded-circle d-none d-lg-flex bg-white"></div>
+    <div class="swiper-button-prev rounded-circle d-none d-lg-flex bg-white"></div>
     <div class="swiper-pagination"></div>
   </div>
   <?php

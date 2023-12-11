@@ -34,7 +34,7 @@ if ( ! empty( $block['className'] ) ) {
     endif;
     if ( $title ) :
       ?>
-      <h2 class="mb-8 mb-lg-15"><?php echo wp_kses( $title, $allowedHtml ); ?></h2>
+      <h2 class="mb-8 mb-lg-15 text-center"><?php echo wp_kses( $title, $allowedHtml ); ?></h2>
       <?php
     endif;
     if ( have_rows( 'faqs' ) ) :
@@ -49,13 +49,13 @@ if ( ! empty( $block['className'] ) ) {
               $answer   = get_sub_field( 'answer' );
               if ( $question ) :
                 ?>
-                <h3 class="faq__wrapper-question h5 font-family-base px-xl-5 py-5 d-flex justify-content-between align-items-center fw-light border-bottom mb-0">
-                <span class="flex-shrink-1"><?php esc_html_e( $question ); ?>&nbsp;</span><i class="icon d-inline-block ms-5 flex-shrink-0"></i></h3>
+                <h4 class="faq__wrapper-question fw-bold h5 font-family-base pe-xl-5 d-flex justify-content-between align-items-center fw-light mb-0">
+                <span class="flex-shrink-1"><?php esc_html_e( $question ); ?>&nbsp;</span><i class="icon d-inline-block ms-5 flex-shrink-0"></i></h4>
                 <?php
               endif;
               if ( $answer ) : 
                 ?>
-                <div class="faq__wrapper-answer margin-last-none px-5 mb-0"><?php echo wp_kses_post( $answer ); ?></div>
+                <div class="faq__wrapper-answer margin-last-none pe-5 mb-6 border-bottom"><?php echo wp_kses_post( $answer ); ?></div>
                 <?php
               endif;
             endwhile;
