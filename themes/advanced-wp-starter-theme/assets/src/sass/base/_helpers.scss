@@ -101,8 +101,8 @@
   color: $light-grey;
 }
 
-.txt-cyan {
-  color: $cyan;
+.txt-dark-grey {
+  color: $dark-gray;
 }
 
 .text-smaller {
@@ -127,6 +127,9 @@
 
 .text-huge {
   @include font-size(24px !important);
+}
+.text-huge-1 {
+  @include font-size(32px !important);
 }
 
 .container-wide {
@@ -190,4 +193,14 @@
       margin-bottom: 0;
     }
   }
+}
+.margin-a-last-none {
+  a {
+    &:last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+}
+.br-16 {
+  border-radius: 16px;
 }
