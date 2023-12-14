@@ -97,6 +97,17 @@
   color: $secondary;
 }
 
+.img-wrap-128 {
+  max-width: 128px;
+  max-height: 128px;
+}
+
+.border-lg-none {
+  @include media-breakpoint-up(lg) {
+    border: none !important;
+  }
+}
+
 .txt-light-grey {
   color: $light-grey;
 }
