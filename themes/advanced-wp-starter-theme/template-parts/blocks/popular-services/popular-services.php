@@ -30,7 +30,7 @@ $services = get_field( 'select_services' );
               <div class="image-wrapper mb-6">
                 <?php Acf::image( $image, 'large', 'rounded-top-3 object-fit-cover h-100 w-100', ); ?>
               </div>
-              <a href="<?php echo esc_url( get_term_link( $service, 'services' ) ); ?>"><p class="p-big mb-1 ps-8 fw-bold"><?php esc_html_e( $service->name ); ?></p></a>
+              <a href="<?php echo esc_url( get_term_link( $service, 'services' ) ); ?>" class="txt-black p-big mb-1 ps-8 fw-bold"><?php esc_html_e( $service->name ); ?></a>
               <?php
               $term_args = array(
                 'taxonomy'   => 'services',

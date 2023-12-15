@@ -13,10 +13,10 @@ $terms = get_terms(
     <div class="head-wrapper col-12 mb-4">
       <div class="row align-items-baseline">
         <div class="col-6">
-          <h4><?php esc_html_e( get_field('title') ); ?></h4>
+          <h4><?php esc_html_e( get_field( 'title' ) ); ?></h4>
         </div>
         <div class="col-6 text-end">
-          <a href="#" class="txt-primary">Vidi sve kategorije</a>
+          <a href="<?php echo esc_url( get_field( 'link' ) ); ?>" class="txt-primary">Vidi sve kategorije</a>
         </div>
       </div>
     </div>
@@ -26,11 +26,11 @@ $terms = get_terms(
         foreach( $terms as $term ) :
           $icon = get_field( 'icon', $term );
           ?>
-          <div class="swiper-slide">
+          <div class="swiper-slide text-center">
             <div class="icon-wrapper rounded-circle d-flex justify-content-center align-items-center mb-2">
               <?php Acf::image( $icon, 'large', 'w-lg-50' ); ?>
             </div>
-            <p class="text-center fw-bold"><?php esc_html_e( $term->name ); ?></p>
+            <a href="<?php esc_html_e( get_term_link($term) ); ?>" class="txt-black fw-bold"><?php esc_html_e( $term->name ); ?></a>
           </div>
           <?php
         endforeach;

@@ -101,6 +101,9 @@
   max-width: 128px;
   max-height: 128px;
 }
+.img-wrap-220 {
+  height: 220px;
+}
 
 .border-lg-none {
   @include media-breakpoint-up(lg) {

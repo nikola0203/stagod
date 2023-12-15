@@ -16,7 +16,7 @@ if ( ! empty( $images ) ) :
         foreach ( $images as $image ) :
           ?>
           <div class="swiper-slide">
-            <div class="author-gallery-image">
+            <div class="author-gallery-image img-wrap-220">
               <?php Acf::image( $image, 'medium_large', 'w-100 h-100 object-fit-cover' ); ?>
             </div>
           </div>

@@ -45,7 +45,7 @@ $terms = get_terms( $term_args );
               <?php
               foreach ( $children as $child ):
               ?>
-                <a href="" class="mb-6 d-block txt-black"><li class="fw-bold"><?php esc_html_e( $child->name ); ?></li></a>
+                <a href="<?php echo esc_url( get_term_link( $child ) ); ?>" class="mb-6 d-block txt-black"><li class="fw-bold"><?php esc_html_e( $child->name ); ?></li></a>
               <?php
               endforeach;
               ?>

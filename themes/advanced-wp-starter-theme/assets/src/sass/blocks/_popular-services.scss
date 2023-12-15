@@ -12,6 +12,12 @@
       color: $primary;
     }
   }
+  @media only screen and (min-width: 1200px) and (max-width: 1305px) {
+    .swiper-button-next, .swiper-button-prev {
+      margin-right: 0px;
+      margin-left: 0px;
+    }
+  }
   .swiper-button-next-search-users, .swiper-button-prev-search-users {
     top: 67%;
   }
