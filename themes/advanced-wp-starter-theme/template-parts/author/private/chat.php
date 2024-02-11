@@ -7,17 +7,9 @@ use Awpt\Chat\Chat;
 
 $chat              = new Chat();
 $chat_id           = ( isset( $_GET['chat_id'] ) ) ? $_GET['chat_id'] : false;
-// $user_id           = ( isset( $_GET['user_id'] ) ) ? $_GET['user_id'] : false;
 $message_recipient = ( isset( $_GET['message_recipient'] ) ) ? $_GET['message_recipient'] : false;
 $user              = get_user_by( 'id', $message_recipient );
-$message_author    = ( isset( $_POST['message_author'] ) ) ? $_POST['message_author'] : 0;
-$message_content   = ( isset( $_POST['message_content'] ) ) ? $_POST['message_content'] : '';
-
-$chat->send_message_to_user( $chat_id, $message_author, $message_recipient, $message_content );
-
-$messages = $chat->get_message_content( $chat_id );
-
-// print_var($messages);
+$messages          = $chat->get_message_content( $chat_id );
 
 if ( $user->user_firstname && $user->user_lastname ) :
   ?>
@@ -41,9 +33,12 @@ endif;
     endforeach;
   endif;
   ?>
-  <form action="" method="post">
+  <form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post">
+    <input type="hidden" name="action" value="send_message_to_user">
+    <?php wp_nonce_field( 'nonce-send-message-to-user', 'nonce_send_message_to_user' ); ?>
+    <input type="hidden" name="message_recipient" value="<?php esc_attr_e( $message_recipient ); ?>">
     <input type="hidden" name="message_author" value="<?php esc_attr_e( get_current_user_id() ); ?>">
-    <textarea name="message_content" id="" cols="30" rows="10"></textarea>
+    <textarea name="message_content" id="" cols="30" rows="10" required></textarea>
     <button type="submit" class="btn btn-primary">Posalji Poruku</button>
   </form>
 </div>
