@@ -17,11 +17,11 @@
         </div>
         <div class="col-6">
           <select name="cars" id="cars" class="px-0">
-              <option value="citys">U mojoj blizini</option>
-              <option value="city-1">Leskovac</option>
-              <option value="city-2">Niš</option>
-              <option value="city-3">Beograd</option>
-              <option value="city-4">Novi Sad</option>
+            <option value="citys">U mojoj blizini</option>
+            <option value="city-1">Leskovac</option>
+            <option value="city-2">Niš</option>
+            <option value="city-3">Beograd</option>
+            <option value="city-4">Novi Sad</option>
           </select>
         </div>
       </div>

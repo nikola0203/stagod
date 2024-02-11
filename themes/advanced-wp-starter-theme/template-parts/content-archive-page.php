@@ -26,7 +26,7 @@ $usersID = get_objects_in_term( $term->term_id, 'services');
           $user          = get_user_by( 'id', $userID );
           $user_services = get_field( 'services', $user );
           $image         = get_field( 'profile_image',  $user);
-          $more_services = count( $user_services ) - 6;
+          $more_services = ( ! empty( $user_services ) ) ? count( $user_services ) - 6 : [];
           ?>
           <div class="user-wrapper bg-white mb-6 p-8 br-16">
             <div class="row">
@@ -36,23 +36,33 @@ $usersID = get_objects_in_term( $term->term_id, 'services');
                 </div>
               </div>
               <div class="col-lg-6 text-center text-lg-start">
-                <h4 class="mb-2"><?php esc_html_e( $user->first_name ) ?> <?php esc_html_e( $user->last_name ) ?></h4>
-                <ul class="ps-0 pb-6 pb-lg-0 mb-10 mb-lg-0 border-bottom border-light border-lg-none">
-                  <?php
-                  foreach( $user_services as $service_key => $service ) :
-                    if ( $service_key < 6 ) :
-                      ?>
-                      <li class="bg-blue-transperent py-1 px-5 ms-0 me-2 mb-2 rounded-5 text-smaller object-cover d-inline-flex justify-content-center"><?php esc_html_e( $service->name ) ?></li>
-                      <?php
-                    endif;
-                  endforeach;  
-                  if ( $more_services > 0 ) :      
-                    ?>
-                    <a href="" class="txt-primary d-inline-flex"><li>+<?php echo $more_services; ?></li></a>
-                    <?php 
-                  endif;
+                <?php
+                if ( $user ) :
                   ?>
-                </ul>
+                  <h4 class="mb-2"><?php esc_html_e( $user->first_name ) ?> <?php esc_html_e( $user->last_name ) ?></h4>
+                  <?php
+                endif;
+                if ( ! empty( $user_services ) ) :
+                  ?>
+                  <ul class="ps-0 pb-6 pb-lg-0 mb-10 mb-lg-0 border-bottom border-light border-lg-none">
+                    <?php
+                    foreach( $user_services as $service_key => $service ) :
+                      if ( $service_key < 6 ) :
+                        ?>
+                        <li class="bg-blue-transperent py-1 px-5 ms-0 me-2 mb-2 rounded-5 text-smaller object-cover d-inline-flex justify-content-center"><?php esc_html_e( $service->name ) ?></li>
+                        <?php
+                      endif;
+                    endforeach;  
+                    if ( $more_services > 0 ) :      
+                      ?>
+                      <a href="" class="txt-primary d-inline-flex"><li>+<?php echo $more_services; ?></li></a>
+                      <?php 
+                    endif;
+                    ?>
+                  </ul>
+                  <?php
+                endif;
+                ?>
               </div>
               <div class="col-lg-4 text-center text-lg-end">
                 <div class="mb-4">

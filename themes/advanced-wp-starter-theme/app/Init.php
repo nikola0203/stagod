@@ -19,6 +19,8 @@ final class Init
 	{
 		return [
 			Plugins\RequiredPlugins::class,
+			// Core\PostTypes::class,
+			Core\Taxonomies::class,
 			Core\Tags::class,
 			Core\Sidebar::class,
 			Core\Widgets\TextWidget::class,
@@ -26,7 +28,6 @@ final class Init
 			Core\Comments::class,
 			Core\OptionsPages::class, 
 			Core\Shortcodes::class,
-			// Core\PostTypes::class,
 			Setup\Setup::class,
 			Setup\Menus::class,
 			Setup\Enqueue::class,

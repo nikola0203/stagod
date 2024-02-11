@@ -216,13 +216,9 @@ class Chat
       }
     }
 
-    // print_var($this->get_users_chat_id($message_author, $message_recipient));
-
     $url = add_query_arg( array( 'user_page' => 'messages', 'chat_id' => $this->get_users_chat_id( $message_author, $message_recipient ), 'message_recipient' => $user->id ), get_author_posts_url( $message_author ) );
 
     wp_redirect( $url );
-
-    // print_var($_POST);
   }
 
   /**
