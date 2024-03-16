@@ -13,7 +13,7 @@ $messages          = $chat->get_message_content( $chat_id );
 
 if ( $user->user_firstname && $user->user_lastname ) :
   ?>
-  <h2 class="h3 mb-6"><a href="<?php echo esc_url( add_query_arg( array( 'user_page' => 'messages' ), get_author_posts_url( get_current_user_id() ) ) ); ?>"><?php echo icon_arrow_down(); ?></a> <?php esc_html_e( $user->user_firstname . '&nbsp;' . $user->user_lastname ); ?></h2>
+  <h2 class="h3 mb-6"><a href="<?php echo esc_url( get_author_posts_url( get_current_user_id() ) . 'messages' ); ?>"><?php echo icon_arrow_down(); ?></a> <?php esc_html_e( $user->user_firstname . '&nbsp;' . $user->user_lastname ); ?></h2>
   <?php
 endif;
 ?>

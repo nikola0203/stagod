@@ -19,9 +19,8 @@
       </div>
       <div class="col-lg-8">
         <?php
-        $user_page = ( isset( $_GET['user_page'] ) ) ? $_GET['user_page'] : false;
-
-        switch ( $user_page ) {
+        $get_query_vars = ( ! empty( $wp->query_vars['author_page'] ) ) ? $wp->query_vars['author_page'] : false;
+        switch ( $get_query_vars ) :
           case 'messages': 
             get_template_part( 'template-parts/author/private/messages' );
             break;
@@ -34,10 +33,9 @@
           case 'saved': 
             print_var("saved");
             break;
-          case 'edit-profile': 
-            print_var("edit-profile");
+          case 'edit-profile':
+            get_template_part( 'template-parts/author/private/edit-profile' );
             break;
-          
           default: 
             get_template_part( 'template-parts/author/public/video' );
             get_template_part( 'template-parts/author/private/description' );
@@ -46,7 +44,7 @@
             get_template_part( 'template-parts/author/public/experience' );
             get_template_part( 'template-parts/author/public/gallery' );
             break;
-        }
+        endswitch;
         ?>
       </div>
     </div>

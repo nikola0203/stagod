@@ -47,7 +47,8 @@ class Enqueue
 		wp_enqueue_style( 'main', mix( 'css/style.css' ), array(), '1.0.0', 'all' );
 
 		// JS
-		wp_enqueue_script( 'main', mix( 'js/app.js' ), array(), '1.0.0', array( 'strategy' => 'async', 'in_footer' => true ) );
+		wp_enqueue_script( 'user-register', mix( 'js/react/user-register.js' ), array(), false, array( 'strategy' => 'async', 'in_footer' => true ) );
+		wp_enqueue_script( 'main', mix( 'js/app.js' ), array(), false, array( 'strategy' => 'async', 'in_footer' => true ) );
 
 		if ( is_author() ) {
 			wp_enqueue_script( 'user-single', mix( 'js/user-single.js' ), array( 'main' ), '1.0.0', array( 'strategy' => 'async', 'in_footer' => true ) );

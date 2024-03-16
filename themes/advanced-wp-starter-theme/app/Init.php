@@ -20,6 +20,7 @@ final class Init
 		return [
 			Plugins\RequiredPlugins::class,
 			// Core\PostTypes::class,
+			Core\RewriteRules::class,
 			Core\Taxonomies::class,
 			Core\Tags::class,
 			Core\Sidebar::class,
@@ -37,6 +38,7 @@ final class Init
 			Plugins\Acf::class,
 			Plugins\AcfBlocks::class,
 			Chat\Chat::class,
+			REST\UserRegister::class,
 		]; 
 	}
 

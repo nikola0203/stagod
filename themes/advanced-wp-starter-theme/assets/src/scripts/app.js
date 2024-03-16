@@ -13,10 +13,10 @@ import "lazysizes/plugins/respimg/ls.respimg";
 // import 'lazysizes/plugins/unveilhooks/ls.unveilhooks';
 
 // Import custom modules
-import App from './modules/app.js';
+// import App from './modules/app.js';
 import NavMenu from "./modules/nav-menu";
 // import Slider from './modules/slider.js';
 
-const app = new App();
+// const app = new App();
 const nav_menu = new NavMenu();
 // const slider = new Slider();

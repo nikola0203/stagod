@@ -59,7 +59,7 @@ $title = get_field( 'title' );
                 endif;
                 ?>
               </ul>
-              <a href="<?php echo esc_url( get_author_posts_url( $user->id ) ); ?>" class="btn btn-orange-ghost mb-8">Pogledaj profil</a>
+              <a href="<?php echo esc_url( get_author_posts_url( $user->ID ) ); ?>" class="btn btn-orange-ghost mb-8">Pogledaj profil</a>
             </div>
             <?php
           endforeach;

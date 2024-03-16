@@ -1,6 +1,6 @@
 {
     "key": "group_656f14994cb9a",
-    "title": "[Block]Search Users",
+    "title": "[Block] Search Users",
     "fields": [
         {
             "key": "field_656f14992f374",
@@ -66,5 +66,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701778700
+    "modified": 1707677415
 }

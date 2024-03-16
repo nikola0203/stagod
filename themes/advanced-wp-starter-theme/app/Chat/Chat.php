@@ -216,7 +216,7 @@ class Chat
       }
     }
 
-    $url = add_query_arg( array( 'user_page' => 'messages', 'chat_id' => $this->get_users_chat_id( $message_author, $message_recipient ), 'message_recipient' => $user->id ), get_author_posts_url( $message_author ) );
+    $url = add_query_arg( array( 'user_page' => 'messages', 'chat_id' => $this->get_users_chat_id( $message_author, $message_recipient ), 'message_recipient' => $user->ID ), get_author_posts_url( $message_author ) );
 
     wp_redirect( $url );
   }
@@ -280,8 +280,8 @@ class Chat
         
         $user = get_user_by( 'id', $filter_recipient_id );
 
-        if ( $recipient_id == $user->id ) {
-          $return_id = $user->id;
+        if ( $recipient_id == $user->ID ) {
+          $return_id = $user->ID;
         }
       }
     }
@@ -314,7 +314,7 @@ class Chat
         
         $user = get_user_by( 'id', $filter_recipient_id );
 
-        if ( $recipient_id == $user->id ) {
+        if ( $recipient_id == $user->ID ) {
           $return_id = $chat->id;
         }
       }

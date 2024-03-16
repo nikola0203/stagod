@@ -24,11 +24,12 @@ $image        = get_field( 'profile_image' );
   </div>
   <div class="author-info-bottom">
     <ul>
-      <li class="mb-4 mb-xl-8"><a href="<?php echo esc_url( add_query_arg( 'user_page', 'messages', get_author_posts_url( get_queried_object_id() ) ) ); ?>">Poruke <?php echo icon_arrow_down(); ?></a></li>
-      <li class="mb-4 mb-xl-8"><a href="<?php echo esc_url( add_query_arg( 'user_page', 'notifications', get_author_posts_url( get_queried_object_id() ) ) ); ?>">Obavestenja <?php echo icon_arrow_down(); ?></a></li>
-      <li class="mb-4 mb-xl-8"><a href="<?php echo esc_url( add_query_arg( 'user_page', 'ratings', get_author_posts_url( get_queried_object_id() ) ) ); ?>">Ocene <?php echo icon_arrow_down(); ?></a></li>
-      <li class="mb-4 mb-xl-8"><a href="<?php echo esc_url( add_query_arg( 'user_page', 'saved', get_author_posts_url( get_queried_object_id() ) ) ); ?>">Sacuvano <?php echo icon_arrow_down(); ?></a></li>
-      <li class="mb-4 mb-xl-8"><a href="<?php echo esc_url( add_query_arg( 'user_page', 'edit-profile', get_author_posts_url( get_queried_object_id() ) ) ); ?>">Podesavanje Profila <?php echo icon_arrow_down(); ?></a></li>
+      <li class="mb-4 mb-xl-8"><a href="<?php echo esc_url( get_author_posts_url( get_queried_object_id() ) . 'messages' ); ?>">Poruke <?php echo icon_arrow_down(); ?></a></li>
+      <li class="mb-4 mb-xl-8"><a href="<?php echo esc_url( get_author_posts_url( get_queried_object_id() ) . 'notifications' ); ?>">Obavestenja <?php echo icon_arrow_down(); ?></a></li>
+      <li class="mb-4 mb-xl-8"><a href="<?php echo esc_url( get_author_posts_url( get_queried_object_id() ) . 'ratings' ); ?>">Ocene <?php echo icon_arrow_down(); ?></a></li>
+      <li class="mb-4 mb-xl-8"><a href="<?php echo esc_url( get_author_posts_url( get_queried_object_id() ) . 'saved' ); ?>">Sacuvano <?php echo icon_arrow_down(); ?></a></li>
+      <li class="mb-4 mb-xl-8"><a href="<?php echo esc_url( get_author_posts_url( get_queried_object_id() ) . 'edit-account' ); ?>">Podesavanje naloga <?php echo icon_arrow_down(); ?></a></li>
+      <li class="mb-4 mb-xl-8"><a href="<?php echo esc_url( get_author_posts_url( get_queried_object_id() ) . 'edit-profile' ); ?>">Podesavanje profila usluga <?php echo icon_arrow_down(); ?></a></li>
     </ul>
   </div>
 </div>

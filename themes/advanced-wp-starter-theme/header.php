@@ -34,7 +34,7 @@ use Awpt\Custom\Custom;
 					<div class="navtoggle__icon"></div>
 				</div>
 			</div>
-			<div class="ms-lg-auto">
+			<div class="d-flex align-items-center ms-lg-auto">
 				<?php
 				if ( has_nav_menu( 'primary' ) ) :
 					wp_nav_menu(
@@ -48,6 +48,6 @@ use Awpt\Custom\Custom;
 					);
 				endif;
 				?>
-			</div>
+				<div id="user-register"></div>
 		</nav>
 	</header><!-- #masthead -->

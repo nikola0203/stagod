@@ -8,11 +8,17 @@
 let mix = require('laravel-mix')
 
 // Autloading jQuery to make it accessible to all the packages.
-mix.autoload({
-	jquery: ['$', 'window.jQuery', 'jQuery'],
-})
+// mix.autoload({
+// 	jquery: ['$', 'window.jQuery', 'jQuery'],
+// })
 
-mix.setPublicPath('./assets/dist')
+mix.setPublicPath("./assets/dist");
+
+mix.options({
+	processCssUrls: false
+});
+
+mix.disableSuccessNotifications();
 
 // Compile assets
 mix.js('assets/src/scripts/app.js', 'assets/dist/js')
@@ -23,10 +29,22 @@ mix.js('assets/src/scripts/app.js', 'assets/dist/js')
 	.js('assets/src/scripts/blocks/recent-users', 'assets/dist/js/blocks')
 	.js('assets/src/scripts/blocks/search-users', 'assets/dist/js/blocks')
 	.js('assets/src/scripts/blocks/faq', 'assets/dist/js/blocks')
+	.js('assets/src/scripts/react/user-register', 'assets/dist/js/react').react()
 	.sass('assets/src/sass/style.scss', 'assets/dist/css')
 	.sass('assets/src/sass/admin.scss', 'assets/dist/css')
 
 // Add versioning to assets in production environment
 if (mix.inProduction()) {
 	mix.version();
+	mix.options({
+		terser: {
+			terserOptions: {
+				compress: {
+					drop_console: true
+				}
+			}
+		}
+	});
 }
+
+// mix.webpackConfig({ resolve: { fallback: { "buffer": require.resolve("buffer/") } } })
