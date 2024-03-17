@@ -280,8 +280,10 @@ class Chat
         
         $user = get_user_by( 'id', $filter_recipient_id );
 
-        if ( $recipient_id == $user->ID ) {
-          $return_id = $user->ID;
+        if ( $user ) {
+          if ( $recipient_id == $user->get_id() ) {
+            $return_id = $user->ID;
+          }
         }
       }
     }
@@ -314,8 +316,10 @@ class Chat
         
         $user = get_user_by( 'id', $filter_recipient_id );
 
-        if ( $recipient_id == $user->ID ) {
-          $return_id = $chat->id;
+        if ( $user ) {
+          if ( $recipient_id == $user->ID ) {
+            $return_id = $chat->id;
+          }
         }
       }
     }

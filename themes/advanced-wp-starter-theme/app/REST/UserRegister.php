@@ -18,6 +18,7 @@ class UserRegister
   public function register()
   {
     add_action( 'rest_api_init', [$this, 'wp_rest_user_endpoints' ] );
+    add_action( 'init', [$this, 'verify_user_code'] );
   }
 
   /**
@@ -41,7 +42,7 @@ class UserRegister
     );
   }
 
-  public function response_handler( $status, $message, $field, $args = [] ) : array
+  public function response_handler( $status, $message, $field = '', $args = [] ) : array
   {
     $response = [
       'status'  => $status,
@@ -98,21 +99,60 @@ class UserRegister
     $meta_values = [
       'first_name'       => $first_name,
       'last_name'        => $last_name,
-      'verified_user'    => false,
       'terms_conditions' => $terms
+    ];
+    $credentials = [
+      'user_login'    => $username,
+      'user_password' => $password,
+      'remember'      => true
     ];
 
     // Create user
-    $user = wp_create_user( $username, $password, $email );
+    $user_id = wp_create_user( $username, $password, $email );
 
-    if ( ! is_wp_error( $user ) ) {
+    if ( ! is_wp_error( $user_id ) ) {
       foreach( $meta_values as $key => $val ) {
-        update_user_meta( $user, $key, $val ); 
+        update_user_meta( $user_id, $key, $val ); 
       }
 
-      return rest_ensure_response( $this->response_handler( 200, 'Uspešno ste se registrovali!' ) );
+      $this->send_email_to_user_with_verification_code( $user_id, $email );
+
+      wp_signon( $credentials );
+      wp_set_current_user( $user_id );
+
+      return rest_ensure_response( $this->response_handler( 200, 'Uspešno ste se registrovali!', '', ['redirect_url' => get_author_posts_url( $user_id )] ) );
     } else {
       return rest_ensure_response( $this->response_handler( 404, 'Error!' ) );
+    }
+  }
+
+  function send_email_to_user_with_verification_code( $user_id, $user_email )
+  {
+    $code   = md5( time() );
+    $string = [
+      'id'              => $user_id,
+      'activation_code' => $code
+    ];
+
+    update_user_meta( $user_id, 'account_activated', 0 );
+    update_user_meta( $user_id, 'activation_code', $code );
+
+    $url     = get_author_posts_url( $user_id ) . '?activation_code=' . base64_encode( serialize( $string ) );
+    $html    = 'Kliknite na link ispod da bi verifikovali nalog <br/><br/> <a href="' . $url . '">' . $url . '</a>';
+    $headers = [ 'Content-Type: text/html; charset=UTF-8' ];
+
+    wp_mail( $user_email, __(  'ŠtaGod verifikacioni kod', 'stagod' ), $html, $headers );
+  }
+
+  function verify_user_code()
+  {
+    if ( isset( $_GET['activation_code'] ) && is_user_logged_in() ) {
+      $data = unserialize( base64_decode( $_GET['activation_code'] ) );
+      $code = get_user_meta( $data['id'], 'activation_code', true );
+      // verify whether the code given is the same as ours
+      if ( $code == $data['activation_code'] ) {
+        update_user_meta( $data['id'], 'account_activated', 1 );
+      }
     }
   }
 }

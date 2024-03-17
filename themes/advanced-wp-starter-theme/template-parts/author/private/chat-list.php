@@ -23,18 +23,20 @@ if ( ! empty( $chat_arrays ) ) :
     }
     
     $user = get_user_by( 'id', $filter_recipient_id );
-    ?>
-    <a href="<?php echo esc_url( add_query_arg( array( 'chat_id' => $chat->id, 'message_recipient' => $user->ID ), get_author_posts_url( get_current_user_id() ) . 'messages' ) ); ?>">
-      <div class="border p-4 p-xl-8 mb-6 rounded-4">
-        <?php
-        if ( $user->data->display_name ) :
-          ?>
-          <h2 class="h4 mb-0"><?php esc_html_e( $user->data->display_name ); ?></h2>
+    if ( ! empty( $user ) ) {
+      ?>
+      <a href="<?php echo esc_url( add_query_arg( array( 'chat_id' => $chat->id, 'message_recipient' => $user->ID ), get_author_posts_url( get_current_user_id() ) . 'messages' ) ); ?>">
+        <div class="border p-4 p-xl-8 mb-6 rounded-4">
           <?php
-        endif;
-        ?>
-      </div>
-    </a>
-    <?php
+          if ( $user->data->display_name ) :
+            ?>
+            <h2 class="h4 mb-0"><?php esc_html_e( $user->data->display_name ); ?></h2>
+            <?php
+          endif;
+          ?>
+        </div>
+      </a>
+      <?php
+    }
   endforeach;
 endif;

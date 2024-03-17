@@ -32,7 +32,6 @@ $chat         = new Chat();
   $chat_id                  = ( $chat->get_users_chat_id( get_current_user_id(), get_queried_object_id() ) );
   $active_chat_recipient_id = $chat->get_current_user_chat_recipient_id( get_queried_object_id() );
   $recipient_id             = ( $active_chat_recipient_id ) ? $active_chat_recipient_id : get_queried_object_id();
- 
   $query_args               = array(
     'user_page'         => 'messages',
     'message_recipient' => $recipient_id

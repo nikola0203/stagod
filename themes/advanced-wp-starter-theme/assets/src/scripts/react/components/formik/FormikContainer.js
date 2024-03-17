@@ -54,7 +54,7 @@ function FormikContainer() {
       .then((response) => {
         // console.log(values);
         // console.log(formikBag);
-        // console.log(response.data);
+        console.log(response.data);
 
         errorMessageHandler(setFieldError, response.data, 'username')
         errorMessageHandler(setFieldError, response.data, 'first_name')
@@ -62,8 +62,10 @@ function FormikContainer() {
         errorMessageHandler(setFieldError, response.data, 'email')
         errorMessageHandler(setFieldError, response.data, 'password')
         errorMessageHandler(setFieldError, response.data, 'terms_conditions')
-      })
-      .catch((error) => {
+
+
+        window.location.href = response.data.args.redirect_url;
+      }).catch((error) => {
         console.log(error.data);
       })
     // .finally(function () {

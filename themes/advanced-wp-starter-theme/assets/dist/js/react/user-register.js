@@ -1165,14 +1165,14 @@ function FormikContainer() {
     axios__WEBPACK_IMPORTED_MODULE_7__["default"].post('http://stagod.local/wp-json/wp/v2/users/register/', values).then(function (response) {
       // console.log(values);
       // console.log(formikBag);
-      // console.log(response.data);
-
+      console.log(response.data);
       errorMessageHandler(setFieldError, response.data, 'username');
       errorMessageHandler(setFieldError, response.data, 'first_name');
       errorMessageHandler(setFieldError, response.data, 'last_name');
       errorMessageHandler(setFieldError, response.data, 'email');
       errorMessageHandler(setFieldError, response.data, 'password');
       errorMessageHandler(setFieldError, response.data, 'terms_conditions');
+      window.location.href = response.data.args.redirect_url;
     })["catch"](function (error) {
       console.log(error.data);
     });
