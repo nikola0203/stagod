@@ -120,7 +120,17 @@ class UserRegister
       wp_signon( $credentials );
       wp_set_current_user( $user_id );
 
-      return rest_ensure_response( $this->response_handler( 200, 'Uspešno ste se registrovali!', '', ['redirect_url' => get_author_posts_url( $user_id )] ) );
+      return rest_ensure_response(
+        $this->response_handler(
+          200,
+          'Uspešno ste se registrovali!',
+          '',
+          [
+            'user_registered' => true,
+            'redirect_url'    => get_author_posts_url( $user_id ),
+          ]
+        )
+      );
     } else {
       return rest_ensure_response( $this->response_handler( 404, 'Error!' ) );
     }

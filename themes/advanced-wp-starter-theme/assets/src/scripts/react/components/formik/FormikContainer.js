@@ -1,11 +1,11 @@
 import React from 'react';
-import { Formik, Field, Form, ErrorMessage } from 'formik'
+import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import FormikControl from './FormikControl'
 import Link from '../Link';
-import Checkbox from './Checkbox';
 import Label from './Label';
 import axios from 'axios'
+import listOfCities from '../../../cities.json'
 
 function FormikContainer() {
   const initialValues = {
@@ -19,12 +19,6 @@ function FormikContainer() {
     terms_conditions: '',
     newsletter: true,
   }
-  const listOfCities = [
-    { value: "Leskovac", label: 'Leskovac' },
-    { value: "Beograd", label: 'Beograd' },
-    { value: "Niš", label: 'Niš' },
-    { value: "Kragujevac", label: 'Kragujevac' },
-  ]
   const validationSchema = Yup.object({
     username: Yup.string().min(2, 'Prekratko').max(50, 'Predugacko').required('Korisničko ime je obavezno'),
     first_name: Yup.string().min(2, 'Prekratko').max(50, 'Predugacko').required('Ime je obavezno'),
@@ -48,14 +42,10 @@ function FormikContainer() {
   }
 
   const onSubmit = (values, formikBag) => {
-    const { setFieldError } = formikBag
+    const { setSubmitting, setFieldError } = formikBag
 
     axios.post('http://stagod.local/wp-json/wp/v2/users/register/', values)
       .then((response) => {
-        // console.log(values);
-        // console.log(formikBag);
-        console.log(response.data);
-
         errorMessageHandler(setFieldError, response.data, 'username')
         errorMessageHandler(setFieldError, response.data, 'first_name')
         errorMessageHandler(setFieldError, response.data, 'last_name')
@@ -63,35 +53,20 @@ function FormikContainer() {
         errorMessageHandler(setFieldError, response.data, 'password')
         errorMessageHandler(setFieldError, response.data, 'terms_conditions')
 
-
-        window.location.href = response.data.args.redirect_url;
+        if (response.data.args.user_registered) {
+          window.location.href = response.data.args.redirect_url;
+        } else {
+          setSubmitting(false)
+        }
       }).catch((error) => {
         console.log(error.data);
       })
-    // .finally(function () {
-    //   setFieldValue('terms_conditions', false)
-    // });
-
-    // console.log(axios)
-
-    // axios.get('http://stagod.local/wp-json/wp/v2/users')
-    //   .then(function (response) {
-    //     // handle success
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     // handle error
-    //     console.log(error);
-    //   })
-    //   .finally(function () {
-    //     // always executed
-    //   });
   }
 
   return (
     <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
       {
-        (formik, errors, setFieldValue) => <Form>
+        (formik) => <Form>
           <FormikControl control='input' type='text' label='Korisničko ime' name='username' />
           <FormikControl control='input' type='email' label='Email' name='email' />
           <FormikControl control='input' type='password' label='Lozinka' name='password' autoComplete="on" />
@@ -101,7 +76,10 @@ function FormikContainer() {
           <FormikControl name='city' control='select' label='Grad' placeholder="Izaberi grad" options={listOfCities} />
           <FormikControl control='checkbox' type='checkbox' label={<Label htmlFor='terms_conditions' className='form-check-label text-black fw-bold mb-1'>Slažem se sa <Link href='#' name='uslovima korišćenja' /> i <Link href='#' name='politikom privatnosti' />, i prihvatam da ŠtaGod sačuva moje lične podatke.</Label>} name='terms_conditions' />
           <FormikControl control='checkbox' type='checkbox' label='Želim da primam obaveštenja o najnovijim proizvodima, popustima i promocijama.' name='newsletter' />
-          <button type='submit' className='btn btn-primary'>Registruj Se</button>
+          <div className='d-flex align-items-center'>
+            <button type='submit' className='btn btn-primary me-4'>Registruj Se</button>
+            {(formik.isSubmitting) ? <i className='icon-spinner'></i> : ''}
+          </div>
         </Form>
       }
     </Formik>

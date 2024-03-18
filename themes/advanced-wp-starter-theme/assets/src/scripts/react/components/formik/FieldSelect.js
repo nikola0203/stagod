@@ -23,6 +23,9 @@ function FieldSelect(props) {
         placeholder={placeholder}
         onChange={onChange}
         options={options}
+        getOptionLabel={(option) => option.city}
+        getOptionValue={(option) => option.city}
+        noOptionsMessage={({ inputValue }) => `Nema rezultata za "${inputValue}"`}
         // onBlur={field.value.onBlur}
         {...rest}
       />
