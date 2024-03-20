@@ -35,10 +35,11 @@ class UserRegister
     register_rest_route(
       'wp/v2',
       'users/register/',
-      array(
-        'methods'  => 'POST',
-        'callback' => [$this, 'wc_rest_user_endpoint_handler'],
-      )
+      [
+        'methods'             => 'POST',
+        'callback'            => [$this, 'wc_rest_user_endpoint_handler'],
+        'permission_callback' => false
+      ]
     );
   }
 

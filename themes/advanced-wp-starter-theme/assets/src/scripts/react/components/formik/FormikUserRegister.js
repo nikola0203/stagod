@@ -1,13 +1,16 @@
 import React from 'react';
+import axios from 'axios'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import FormikControl from './FormikControl'
 import Link from '../Link';
 import Label from './Label';
-import axios from 'axios'
 import listOfCities from '../../../cities.json'
 
-function FormikContainer() {
+function FormikUserRegister(props) {
+
+  const { ToggleForm } = props
+
   const initialValues = {
     username: '',
     email: '',
@@ -71,8 +74,14 @@ function FormikContainer() {
           <FormikControl control='input' type='email' label='Email' name='email' />
           <FormikControl control='input' type='password' label='Lozinka' name='password' autoComplete="on" />
           <FormikControl control='input' type='password' label='Potvrdi Lozinku' name='confirm_password' autoComplete="on" />
-          <FormikControl control='input' type='text' label='Ime' name='first_name' />
-          <FormikControl control='input' type='text' label='Prezime' name='last_name' />
+          <div className='row'>
+            <div className='col-xl-6'>
+              <FormikControl control='input' type='text' label='Ime' name='first_name' />
+            </div>
+            <div className='col-xl-6'>
+              <FormikControl control='input' type='text' label='Prezime' name='last_name' />
+            </div>
+          </div>
           <FormikControl name='city' control='select' label='Grad' placeholder="Izaberi grad" options={listOfCities} />
           <FormikControl control='checkbox' type='checkbox' label={<Label htmlFor='terms_conditions' className='form-check-label text-black fw-bold mb-1'>Slažem se sa <Link href='#' name='uslovima korišćenja' /> i <Link href='#' name='politikom privatnosti' />, i prihvatam da ŠtaGod sačuva moje lične podatke.</Label>} name='terms_conditions' />
           <FormikControl control='checkbox' type='checkbox' label='Želim da primam obaveštenja o najnovijim proizvodima, popustima i promocijama.' name='newsletter' />
@@ -86,4 +95,4 @@ function FormikContainer() {
   );
 }
 
-export default FormikContainer;
+export default FormikUserRegister;

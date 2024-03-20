@@ -135,10 +135,10 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "tabs": "all",
-                    "toolbar": "full",
+                    "tabs": "text",
                     "media_upload": 0,
-                    "delay": 1
+                    "toolbar": "full",
+                    "delay": 0
                 },
                 {
                     "key": "field_6552868136040",
@@ -312,5 +312,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1710959728
+    "modified": 1710960917
 }

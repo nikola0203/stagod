@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 
 function Label(props) {
   const { htmlFor, className, ...rest } = props

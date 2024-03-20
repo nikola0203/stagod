@@ -887,55 +887,85 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _formik_FormikContainer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./formik/FormikContainer */ "./assets/src/scripts/react/components/formik/FormikContainer.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _formik_FormikUserRegister__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./formik/FormikUserRegister */ "./assets/src/scripts/react/components/formik/FormikUserRegister.js");
+/* harmony import */ var _formik_FormikUserLogin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./formik/FormikUserLogin */ "./assets/src/scripts/react/components/formik/FormikUserLogin.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
 
 function UserRegister() {
-  var registerUser = function registerUser(e) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    showLogin = _useState2[0],
+    setShowLogin = _useState2[1];
+  function ToggleForm(e) {
     e.preventDefault();
-    console.log('submit');
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+    console.log(showLogin);
+    return showLogin === false ? setShowLogin(true) : setShowLogin(false);
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
       type: "button",
       className: "btn btn-primary",
       "data-bs-toggle": "modal",
-      "data-bs-target": "#exampleModal",
-      children: "Launch demo modal"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      "data-bs-target": "#modal-user-register",
+      children: "Napravi profil"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "modal fade",
-      id: "exampleModal",
+      id: "modal-user-register",
       tabIndex: "-1",
-      "aria-labelledby": "exampleModalLabel",
+      "aria-labelledby": "modal-label-user-register",
       "aria-hidden": "true",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "modal-dialog modal-dialog-centered",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "modal-content",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            className: "modal-header",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "modal-content p-4 p-xl-8",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "modal-header border-0",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
               type: "button",
               className: "btn-close",
               "data-bs-dismiss": "modal",
               "aria-label": "Close"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            className: "modal-body",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
-              className: "modal-title fs-5",
-              id: "exampleModalLabel",
+          }), showLogin === false ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
+              className: "h3",
+              id: "modal-label-user-register",
               children: "Registruj se"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
-              children: ["Ve\u0107 ima\u0161 nalog ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-                href: "#",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+              children: ["Ve\u0107 ima\u0161 nalog ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+                href: "/",
+                onClick: ToggleForm,
+                children: "Registruj se."
+              })]
+            })]
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
+              className: "h3",
+              id: "modal-label-user-register",
+              children: "Prijavi se"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+              children: ["Nema\u0161 nalog ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+                href: "/",
+                onClick: ToggleForm,
                 children: "Prijavi se."
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_formik_FormikContainer__WEBPACK_IMPORTED_MODULE_0__["default"], {})]
-          })]
+            })]
+          }), showLogin === false ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_formik_FormikUserRegister__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            toggleForm: ToggleForm
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_formik_FormikUserLogin__WEBPACK_IMPORTED_MODULE_2__["default"], {})]
         })
       })
     })]
@@ -958,10 +988,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-2111337816/0/cache/formik-npm-2.4.5-d97cd46456-223fb3e6b0.zip/node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-2111337816/0/cache/formik-npm-2.4.5-d97cd46456-223fb3e6b0.zip/node_modules/formik/dist/formik.esm.js");
 /* harmony import */ var _TextError__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TextError */ "./assets/src/scripts/react/components/formik/TextError.js");
-/* harmony import */ var _Label__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Label */ "./assets/src/scripts/react/components/formik/Label.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 var _excluded = ["label", "name", "errors"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -976,35 +1005,29 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
-
 function Checkbox(props) {
   var label = props.label,
     name = props.name,
     errors = props.errors,
     rest = _objectWithoutProperties(props, _excluded);
-  return (
-    /*#__PURE__*/
-    // <div className='form-control mb-6'>
-    //   <label htmlFor={name} className='text-black fw-bold mb-1'>{label}</label>
-    //   <Field id={name} name={name} {...rest} />
-    //   <ErrorMessage name={name} component={TextError} />
-    // </div>
-    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: "form-check mb-6",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(formik__WEBPACK_IMPORTED_MODULE_4__.Field, _objectSpread({
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "form-check mb-6",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "d-flex",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(formik__WEBPACK_IMPORTED_MODULE_3__.Field, _objectSpread({
         id: name,
         name: name,
-        className: "form-check-input"
-      }, rest)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+        className: "form-check-input me-4 cursor-pointer"
+      }, rest)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
         htmlFor: name,
         className: "form-check-label text-black fw-bold mb-1",
         children: label
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(formik__WEBPACK_IMPORTED_MODULE_4__.ErrorMessage, {
-        name: name,
-        component: _TextError__WEBPACK_IMPORTED_MODULE_1__["default"]
       })]
-    })
-  );
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(formik__WEBPACK_IMPORTED_MODULE_3__.ErrorMessage, {
+      name: name,
+      component: _TextError__WEBPACK_IMPORTED_MODULE_1__["default"]
+    })]
+  });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Checkbox);
 
@@ -1021,12 +1044,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select */ "./.yarn/__virtual__/react-select-virtual-b4aa324ded/0/cache/react-select-npm-5.8.0-468e0395bb-04d3639ea1.zip/node_modules/react-select/dist/react-select.esm.js");
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-2111337816/0/cache/formik-npm-2.4.5-d97cd46456-223fb3e6b0.zip/node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var _TextError__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TextError */ "./assets/src/scripts/react/components/formik/TextError.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-select */ "./.yarn/__virtual__/react-select-virtual-b4aa324ded/0/cache/react-select-npm-5.8.0-468e0395bb-04d3639ea1.zip/node_modules/react-select/dist/react-select.esm.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-2111337816/0/cache/formik-npm-2.4.5-d97cd46456-223fb3e6b0.zip/node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var _TextError__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TextError */ "./assets/src/scripts/react/components/formik/TextError.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 var _excluded = ["label", "name", "placeholder", "options"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -1042,7 +1063,7 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
+// import React from 'react'
 // import Select from 'react-select';
 
 
@@ -1055,7 +1076,7 @@ function FieldSelect(props) {
     placeholder = props.placeholder,
     options = props.options,
     rest = _objectWithoutProperties(props, _excluded);
-  var _useField = (0,formik__WEBPACK_IMPORTED_MODULE_3__.useField)(props),
+  var _useField = (0,formik__WEBPACK_IMPORTED_MODULE_2__.useField)(props),
     _useField2 = _slicedToArray(_useField, 3),
     field = _useField2[0],
     meta = _useField2[1],
@@ -1063,13 +1084,13 @@ function FieldSelect(props) {
   var onChange = function onChange(selectedOptions) {
     setValue(selectedOptions);
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "form-control mb-6",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
       htmlFor: name,
       className: "text-black fw-bold mb-1",
       children: label
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], _objectSpread({
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_3__["default"], _objectSpread({
       id: name,
       name: name
       // isMulti={true}
@@ -1089,9 +1110,9 @@ function FieldSelect(props) {
         return "Nema rezultata za \"".concat(inputValue, "\"");
       }
       // onBlur={field.value.onBlur}
-    }, rest)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(formik__WEBPACK_IMPORTED_MODULE_3__.ErrorMessage, {
+    }, rest)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(formik__WEBPACK_IMPORTED_MODULE_2__.ErrorMessage, {
       name: name,
-      component: _TextError__WEBPACK_IMPORTED_MODULE_1__["default"]
+      component: _TextError__WEBPACK_IMPORTED_MODULE_0__["default"]
     })]
   });
 }
@@ -1099,9 +1120,60 @@ function FieldSelect(props) {
 
 /***/ }),
 
-/***/ "./assets/src/scripts/react/components/formik/FormikContainer.js":
+/***/ "./assets/src/scripts/react/components/formik/FormikControl.js":
+/*!*********************************************************************!*\
+  !*** ./assets/src/scripts/react/components/formik/FormikControl.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Input__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Input */ "./assets/src/scripts/react/components/formik/Input.js");
+/* harmony import */ var _FieldSelect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FieldSelect */ "./assets/src/scripts/react/components/formik/FieldSelect.js");
+/* harmony import */ var _Checkbox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Checkbox */ "./assets/src/scripts/react/components/formik/Checkbox.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+var _excluded = ["control"];
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+// import React from 'react'
+
+
+
+
+function FormikControl(props) {
+  // console.log(props)
+  var control = props.control,
+    rest = _objectWithoutProperties(props, _excluded);
+  switch (control) {
+    case 'input':
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Input__WEBPACK_IMPORTED_MODULE_0__["default"], _objectSpread({}, rest));
+    case 'textarea':
+    case 'select':
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_FieldSelect__WEBPACK_IMPORTED_MODULE_1__["default"], _objectSpread({}, rest));
+    case 'radio':
+    case 'checkbox':
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Checkbox__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({}, rest));
+    case 'date':
+    default:
+      return null;
+  }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikControl);
+
+/***/ }),
+
+/***/ "./assets/src/scripts/react/components/formik/FormikUserLogin.js":
 /*!***********************************************************************!*\
-  !*** ./assets/src/scripts/react/components/formik/FormikContainer.js ***!
+  !*** ./assets/src/scripts/react/components/formik/FormikUserLogin.js ***!
   \***********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -1112,12 +1184,114 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.6.7-d7b9974d1b-a1932b089e.zip/node_modules/axios/lib/axios.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-2111337816/0/cache/formik-npm-2.4.5-d97cd46456-223fb3e6b0.zip/node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! yup */ "./.yarn/cache/yup-npm-1.3.3-bef3f67698-28c119896c.zip/node_modules/yup/index.esm.js");
+/* harmony import */ var _FormikControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormikControl */ "./assets/src/scripts/react/components/formik/FormikControl.js");
+/* harmony import */ var _Link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Link */ "./assets/src/scripts/react/components/Link.js");
+/* harmony import */ var _Label__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Label */ "./assets/src/scripts/react/components/formik/Label.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+
+function FormikUserLogin() {
+  var initialValues = {
+    username: '',
+    email: '',
+    password: ''
+  };
+  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_1__.object({
+    username: yup__WEBPACK_IMPORTED_MODULE_1__.string().min(2, 'Prekratko').max(50, 'Predugacko').required('Korisničko ime je obavezno'),
+    email: yup__WEBPACK_IMPORTED_MODULE_1__.string().email('Neispravan email').required('Email je obavezan'),
+    password: yup__WEBPACK_IMPORTED_MODULE_1__.string().min(8, 'Lozinka mora biti duža od 8 karaktera').matches(/[0-9]/, 'Lozinka mora da sadrži bar jedan broj').matches(/[a-z]/, 'Lozinka mora da sadrži bar jedno malo slovo').matches(/[A-Z]/, 'Lozinka mora da sadrži bar jedno veliko slovo').required('Lozinka je obavezna')
+  });
+  var errorMessageHandler = function errorMessageHandler(setFieldError, response, field_name) {
+    if (response.field === field_name) {
+      setFieldError(field_name, response.message);
+    }
+  };
+  var onSubmit = function onSubmit(values, formikBag) {
+    var setSubmitting = formikBag.setSubmitting,
+      setFieldError = formikBag.setFieldError;
+    axios__WEBPACK_IMPORTED_MODULE_6__["default"].post('http://stagod.local/wp-json/wp/v2/users/login/', values).then(function (response) {
+      errorMessageHandler(setFieldError, response.data, 'username');
+      errorMessageHandler(setFieldError, response.data, 'email');
+      errorMessageHandler(setFieldError, response.data, 'password');
+
+      // if (response.data.args.user_registered) {
+      //   window.location.href = response.data.args.redirect_url;
+      // } else {
+      //   setSubmitting(false)
+      // }
+    })["catch"](function (error) {
+      console.log(error.data);
+    });
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(formik__WEBPACK_IMPORTED_MODULE_7__.Formik, {
+    initialValues: initialValues,
+    validationSchema: validationSchema,
+    onSubmit: onSubmit,
+    children: function children(formik) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_7__.Form, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          control: "input",
+          type: "text",
+          label: "Korisni\u010Dko ime",
+          name: "username"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          control: "input",
+          type: "email",
+          label: "Email",
+          name: "email"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          control: "input",
+          type: "password",
+          label: "Lozinka",
+          name: "password",
+          autoComplete: "on"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "d-flex align-items-center",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+            type: "submit",
+            className: "btn btn-primary me-4",
+            children: "Registruj Se"
+          }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
+            className: "icon-spinner"
+          }) : '']
+        })]
+      });
+    }
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikUserLogin);
+
+/***/ }),
+
+/***/ "./assets/src/scripts/react/components/formik/FormikUserRegister.js":
+/*!**************************************************************************!*\
+  !*** ./assets/src/scripts/react/components/formik/FormikUserRegister.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.6.7-d7b9974d1b-a1932b089e.zip/node_modules/axios/lib/axios.js");
 /* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-2111337816/0/cache/formik-npm-2.4.5-d97cd46456-223fb3e6b0.zip/node_modules/formik/dist/formik.esm.js");
 /* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! yup */ "./.yarn/cache/yup-npm-1.3.3-bef3f67698-28c119896c.zip/node_modules/yup/index.esm.js");
 /* harmony import */ var _FormikControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormikControl */ "./assets/src/scripts/react/components/formik/FormikControl.js");
 /* harmony import */ var _Link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Link */ "./assets/src/scripts/react/components/Link.js");
 /* harmony import */ var _Label__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Label */ "./assets/src/scripts/react/components/formik/Label.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.6.7-d7b9974d1b-a1932b089e.zip/node_modules/axios/lib/axios.js");
 /* harmony import */ var _cities_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../cities.json */ "./assets/src/scripts/cities.json");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
 
@@ -1130,7 +1304,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function FormikContainer() {
+function FormikUserRegister(props) {
+  var ToggleForm = props.ToggleForm;
   var initialValues = {
     username: '',
     email: '',
@@ -1204,16 +1379,25 @@ function FormikContainer() {
           label: "Potvrdi Lozinku",
           name: "confirm_password",
           autoComplete: "on"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          control: "input",
-          type: "text",
-          label: "Ime",
-          name: "first_name"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          control: "input",
-          type: "text",
-          label: "Prezime",
-          name: "last_name"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "row",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+            className: "col-xl-6",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              control: "input",
+              type: "text",
+              label: "Ime",
+              name: "first_name"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+            className: "col-xl-6",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              control: "input",
+              type: "text",
+              label: "Prezime",
+              name: "last_name"
+            })
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
           name: "city",
           control: "select",
@@ -1254,60 +1438,7 @@ function FormikContainer() {
     }
   });
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikContainer);
-
-/***/ }),
-
-/***/ "./assets/src/scripts/react/components/formik/FormikControl.js":
-/*!*********************************************************************!*\
-  !*** ./assets/src/scripts/react/components/formik/FormikControl.js ***!
-  \*********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Input */ "./assets/src/scripts/react/components/formik/Input.js");
-/* harmony import */ var _FieldSelect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FieldSelect */ "./assets/src/scripts/react/components/formik/FieldSelect.js");
-/* harmony import */ var _Checkbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Checkbox */ "./assets/src/scripts/react/components/formik/Checkbox.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-var _excluded = ["control"];
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-
-function FormikControl(props) {
-  // console.log(props)
-  var control = props.control,
-    rest = _objectWithoutProperties(props, _excluded);
-  switch (control) {
-    case 'input':
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Input__WEBPACK_IMPORTED_MODULE_1__["default"], _objectSpread({}, rest));
-    case 'textarea':
-    case 'select':
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FieldSelect__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({}, rest));
-    case 'radio':
-    case 'checkbox':
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Checkbox__WEBPACK_IMPORTED_MODULE_3__["default"], _objectSpread({}, rest));
-    case 'date':
-    default:
-      return null;
-  }
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikControl);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikUserRegister);
 
 /***/ }),
 
@@ -1322,11 +1453,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-2111337816/0/cache/formik-npm-2.4.5-d97cd46456-223fb3e6b0.zip/node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var _TextError__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TextError */ "./assets/src/scripts/react/components/formik/TextError.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-2111337816/0/cache/formik-npm-2.4.5-d97cd46456-223fb3e6b0.zip/node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var _TextError__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TextError */ "./assets/src/scripts/react/components/formik/TextError.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 var _excluded = ["label", "name", "errors"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -1336,7 +1465,7 @@ function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" 
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
+// import React from 'react'
 
 
 
@@ -1346,18 +1475,18 @@ function Input(props) {
     name = props.name,
     errors = props.errors,
     rest = _objectWithoutProperties(props, _excluded);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "form-control mb-6",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
       htmlFor: name,
       className: "text-black fw-bold mb-1",
       children: label
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(formik__WEBPACK_IMPORTED_MODULE_3__.Field, _objectSpread({
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(formik__WEBPACK_IMPORTED_MODULE_2__.Field, _objectSpread({
       id: name,
       name: name
-    }, rest)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(formik__WEBPACK_IMPORTED_MODULE_3__.ErrorMessage, {
+    }, rest)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(formik__WEBPACK_IMPORTED_MODULE_2__.ErrorMessage, {
       name: name,
-      component: _TextError__WEBPACK_IMPORTED_MODULE_1__["default"]
+      component: _TextError__WEBPACK_IMPORTED_MODULE_0__["default"]
     })]
   });
 }
@@ -1376,9 +1505,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 var _excluded = ["htmlFor", "className"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -1386,15 +1513,16 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
+// import React from 'react'
 
 function Label(props) {
   var htmlFor = props.htmlFor,
     className = props.className,
     rest = _objectWithoutProperties(props, _excluded);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", _objectSpread(_objectSpread({
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", _objectSpread(_objectSpread({
     htmlFor: htmlFor,
     className: className
   }, rest), {}, {

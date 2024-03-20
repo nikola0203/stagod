@@ -10864,18 +10864,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-window.addEventListener("load", function () {
-  findServices();
-});
+findServices();
 function findServices() {
   var slides = document.querySelectorAll(".find-services");
   slides.forEach(function (slider, index) {
     slider.classList.add("find-services-" + index);
     slider.parentElement.getElementsByClassName("swiper-button-next-find-services")[0].classList.add("swiper-button-next-find-services-" + index);
     slider.parentElement.getElementsByClassName("swiper-button-prev-find-services")[0].classList.add("swiper-button-prev-find-services-" + index);
-
-    // console.log(slider.getElementsByClassName('swiper-pagination')[0])
-
     new swiper__WEBPACK_IMPORTED_MODULE_3__["default"](".find-services-" + index, {
       modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_4__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_4__.Navigation],
       // autoHeight: true,

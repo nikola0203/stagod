@@ -1,30 +1,26 @@
 // import 'swiper/css/bundle'
 // swiper core styles
-import "swiper/css";
+import "swiper/css"
 // modules styles
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+import "swiper/css/pagination"
+import "swiper/css/navigation"
 
-import Swiper from "swiper";
-import { Pagination, Navigation } from "swiper/modules";
+import Swiper from "swiper"
+import { Pagination, Navigation } from "swiper/modules"
 
-window.addEventListener("load", function () {
-  findServices();
-});
+findServices()
 
 function findServices() {
-  const slides = document.querySelectorAll(".find-services");
+  const slides = document.querySelectorAll(".find-services")
 
   slides.forEach(function (slider, index) {
-    slider.classList.add("find-services-" + index);
+    slider.classList.add("find-services-" + index)
     slider.parentElement
       .getElementsByClassName("swiper-button-next-find-services")[0]
-      .classList.add("swiper-button-next-find-services-" + index);
+      .classList.add("swiper-button-next-find-services-" + index)
     slider.parentElement
       .getElementsByClassName("swiper-button-prev-find-services")[0]
-      .classList.add("swiper-button-prev-find-services-" + index);
-
-    // console.log(slider.getElementsByClassName('swiper-pagination')[0])
+      .classList.add("swiper-button-prev-find-services-" + index)
 
     new Swiper(".find-services-" + index, {
       modules: [Pagination, Navigation],
@@ -56,6 +52,6 @@ function findServices() {
         //   spaceBetween: 150
         // },
       }
-    });
-  });
+    })
+  })
 }
