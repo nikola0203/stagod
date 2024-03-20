@@ -46,7 +46,7 @@ $allowedHTML = array(
       if ( ! empty ( $image ) ) :
         ?>
         <div class="col-12 col-lg-6 <?php echo ( $image_left ) ? 'text-lg-start' : 'text-lg-end'; ?>">
-          <?php Acf::image( $image, 'large', 'w-lg-75' ); ?>
+          <?php Acf::image( $image, 'large', 'object-fit-cover image-wraper' ); ?>
         </div>
         <?php
       endif;

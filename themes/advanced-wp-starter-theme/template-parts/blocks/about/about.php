@@ -13,7 +13,9 @@ if ( ! empty( $args )):
         foreach( $args as $arg):
           ?>
           <div class="col-12 col-lg-4">
-            <img src="<?php echo esc_url($arg['image']['url']); ?>" alt="" class="rounded-circle mb-10">
+            <div class="image-wraper m-auto mb-10 rounded-circle">
+              <img src="<?php echo esc_url($arg['image']['url']); ?>" alt="" class="rounded-circle object-fit-cover">
+            </div>
             <h4 class="mb-2 txt-white"><?php echo esc_html($arg['title']); ?></h4>
             <p class="mb-8 mb-lg-0 p-small txt-white"><?php echo esc_html($arg['text']); ?></p>
           </div>

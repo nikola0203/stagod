@@ -35,7 +35,7 @@ $title = get_field( 'title' );
               if ( ! empty( $image ) ) :
                 ?>
                 <div class="image-wrapper-users mb-6 ">
-                  <?php Acf::image( $image, 'large', 'rounded-circle', ); ?> 
+                  <?php Acf::image( $image, 'large', 'rounded-circle object-fit-cover', ); ?> 
                 </div>
                 <?php
               endif;

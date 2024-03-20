@@ -1,4 +1,8 @@
 .info {
+  .image-wraper {
+    max-width: 536px;
+    max-height: 425px;
+  }
   img {
     @include media-breakpoint-up(lg){
       max-width: 80%;
