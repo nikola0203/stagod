@@ -1,6 +1,6 @@
 {
     "key": "group_6567526b24ea4",
-    "title": "[Block]Recent Users",
+    "title": "[Block] Recent Users",
     "fields": [
         {
             "key": "field_6567526bb83e8",
@@ -41,5 +41,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701270165
+    "modified": 1710959595
 }

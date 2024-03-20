@@ -6,7 +6,6 @@
  *
  * @package awpt
  */
-
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -17,18 +16,17 @@
 			?>
 			<div class="entry-meta">
 				<?php Awpt\Core\Tags::posted_on(); ?>
-			</div><!-- .entry-meta -->
+			</div>
 			<?php
 		endif;
 		?>
-	</header><!-- .entry-header -->
+	</header>
 
 	<div class="entry-content">
 		<?php
 			the_content(
 				sprintf(
 					wp_kses(
-						/* translators: %s: Name of current post. */
 						__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'awpt' ),
 						array(
 							'span' => array(
@@ -46,9 +44,9 @@
 				)
 			);
 		?>
-	</div><!-- .entry-content -->
+	</div>
 
 	<footer class="entry-footer">
 		<?php Awpt\Core\Tags::entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-## -->
+	</footer>
+</article>

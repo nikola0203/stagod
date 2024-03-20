@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package seo_one_click_theme
+ * @package awpt
  */
 
 use Awpt\Custom\Custom;
@@ -50,4 +50,4 @@ use Awpt\Custom\Custom;
 				?>
 				<div id="user-register"></div>
 		</nav>
-	</header><!-- #masthead -->
+	</header>

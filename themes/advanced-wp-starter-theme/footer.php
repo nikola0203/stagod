@@ -11,28 +11,35 @@
 
 use Awpt\Custom\Footer;
 ?>
-
 	<footer id="colophon" class="site-footer py-12 pt-md-22 text-break">
 		<div class="container">
 			<div class="row justify-content-lg-between mb-lg-18">
 				<div class="col-12 col-lg-1 mb-8 mb-lg-0">
 					<?php Footer::logo(); ?>
 				</div>
-				<?php if( is_active_sidebar( 'footer-menu-1' ) ) : ?>
+				<?php
+				if ( is_active_sidebar( 'footer-menu-1' ) ) :
+					?>
 					<div class="col-6 col-lg-2 mb-8 mb-lg-0">
 						<?php dynamic_sidebar( 'footer-menu-1' ); ?>
 					</div>
-				<?php endif; ?>
-				<?php if( is_active_sidebar( 'footer-menu-2' ) ) : ?>
+					<?php
+				endif;
+				if ( is_active_sidebar( 'footer-menu-2' ) ) :
+					?>
 					<div class="col-6 col-lg-2">
 						<?php dynamic_sidebar( 'footer-menu-2' ); ?>
 					</div>
-				<?php endif; ?>
-				<?php if( is_active_sidebar( 'footer-menu-3' ) ) : ?>
+					<?php
+				endif;
+				if ( is_active_sidebar( 'footer-menu-3' ) ) :
+					?>
 					<div class="col-12 col-lg-2 mb-8 mb-lg-8">
 						<?php dynamic_sidebar( 'footer-menu-3' ); ?>
 					</div>
-				<?php endif; ?>
+					<?php
+				endif;
+				?>
 				<div class="col-12 col-lg-2 text-lg-end mb-8">
 					<?php Footer::footer_contact(); ?>
 				</div>
@@ -48,8 +55,8 @@ use Awpt\Custom\Footer;
 				</div>
 			</div>
 		</div>
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+	</footer>
+</div>
 
 <?php wp_footer(); ?>
 
