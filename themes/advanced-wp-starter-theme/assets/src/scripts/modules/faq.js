@@ -4,14 +4,10 @@ class Faq {
   }
 
   init() {
-    const thisClass = this
-
-    window.addEventListener('load', function () {
-      thisClass.faq('.faq')
-    })
+    this.faq('.faq')
   }
 
-  faq(faq_section_class) {
+  faq = (faq_section_class) => {
     const faq_section = document.querySelectorAll(faq_section_class);
     if (faq_section.length > 0) {
       faq_section.forEach((faq, index) => {

@@ -1,7 +1,7 @@
 // import React from 'react'
-import Input from "./Input";
-import FieldSelect from './FieldSelect';
-import Checkbox from './Checkbox';
+import Input from "./Input"
+import FieldSelect from './FieldSelect'
+import Checkbox from './Checkbox'
 
 function FormikControl(props) {
   // console.log(props)
@@ -17,7 +17,7 @@ function FormikControl(props) {
       return <Checkbox {...rest} />
     case 'date':
     default:
-      return null;
+      return null
   }
 }
 

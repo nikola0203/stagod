@@ -1,31 +1,29 @@
 // import 'swiper/css/bundle'
 // swiper core styles
-import "swiper/css";
+import "swiper/css"
 // modules styles
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+import "swiper/css/pagination"
+import "swiper/css/navigation"
 
 // import Tab from 'bootstrap'
-import BsTab from "../modules/bsTabs";
-import Swiper from "swiper";
-import { Pagination, Navigation } from "swiper/modules";
+import BsTab from "../modules/bsTabs"
+import Swiper from "swiper"
+import { Pagination, Navigation } from "swiper/modules"
 
-window.addEventListener("load", function () {
-  serachUsers();
-  new BsTab();
-});
+serachUsers()
+new BsTab()
 
-function serachUsers() {
-  const slides = document.querySelectorAll(".search-users");
+serachUsers = () => {
+  const slides = document.querySelectorAll(".search-users")
 
   slides.forEach(function (slider, index) {
-    slider.classList.add("search-users-" + index);
+    slider.classList.add("search-users-" + index)
     slider.parentElement
       .getElementsByClassName("swiper-button-next-search-users")[0]
-      .classList.add("swiper-button-next-search-users-" + index);
+      .classList.add("swiper-button-next-search-users-" + index)
     slider.parentElement
       .getElementsByClassName("swiper-button-prev-search-users")[0]
-      .classList.add("swiper-button-prev-search-users-" + index);
+      .classList.add("swiper-button-prev-search-users-" + index)
 
     // console.log(slider.getElementsByClassName('swiper-pagination')[0])
 
@@ -59,6 +57,6 @@ function serachUsers() {
         //   spaceBetween: 150
         // },
       }
-    });
-  });
+    })
+  })
 }

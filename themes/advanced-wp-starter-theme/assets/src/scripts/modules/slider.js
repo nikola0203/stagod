@@ -1,12 +1,12 @@
 class Slider {
 
 	constructor() {
-		this.init();
+		this.init()
 	}
 
 	init() {
-		console.log('Slider Initialized');
+		console.log('Slider Initialized')
 	}
 }
 
-export default Slider;
+export default Slider

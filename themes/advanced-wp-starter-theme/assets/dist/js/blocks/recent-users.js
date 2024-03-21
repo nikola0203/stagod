@@ -10864,10 +10864,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-window.addEventListener("load", function () {
-  recentUsers();
-});
-function recentUsers() {
+recentUsers();
+recentUsers = function recentUsers() {
   var slides = document.querySelectorAll(".recent-users");
   slides.forEach(function (slider, index) {
     slider.classList.add("recent-users-" + index);
@@ -10902,7 +10900,7 @@ function recentUsers() {
       }
     });
   });
-}
+};
 })();
 
 /******/ })()

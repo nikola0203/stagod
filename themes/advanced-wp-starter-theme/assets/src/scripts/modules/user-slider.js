@@ -1,40 +1,36 @@
 // import 'swiper/css/bundle'
 // swiper core styles
-import "swiper/css";
+import "swiper/css"
 // modules styles
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+import "swiper/css/pagination"
+import "swiper/css/navigation"
 
-import Swiper from "swiper";
-import { Pagination, Navigation } from "swiper/modules";
+import Swiper from "swiper"
+import { Pagination, Navigation } from "swiper/modules"
 
 class UserSlider {
   constructor() {
-    this.init();
+    this.init()
   }
 
   init() {
-    const thisClass = this;
-
-    window.addEventListener("load", function () {
-      thisClass.authorGallery();
-    });
+    this.authorGallery()
   }
 
-  authorGallery() {
-    const slides = document.querySelectorAll(".author-gallery");
+  authorGallery = () => {
+    const slides = document.querySelectorAll(".author-gallery")
 
     slides.forEach(function (slider, index) {
-      slider.classList.add("author-gallery-" + index);
+      slider.classList.add("author-gallery-" + index)
       slider
         .parentElement.parentElement.getElementsByClassName("swiper-pagination")[0]
-        .classList.add("swiper-pagination-" + index);
+        .classList.add("swiper-pagination-" + index)
       slider.parentElement
         .getElementsByClassName("swiper-button-next")[0]
-        .classList.add("swiper-button-next-" + index);
+        .classList.add("swiper-button-next-" + index)
       slider.parentElement
         .getElementsByClassName("swiper-button-prev")[0]
-        .classList.add("swiper-button-prev-" + index);
+        .classList.add("swiper-button-prev-" + index)
 
       // console.log(slider.getElementsByClassName('swiper-pagination')[0])
 
@@ -68,8 +64,8 @@ class UserSlider {
           //   spaceBetween: 150
           // },
         }
-      });
-    });
+      })
+    })
   }
 
   // heroSlider() {
@@ -94,4 +90,4 @@ class UserSlider {
   // }
 }
 
-export default UserSlider;
+export default UserSlider

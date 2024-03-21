@@ -1,15 +1,15 @@
 // import React from 'react'
-// import Select from 'react-select';
+// import Select from 'react-select'
 import Select from 'react-select'
 import { ErrorMessage, useField } from 'formik'
 import TextError from './TextError'
 
 function FieldSelect(props) {
   const { label, name, placeholder, options, ...rest } = props
-  const [field, meta, { setValue }] = useField(props);
+  const [field, meta, { setValue }] = useField(props)
 
   const onChange = (selectedOptions) => {
-    setValue(selectedOptions);
+    setValue(selectedOptions)
   }
 
   return (
@@ -31,7 +31,7 @@ function FieldSelect(props) {
       />
       <ErrorMessage name={name} component={TextError} />
     </div>
-  );
+  )
 }
 
 export default FieldSelect

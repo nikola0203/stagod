@@ -1,12 +1,12 @@
 class App {
 
 	constructor() {
-		this.init();
+		this.init()
 	}
 
-	init() {
-		console.log('App Initialized');
+	init = () => {
+		console.log('App Initialized')
 	}
 }
 
-export default App;
+export default App

@@ -4,17 +4,13 @@ class NavMenu {
   }
 
   init() {
-    const thisClass = this
+    this.primaryNavMenuMobile()
+    this.primaryNavMenuDesktop()
 
-    window.addEventListener('load', function () {
-      thisClass.primaryNavMenuMobile()
-      thisClass.primaryNavMenuDesktop()
-    })
-
-    // thisClass.fixTopMenu()
+    // this.fixTopMenu()
   }
 
-  primaryNavMenuMobile() {
+  primaryNavMenuMobile = () => {
     if (window.innerWidth < 1201) {
       const navtoggle = document.querySelectorAll('.navtoggle'),
         menu_item_has_children_link = document.querySelectorAll('.menu-item-has-children > a i')
@@ -39,7 +35,7 @@ class NavMenu {
     }
   }
 
-  primaryNavMenuDesktop() {
+  primaryNavMenuDesktop = () => {
     if (window.innerWidth > 1200) {
       const menu_item_has_children = document.querySelectorAll('.menu-item-has-children')
 
@@ -55,7 +51,7 @@ class NavMenu {
     }
   }
 
-  fixTopMenu() {
+  fixTopMenu = () => {
     const nav_menu = document.getElementById('masthead')
 
     window.addEventListener('scroll', function () {

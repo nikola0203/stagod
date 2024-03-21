@@ -10864,10 +10864,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-window.addEventListener("load", function () {
-  popularServices();
-});
-function popularServices() {
+popularServices();
+popularServices = function popularServices() {
   var slides = document.querySelectorAll(".popular-services");
   slides.forEach(function (slider, index) {
     slider.classList.add("popular-services-" + index);
@@ -10906,7 +10904,7 @@ function popularServices() {
       }
     });
   });
-}
+};
 })();
 
 /******/ })()

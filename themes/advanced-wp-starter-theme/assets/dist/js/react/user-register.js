@@ -1064,7 +1064,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 // import React from 'react'
-// import Select from 'react-select';
+// import Select from 'react-select'
 
 
 
@@ -1225,7 +1225,7 @@ function FormikUserLogin() {
       errorMessageHandler(setFieldError, response.data, 'password');
 
       // if (response.data.args.user_registered) {
-      //   window.location.href = response.data.args.redirect_url;
+      //   window.location.href = response.data.args.redirect_url
       // } else {
       //   setSubmitting(false)
       // }

@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 import axios from 'axios'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import FormikControl from './FormikControl'
-import Link from '../Link';
-import Label from './Label';
+import Link from '../Link'
+import Label from './Label'
 
 function FormikUserLogin() {
   const initialValues = {
@@ -39,12 +39,12 @@ function FormikUserLogin() {
         errorMessageHandler(setFieldError, response.data, 'password')
 
         // if (response.data.args.user_registered) {
-        //   window.location.href = response.data.args.redirect_url;
+        //   window.location.href = response.data.args.redirect_url
         // } else {
         //   setSubmitting(false)
         // }
       }).catch((error) => {
-        console.log(error.data);
+        console.log(error.data)
       })
   }
 
@@ -62,7 +62,7 @@ function FormikUserLogin() {
         </Form>
       }
     </Formik>
-  );
+  )
 }
 
-export default FormikUserLogin;
+export default FormikUserLogin
