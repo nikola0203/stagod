@@ -8,7 +8,7 @@
  */
 
 ?>
-<main id="primary" class="site-main">
+<main id="primary" class="site-main bg-light">
   <div class="container">
     <div class="row py-8 py-xl-14">
       <div class="col-lg-4">

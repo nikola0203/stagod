@@ -17,7 +17,7 @@ if ( $user->user_firstname && $user->user_lastname ) :
   <?php
 endif;
 ?>
-<div class="border rounded-4 p-4 p-xl-8 bg-light">
+<div class="chat border rounded-4 p-4 p-xl-8 bg-info mb-2">
   <?php
   if ( ! empty( $messages ) ) :
     foreach ( $messages as $message ) :
@@ -33,13 +33,16 @@ endif;
     endforeach;
   endif;
   ?>
-  <form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post">
-    <input type="hidden" name="action" value="send_message_to_user">
-    <?php wp_nonce_field( 'nonce-send-message-to-user', 'nonce_send_message_to_user' ); ?>
-    <input type="hidden" name="message_recipient" value="<?php esc_attr_e( $message_recipient ); ?>">
-    <input type="hidden" name="message_author" value="<?php esc_attr_e( get_current_user_id() ); ?>">
-    <textarea name="message_content" id="" cols="30" rows="10" required></textarea>
-    <button type="submit" class="btn btn-primary">Posalji Poruku</button>
-  </form>
-</div>
+  </div>
+  <div class="chat-form">
+    <form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post">
+      <input type="hidden" name="action" value="send_message_to_user">
+      <?php wp_nonce_field( 'nonce-send-message-to-user', 'nonce_send_message_to_user' ); ?>
+      <input type="hidden" name="message_recipient" value="<?php esc_attr_e( $message_recipient ); ?>">
+      <input type="hidden" name="message_author" value="<?php esc_attr_e( get_current_user_id() ); ?>">
+      <textarea placeholder="Unesite poruku" name="message_content" id="" cols="30" rows="10" required class="text-small border-light bg-white"></textarea>
+      <button type="submit" class="btn btn-primary">Posalji Poruku</button>
+    </form>
+  </div>
+
 <?php

@@ -1,4 +1,10 @@
 .author-info-wrapper {
+  .active {
+    a {
+      color: $secondary;
+      text-decoration: underline;
+    }
+  }
   .img-wrapper {
     height: 128px;
     width: 128px;
