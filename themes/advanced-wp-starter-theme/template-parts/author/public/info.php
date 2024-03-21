@@ -33,7 +33,6 @@ $chat         = new Chat();
   $active_chat_recipient_id = $chat->get_current_user_chat_recipient_id( get_queried_object_id() );
   $recipient_id             = ( $active_chat_recipient_id ) ? $active_chat_recipient_id : get_queried_object_id();
   $query_args               = array(
-    'user_page'         => 'messages',
     'message_recipient' => $recipient_id
   );
 
@@ -41,7 +40,7 @@ $chat         = new Chat();
     $query_args['chat_id'] = $chat_id;
   endif;
   ?>
-  <a href="<?php echo esc_url( add_query_arg( $query_args, get_author_posts_url( get_current_user_id() ) ) ); ?>" class="btn btn-primary mx-8 d-block">Pošalji poruku</a>
+  <a href="<?php echo esc_url( add_query_arg( $query_args, get_author_posts_url( get_current_user_id() ) . 'messages' ) ); ?>" class="btn btn-primary mx-8 d-block">Pošalji poruku</a>
   <a href="javascript:void(0)" id="btn-save-user" data-user_id=<?php esc_attr_e( get_queried_object_id() ); ?> class="btn btn-primary">Sačuvajte profil</a>
 
   <script>

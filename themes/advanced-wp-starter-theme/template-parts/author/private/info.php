@@ -5,15 +5,16 @@
 
 use Awpt\Plugins\Acf;
 
-$current_user = get_user_by( 'id', get_queried_object_id() );
-$image        = get_field( 'profile_image' );
-$current_url = home_url(add_query_arg(array(), $wp->request));
-$messages_url = get_author_posts_url( get_queried_object_id() ) . 'messages';
-$notifications_url = get_author_posts_url( get_queried_object_id() ) . 'notifications';
-$ratings_url = get_author_posts_url( get_queried_object_id() ) . 'ratings';
-$saved_url = get_author_posts_url( get_queried_object_id() ) . 'saved';
-$edit_account_url = get_author_posts_url( get_queried_object_id() ) . 'edit-account';
-$edit_profile_url = get_author_posts_url( get_queried_object_id() ) . 'edit-profile';
+$page_id           = get_queried_object_id();
+$current_user      = get_user_by( 'id', $page_id );
+$image             = get_field( 'profile_image' );
+$current_url       = home_url( $wp->request );
+$messages_url      = get_author_posts_url( $page_id ) . 'messages';
+$notifications_url = get_author_posts_url( $page_id ) . 'notifications';
+$ratings_url       = get_author_posts_url( $page_id ) . 'ratings';
+$saved_url         = get_author_posts_url( $page_id ) . 'saved';
+$edit_account_url  = get_author_posts_url( $page_id ) . 'edit-account';
+$edit_profile_url  = get_author_posts_url( $page_id ) . 'edit-profile';
 ?>
 <div class="author-info-wrapper border rounded-4">
   <div class="author-info-top d-flex flex-column justify-content-center align-items-center p-lg-8">

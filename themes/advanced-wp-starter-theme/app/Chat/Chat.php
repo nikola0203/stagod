@@ -200,23 +200,23 @@ class Chat
 
         $wpdb->update(
           $table_name,
-          array(
+          [
             'message_content' => maybe_serialize( $get_message_content )
-          ),
-          array(
+          ],
+          [
             'id' => $chat_id
-          ),
-          array(
+          ],
+          [
             '%s'
-          ),
-          array(
+          ],
+          [
             '%d'
-          )
+          ]
         );
       }
     }
 
-    $url = add_query_arg( array( 'user_page' => 'messages', 'chat_id' => $this->get_users_chat_id( $message_author, $message_recipient ), 'message_recipient' => $user->ID ), get_author_posts_url( $message_author ) );
+    $url = add_query_arg( ['chat_id' => $this->get_users_chat_id( $message_author, $message_recipient ), 'message_recipient' => $user->ID], get_author_posts_url( $message_author ) . 'messages' );
 
     wp_redirect( $url );
   }
