@@ -8,33 +8,29 @@ import "swiper/css/navigation"
 import Swiper from "swiper"
 import { Pagination, Navigation } from "swiper/modules"
 
-class UserSlider {
+class SwiperRecentUsers {
   constructor() {
-    this.init()
+    this.recentUsers()
   }
 
-  init() {
-    this.popularServices()
-  }
+  recentUsers = () => {
+    const slides = document.querySelectorAll(".recent-users")
 
-  popularServices = () => {
-    const slides = document.querySelectorAll(".popular-services")
-
-    slides.forEach(function (slider, index) {
-      slider.classList.add("popular-services-" + index)
+    slides.forEach((slider, index) => {
+      slider.classList.add("recent-users-" + index)
       slider
         .parentElement.parentElement.getElementsByClassName("swiper-pagination")[0]
         .classList.add("swiper-pagination-" + index)
-      slider
+      slider.parentElement
         .getElementsByClassName("swiper-button-next")[0]
         .classList.add("swiper-button-next-" + index)
-      slider
+      slider.parentElement
         .getElementsByClassName("swiper-button-prev")[0]
         .classList.add("swiper-button-prev-" + index)
 
       // console.log(slider.getElementsByClassName('swiper-pagination')[0])
 
-      new Swiper(".popular-services-" + index, {
+      new Swiper(".recent-users-" + index, {
         modules: [Pagination, Navigation],
         // autoHeight: true,
         // slidesPerView: "auto",
@@ -43,10 +39,6 @@ class UserSlider {
         // centeredSlides: true,
         // loop: true,
         spaceBetween: 24,
-        pagination: {
-          el: ".swiper-pagination-" + index,
-          clickable: true
-        },
         navigation: {
           nextEl: ".swiper-button-next-" + index,
           prevEl: ".swiper-button-prev-" + index
@@ -54,10 +46,7 @@ class UserSlider {
         // Responsive breakpoints
         breakpoints: {
           992: {
-            slidesPerView: 2
-          },
-          1200: {
-            slidesPerView: 3
+            slidesPerView: 4
           },
           // 1400: {
           //   slidesPerView: 3,
@@ -67,27 +56,6 @@ class UserSlider {
       })
     })
   }
-
-  // heroSlider() {
-  // 	$(".slider-home-hero").each(function(index, element){
-  // 		$(this).addClass("slider-home-hero-" + index)
-
-  // 		let speed = $(this).data('speed'),
-  // 				autoplay_delay = $(this).data('autoplay_delay')
-
-  // 		new Swiper(".slider-home-hero-" + index, {
-  // 			modules: [Autoplay],
-  // 			slidesPerView: 1,
-  // 			spaceBetween: 60,
-  // 			loop: true,
-  // 			speed: speed,
-  // 			autoplay: {
-  // 				delay: autoplay_delay,
-  // 				disableOnInteraction: false,
-  // 			},
-  // 		})
-  // 	})
-  // }
 }
 
-export default UserSlider
+export default SwiperRecentUsers

@@ -1,9 +1,5 @@
 class Faq {
   constructor() {
-    this.init()
-  }
-
-  init() {
     this.faq('.faq')
   }
 

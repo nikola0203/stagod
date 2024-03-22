@@ -11,9 +11,6 @@ import { Pagination, Navigation } from "swiper/modules"
 class UserSlider {
   constructor() {
     this.init()
-  }
-
-  init() {
     this.authorGallery()
   }
 

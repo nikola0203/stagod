@@ -1,4 +1,4 @@
-import { Tab } from 'bootstrap/js/dist/alert'
+import { Tab } from 'bootstrap/js/dist/tab'
 class BsTab {
   constructor() {
     this.init()
@@ -11,7 +11,7 @@ class BsTab {
   initBsTab = () => {
     let tabTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tab"]'))
 
-    let tabList = tabTriggerList.map(function (tabTriggerEl) {
+    let tabList = tabTriggerList.map((tabTriggerEl) => {
       return new Tab(tabTriggerEl)
     })
   }

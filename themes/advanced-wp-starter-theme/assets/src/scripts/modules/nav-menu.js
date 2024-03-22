@@ -1,12 +1,7 @@
 class NavMenu {
   constructor() {
-    this.init()
-  }
-
-  init() {
     this.primaryNavMenuMobile()
     this.primaryNavMenuDesktop()
-
     // this.fixTopMenu()
   }
 
