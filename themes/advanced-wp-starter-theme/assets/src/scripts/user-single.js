@@ -1,6 +1,4 @@
-import { Tab } from 'bootstrap'
+import 'bootstrap/js/dist/tab'
+import UserSlider from './modules/user-slider'
 
-// Import custom modules
-import UserSlider from './modules/user-slider.js'
-
-const user_slider = new UserSlider()
+new UserSlider()

@@ -5,9 +5,6 @@ namespace Awpt\REST;
 use WP_REST_Response;
 use WP_Error;
 
-/**
- * UserRegister.
- */
 class UserRegister
 {
   /**

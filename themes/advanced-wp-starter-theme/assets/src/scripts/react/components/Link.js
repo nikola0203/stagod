@@ -1,5 +1,3 @@
-import React from 'react'
-
 function Link(props) {
   const { href, name, target, ...rest } = props
   return (

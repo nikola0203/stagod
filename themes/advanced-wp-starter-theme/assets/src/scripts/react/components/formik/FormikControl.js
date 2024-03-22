@@ -1,4 +1,3 @@
-// import React from 'react'
 import Input from "./Input"
 import FieldSelect from './FieldSelect'
 import Checkbox from './Checkbox'

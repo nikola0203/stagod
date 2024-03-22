@@ -17,6 +17,6 @@ import "lazysizes/plugins/respimg/ls.respimg"
 import NavMenu from "./modules/nav-menu"
 // import Slider from './modules/slider.js'
 
-// const app = new App()
-const nav_menu = new NavMenu()
-// const slider = new Slider()
+// new App()
+// new Slider()
+new NavMenu()

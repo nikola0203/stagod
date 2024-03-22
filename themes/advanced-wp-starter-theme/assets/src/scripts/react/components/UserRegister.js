@@ -1,5 +1,5 @@
+import 'bootstrap/js/dist/modal'
 import { useState } from 'react'
-
 import FormikUserRegister from "./formik/FormikUserRegister"
 import FormikUserLogin from "./formik/FormikUserLogin"
 
@@ -27,11 +27,11 @@ function UserRegister() {
             {showLogin === false
               ? <>
                 <h2 className="h3" id="modal-label-user-register">Registruj se</h2>
-                <p>Već imaš nalog <a href="/" onClick={ToggleForm}>Registruj se.</a></p>
+                <p>Već imaš nalog <a href="/" onClick={ToggleForm}>prijavi se.</a></p>
               </>
               : <>
                 <h2 className="h3" id="modal-label-user-register">Prijavi se</h2>
-                <p>Nemaš nalog <a href="/" onClick={ToggleForm}>Prijavi se.</a></p>
+                <p>Nemaš nalog <a href="/" onClick={ToggleForm}>registruj se.</a></p>
               </>
             }
             {showLogin === false ? <FormikUserRegister toggleForm={ToggleForm} /> : <FormikUserLogin />}

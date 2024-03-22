@@ -39,6 +39,7 @@ final class Init
 			Plugins\AcfBlocks::class,
 			Chat\Chat::class,
 			REST\UserRegister::class,
+			REST\UserLogin::class,
 		]; 
 	}
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import axios from 'axios'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
@@ -8,7 +7,6 @@ import Label from './Label'
 import listOfCities from '../../../cities.json'
 
 function FormikUserRegister(props) {
-
   const { ToggleForm } = props
 
   const initialValues = {
