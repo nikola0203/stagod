@@ -17,19 +17,16 @@ a {
   &.txt-primary {
     color: $secondary;
     @include font-size(16px);
-    &:hover,
-    &:focus {
-      text-decoration: underline 2px;
-    }
   }
 }
+
 a {
   &.txt-black {
     color: $black;
+
     &:hover,
     &:focus {
       color: $secondary;
-      text-decoration: underline 2px;
     }
   }
 }
@@ -37,16 +34,19 @@ a {
 a {
   &.txt-secondary {
     color: $white;
+
     &:hover,
     &:focus {
       text-decoration: underline 2px;
     }
   }
 }
+
 a {
   &.txt-small {
     color: $secondary;
     @include font-size(14px);
+
     &:hover,
     &:focus {
       text-decoration: underline 2px;
@@ -57,14 +57,16 @@ a {
 
 .hover-text-primary {
   transition: color $time $ease;
-  > * {
+
+  >* {
     transition: color $time $ease;
   }
 
   &:hover,
   &:focus {
     color: $primary;
-    > * {
+
+    >* {
       color: $primary;
     }
   }

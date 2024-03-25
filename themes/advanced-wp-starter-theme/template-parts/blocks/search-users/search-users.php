@@ -45,13 +45,13 @@ $services = get_field( 'taxonomy' );
                         if ( ! empty( $image ) ) :
                           ?>
                           <div class="image-wrapper-users mb-6">
-                            <?php Acf::image( $image, 'large', 'rounded-circle object-fit-cover', ); ?> 
+                            <a href="<?php echo esc_url( get_author_posts_url( $userID ) ); ?>"><?php Acf::image( $image, 'large', 'rounded-circle object-fit-cover img-hover', ); ?></a> 
                           </div>
                           <?php
                         endif;
                         if ( $user ) :
                           ?>
-                          <h4 class="mb-2"><?php esc_html_e( $user->first_name ) ?>&nbsp;<?php esc_html_e( $user->last_name ) ?></h4>
+                          <a href="<?php echo esc_url( get_author_posts_url( $userID ) ); ?>"><h4 class="mb-2"><?php esc_html_e( $user->first_name ) ?>&nbsp;<?php esc_html_e( $user->last_name ) ?></h4></a>
                           <?php
                         endif;
                         ?>

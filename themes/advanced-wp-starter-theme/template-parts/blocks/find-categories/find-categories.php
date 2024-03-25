@@ -29,7 +29,7 @@ $services = get_terms(
             ?>
             <div class="swiper-slide text-center">
               <div class="icon-wrapper rounded-circle d-flex justify-content-center align-items-center mb-2">
-                <?php Acf::image( $icon, 'large', 'w-lg-50' ); ?>
+                <a href="<?php esc_html_e( get_term_link( $service ) ); ?>"><?php Acf::image( $icon, 'large', 'w-lg-50 object-fit-cover rounded-circle icon-size img-hover' ); ?></a>
               </div>
               <a href="<?php esc_html_e( get_term_link( $service ) ); ?>" class="txt-black fw-bold"><?php esc_html_e( $service->name ); ?></a>
             </div>

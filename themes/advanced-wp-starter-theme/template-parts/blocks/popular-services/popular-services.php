@@ -28,7 +28,7 @@ $services = get_field( 'select_services' );
             ?>
             <div class="swiper-slide bg-white rounded-bottom-3">
               <div class="image-wrapper mb-6">
-                <?php Acf::image( $image, 'large', 'rounded-top-3 object-fit-cover h-100 w-100', ); ?>
+                <a href="<?php echo esc_url( get_term_link( $service, 'services' ) ); ?>"><?php Acf::image( $image, 'large', 'rounded-top-3 object-fit-cover h-100 w-100 img-hover', ); ?></a>
               </div>
               <a href="<?php echo esc_url( get_term_link( $service, 'services' ) ); ?>" class="txt-black p-big mb-1 ps-8 fw-bold"><?php esc_html_e( $service->name ); ?></a>
               <?php
