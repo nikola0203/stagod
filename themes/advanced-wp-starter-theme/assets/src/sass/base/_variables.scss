@@ -9,6 +9,7 @@ $secondary: #EA4900;
 $black: #000000;
 $dark-gray: #8E8E8E;
 $border-gray: #D9D9D9;
+$dark: #D9D9D9;
 
 $light: #F9F9F9;
 $info: #EAEAEA;
@@ -196,8 +197,7 @@ $container-max-widths: (
   md: 720px,
   lg: 975px,
   xl: 1255px,
-  xxl: 1435px
-) !default;
+  xxl: 1435px) !default;
 //1294
 
 // scss-docs-end container-max-widths
@@ -205,14 +205,16 @@ $container-max-widths: (
 // Typography
 //
 // Font, line-height, and color for body text, headings, and more.
-$font-family-base: "Cabinet Grotesk", sans-serif;
+$font-family-base: "Cabinet Grotesk",
+  sans-serif;
 // $font-family-secondary: "Mulish", sans-serif;
 // $font-size-base: 1.125rem;
 $font-weight-base: 300;
 
 // scss-docs-start headings-variables
 $headings-margin-bottom: $spacer * 1.5;
-$headings-font-family: "Cabinet Grotesk", sans-serif;
+$headings-font-family: "Cabinet Grotesk",
+  sans-serif;
 // $headings-font-style:         null !default;
 $headings-font-weight: 400;
 // $headings-line-height:        1.2 !default;
@@ -244,7 +246,8 @@ $link-hover-color: $secondary;
 $paragraph-margin-bottom: 1.25rem;
 
 // scss-docs-start box-shadow-variables
-$box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+$box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1
+);
 // $box-shadow-sm:               0 .125rem .25rem rgba($black, .075) !default;
 // $box-shadow-lg:               0 1rem 3rem rgba($black, .175) !default;
 // $box-shadow-inset:            inset 0 1px 2px rgba($black, .075) !default;
@@ -279,7 +282,7 @@ $border-widths: (
   8: 8px,
   9: 9px,
   10: 10px,
-) !default;
+  ) !default;
 
 // $border-style:                solid !default;
 $border-color: $yellow-100;
@@ -290,7 +293,7 @@ $border-color: $yellow-100;
 // $border-radius:               .375rem !default;
 // $border-radius-sm:            .25rem !default;
 // $border-radius-lg:            .5rem !default;
-$border-radius-xl:            0.625rem;
+$border-radius-xl: 0.625rem;
 // $border-radius-2xl:           2rem !default;
 // $border-radius-pill:          50rem !default;
 // scss-docs-end border-radius-variables

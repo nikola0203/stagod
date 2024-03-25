@@ -33,15 +33,13 @@ $terms = get_terms( $term_args );
       );
       $children = get_terms( $children_args );
       if ( ! empty ( $children ) ):
-        $icon = get_field( 'icon', $term );
+        $icon = get_field( 'image', $term );
         ?>  
         <div class="col-12 col-md-6 col-lg-3 mb-6 mb-lg-0">
-          <div class="cat-wrapper bg-white br-16 p-8">
-            <div class="icon-wrap">
-              <?php Acf::image( $icon, 'large', 'w-lg-50 bg-light p-6 br-16 mb-6' ); ?>
-            </div>
-            <h4><?php esc_html_e( $term->name ); ?></h4>
-            <ul class="ps-0 mb-0 margin-a-last-none">
+          <div class="cat-wrapper bg-white rounded-3 border border-dark mb-8">
+            <a href="<?php echo esc_url( get_term_link( $term->term_id ) ); ?>"><?php Acf::image( $icon, 'large', 'rounded-top-3 object-fit-cover img-hover mb-8 img-height-180' ); ?></a>
+            <a href="<?php echo esc_url( get_term_link( $term->term_id ) ); ?>"><h4 class="px-6"><?php esc_html_e( $term->name ); ?></h4></a>
+            <ul class="mb-0 margin-a-last-none px-6 pb-6">
               <?php
               foreach ( $children as $child ):
               ?>
