@@ -1,7 +1,21 @@
+.chat-title svg {
+    transform: rotate(90deg);
+    font-weight: bold;
+    width: 24px;
+    height: 24px;
+}
+
+.chat {
+    border: 1px solid $border-gray;
+
+}
+
 .chat-form {
+
     form {
         position: relative;
     }
+
     button {
         position: absolute;
         bottom: 20px;

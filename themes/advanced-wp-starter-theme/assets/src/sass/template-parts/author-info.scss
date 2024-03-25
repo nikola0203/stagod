@@ -1,19 +1,37 @@
 .author-info-wrapper {
+  .img-wrapper-profile {
+    height: 104px;
+    width: 104px;
+  }
+
+  a {
+    font-weight: bold;
+    display: flex;
+    color: $black;
+
+    svg {
+      transform: rotate(-90deg);
+    }
+  }
+
   .active {
     a {
       color: $secondary;
       text-decoration: underline;
     }
   }
+
   .img-wrapper {
     height: 128px;
     width: 128px;
   }
+
   h3 {
     @include font-size(19px);
     color: $light-grey;
   }
+
   hr {
-    color: $light;
+    color: $border-gray;
   }
 }
