@@ -46,6 +46,7 @@
   width: 100%;
   object-fit: cover;
 }
+
 .object-cover {
   height: 100%;
   object-fit: cover;
@@ -68,11 +69,13 @@
     height: 100%;
     background-color: rgba($black, 0.3);
   }
+
   &-rounded {
     &::before {
       border-radius: 10px;
     }
   }
+
   &-dark {
     &::before {
       background-color: rgba($black, 0.75);
@@ -101,6 +104,7 @@
   max-width: 128px;
   max-height: 128px;
 }
+
 .img-wrap-220 {
   height: 220px;
 }
@@ -142,6 +146,7 @@
 .text-huge {
   @include font-size(24px !important);
 }
+
 .text-huge-1 {
   @include font-size(32px !important);
 }
@@ -197,6 +202,7 @@
 .bg-gray-300 {
   background-color: $gray-300;
 }
+
 .bg-blue-transperent {
   background-color: $transparent;
 }
@@ -208,6 +214,7 @@
     }
   }
 }
+
 .margin-a-last-none {
   a {
     &:last-child {
@@ -215,6 +222,11 @@
     }
   }
 }
+
 .br-16 {
   border-radius: 16px;
+}
+
+.br-8 {
+  border-radius: 8px;
 }
