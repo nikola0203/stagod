@@ -1,0 +1,30 @@
+.archive-wrapper {
+  .image-wrapper-users {
+    height: 80px;
+    width: 80px;
+
+  }
+
+  select {
+    padding: 0;
+    height: 58px;
+  }
+
+  .info-wrapper {
+    svg {
+      margin-right: 4px;
+
+      path {
+        fill: black;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .btn {
+      position: absolute;
+      bottom: 0;
+      right: 15px;
+    }
+  }
+}

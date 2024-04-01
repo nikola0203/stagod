@@ -4,7 +4,7 @@
 <section class="header-form pb-8">
   <div class="container">
     <h1>Pronađi savršenog profesionalca po tvojoj meri</h1>
-    <form role="search" ' . $aria_label . 'method="get" class="search-form d-flex" action="">
+    <form role="search" ' . $aria_label . 'method="get" class="search-form d-flex mb-2" action="">
       <div class="col-8">
         <label class="w-100">
           <span class="screen-reader-text"></span>
@@ -29,8 +29,14 @@
         <input type="submit" class="search-submit h-100" value="Pretraži" />
       </div>
     </form>
-    <div class="col-8">
-      <span>Popularno: </span>
+    <div class="row">
+      <div class="col-md-8 d-none d-md-block">
+        <span>Popularno: </span>
+      </div>
+      <div class="col-md-4">
+        <input type="checkbox" id="online-services" name="online-services" value="online-services">
+        <label for="online-services"> Online usluge</label>
+      </div>
     </div>
   </div>
 </section>
