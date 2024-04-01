@@ -23,6 +23,9 @@ mix.disableSuccessNotifications();
 // Compile assets
 mix.js('assets/src/scripts/app.js', 'assets/dist/js')
 	.js('assets/src/scripts/admin.js', 'assets/dist/js')
+	.js('assets/src/scripts/swiper/swiper-style-core.js', 'assets/dist/js')
+	.js('assets/src/scripts/swiper/swiper-style-navigation.js', 'assets/dist/js')
+	.js('assets/src/scripts/swiper/swiper-style-pagination.js', 'assets/dist/js')
 	.js('assets/src/scripts/user-single.js', 'assets/dist/js')
 	.js('assets/src/scripts/blocks/popular-services', 'assets/dist/js/blocks')
 	.js('assets/src/scripts/blocks/find-services', 'assets/dist/js/blocks')

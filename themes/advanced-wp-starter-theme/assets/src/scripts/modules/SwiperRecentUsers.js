@@ -1,9 +1,9 @@
 // import 'swiper/css/bundle'
-// swiper core styles
-import "swiper/css"
-// modules styles
-import "swiper/css/pagination"
-import "swiper/css/navigation"
+// // swiper core styles
+// import "swiper/css"
+// // modules styles
+// import "swiper/css/pagination"
+// import "swiper/css/navigation"
 
 import Swiper from "swiper"
 import { Pagination, Navigation } from "swiper/modules"

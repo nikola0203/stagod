@@ -57,11 +57,15 @@ class Enqueue
 		// 	'ajax_url'  => admin_url( 'admin-ajax.php' ),
 		// ));
 
+		wp_register_script( 'swiper-style-core', mix( 'js/swiper-style-core.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+		wp_register_script( 'swiper-style-navigation', mix( 'js/swiper-style-navigation.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+		wp_register_script( 'swiper-style-pagination', mix( 'js/swiper-style-pagination.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+	
 		// ACF Blocks.
-		wp_register_script( 'popular-services', mix( 'js/blocks/popular-services.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
-		wp_register_script( 'find-services', mix( 'js/blocks/find-services.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
-		wp_register_script( 'recent-users', mix( 'js/blocks/recent-users.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
-		wp_register_script( 'search-users', mix( 'js/blocks/search-users.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+		wp_register_script( 'popular-services', mix( 'js/blocks/popular-services.js' ), ['swiper-style-core', 'swiper-style-navigation', 'swiper-style-pagination'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+		wp_register_script( 'find-services', mix( 'js/blocks/find-services.js' ), ['swiper-style-core', 'swiper-style-navigation', 'swiper-style-pagination'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+		wp_register_script( 'recent-users', mix( 'js/blocks/recent-users.js' ), ['swiper-style-core', 'swiper-style-navigation', 'swiper-style-pagination'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+		wp_register_script( 'search-users', mix( 'js/blocks/search-users.js' ), ['swiper-style-core', 'swiper-style-navigation', 'swiper-style-pagination'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 		wp_register_script( 'faq', mix( 'js/blocks/faq.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 
 		// Activate browser-sync on development environment
