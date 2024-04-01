@@ -3,7 +3,9 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import FormikControl from './FormikControl'
 
-function FormikUserLogin() {
+function FormikUserLogin(props) {
+  const { updateFormName } = props
+
   const initialValues = {
     username: '',
     password: ''
@@ -45,18 +47,25 @@ function FormikUserLogin() {
   }
 
   return (
-    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-      {
-        (formik) => <Form>
-          <FormikControl control='input' type='text' label='Korisničko ime ili email' name='username' />
-          <FormikControl control='input' type='password' label='Lozinka' name='password' autoComplete="on" />
-          <div className='d-flex align-items-center'>
-            <button type='submit' className='btn btn-primary me-4'>Registruj Se</button>
-            {(formik.isSubmitting) ? <i className='icon-spinner'></i> : ''}
-          </div>
-        </Form>
-      }
-    </Formik>
+    <>
+      <h2 className="h3" id="modal-label-user-login">Prijavi se</h2>
+      <p>Nemaš nalog <button onClick={() => updateFormName('register')}>registruj se.</button></p>
+      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+        {
+          (formik) => <Form>
+            <FormikControl control='input' type='text' label='Korisničko ime ili email' name='username' />
+            <FormikControl control='input' type='password' label='Lozinka' name='password' autoComplete="on" />
+            <div className='text-end'>
+              <button id="btn-reset-password" type='button' onClick={() => updateFormName('reset')} data-form="reset">Zaboravili ste lozinku?</button>
+            </div>
+            <div className='d-flex align-items-center'>
+              <button type='submit' className='btn btn-primary me-4'>Prijavi Se</button>
+              {(formik.isSubmitting) ? <i className='icon-spinner'></i> : ''}
+            </div>
+          </Form>
+        }
+      </Formik>
+    </>
   )
 }
 

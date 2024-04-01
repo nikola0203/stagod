@@ -7,7 +7,7 @@ import Label from './Label'
 import listOfCities from '../../../cities.json'
 
 function FormikUserRegister(props) {
-  const { ToggleForm } = props
+  const { updateFormName } = props
 
   const initialValues = {
     username: '',
@@ -65,31 +65,35 @@ function FormikUserRegister(props) {
   }
 
   return (
-    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-      {
-        (formik) => <Form>
-          <FormikControl control='input' type='text' label='Korisničko ime' name='username' />
-          <FormikControl control='input' type='email' label='Email' name='email' />
-          <FormikControl control='input' type='password' label='Lozinka' name='password' autoComplete="on" />
-          <FormikControl control='input' type='password' label='Potvrdi Lozinku' name='confirm_password' autoComplete="on" />
-          <div className='row'>
-            <div className='col-xl-6'>
-              <FormikControl control='input' type='text' label='Ime' name='first_name' />
+    <>
+      <h2 className="h3" id="modal-label-user-register">Registruj se</h2>
+      <p>Već imaš nalog <button onClick={() => updateFormName('login')}>prijavi se.</button></p>
+      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+        {
+          (formik) => <Form>
+            <FormikControl control='input' type='text' label='Korisničko ime' name='username' />
+            <FormikControl control='input' type='email' label='Email' name='email' />
+            <FormikControl control='input' type='password' label='Lozinka' name='password' autoComplete="on" />
+            <FormikControl control='input' type='password' label='Potvrdi Lozinku' name='confirm_password' autoComplete="on" />
+            <div className='row'>
+              <div className='col-xl-6'>
+                <FormikControl control='input' type='text' label='Ime' name='first_name' />
+              </div>
+              <div className='col-xl-6'>
+                <FormikControl control='input' type='text' label='Prezime' name='last_name' />
+              </div>
             </div>
-            <div className='col-xl-6'>
-              <FormikControl control='input' type='text' label='Prezime' name='last_name' />
+            <FormikControl name='city' control='select' label='Grad' placeholder="Izaberi grad" options={listOfCities} />
+            <FormikControl control='checkbox' type='checkbox' label={<Label htmlFor='terms_conditions' className='form-check-label text-black fw-bold mb-1'>Slažem se sa <Link href='#' name='uslovima korišćenja' /> i <Link href='#' name='politikom privatnosti' />, i prihvatam da ŠtaGod sačuva moje lične podatke.</Label>} name='terms_conditions' />
+            <FormikControl control='checkbox' type='checkbox' label='Želim da primam obaveštenja o najnovijim proizvodima, popustima i promocijama.' name='newsletter' />
+            <div className='d-flex align-items-center'>
+              <button type='submit' className='btn btn-primary me-4'>Registruj Se</button>
+              {(formik.isSubmitting) ? <i className='icon-spinner'></i> : ''}
             </div>
-          </div>
-          <FormikControl name='city' control='select' label='Grad' placeholder="Izaberi grad" options={listOfCities} />
-          <FormikControl control='checkbox' type='checkbox' label={<Label htmlFor='terms_conditions' className='form-check-label text-black fw-bold mb-1'>Slažem se sa <Link href='#' name='uslovima korišćenja' /> i <Link href='#' name='politikom privatnosti' />, i prihvatam da ŠtaGod sačuva moje lične podatke.</Label>} name='terms_conditions' />
-          <FormikControl control='checkbox' type='checkbox' label='Želim da primam obaveštenja o najnovijim proizvodima, popustima i promocijama.' name='newsletter' />
-          <div className='d-flex align-items-center'>
-            <button type='submit' className='btn btn-primary me-4'>Registruj Se</button>
-            {(formik.isSubmitting) ? <i className='icon-spinner'></i> : ''}
-          </div>
-        </Form>
-      }
-    </Formik>
+          </Form>
+        }
+      </Formik>
+    </>
   )
 }
 

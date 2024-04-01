@@ -1,17 +1,12 @@
 import 'bootstrap/js/dist/modal'
 import { useState } from 'react'
-import FormikUserRegister from "./formik/FormikUserRegister"
-import FormikUserLogin from "./formik/FormikUserLogin"
+import FormsControl from "./formik/FormsControl"
 
 function UserRegister() {
-  const [showLogin, setShowLogin] = useState(false)
-
-  function ToggleForm(e) {
-    e.preventDefault();
-
-    console.log(showLogin)
-    return (showLogin === false) ? setShowLogin(true) : setShowLogin(false)
-  }
+  const [showForm, setShowForm] = useState('register')
+  const updateFormName = (formName) => {
+    setShowForm(formName)
+  };
 
   return (
     <>
@@ -23,18 +18,7 @@ function UserRegister() {
             <div className="modal-header border-0">
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
-            {showLogin === false
-              ? <>
-                <h2 className="h3" id="modal-label-user-register">Registruj se</h2>
-                <p>Već imaš nalog <a href="/" onClick={ToggleForm}>prijavi se.</a></p>
-              </>
-              : <>
-                <h2 className="h3" id="modal-label-user-register">Prijavi se</h2>
-                <p>Nemaš nalog <a href="/" onClick={ToggleForm}>registruj se.</a></p>
-              </>
-            }
-            {showLogin === false ? <FormikUserRegister toggleForm={ToggleForm} /> : <FormikUserLogin />}
+            <FormsControl formName={showForm} updateFormName={updateFormName} />
           </div>
         </div>
       </div>
