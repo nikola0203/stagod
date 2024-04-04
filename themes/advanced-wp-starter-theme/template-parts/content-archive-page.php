@@ -13,10 +13,34 @@ $usersID = get_objects_in_term( $term->term_id, 'services');
 ?>
 <div class="archive-wrapper container">
   <div class="row">
-    <div class="col-lg-4">
-
+    <div class="col-lg-3">
+      <div class="search-form-wrapped bg-primary py-8 px-lg-6 br-8 mb-12">
+        <h4 class="text-white d-none d-lg-block">Pretraga</h4>
+        <form role="search" ' . $aria_label . 'method="get" class="search-form mb-2" action="">
+          <div class="d-flex align-items-baseline bg-white br-8 rounded-bottom-0"style="margin-bottom:2px;">
+            <span class="ms-6 d-flex align-items-baseline"><?php echo icon_search(); ?></span>
+            <input type="search" class="search-field w-100 d-block rounded-bottom-0 border-0 ps-2 d-flex align-items-baseline fw-bold" placeholder="Probaj 'Nemački jezik'" name="s"/>
+          </div>
+          <div class="search-wrapper bg-white br-8 rounded-top-0 d-flex align-items-center mb-6">
+            <div class="d-flex align-items-baseline">
+              <span class="ms-6 d-flex align-items-baseline"><?php echo icon_location(); ?></span>
+              <label class="city-label text-black d-flex align-items-baseline bg-white ms-2 p-small fw-bold" for="city">Grad:</label>
+              <select name="cars" id="cars" class="px-0 rounded-top-0 border-0 me-6 fw-bold text-secondary p-small">
+                <option value="citys">U mojoj blizini</option>
+                <option value="city-1">Leskovac</option>
+                <option value="city-2">Niš</option>
+                <option value="city-3">Beograd</option>
+                <option value="city-4">Novi Sad</option>
+              </select>
+            </div>
+          </div>
+          <input type="checkbox" id="online-services" name="online-services" value="online-services">
+          <label for="online-services" class="text-white fw-bold mb-6"> Online usluge</label>
+          <input type="submit" class="search-submit h-100 fw-bold" value="Pretraži" />
+        </form>
+      </div>
     </div>
-    <div class="col-12 col-lg-8">
+    <div class="col-12 col-lg-9">
       <?php
       if ( ! empty ($usersID) ):
         ?>
