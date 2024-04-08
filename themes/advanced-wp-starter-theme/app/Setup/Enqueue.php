@@ -45,13 +45,27 @@ class Enqueue
 		wp_enqueue_style( 'main', mix( 'css/style.css' ), [], '1.0.0', 'all' );
 
 		// JS
-		wp_enqueue_script( 'user-register', mix( 'js/react/user-register.js' ), [], false, ['strategy' => 'async', 'in_footer' => true] );
+		// if ( ! is_user_logged_in() ) {
+			wp_enqueue_script( 'user-register', mix( 'js/react/user-register.js' ), [], false, ['strategy' => 'async', 'in_footer' => true] );
+		// }
 		wp_enqueue_script( 'main', mix( 'js/app.js' ), [], false, ['strategy' => 'async', 'in_footer' => true] );
 
 		if ( is_author() ) {
 			wp_enqueue_script( 'user-single', mix( 'js/user-single.js' ), ['main'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
-			wp_enqueue_script( 'user-single', mix( 'js/user-single.js' ), ['main'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 		}
+
+   	if ( isset( $_GET['reset_password_code'] ) ) {
+      $data = unserialize( base64_decode( $_GET['reset_password_code'] ) );
+      $code = get_user_meta( $data['id'], 'reset_password_code', true );
+      // verify whether the code given is the same as ours
+      if ( $code == $data['reset_password_code'] ) {
+				wp_enqueue_script( 'reset-password', mix( 'js/react/reset-password.js' ), ['main'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+      }
+    }
+
+		// if ( $_SERVER['REQUEST_URI'] == '/author/test3/reset-password/' ) {
+		// }
+
 		// wp_localize_script( 'main', 'main_object', array(
 		// 	'site_url'  => get_site_url(),
 		// 	'ajax_url'  => admin_url( 'admin-ajax.php' ),
@@ -67,16 +81,6 @@ class Enqueue
 		wp_register_script( 'recent-users', mix( 'js/blocks/recent-users.js' ), ['swiper-style-core', 'swiper-style-navigation', 'swiper-style-pagination'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 		wp_register_script( 'search-users', mix( 'js/blocks/search-users.js' ), ['swiper-style-core', 'swiper-style-navigation', 'swiper-style-pagination'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 		wp_register_script( 'faq', mix( 'js/blocks/faq.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
-
-		// Activate browser-sync on development environment
-		// if ( getenv( 'APP_ENV' ) === 'development' ) :
-		// 	wp_enqueue_script( '__bs_script__', getenv('WP_SITEURL') . ':3000/browser-sync/browser-sync-client.js', [], null, true );
-		// endif;
-
-		// Extra
-		// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		// 	wp_enqueue_script( 'comment-reply' );
-		// }
 	}
 
 	public function admin_enqueue_scripts( $hook )

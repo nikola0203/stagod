@@ -9,8 +9,8 @@ class Filters
 {
   public function register()
   {
-    add_filter( 'excerpt_length', array( $this, 'custom_excerpt_length' ), 99 );
-    add_filter( 'excerpt_more', array( $this, 'excerpt_more' ), 99 );
+    add_filter( 'excerpt_length', [$this, 'custom_excerpt_length'], 99 );
+    add_filter( 'excerpt_more', [$this, 'excerpt_more'], 99 );
   }
 
   function custom_excerpt_length( $length )

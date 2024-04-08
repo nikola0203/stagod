@@ -58,8 +58,14 @@
           case 'saved': 
             print_var("saved");
             break;
+          case 'edit-account':
+            get_template_part( 'template-parts/author/private/edit-account' );
+            break;
           case 'edit-profile':
             get_template_part( 'template-parts/author/private/edit-profile' );
+            break;
+          case 'reset-password':
+            get_template_part( 'template-parts/author/private/reset-password' );
             break;
           default: 
             get_template_part( 'template-parts/author/public/video' );

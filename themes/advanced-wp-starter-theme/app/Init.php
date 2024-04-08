@@ -40,6 +40,8 @@ final class Init
 			Chat\Chat::class,
 			REST\UserRegister::class,
 			REST\UserLogin::class,
+			REST\UserResetPassword::class,
+			REST\UserSetNewPassword::class,
 		]; 
 	}
 

@@ -47,7 +47,11 @@ use Awpt\Custom\Custom;
 						)
 					);
 				endif;
+				// if ( ! is_user_logged_in() ) :
+					?>
+					<div id="user-register"></div>
+					<?php
+				// endif;
 				?>
-				<div id="user-register"></div>
 		</nav>
 	</header>

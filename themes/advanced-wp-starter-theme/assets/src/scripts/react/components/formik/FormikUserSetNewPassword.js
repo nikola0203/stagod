@@ -4,13 +4,20 @@ import * as Yup from 'yup'
 import FormikControl from './FormikControl'
 
 function FormikUserResetPassword(props) {
-  const { updateFormName } = props
+  const { userID } = props
 
   const initialValues = {
-    email: '',
+    password: '',
+    confirm_password: '',
   }
   const validationSchema = Yup.object({
-    email: Yup.string().email('Neispravan email').required('Email je obavezan'),
+    password: Yup.string()
+      .min(8, 'Lozinka mora biti duža od 8 karaktera')
+      .matches(/[0-9]/, 'Lozinka mora da sadrži bar jedan broj')
+      .matches(/[a-z]/, 'Lozinka mora da sadrži bar jedno malo slovo')
+      .matches(/[A-Z]/, 'Lozinka mora da sadrži bar jedno veliko slovo')
+      .required('Lozinka je obavezna'),
+    confirm_password: Yup.string().required("Potvrdite lozinku").oneOf([Yup.ref("password")], "Lozinka mora da se poklapa"),
   })
 
   const errorMessageHandler = (setFieldError, response, field_name) => {
@@ -22,7 +29,7 @@ function FormikUserResetPassword(props) {
   const onSubmit = (values, formikBag) => {
     const { setSubmitting, setFieldError } = formikBag
 
-    axios.post('http://stagod.local/wp-json/wp/v2/users/reset-password/', values)
+    axios.post('http://stagod.local/wp-json/wp/v2/users/set-new-password/' + userID, values)
       .then((response) => {
         errorMessageHandler(setFieldError, response.data, 'email')
 
@@ -40,14 +47,14 @@ function FormikUserResetPassword(props) {
 
   return (
     <>
-      <h2 className="h3" id="modal-label-user-register">Resetuj lozinku</h2>
-      <p>Nazad na <button onClick={() => updateFormName('login')}>login.</button></p>
+      <h2 className="h3" id="modal-label-user-register">Promena lozinke</h2>
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
         {
           (formik) => <Form>
-            <FormikControl control='input' type='email' label='Email' name='email' />
+            <FormikControl control='input' type='password' label='Lozinka' name='password' autoComplete="on" />
+            <FormikControl control='input' type='password' label='Potvrdi Lozinku' name='confirm_password' autoComplete="on" />
             <div className='d-flex align-items-center'>
-              <button type='submit' className='btn btn-primary me-4'>Pošalji instrukcije</button>
+              <button type='submit' className='btn btn-primary me-4'>Promeni lozinku</button>
               {(formik.isSubmitting) ? <i className='icon-spinner'></i> : ''}
             </div>
           </Form>
