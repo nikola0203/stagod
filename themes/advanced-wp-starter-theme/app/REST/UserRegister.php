@@ -145,8 +145,15 @@ class UserRegister
     update_user_meta( $user_id, 'account_activated', 0 );
     update_user_meta( $user_id, 'activation_code', $code );
 
-    $url     = get_author_posts_url( $user_id ) . '?activation_code=' . base64_encode( serialize( $string ) );
-    $html    = 'Kliknite na link ispod da bi verifikovali nalog <br/><br/> <a href="' . $url . '">' . $url . '</a>';
+    $url = get_author_posts_url( $user_id ) . '?activation_code=' . base64_encode( serialize( $string ) );
+
+    $html = '<p>Pozdrav '. $first_name .',</p><br>';
+    $html .= '<p>Dobrodošli na ŠtaGod!</p>';
+    $html .= '<p>Još jedan korak do potpune aktiacije tvog naloga.</p>';
+    $html .= '<p>Klikni na link ispod da kompletiraš proces i da istražiš sve funkcionalnosti sajta.</p>';
+    $html .= '<p><a href="' . $url . '">' . $url . '</a></p><br>';
+    $html .= 'ŠtaGod Tim';
+
     $headers = [ 'Content-Type: text/html; charset=UTF-8' ];
 
     wp_mail( $user_email, __(  'ŠtaGod verifikacioni kod', 'stagod' ), $html, $headers );

@@ -8,9 +8,34 @@
  */
 
 ?>
-<main id="primary" class="site-main bg-light">
+<main id="primary" class="site-main bg-light py-8 py-xl-14">
   <div class="container">
-    <div class="row py-8 py-xl-14">
+    <?php
+    if ( ! get_user_meta( get_queried_object_id(), 'account_activated', true ) ) :
+      ?>
+      <div class="alert alert-danger fs-5 mb-6 mb-xl-14 p-xl-8" role="alert">
+        <p>Ovo je automatska poruka koja Vas obaveštava da je Vaš nalog uspešno kreiran na našoj platformi. Da biste potpuno aktivirali Vaš nalog, molimo Vas da sledite korake za verifikaciju putem e-mail adrese.</p>
+        <p>Molimo Vas da proverite svoj e-mail inbox (uključujući i spam/junk folder) kako biste pronašli e-mail od nas. U e-mailu će se nalaziti link za potvrdu Vašeg naloga.</p>
+        <p class="mb-0">Ukoliko niste primili e-mail u roku od nekoliko minuta, molimo Vas da proverite da li je adresa koju ste uneli ispravna. Ako imate bilo kakvih poteškoća ili dodatnih pitanja, slobodno nas kontaktirajte.</p>
+      </div>
+      <?php
+    endif;
+    if ( isset( $_GET['activation_code'] ) && is_user_logged_in() ) {
+      $data = unserialize( base64_decode( $_GET['activation_code'] ) );
+      $code = get_user_meta( $data['id'], 'activation_code', true );
+      // verify whether the code given is the same as ours
+      if ( $code == $data['activation_code'] ) {
+        ?>
+        <div class="alert alert-success fs-5 mb-6 mb-xl-14 p-xl-8" role="alert">
+          <p>Vaš nalog uspešno aktiviran! Sada možete u potpunosti pristupiti našoj platformi i koristiti sve njene funkcije.</p>
+          <p>Ako imate bilo kakvih pitanja ili nedoumica u vezi sa korišćenjem naše platforme, slobodno nas kontaktirajte. Naš tim je tu da Vam pomogne.</p>
+          <p class="mb-0">Još jednom, hvala Vam što ste se pridružili našoj zajednici.</p>
+        </div>
+        <?php
+      }
+    }
+    ?>
+    <div class="row">
       <div class="col-lg-4">
         <?php 
         get_template_part( 'template-parts/author/private/info' );
