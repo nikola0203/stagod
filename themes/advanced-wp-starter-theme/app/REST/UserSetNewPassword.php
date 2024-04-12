@@ -55,52 +55,36 @@ class UserSetNewPassword
   {
     $parameters = $request->get_json_params();
 
-    return $parameters;
-
     if ( empty( $parameters['password'] ) ) {
       return rest_ensure_response( $this->response_handler( 406, 'Lozinka je obavezna', 'password' ) );
     }
 
-    $user = get_user_by( 'ID', 68 );
+    $user = get_user_by( 'ID', $parameters['user_id'] );
 
-    if ( ! wp_check_password( $pass, $user->data->user_pass, $user->ID ) ) {
+    if ( $user->user_pass == wp_hash_password( $parameters['password'] ) ) {
       return rest_ensure_response( $this->response_handler( 406, 'Lozinka je vec registrovana', 'password' ) );
     }
 
-    $password = sanitize_text_field( $parameters['password'] );
+    $reset_password_code = get_user_meta( $user->ID, 'reset_password_code', true );
 
-    wp_set_password( $password, 68 );
+    if ( ! $reset_password_code ) {
+      return rest_ensure_response( $this->response_handler( 406, 'Lozinka je već resetovana', '' ) );
+    }
+
+    wp_set_password( $parameters['password'], $parameters['user_id'] );
+
+    // Empty meta field to prevent multiple resset
+    update_user_meta( $parameters['user_id'], 'reset_password_code', '' );
 
     return rest_ensure_response(
       $this->response_handler(
         200,
-        'Uspešno ste resetovali password!',
+        'Uspešno ste resetovali lozinku!',
         '',
         [
-          'redirect_url' => get_author_posts_url( $user->ID ),
+          'redirect_url' => home_url('/login/'),
         ]
       )
     );
-  }
-
-  function send_email_to_user_with_verification_code( $user_id, $user_email )
-  {
-    $code   = md5( time() );
-    $string = [
-      'id'                  => $user_id,
-      'reset_password_code' => $code
-    ];
-
-    update_user_meta( $user_id, 'reset_password_code', $code );
-
-    $url = get_author_posts_url( $user_id ) . '?reset_password_code=' . base64_encode( serialize( $string ) );
-
-    $html = '<p>Pozdrav '. $first_name .',</p><br>';
-    $html .= '<p>Kliknite na sledeći link za resetovanje lozinke: <a href="' . $url . '">' . $url . '</a></p>';
-    $html .= 'ŠtaGod Tim';
-
-    $headers = [ 'Content-Type: text/html; charset=UTF-8' ];
-
-    wp_mail( $user_email, __(  'ŠtaGod reset lozinke', 'stagod' ), $html, $headers );
   }
 }

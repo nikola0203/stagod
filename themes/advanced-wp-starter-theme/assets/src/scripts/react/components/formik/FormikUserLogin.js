@@ -1,10 +1,13 @@
 import axios from 'axios'
+import { useState } from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import FormikControl from './FormikControl'
 
 function FormikUserLogin(props) {
   const { updateFormName } = props
+
+  const [loginState, setLoginState] = useState(true)
 
   const initialValues = {
     username: '',
@@ -39,6 +42,7 @@ function FormikUserLogin(props) {
         if (response.data.args.user_logged_in) {
           window.location.href = response.data.args.redirect_url
         } else {
+          setLoginState(false)
           setSubmitting(false)
         }
       }).catch((error) => {
@@ -55,6 +59,7 @@ function FormikUserLogin(props) {
           (formik) => <Form>
             <FormikControl control='input' type='text' label='Korisničko ime ili email' name='username' />
             <FormikControl control='input' type='password' label='Lozinka' name='password' autoComplete="on" />
+            {(loginState == false) ? <div className="alert alert-danger" role="alert">Korisničko ime ili lozinka nisu ispravni!</div> : ''}
             <div className='text-end'>
               <button id="btn-reset-password" type='button' onClick={() => updateFormName('reset')} data-form="reset">Zaboravili ste lozinku?</button>
             </div>

@@ -63,9 +63,6 @@ class Enqueue
       }
     }
 
-		// if ( $_SERVER['REQUEST_URI'] == '/author/test3/reset-password/' ) {
-		// }
-
 		// wp_localize_script( 'main', 'main_object', array(
 		// 	'site_url'  => get_site_url(),
 		// 	'ajax_url'  => admin_url( 'admin-ajax.php' ),

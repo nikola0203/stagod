@@ -1,10 +1,13 @@
 import axios from 'axios'
+import { useState } from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import FormikControl from './FormikControl'
 
 function FormikUserResetPassword(props) {
   const { updateFormName } = props
+
+  const [resetPasswordState, setResetPasswordState] = useState(false)
 
   const initialValues = {
     email: '',
@@ -28,11 +31,12 @@ function FormikUserResetPassword(props) {
 
         console.log(response.data)
 
-        // if (response.data.args.user_logged_in) {
-        //   window.location.href = response.data.args.redirect_url
-        // } else {
-        //   setSubmitting(false)
-        // }
+        if (response.data.args.email_sent) {
+          setResetPasswordState(true)
+          setSubmitting(false)
+        } else {
+          setSubmitting(false)
+        }
       }).catch((error) => {
         console.log(error.data)
       })
@@ -46,6 +50,11 @@ function FormikUserResetPassword(props) {
         {
           (formik) => <Form>
             <FormikControl control='input' type='email' label='Email' name='email' />
+            {(resetPasswordState) ?
+              <div className="alert alert-success" role="alert">
+                <p>Proverite svoj e-mail inbox (uključujući i spam/junk folder) kako biste pronašli e-mail od nas.</p>
+                <p className='mb-0'>U e-mailu će se nalaziti link za potvrdu Vašeg naloga.</p>
+              </div> : ''}
             <div className='d-flex align-items-center'>
               <button type='submit' className='btn btn-primary me-4'>Pošalji instrukcije</button>
               {(formik.isSubmitting) ? <i className='icon-spinner'></i> : ''}
