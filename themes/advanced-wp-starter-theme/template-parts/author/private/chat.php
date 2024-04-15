@@ -20,13 +20,31 @@ endif;
 <div class="chat rounded-4 p-4 p-xl-8 bg-info mb-2">
   <?php
   if ( ! empty( $messages ) ) :
-    foreach ( $messages as $message ) :
+    foreach ( $messages as $message_key => $message ) :
+      if ( $message_key == 0 ) :
+        ?>
+        <div class="text-center text-gray-200 fw-bold text-smaller mb-6"><?php esc_html_e( date( 'd.M.Y', $message['time'] ) ); ?></div>
+        <?php
+      endif;
+      if ( $message_key > 0 ) :
+        $prev_time = date( 'd.M.Y', $messages[$message_key - 1]['time'] );
+        $cur_time  = date( 'd.M.Y', $message['time'] );
+        if ( $prev_time != $cur_time ) :
+          ?>
+          <div class="text-center text-gray-200 fw-bold text-smaller mb-6"><?php esc_html_e( date( 'd.M.Y', $message['time'] ) ); ?></div>
+          <?php
+        endif;
+      endif;
       ?>
       <div class="row <?php echo ( $message['author'] == get_current_user_id() ) ? 'justify-content-end' : ''; ?>">
         <div class="col-lg-7">
           <div class="bg-white rounded-4 mb-8 p-6">
-            <?php echo wp_kses_post( $message['content'] ); ?>
-            <?php echo wp_kses_post( $message['date'] ); ?>
+            <div class="text-black fw-medium">
+              <?php echo wp_kses_post( $message['content'] ); ?>
+            </div>
+            <div class="d-flex justify-content-end text-gray-200 fw-bold text-smaller">
+              <?php esc_html_e( date( 'H:i', $message['time'] ) . 'h' ); ?>
+            </div>
           </div>
         </div>
       </div>

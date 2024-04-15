@@ -903,7 +903,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function UserRegister() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('register'),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
     _useState2 = _slicedToArray(_useState, 2),
     showForm = _useState2[0],
     setShowForm = _useState2[1];
@@ -913,9 +913,21 @@ function UserRegister() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
       type: "button",
+      className: "btn",
+      "data-bs-toggle": "modal",
+      "data-bs-target": "#modal-user-register",
+      onClick: function onClick() {
+        return setShowForm('login');
+      },
+      children: "Prijavi se"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+      type: "button",
       className: "btn btn-primary",
       "data-bs-toggle": "modal",
       "data-bs-target": "#modal-user-register",
+      onClick: function onClick() {
+        return setShowForm('register');
+      },
       children: "Napravi profil"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "modal fade",

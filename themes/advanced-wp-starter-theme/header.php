@@ -10,6 +10,7 @@
  */
 
 use Awpt\Custom\Custom;
+use Awpt\Plugins\Acf;
 
 ?>
 <!doctype html>
@@ -47,6 +48,19 @@ use Awpt\Custom\Custom;
 						)
 					);
 				endif;
+				?>
+				<a href="<?php echo get_author_posts_url( get_current_user_id() ) . 'messages/'; ?>" class="me-8"><?php echo icon_chat(); ?></a>
+				<?php $profile_image = get_field( 'profile_image', get_user_by( 'id', get_current_user_id() ) ); ?>
+				<button class="me-8"><?php Acf::image( $profile_image, 'thumbnail', 'rounded-circle' ); ?> <?php echo icon_carret_down(); ?></button>
+				<ul>
+					<li><a href="<?php echo get_author_posts_url( get_current_user_id() ) . 'messages/'; ?>">Poruke</a></li>
+					<li><a href="<?php echo get_author_posts_url( get_current_user_id() ) . 'notifications/'; ?>">Obavestenja</a></li>
+					<li><a href="<?php echo get_author_posts_url( get_current_user_id() ) . 'ratings/'; ?>">Ocene</a></li>
+					<li><a href="<?php echo get_author_posts_url( get_current_user_id() ) . 'saved/'; ?>">Sacuvano</a></li>
+					<li><a href="<?php echo get_author_posts_url( get_current_user_id() ) . 'edit-account/'; ?>">Podesavanje naloga</a></li>
+					<li><a href="<?php echo get_author_posts_url( get_current_user_id() ) . 'edit-profile/'; ?>">Podesavanje profila usluga</a></li>
+				</ul>
+				<?php
 				// if ( ! is_user_logged_in() ) :
 					?>
 					<div id="user-register"></div>
