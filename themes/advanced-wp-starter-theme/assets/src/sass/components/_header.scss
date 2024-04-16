@@ -201,6 +201,36 @@ header {
   }
 }
 
+.header-menu-profile {
+  .header-menu-profile-button {
+    background-color: transparent;
+  }
+
+  .header-menu-profile-icon {
+    max-width: 24px;
+  }
+
+  #header-menu-profile-list {
+    visibility: hidden;
+    opacity: 0;
+    min-width: 300px;
+    transition: opacity $time $ease, visibility $time $ease;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    li {
+      a {
+        &:hover {
+          color: $secondary;
+        }
+      }
+    }
+  }
+}
+
 @include media-breakpoint-up(xl) {
   nav.scroll-active {
     #primary-menu-container {

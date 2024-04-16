@@ -1,0 +1,1 @@
+<a href="<?php echo esc_url( get_author_posts_url( get_current_user_id() ) . 'messages/' ); ?>" class="me-8" title="<?php esc_attr_e( 'Poruke' ) ?>"><?php echo icon_chat(); ?></a>
