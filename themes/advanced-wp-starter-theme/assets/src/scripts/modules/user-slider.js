@@ -5,7 +5,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
 
-import Swiper from "swiper"
+import Swiper from "../swiper/swiper-core"
 import { Pagination, Navigation } from "swiper/modules"
 
 class UserSlider {

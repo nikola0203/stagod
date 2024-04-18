@@ -45,14 +45,18 @@ class Enqueue
 		wp_enqueue_style( 'main', mix( 'css/style.css' ), [], '1.0.0', 'all' );
 
 		// JS
-		// if ( ! is_user_logged_in() ) {
+		if ( ! is_user_logged_in() ) {
 			wp_enqueue_script( 'user-register', mix( 'js/react/user-register.js' ), [], false, ['strategy' => 'async', 'in_footer' => true] );
-		// }
+		}
 		wp_enqueue_script( 'main', mix( 'js/app.js' ), [], false, ['strategy' => 'async', 'in_footer' => true] );
 
 		if ( is_author() ) {
 			wp_enqueue_script( 'user-single', mix( 'js/user-single.js' ), ['main'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 		}
+
+		// print_var($_SERVER);
+		// global $wp;
+		// print_var($wp);
 
    	if ( isset( $_GET['reset_password_code'] ) ) {
       $data = unserialize( base64_decode( $_GET['reset_password_code'] ) );
@@ -68,15 +72,14 @@ class Enqueue
 		// 	'ajax_url'  => admin_url( 'admin-ajax.php' ),
 		// ));
 
-		wp_register_script( 'swiper-style-core', mix( 'js/swiper-style-core.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
-		wp_register_script( 'swiper-style-navigation', mix( 'js/swiper-style-navigation.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
-		wp_register_script( 'swiper-style-pagination', mix( 'js/swiper-style-pagination.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
-	
+		wp_register_script( 'manifest', mix( 'js/blocks/manifest.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+		wp_register_script( 'vendor', mix( 'js/blocks/vendor.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+
 		// ACF Blocks.
-		wp_register_script( 'popular-services', mix( 'js/blocks/popular-services.js' ), ['swiper-style-core', 'swiper-style-navigation', 'swiper-style-pagination'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
-		wp_register_script( 'find-services', mix( 'js/blocks/find-services.js' ), ['swiper-style-core', 'swiper-style-navigation', 'swiper-style-pagination'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
-		wp_register_script( 'recent-users', mix( 'js/blocks/recent-users.js' ), ['swiper-style-core', 'swiper-style-navigation', 'swiper-style-pagination'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
-		wp_register_script( 'search-users', mix( 'js/blocks/search-users.js' ), ['swiper-style-core', 'swiper-style-navigation', 'swiper-style-pagination'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+		wp_register_script( 'popular-services', mix( 'js/blocks/popular-services.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+		wp_register_script( 'find-services', mix( 'js/blocks/find-services.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+		wp_register_script( 'recent-users', mix( 'js/blocks/recent-users.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+		wp_register_script( 'search-users', mix( 'js/blocks/search-users.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 		wp_register_script( 'faq', mix( 'js/blocks/faq.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 	}
 

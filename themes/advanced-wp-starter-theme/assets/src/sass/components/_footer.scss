@@ -2,31 +2,38 @@ footer {
 	position: relative;
 	background-color: $primary;
 	color: $white;
+
 	ul {
 		list-style-type: none;
 	}
+
 	.footer-copyright-text {
 		p {
 			margin: 0;
 		}
 	}
+
 	.footer-contact {
 		border-top: 1px solid $border-white-op;
 		border-bottom: 1px solid $border-white-op;
+
 		@include media-breakpoint-up(lg) {
 			border: none;
 		}
 	}
+
 	.footer-copy {
 		@include media-breakpoint-up(lg) {
 			border-top: 1px solid $border-white-op;
 			@include padding-top(24px);
 		}
+
 		p {
 			color: $white;
 			font-weight: bold;
 		}
 	}
+
 	.footer_links {
 		ul {
 			li {
@@ -34,35 +41,46 @@ footer {
 			}
 		}
 	}
+
 	a {
 		color: $white;
+
 		&:hover {
 			color: $secondary;
 		}
+
 		@include font-size(16px);
+
 		@include media-breakpoint-up(lg) {
 			@include font-size(15px);
 		}
+
 		@include media-breakpoint-up(xl) {
 			@include font-size(16px);
 		}
 	}
+
 	.widget_nav_menu {
 		h2 {
 			@include font-size(24px);
+
 			@include media-breakpoint-up(lg) {
 				@include font-size(20px);
 			}
+
 			@include media-breakpoint-up(xl) {
 				@include font-size(24px);
 			}
 		}
+
 		ul {
 			margin-bottom: 0;
 			padding-left: 0;
 			list-style-type: none;
+
 			li {
 				@include padding-bottom(16px);
+
 				&:last-child {
 					padding-bottom: 0;
 				}
