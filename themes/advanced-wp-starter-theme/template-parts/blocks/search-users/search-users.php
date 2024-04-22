@@ -44,8 +44,8 @@ $services = get_field( 'taxonomy' );
                         <?php
                         if ( ! empty( $image ) ) :
                           ?>
-                          <div class="image-wrapper-users mb-6">
-                            <a href="<?php echo esc_url( get_author_posts_url( $userID ) ); ?>"><?php Acf::image( $image, 'large', 'rounded-circle object-fit-cover img-hover', ); ?></a> 
+                          <div class="image-wrapper-users mb-6 d-block">
+                            <a href="<?php echo esc_url( get_author_posts_url( $userID ) ); ?>"><?php Acf::image( $image, 'large', 'rounded-circle object-fit-cover img-hover h-100 w-100', ); ?></a> 
                           </div>
                           <?php
                         endif;
