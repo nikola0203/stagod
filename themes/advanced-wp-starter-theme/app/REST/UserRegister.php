@@ -72,6 +72,10 @@ class UserRegister
       return rest_ensure_response( $this->response_handler( 406, 'Prezime je obavezno', 'last_name' ) );
     }
 
+    if ( empty( $parameters['city'] ) ) {
+      return rest_ensure_response( $this->response_handler( 406, 'Grad je obavezan', 'city' ) );
+    }
+
     if ( empty( $parameters['password'] ) ) {
       return rest_ensure_response( $this->response_handler( 406, 'Lozinka je obavezna', 'password' ) );
     }
@@ -93,9 +97,11 @@ class UserRegister
     $password    = sanitize_text_field( $parameters['password'] );
     $first_name  = sanitize_text_field( $parameters['first_name'] );
     $last_name   = sanitize_text_field( $parameters['last_name'] );
+    $city        = sanitize_text_field( $parameters['city']['city'] );
     $terms       = rest_sanitize_boolean( $parameters['terms_conditions'] );
     $meta_values = [
       'first_name'       => $first_name,
+      'city'             => $city,
       'last_name'        => $last_name,
       'terms_conditions' => $terms
     ];

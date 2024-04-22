@@ -70,7 +70,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TextError__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TextError */ "./assets/src/scripts/react/components/formik/TextError.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-var _excluded = ["label", "name", "placeholder", "options"];
+var _excluded = ["label", "name", "placeholder", "options", "defaultValue"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -94,6 +94,7 @@ function FieldSelect(props) {
     name = props.name,
     placeholder = props.placeholder,
     options = props.options,
+    defaultValue = props.defaultValue,
     rest = _objectWithoutProperties(props, _excluded);
   var _useField = (0,formik__WEBPACK_IMPORTED_MODULE_2__.useField)(props),
     _useField2 = _slicedToArray(_useField, 3),
@@ -102,6 +103,7 @@ function FieldSelect(props) {
     setValue = _useField2[2].setValue;
   var onChange = function onChange(selectedOptions) {
     setValue(selectedOptions);
+    console.log(selectedOptions);
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "form-control mb-6",
@@ -113,8 +115,11 @@ function FieldSelect(props) {
       id: name,
       name: name
       // isMulti={true}
-      // defaultValue={options.find((option) => option.value === field.value)}
       ,
+      defaultChecked: true,
+      defaultValue: {
+        city: defaultValue
+      },
       placeholder: placeholder,
       onChange: onChange,
       options: options,

@@ -64,11 +64,13 @@ class NavMenu {
   menuProfile = () => {
     const btn_menu = document.querySelector('.header-menu-profile-button')
 
-    btn_menu.addEventListener('click', () => {
-      const menu = btn_menu.nextElementSibling
-      console.log(btn_menu.nextElementSibling)
-      menu.classList.toggle('active')
-    })
+    if (btn_menu) {
+      btn_menu.addEventListener('click', () => {
+        const menu = btn_menu.nextElementSibling
+        console.log(btn_menu.nextElementSibling)
+        menu.classList.toggle('active')
+      })
+    }
   }
 }
 

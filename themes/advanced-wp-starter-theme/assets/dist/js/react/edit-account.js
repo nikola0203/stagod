@@ -1,129 +1,5 @@
 "use strict";
-(self["webpackChunkadvanced_wp_starter_theme"] = self["webpackChunkadvanced_wp_starter_theme"] || []).push([["/js/react/user-register"],{
-
-/***/ "./assets/src/scripts/react/components/Link.js":
-/*!*****************************************************!*\
-  !*** ./assets/src/scripts/react/components/Link.js ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-var _excluded = ["href", "name", "target"];
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-function Link(props) {
-  var href = props.href,
-    name = props.name,
-    target = props.target,
-    rest = _objectWithoutProperties(props, _excluded);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", _objectSpread(_objectSpread({
-    href: href,
-    title: name,
-    target: target
-  }, rest), {}, {
-    children: name
-  }));
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Link);
-
-/***/ }),
-
-/***/ "./assets/src/scripts/react/components/UserRegister.js":
-/*!*************************************************************!*\
-  !*** ./assets/src/scripts/react/components/UserRegister.js ***!
-  \*************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap/js/dist/modal */ "./.yarn/__virtual__/bootstrap-virtual-fe983d1d46/0/cache/bootstrap-npm-5.3.2-20b391b636-5c3eb06342.zip/node_modules/bootstrap/js/dist/modal.js");
-/* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _formik_FormsControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./formik/FormsControl */ "./assets/src/scripts/react/components/formik/FormsControl.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-function UserRegister() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
-    _useState2 = _slicedToArray(_useState, 2),
-    showForm = _useState2[0],
-    setShowForm = _useState2[1];
-  var updateFormName = function updateFormName(formName) {
-    setShowForm(formName);
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-      type: "button",
-      className: "btn",
-      "data-bs-toggle": "modal",
-      "data-bs-target": "#modal-user-register",
-      onClick: function onClick() {
-        return setShowForm('login');
-      },
-      children: "Prijavi se"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-      type: "button",
-      className: "btn btn-primary",
-      "data-bs-toggle": "modal",
-      "data-bs-target": "#modal-user-register",
-      onClick: function onClick() {
-        return setShowForm('register');
-      },
-      children: "Napravi profil"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "modal fade",
-      id: "modal-user-register",
-      tabIndex: "-1",
-      "aria-labelledby": "modal-label-user-register",
-      "aria-hidden": "true",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: "modal-dialog modal-dialog-centered",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "modal-content p-4 p-xl-8",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: "modal-header border-0",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-              type: "button",
-              className: "btn-close",
-              "data-bs-dismiss": "modal",
-              "aria-label": "Close"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_formik_FormsControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            formName: showForm,
-            updateFormName: updateFormName
-          })]
-        })
-      })
-    })]
-  });
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserRegister);
-
-/***/ }),
+(self["webpackChunkadvanced_wp_starter_theme"] = self["webpackChunkadvanced_wp_starter_theme"] || []).push([["/js/react/edit-account"],{
 
 /***/ "./assets/src/scripts/react/components/formik/Checkbox.js":
 /*!****************************************************************!*\
@@ -317,23 +193,24 @@ function FormikControl(props) {
 
 /***/ }),
 
-/***/ "./assets/src/scripts/react/components/formik/FormikUserLogin.js":
-/*!***********************************************************************!*\
-  !*** ./assets/src/scripts/react/components/formik/FormikUserLogin.js ***!
-  \***********************************************************************/
+/***/ "./assets/src/scripts/react/components/formik/FormikUpdateUserData.js":
+/*!****************************************************************************!*\
+  !*** ./assets/src/scripts/react/components/formik/FormikUpdateUserData.js ***!
+  \****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.6.7-d7b9974d1b-a1932b089e.zip/node_modules/axios/lib/axios.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.6.7-d7b9974d1b-a1932b089e.zip/node_modules/axios/lib/axios.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-2111337816/0/cache/formik-npm-2.4.5-d97cd46456-223fb3e6b0.zip/node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-2111337816/0/cache/formik-npm-2.4.5-d97cd46456-223fb3e6b0.zip/node_modules/formik/dist/formik.esm.js");
 /* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! yup */ "./.yarn/cache/yup-npm-1.3.3-bef3f67698-28c119896c.zip/node_modules/yup/index.esm.js");
 /* harmony import */ var _FormikControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormikControl */ "./assets/src/scripts/react/components/formik/FormikControl.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
+/* harmony import */ var _cities_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../cities.json */ "./assets/src/scripts/cities.json");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -348,177 +225,35 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function FormikUserLogin(props) {
-  var updateFormName = props.updateFormName;
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+
+function FormikUpdateUserData() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('Beograd'),
     _useState2 = _slicedToArray(_useState, 2),
-    loginState = _useState2[0],
-    setLoginState = _useState2[1];
+    defaultCity = _useState2[0],
+    setDefaultCity = _useState2[1];
   var initialValues = {
-    username: '',
-    password: ''
-  };
-  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_1__.object({
-    username: yup__WEBPACK_IMPORTED_MODULE_1__.string().min(2, 'Prekratko').max(50, 'Predugacko').required('Korisničko ime je obavezno'),
-    password: yup__WEBPACK_IMPORTED_MODULE_1__.string()
-    // .min(8, 'Lozinka mora biti duža od 8 karaktera')
-    // .matches(/[0-9]/, 'Lozinka mora da sadrži bar jedan broj')
-    // .matches(/[a-z]/, 'Lozinka mora da sadrži bar jedno malo slovo')
-    // .matches(/[A-Z]/, 'Lozinka mora da sadrži bar jedno veliko slovo')
-    .required('Lozinka je obavezna')
-  });
-  var errorMessageHandler = function errorMessageHandler(setFieldError, response, field_name) {
-    if (response.field === field_name) {
-      setFieldError(field_name, response.message);
-    }
-  };
-  var onSubmit = function onSubmit(values, formikBag) {
-    var setSubmitting = formikBag.setSubmitting,
-      setFieldError = formikBag.setFieldError;
-    axios__WEBPACK_IMPORTED_MODULE_4__["default"].post('http://stagod.local/wp-json/wp/v2/users/login/', values).then(function (response) {
-      errorMessageHandler(setFieldError, response.data, 'username');
-      errorMessageHandler(setFieldError, response.data, 'password');
-      console.log(response.data);
-      if (response.data.args.user_logged_in) {
-        window.location.href = response.data.args.redirect_url;
-      } else {
-        setLoginState(false);
-        setSubmitting(false);
-      }
-    })["catch"](function (error) {
-      console.log(error.data);
-    });
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
-      className: "h3",
-      id: "modal-label-user-login",
-      children: "Prijavi se"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
-      children: ["Nema\u0161 nalog ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-        onClick: function onClick() {
-          return updateFormName('register');
-        },
-        children: "registruj se."
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(formik__WEBPACK_IMPORTED_MODULE_5__.Formik, {
-      initialValues: initialValues,
-      validationSchema: validationSchema,
-      onSubmit: onSubmit,
-      children: function children(formik) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_5__.Form, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            control: "input",
-            type: "text",
-            label: "Korisni\u010Dko ime ili email",
-            name: "username"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            control: "input",
-            type: "password",
-            label: "Lozinka",
-            name: "password",
-            autoComplete: "on"
-          }), loginState == false ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: "alert alert-danger",
-            role: "alert",
-            children: "Korisni\u010Dko ime ili lozinka nisu ispravni!"
-          }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: "text-end",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-              id: "btn-reset-password",
-              type: "button",
-              onClick: function onClick() {
-                return updateFormName('reset');
-              },
-              "data-form": "reset",
-              children: "Zaboravili ste lozinku?"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "d-flex align-items-center",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-              type: "submit",
-              className: "btn btn-primary me-4",
-              children: "Prijavi Se"
-            }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
-              className: "icon-spinner"
-            }) : '']
-          })]
-        });
-      }
-    })]
-  });
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikUserLogin);
-
-/***/ }),
-
-/***/ "./assets/src/scripts/react/components/formik/FormikUserRegister.js":
-/*!**************************************************************************!*\
-  !*** ./assets/src/scripts/react/components/formik/FormikUserRegister.js ***!
-  \**************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.6.7-d7b9974d1b-a1932b089e.zip/node_modules/axios/lib/axios.js");
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-2111337816/0/cache/formik-npm-2.4.5-d97cd46456-223fb3e6b0.zip/node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! yup */ "./.yarn/cache/yup-npm-1.3.3-bef3f67698-28c119896c.zip/node_modules/yup/index.esm.js");
-/* harmony import */ var _FormikControl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormikControl */ "./assets/src/scripts/react/components/formik/FormikControl.js");
-/* harmony import */ var _Link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Link */ "./assets/src/scripts/react/components/Link.js");
-/* harmony import */ var _Label__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Label */ "./assets/src/scripts/react/components/formik/Label.js");
-/* harmony import */ var _cities_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../cities.json */ "./assets/src/scripts/cities.json");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-
-
-
-
-function FormikUserRegister(props) {
-  var updateFormName = props.updateFormName;
-  var initialValues = {
-    username: '',
-    email: '',
-    password: '',
-    confirm_password: '',
     first_name: '',
     last_name: '',
-    city: '',
-    terms_conditions: '',
-    newsletter: true
+    city: ''
   };
-  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_0__.object({
-    username: yup__WEBPACK_IMPORTED_MODULE_0__.string().min(2, 'Prekratko').max(50, 'Predugacko').required('Korisničko ime je obavezno'),
-    first_name: yup__WEBPACK_IMPORTED_MODULE_0__.string().min(2, 'Prekratko').max(50, 'Predugacko').required('Ime je obavezno'),
-    last_name: yup__WEBPACK_IMPORTED_MODULE_0__.string().min(2, 'Prekratko').max(50, 'Predugacko').required('Prezime je obavezno'),
-    city: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Izaberi grad'),
-    email: yup__WEBPACK_IMPORTED_MODULE_0__.string().email('Neispravan email').required('Email je obavezan'),
-    password: yup__WEBPACK_IMPORTED_MODULE_0__.string().min(8, 'Lozinka mora biti duža od 8 karaktera').matches(/[0-9]/, 'Lozinka mora da sadrži bar jedan broj').matches(/[a-z]/, 'Lozinka mora da sadrži bar jedno malo slovo').matches(/[A-Z]/, 'Lozinka mora da sadrži bar jedno veliko slovo').required('Lozinka je obavezna'),
-    confirm_password: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Potvrdite lozinku").oneOf([yup__WEBPACK_IMPORTED_MODULE_0__.ref("password")], "Lozinka mora da se poklapa"),
-    terms_conditions: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Uslovi korišćenja moraju da budu prihvaćeni')
+  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_1__.object({
+    first_name: yup__WEBPACK_IMPORTED_MODULE_1__.string().min(2, 'Prekratko').max(50, 'Predugacko').required('Ime je obavezno'),
+    last_name: yup__WEBPACK_IMPORTED_MODULE_1__.string().min(2, 'Prekratko').max(50, 'Predugacko').required('Prezime je obavezno'),
+    city: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Izaberi grad')
   });
-  var errorMessageHandler = function errorMessageHandler(setFieldError, response, field_name) {
-    if (response.field === field_name) {
-      setFieldError(field_name, response.message);
-    }
-  };
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log(initialValues);
+    initialValues.first_name = 'First Name';
+    initialValues.last_name = 'Last Name';
+  });
   var onSubmit = function onSubmit(values, formikBag) {
+    console.log('test');
     var setSubmitting = formikBag.setSubmitting,
       setFieldError = formikBag.setFieldError;
-    axios__WEBPACK_IMPORTED_MODULE_6__["default"].post('http://stagod.local/wp-json/wp/v2/users/register/', values).then(function (response) {
-      errorMessageHandler(setFieldError, response.data, 'username');
+    axios__WEBPACK_IMPORTED_MODULE_5__["default"].post('http://stagod.local/wp-json/wp/v2/users/register/', values).then(function (response) {
       errorMessageHandler(setFieldError, response.data, 'first_name');
       errorMessageHandler(setFieldError, response.data, 'last_name');
       errorMessageHandler(setFieldError, response.data, 'city');
-      errorMessageHandler(setFieldError, response.data, 'email');
-      errorMessageHandler(setFieldError, response.data, 'password');
-      errorMessageHandler(setFieldError, response.data, 'terms_conditions');
       if (response.data.args.user_registered) {
         window.location.href = response.data.args.redirect_url;
       } else {
@@ -528,98 +263,52 @@ function FormikUserRegister(props) {
       console.log(error.data);
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
-      className: "h3",
-      id: "modal-label-user-register",
-      children: "Registruj se"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
-      children: ["Ve\u0107 ima\u0161 nalog ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-        onClick: function onClick() {
-          return updateFormName('login');
-        },
-        children: "prijavi se."
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(formik__WEBPACK_IMPORTED_MODULE_7__.Formik, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
+      className: "h5",
+      children: "Izmena li\u010Dnih podataka"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(formik__WEBPACK_IMPORTED_MODULE_6__.Formik, {
       initialValues: initialValues,
       validationSchema: validationSchema,
+      enableReinitialize: true,
       onSubmit: onSubmit,
       children: function children(formik) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_7__.Form, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            control: "input",
-            type: "text",
-            label: "Korisni\u010Dko ime",
-            name: "username"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            control: "input",
-            type: "email",
-            label: "Email",
-            name: "email"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            control: "input",
-            type: "password",
-            label: "Lozinka",
-            name: "password",
-            autoComplete: "on"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            control: "input",
-            type: "password",
-            label: "Potvrdi Lozinku",
-            name: "confirm_password",
-            autoComplete: "on"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_6__.Form, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
               className: "col-xl-6",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_1__["default"], {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
                 control: "input",
                 type: "text",
                 label: "Ime",
-                name: "first_name"
+                name: "first_name",
+                value: initialValues.first_name
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
               className: "col-xl-6",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_1__["default"], {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
                 control: "input",
                 type: "text",
                 label: "Prezime",
-                name: "last_name"
+                name: "last_name",
+                value: initialValues.last_name
               })
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
             name: "city",
             control: "select",
             label: "Grad",
             placeholder: "Izaberi grad",
-            options: _cities_json__WEBPACK_IMPORTED_MODULE_4__
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            control: "checkbox",
-            type: "checkbox",
-            label: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_Label__WEBPACK_IMPORTED_MODULE_3__["default"], {
-              htmlFor: "terms_conditions",
-              className: "form-check-label text-black fw-bold mb-1",
-              children: ["Sla\u017Eem se sa ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Link__WEBPACK_IMPORTED_MODULE_2__["default"], {
-                href: "#",
-                name: "uslovima kori\u0161\u0107enja"
-              }), " i ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Link__WEBPACK_IMPORTED_MODULE_2__["default"], {
-                href: "#",
-                name: "politikom privatnosti"
-              }), ", i prihvatam da \u0160taGod sa\u010Duva moje li\u010Dne podatke."]
-            }),
-            name: "terms_conditions"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            control: "checkbox",
-            type: "checkbox",
-            label: "\u017Delim da primam obave\u0161tenja o najnovijim proizvodima, popustima i promocijama.",
-            name: "newsletter"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            options: _cities_json__WEBPACK_IMPORTED_MODULE_3__,
+            defaultValue: defaultCity
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "d-flex align-items-center",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
               type: "submit",
               className: "btn btn-primary me-4",
               children: "Registruj Se"
-            }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
+            }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
               className: "icon-spinner"
             }) : '']
           })]
@@ -628,167 +317,7 @@ function FormikUserRegister(props) {
     })]
   });
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikUserRegister);
-
-/***/ }),
-
-/***/ "./assets/src/scripts/react/components/formik/FormikUserResetPassword.js":
-/*!*******************************************************************************!*\
-  !*** ./assets/src/scripts/react/components/formik/FormikUserResetPassword.js ***!
-  \*******************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.6.7-d7b9974d1b-a1932b089e.zip/node_modules/axios/lib/axios.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-2111337816/0/cache/formik-npm-2.4.5-d97cd46456-223fb3e6b0.zip/node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! yup */ "./.yarn/cache/yup-npm-1.3.3-bef3f67698-28c119896c.zip/node_modules/yup/index.esm.js");
-/* harmony import */ var _FormikControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormikControl */ "./assets/src/scripts/react/components/formik/FormikControl.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-
-function FormikUserResetPassword(props) {
-  var updateFormName = props.updateFormName;
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    resetPasswordState = _useState2[0],
-    setResetPasswordState = _useState2[1];
-  var initialValues = {
-    email: ''
-  };
-  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_1__.object({
-    email: yup__WEBPACK_IMPORTED_MODULE_1__.string().email('Neispravan email').required('Email je obavezan')
-  });
-  var errorMessageHandler = function errorMessageHandler(setFieldError, response, field_name) {
-    if (response.field === field_name) {
-      setFieldError(field_name, response.message);
-    }
-  };
-  var onSubmit = function onSubmit(values, formikBag) {
-    var setSubmitting = formikBag.setSubmitting,
-      setFieldError = formikBag.setFieldError;
-    axios__WEBPACK_IMPORTED_MODULE_4__["default"].post('http://stagod.local/wp-json/wp/v2/users/reset-password/', values).then(function (response) {
-      errorMessageHandler(setFieldError, response.data, 'email');
-      console.log(response.data);
-      if (response.data.args.email_sent) {
-        setResetPasswordState(true);
-        setSubmitting(false);
-      } else {
-        setSubmitting(false);
-      }
-    })["catch"](function (error) {
-      console.log(error.data);
-    });
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
-      className: "h3",
-      id: "modal-label-user-register",
-      children: "Resetuj lozinku"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
-      children: ["Nazad na ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-        onClick: function onClick() {
-          return updateFormName('login');
-        },
-        children: "login."
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(formik__WEBPACK_IMPORTED_MODULE_5__.Formik, {
-      initialValues: initialValues,
-      validationSchema: validationSchema,
-      onSubmit: onSubmit,
-      children: function children(formik) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_5__.Form, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            control: "input",
-            type: "email",
-            label: "Email",
-            name: "email"
-          }), resetPasswordState ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "alert alert-success",
-            role: "alert",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-              children: "Proverite svoj e-mail inbox (uklju\u010Duju\u0107i i spam/junk folder) kako biste prona\u0161li e-mail od nas."
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-              className: "mb-0",
-              children: "U e-mailu \u0107e se nalaziti link za potvrdu Va\u0161eg naloga."
-            })]
-          }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "d-flex align-items-center",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-              type: "submit",
-              className: "btn btn-primary me-4",
-              children: "Po\u0161alji instrukcije"
-            }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
-              className: "icon-spinner"
-            }) : '']
-          })]
-        });
-      }
-    })]
-  });
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikUserResetPassword);
-
-/***/ }),
-
-/***/ "./assets/src/scripts/react/components/formik/FormsControl.js":
-/*!********************************************************************!*\
-  !*** ./assets/src/scripts/react/components/formik/FormsControl.js ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _FormikUserRegister__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormikUserRegister */ "./assets/src/scripts/react/components/formik/FormikUserRegister.js");
-/* harmony import */ var _FormikUserLogin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormikUserLogin */ "./assets/src/scripts/react/components/formik/FormikUserLogin.js");
-/* harmony import */ var _FormikUserResetPassword__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormikUserResetPassword */ "./assets/src/scripts/react/components/formik/FormikUserResetPassword.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-var _excluded = ["formName"];
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-function FormsControl(props) {
-  var formName = props.formName,
-    rest = _objectWithoutProperties(props, _excluded);
-  switch (formName) {
-    case 'register':
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_FormikUserRegister__WEBPACK_IMPORTED_MODULE_0__["default"], _objectSpread({}, rest));
-    case 'login':
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_FormikUserLogin__WEBPACK_IMPORTED_MODULE_1__["default"], _objectSpread({}, rest));
-    case 'reset':
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_FormikUserResetPassword__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({}, rest));
-    default:
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_FormikUserRegister__WEBPACK_IMPORTED_MODULE_0__["default"], _objectSpread({}, rest));
-  }
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormsControl);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikUpdateUserData);
 
 /***/ }),
 
@@ -842,42 +371,6 @@ function Input(props) {
 
 /***/ }),
 
-/***/ "./assets/src/scripts/react/components/formik/Label.js":
-/*!*************************************************************!*\
-  !*** ./assets/src/scripts/react/components/formik/Label.js ***!
-  \*************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-var _excluded = ["htmlFor", "className"];
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-function Label(props) {
-  var htmlFor = props.htmlFor,
-    className = props.className,
-    rest = _objectWithoutProperties(props, _excluded);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", _objectSpread(_objectSpread({
-    htmlFor: htmlFor,
-    className: className
-  }, rest), {}, {
-    children: props.children
-  }));
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Label);
-
-/***/ }),
-
 /***/ "./assets/src/scripts/react/components/formik/TextError.js":
 /*!*****************************************************************!*\
   !*** ./assets/src/scripts/react/components/formik/TextError.js ***!
@@ -900,22 +393,22 @@ function TextError(props) {
 
 /***/ }),
 
-/***/ "./assets/src/scripts/react/user-register.js":
-/*!***************************************************!*\
-  !*** ./assets/src/scripts/react/user-register.js ***!
-  \***************************************************/
+/***/ "./assets/src/scripts/react/edit-account.js":
+/*!**************************************************!*\
+  !*** ./assets/src/scripts/react/edit-account.js ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ "./.yarn/__virtual__/react-dom-virtual-a12088770f/0/cache/react-dom-npm-18.2.0-dd675bca1c-ca5e7762ec.zip/node_modules/react-dom/client.js");
-/* harmony import */ var _components_UserRegister__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/UserRegister */ "./assets/src/scripts/react/components/UserRegister.js");
+/* harmony import */ var _components_formik_FormikUpdateUserData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/formik/FormikUpdateUserData */ "./assets/src/scripts/react/components/formik/FormikUpdateUserData.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
 
 
 
-var domNode = document.getElementById('user-register');
+var domNode = document.getElementById('form-update-personal-data');
 var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(domNode);
-root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_UserRegister__WEBPACK_IMPORTED_MODULE_1__["default"], {}));
+root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_formik_FormikUpdateUserData__WEBPACK_IMPORTED_MODULE_1__["default"], {}));
 
 /***/ }),
 
@@ -932,7 +425,7 @@ module.exports = /*#__PURE__*/JSON.parse('[{"city":"Beograd","_id":11000},{"city
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, ["/js/blocks/vendor"], () => (__webpack_exec__("./assets/src/scripts/react/user-register.js")));
+/******/ __webpack_require__.O(0, ["/js/blocks/vendor"], () => (__webpack_exec__("./assets/src/scripts/react/edit-account.js")));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

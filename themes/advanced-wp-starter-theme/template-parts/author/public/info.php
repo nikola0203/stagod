@@ -41,20 +41,6 @@ $chat         = new Chat();
   endif;
   ?>
   <a href="<?php echo esc_url( add_query_arg( $query_args, get_author_posts_url( get_current_user_id() ) . 'messages' ) ); ?>" class="btn btn-primary mx-8 d-block">Pošalji poruku</a>
+
   <a href="javascript:void(0)" id="btn-save-user" data-user_id=<?php esc_attr_e( get_queried_object_id() ); ?> class="btn btn-primary">Sačuvajte profil</a>
-
-  <script>
-    // Da se prebaci u JS file
-    const button = document.getElementById('btn-save-user')
-
-    button.addEventListener('click', (e) => {
-      e.preventDefault();
-
-      const user_id = button.getAttribute('data-user_id')
-      
-      // AJAX FUNKCIJA
-      console.log('user_id')
-    })
-  </script>
-
 </div>

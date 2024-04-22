@@ -16,6 +16,7 @@ class Enqueue
 	{
 		// add_action( 'wp_head', [$this, 'preconnect_google_font'], 5 );
 		add_action( 'wp_enqueue_scripts', [$this, 'enqueue_scripts'] );
+		add_action( 'wp_enqueue_scripts', [$this, 'reset_password_script'] );
 		add_action( 'admin_enqueue_scripts', [$this, 'admin_enqueue_scripts'] );
   }
 
@@ -38,6 +39,8 @@ class Enqueue
 	 */
 	public function enqueue_scripts() 
 	{
+		global $wp;
+
 		// Deregister the built-in version of jQuery from WordPress.
 		wp_deregister_script( 'jquery' );
 
@@ -45,35 +48,39 @@ class Enqueue
 		wp_enqueue_style( 'main', mix( 'css/style.css' ), [], '1.0.0', 'all' );
 
 		// JS
+		wp_register_script( 'manifest', mix( 'js/blocks/manifest.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+		wp_register_script( 'vendor', mix( 'js/blocks/vendor.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+
+		wp_enqueue_script( 'main', mix( 'js/app.js' ), [], false, ['strategy' => 'async', 'in_footer' => true] );
+		
 		if ( ! is_user_logged_in() ) {
 			wp_enqueue_script( 'user-register', mix( 'js/react/user-register.js' ), [], false, ['strategy' => 'async', 'in_footer' => true] );
 		}
-		wp_enqueue_script( 'main', mix( 'js/app.js' ), [], false, ['strategy' => 'async', 'in_footer' => true] );
 
 		if ( is_author() ) {
-			wp_enqueue_script( 'user-single', mix( 'js/user-single.js' ), ['main'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+			wp_enqueue_script( 'user-single', mix( 'js/user-single.js' ), ['manifest', 'vendor', 'main'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 		}
 
-		// print_var($_SERVER);
-		// global $wp;
-		// print_var($wp);
+		if ( is_author() && is_user_logged_in() ) {
+			wp_enqueue_script( 'users-favorite', mix( 'js/users-favorite.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 
-   	if ( isset( $_GET['reset_password_code'] ) ) {
-      $data = unserialize( base64_decode( $_GET['reset_password_code'] ) );
-      $code = get_user_meta( $data['id'], 'reset_password_code', true );
-      // verify whether the code given is the same as ours
-      if ( $code == $data['reset_password_code'] ) {
-				wp_enqueue_script( 'reset-password', mix( 'js/react/reset-password.js' ), ['main'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
-      }
-    }
+			wp_localize_script( 'users-favorite', 'users_favorite_data', [
+				'ajax_url'             => admin_url( 'admin-ajax.php' ),
+				'nonce_favorite_users' => wp_create_nonce( 'nonce-favorite-users' ),
+				'current_user_id'      => get_current_user_id()
+			]);
+		}
+
+
+		if ( 'author/admin/edit-account' == $wp->request ) {
+			wp_enqueue_script( 'edit-account', mix( 'js/react/edit-account.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+		}
 
 		// wp_localize_script( 'main', 'main_object', array(
 		// 	'site_url'  => get_site_url(),
 		// 	'ajax_url'  => admin_url( 'admin-ajax.php' ),
 		// ));
 
-		wp_register_script( 'manifest', mix( 'js/blocks/manifest.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
-		wp_register_script( 'vendor', mix( 'js/blocks/vendor.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 
 		// ACF Blocks.
 		wp_register_script( 'popular-services', mix( 'js/blocks/popular-services.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
@@ -81,6 +88,18 @@ class Enqueue
 		wp_register_script( 'recent-users', mix( 'js/blocks/recent-users.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 		wp_register_script( 'search-users', mix( 'js/blocks/search-users.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 		wp_register_script( 'faq', mix( 'js/blocks/faq.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+	}
+
+	public function reset_password_script()
+	{
+		if ( isset( $_GET['reset_password_code'] ) ) {
+      $data = unserialize( base64_decode( $_GET['reset_password_code'] ) );
+      $code = get_user_meta( $data['id'], 'reset_password_code', true );
+      // verify whether the code given is the same as ours
+      if ( $code == $data['reset_password_code'] ) {
+				wp_enqueue_script( 'reset-password', mix( 'js/react/reset-password.js' ), ['main'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+      }
+    }
 	}
 
 	public function admin_enqueue_scripts( $hook )

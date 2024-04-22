@@ -50,6 +50,7 @@ function FormikUserRegister(props) {
         errorMessageHandler(setFieldError, response.data, 'username')
         errorMessageHandler(setFieldError, response.data, 'first_name')
         errorMessageHandler(setFieldError, response.data, 'last_name')
+        errorMessageHandler(setFieldError, response.data, 'city')
         errorMessageHandler(setFieldError, response.data, 'email')
         errorMessageHandler(setFieldError, response.data, 'password')
         errorMessageHandler(setFieldError, response.data, 'terms_conditions')

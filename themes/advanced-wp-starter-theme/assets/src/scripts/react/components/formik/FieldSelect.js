@@ -3,11 +3,12 @@ import { ErrorMessage, useField } from 'formik'
 import TextError from './TextError'
 
 function FieldSelect(props) {
-  const { label, name, placeholder, options, ...rest } = props
+  const { label, name, placeholder, options, defaultValue, ...rest } = props
   const [field, meta, { setValue }] = useField(props)
 
   const onChange = (selectedOptions) => {
     setValue(selectedOptions)
+    console.log(selectedOptions)
   }
 
   return (
@@ -17,7 +18,8 @@ function FieldSelect(props) {
         id={name}
         name={name}
         // isMulti={true}
-        // defaultValue={options.find((option) => option.value === field.value)}
+        defaultChecked={true}
+        defaultValue={{ city: defaultValue }}
         placeholder={placeholder}
         onChange={onChange}
         options={options}
