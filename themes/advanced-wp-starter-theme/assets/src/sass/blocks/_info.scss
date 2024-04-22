@@ -1,18 +1,26 @@
 .info {
   .image-wraper {
-    max-width: 536px;
+    @include media-breakpoint-up(lg) {
+      width: 536px;
+      height: 425px;
+    }
+
+    width: 100%;
     max-height: 425px;
   }
+
   img {
-    @include media-breakpoint-up(lg){
+    @include media-breakpoint-up(lg) {
       max-width: 80%;
     }
   }
+
   p {
-    @include media-breakpoint-up(xl){
+    @include media-breakpoint-up(xl) {
       @include font-size(19px);
     }
   }
+
   a {
     width: fit-content;
   }
