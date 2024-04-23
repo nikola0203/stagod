@@ -26,12 +26,18 @@ class AjaxMethods
   }
 
   function save_favorite_user() {
-    
-    
-    $user_id = (int) $_POST['user_id'];
+    $user_id         = (int) $_POST['user_id'];
     $current_user_id = (int) $_POST['current_user_id'];
+    $delete_user     = (boolean) $_POST['delete_user'];
     
     $get_favorite_users = get_user_meta( $current_user_id, 'favorite_users', true );
+
+    if ( $delete_user ) {
+      // Obrisi usera iz omiljenog
+
+      $delete_user = false;
+    } else {
+      // Sacuvaj usera
       if ( $get_favorite_users ) {
         if ( !in_array( $user_id, $get_favorite_users ) ) {
           array_push( $get_favorite_users, $user_id );
@@ -44,10 +50,14 @@ class AjaxMethods
         update_user_meta( $current_user_id, 'favorite_users', $favorite_users );
       }
 
+      $delete_user = true;
+    }
+
     $data = array(
       'user_id'            => $user_id,
       'current_user_id'    => $current_user_id,
       'get_favorite_users' => $get_favorite_users,
+      'delete_user'        => $delete_user
     );
 
     wp_send_json( $data );

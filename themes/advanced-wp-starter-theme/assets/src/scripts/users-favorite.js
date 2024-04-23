@@ -8,10 +8,17 @@ button.addEventListener('click', (e) => {
 
   const data = new FormData()
 
+  if (button.classList.contains('saved-user-class')) {
+    data.append('delete_user', true)
+  } else {
+    data.append('delete_user', false)
+  }
+
   data.append('action', 'save_favorite_user')
   data.append('nonce', users_favorite_data.nonce_favorite_users)
   data.append('current_user_id', users_favorite_data.current_user_id)
   data.append('user_id', user_id)
+  // data.append('save_user', true)
 
   // console.log(users_favorite_data.nonce_favorite_users)
 
@@ -23,6 +30,12 @@ button.addEventListener('click', (e) => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data)
+      console.log(data.save_user)
+      if (data.delete_user == true) {
+        button.classList.add('saved-user-class')
+      } else {
+        button.classList.remove('saved-user-class')
+      }
     })
 
   // AJAX FUNKCIJA
