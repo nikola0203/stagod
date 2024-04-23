@@ -21,6 +21,7 @@ class AjaxMethods
     add_action( 'wp_ajax_nopriv_filter_posts_by_category', array( $this, 'filter_posts_by_category' ) );
 
     add_action( 'wp_ajax_save_favorite_user', array( $this, 'save_favorite_user' ) );
+    add_action( 'wp_ajax_delete_favorite_user', array( $this, 'delete_favorite_user' ) );
     // add_action( 'wp_ajax_nopriv_save_favorite_user', array( $this, 'save_favorite_user' ) );
   }
 
@@ -31,16 +32,47 @@ class AjaxMethods
     $current_user_id = (int) $_POST['current_user_id'];
     
     $get_favorite_users = get_user_meta( $current_user_id, 'favorite_users', true );
+      if ( $get_favorite_users ) {
+        if ( !in_array( $user_id, $get_favorite_users ) ) {
+          array_push( $get_favorite_users, $user_id );
+          update_user_meta( $current_user_id, 'favorite_users', $get_favorite_users );
+        }
+      } else {
+        $favorite_users = [
+          $user_id
+        ];
+        update_user_meta( $current_user_id, 'favorite_users', $favorite_users );
+      }
 
-    if ( $get_favorite_users ) {
-      array_push( $get_favorite_users, $user_id );
-      update_user_meta( $current_user_id, 'favorite_users', $get_favorite_users );
-    } else {
-      $favirite_users = [
-        $user_id
-      ];
-      update_user_meta( $current_user_id, 'favorite_users', $favirite_users );
-    }
+    $data = array(
+      'user_id'            => $user_id,
+      'current_user_id'    => $current_user_id,
+      'get_favorite_users' => $get_favorite_users,
+    );
+
+    wp_send_json( $data );
+  }
+
+  function delete_favorite_user() {
+    
+    
+    $user_id = (int) $_POST['user_id'];
+    $current_user_id = (int) $_POST['current_user_id'];
+    
+    $get_favorite_users = get_user_meta( $current_user_id, 'favorite_users', true );
+      if ( $get_favorite_users ) {
+        if ( in_array( $user_id, $get_favorite_users ) ) {
+          $element_index = array_search( $user_id, $get_favorite_users );
+          $i = 1;
+          array_splice( $get_favorite_users, $element_index, $i);
+          update_user_meta( $current_user_id, 'favorite_users', $get_favorite_users );
+        }
+      } else {
+        $favorite_users = [
+          $user_id
+        ];
+        update_user_meta( $current_user_id, 'favorite_users', $favorite_users );
+      }
 
     $data = array(
       'user_id'            => $user_id,
