@@ -71,16 +71,13 @@ class Enqueue
 			]);
 		}
 
-
 		if ( 'author/admin/edit-account' == $wp->request ) {
 			wp_enqueue_script( 'edit-account', mix( 'js/react/edit-account.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 		}
-
-		// wp_localize_script( 'main', 'main_object', array(
-		// 	'site_url'  => get_site_url(),
-		// 	'ajax_url'  => admin_url( 'admin-ajax.php' ),
-		// ));
-
+		
+		if ( 'author/admin/saved' == $wp->request ) {
+			// wp_enqueue_script( 'saved-users', mix( 'js/saved-users.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+		}
 
 		// ACF Blocks.
 		wp_register_script( 'popular-services', mix( 'js/blocks/popular-services.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
