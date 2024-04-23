@@ -73,11 +73,10 @@ class AjaxMethods
     $current_user_id = (int) $_POST['current_user_id'];
     
     $get_favorite_users = get_user_meta( $current_user_id, 'favorite_users', true );
-      if ( $get_favorite_users ) {
+      if ( ! empty( $get_favorite_users ) ) {
         if ( in_array( $user_id, $get_favorite_users ) ) {
           $element_index = array_search( $user_id, $get_favorite_users );
-          $i = 1;
-          array_splice( $get_favorite_users, $element_index, $i);
+          array_splice( $get_favorite_users, $element_index, 1);
           update_user_meta( $current_user_id, 'favorite_users', $get_favorite_users );
         }
       } else {

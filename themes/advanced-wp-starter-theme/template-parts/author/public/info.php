@@ -45,7 +45,7 @@ $chat         = new Chat();
   <?php
   $get_favorite_users = get_user_meta( get_current_blog_id(), 'favorite_users', true );
   $user_id            = get_queried_object_id();
-  $element_index      = array_search( $user_id, $get_favorite_users );
+  $element_index      = ( ! empty( $element_index ) ) ? array_search( $user_id, $get_favorite_users ) : 0;
   $user_saved_id      = ( ! empty( $element_index ) ) ? $get_favorite_users[$element_index] : 0;
   // print_var($get_favorite_users);
   // print_var('element_index '.  $element_index);

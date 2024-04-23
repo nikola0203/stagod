@@ -76,7 +76,7 @@ class Enqueue
 		}
 		
 		if ( 'author/admin/saved' == $wp->request ) {
-			// wp_enqueue_script( 'saved-users', mix( 'js/saved-users.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+			wp_enqueue_script( 'saved-users', mix( 'js/saved-users.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 		}
 
 		// ACF Blocks.

@@ -21,7 +21,7 @@ $count_users = count( $get_favorite_users );
         ?>
         <div class="col-md-6 col-xl-4">
           <div class="user-wrapper border border-2 border-light bg-white rounded-3 px-6 relative">
-            <a href="javascript:void(0)" id="btn-delete-user" data-user_id=<?php esc_attr_e( get_queried_object_id() ); ?> class="close-icon position-absolute bg-white">
+            <a href="javascript:void(0)" id="btn-delete-user" data-user_id=<?php esc_attr_e( $user_id ); ?> class="close-icon position-absolute bg-white">
               <?php echo icon_closed_circle(); ?>
             </a>
             <?php
