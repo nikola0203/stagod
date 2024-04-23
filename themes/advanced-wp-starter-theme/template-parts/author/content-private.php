@@ -56,7 +56,7 @@
             print_var("ratings");
             break;
           case 'saved': 
-            print_var("saved");
+            get_template_part( 'template-parts/author/private/favorite-users' );
             break;
           case 'edit-account':
             get_template_part( 'template-parts/author/private/edit-account' );

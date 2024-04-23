@@ -1,9 +1,15 @@
 .section-recent-users,
-.section-search-users {
+.section-search-users,
+.section-favorite-users {
   .image-wrapper-users {
     width: 128px;
     height: 128px;
     margin: 24px auto 0;
 
+  }
+
+  .close-icon {
+    right: 8px;
+    top: 8px;
   }
 }

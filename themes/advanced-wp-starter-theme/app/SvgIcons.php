@@ -41,6 +41,7 @@ function array_svg_icons( $width, $height, $color ) {
     'icon_phone'              => icon_phone(),
     'icon_envelope'           => icon_envelope(),
     'icon_closed'             => icon_closed(),
+    'icon_closed_circle'      => icon_closed_circle(),
     'icon_checked'            => icon_checked(),
     'icon_double_angle_right' => icon_double_angle_right(),
     'icon_arrow_down'         => icon_arrow_down(),
@@ -253,6 +254,22 @@ function icon_quote( $width = '81', $height = '64', $color = '#B5B4AC' ) {
  */
 function icon_closed( $width = '18', $height = '18', $color = '#DDD0D6' ) {
 	return '<svg width="'. $width .'" height="'. $height .'" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L17 17" stroke="'. $color .'"/><path d="M1 17L17 1.00002" stroke="'. $color .'"/></svg>';
+}
+
+/**
+ * Close icon circle.
+ *
+ * @param string $width
+ * @param string $height
+ * @param string $color
+ * @return svg
+ */
+function icon_closed_circle( $width = '18', $height = '18', $color = '#DDD0D6' ) {
+	return '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.75" y="0.75" width="22.5" height="22.5" rx="11.25" stroke="#EA4900" stroke-width="1.5"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.75994 7.75569C7.4252 8.09042 7.4252 8.63314 7.75994 8.96787L10.7896 11.9976L7.75749 15.0297C7.42276 15.3644 7.42276 15.9071 7.75749 16.2419C8.09223 16.5766 8.63494 16.5766 8.96967 16.2419L12.0018 13.2097L15.033 16.241C15.3678 16.5757 15.9105 16.5757 16.2452 16.241C16.58 15.9062 16.58 15.3635 16.2452 15.0288L13.214 11.9976L16.2428 8.96877C16.5775 8.63403 16.5775 8.09132 16.2428 7.75658C15.908 7.42185 15.3653 7.42185 15.0306 7.75658L12.0018 10.7854L8.97212 7.75569C8.63739 7.42095 8.09467 7.42095 7.75994 7.75569Z" fill="#EA4900"/>
+</svg>
+';
 }
 
 /**

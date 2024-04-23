@@ -40,7 +40,7 @@ button.addEventListener('click', (e) => {
 
   // AJAX FUNKCIJA
   // console.log(user_id)
-})
+});
 
 // button_load_more.addEventListener('click', () => {
 //   let loader = button_load_more.getElementsByClassName('loader')[0]
