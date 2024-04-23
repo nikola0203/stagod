@@ -43,18 +43,14 @@ $chat         = new Chat();
   <a href="<?php echo esc_url( add_query_arg( $query_args, get_author_posts_url( get_current_user_id() ) . 'messages' ) ); ?>" class="btn btn-primary mx-8 d-block">Pošalji poruku</a>
 
   <?php
-   $get_favorite_users = get_user_meta( get_current_blog_id(), 'favorite_users', true );
-   $user_id = get_queried_object_id();
-   $element_index = array_search( $user_id, $get_favorite_users );
-   $user_saved_id = $get_favorite_users[$element_index];
-   print_var($user_saved_id);
-   print_var($user_id);
-   if ( $user_id === $user_saved_id ) : ?>
-    <?php
-   elseif ( $user_id === $user_saved_id ) : ?>
-     <?php 
-   endif;
-   ?>
-   <a href="javascript:void(0)" id="btn-delete-user" data-user_id=<?php esc_attr_e( get_queried_object_id() ); ?> class="btn btn-primary"">Uklonite profil</a>
-  <a href="javascript:void(0)" id="btn-save-user" data-user_id=<?php esc_attr_e( get_queried_object_id() ); ?> class="btn btn-primary">Sačuvajte profil</a>
+  $get_favorite_users = get_user_meta( get_current_blog_id(), 'favorite_users', true );
+  $user_id            = get_queried_object_id();
+  $element_index      = array_search( $user_id, $get_favorite_users );
+  $user_saved_id      = ( ! empty( $element_index ) ) ? $get_favorite_users[$element_index] : 0;
+  // print_var($get_favorite_users);
+  // print_var('element_index '.  $element_index);
+  // print_var('user_saved_id '.  $user_saved_id);
+  // print_var('user_id ' . $user_id);
+  ?>
+  <a href="javascript:void(0)" id="btn-save-user" data-user_id=<?php esc_attr_e( get_queried_object_id() ); ?> class="btn btn-primary <?php echo ( $user_id == $user_saved_id ) ? 'favorite-user' : ''; ?>">Sačuvajte profil</a>
 </div>

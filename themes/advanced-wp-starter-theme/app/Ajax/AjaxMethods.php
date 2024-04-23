@@ -26,46 +26,49 @@ class AjaxMethods
   }
 
   function save_favorite_user() {
-    $user_id         = (int) $_POST['user_id'];
-    $current_user_id = (int) $_POST['current_user_id'];
-    $delete_user     = (boolean) $_POST['delete_user'];
-    
+    check_ajax_referer( 'nonce-favorite-users', 'nonce' );
+
+    $user_id            = (int) $_POST['user_id'];
+    $current_user_id    = (int) $_POST['current_user_id'];
+    $delete_user        = (string) $_POST['delete_user'];
     $get_favorite_users = get_user_meta( $current_user_id, 'favorite_users', true );
 
-    if ( $delete_user ) {
-      // Obrisi usera iz omiljenog
-
-      $delete_user = false;
-    } else {
-      // Sacuvaj usera
-      if ( $get_favorite_users ) {
-        if ( !in_array( $user_id, $get_favorite_users ) ) {
+    if ( $delete_user == 'true' ) {
+      // Save favorite user.
+      if ( ! empty( $get_favorite_users ) ) {
+        if ( ! in_array( $user_id, $get_favorite_users ) ) {
           array_push( $get_favorite_users, $user_id );
+          update_user_meta( $current_user_id, 'favorite_users', $get_favorite_users ); 
+        }
+      } else {
+        $favorite_users = [$user_id];
+        update_user_meta( $current_user_id, 'favorite_users', $favorite_users );
+      }
+    } else {
+      // Delete favorite user.
+      if ( ! empty( $get_favorite_users ) ) {
+        if ( in_array( $user_id, $get_favorite_users ) ) {
+          $element_index = array_search( $user_id, $get_favorite_users );
+          array_splice( $get_favorite_users, $element_index, 1);
           update_user_meta( $current_user_id, 'favorite_users', $get_favorite_users );
         }
       } else {
-        $favorite_users = [
-          $user_id
-        ];
+        $favorite_users = [$user_id];
         update_user_meta( $current_user_id, 'favorite_users', $favorite_users );
       }
-
-      $delete_user = true;
     }
-
+    
     $data = array(
       'user_id'            => $user_id,
       'current_user_id'    => $current_user_id,
       'get_favorite_users' => $get_favorite_users,
-      'delete_user'        => $delete_user
+      'delete_user'        => $delete_user,
     );
 
     wp_send_json( $data );
   }
 
   function delete_favorite_user() {
-    
-    
     $user_id = (int) $_POST['user_id'];
     $current_user_id = (int) $_POST['current_user_id'];
     
