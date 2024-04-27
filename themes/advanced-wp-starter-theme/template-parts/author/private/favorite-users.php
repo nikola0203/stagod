@@ -3,6 +3,7 @@
  * Favorite users page.
  */
 use Awpt\Plugins\Acf;
+use Awpt\Chat\Chat;
 
 $get_favorite_users = get_user_meta( get_current_user_id(), 'favorite_users', true );
 $count_users = count( $get_favorite_users );
@@ -46,13 +47,27 @@ $count_users = count( $get_favorite_users );
                 endforeach;  
                 if ( $more_services > 0 ) :      
                   ?>
-                  <a href="javascript:void(0);" class="txt-primary d-inline-flex"><li>+<?php echo $more_services; ?></li></a>
+                  <a href="javascript:void(0);" class="txt-primary d-inline-flex mb-6"><li>+<?php echo $more_services; ?></li></a>
                   <?php 
                 endif;
               endif;
               ?>
             </ul>
-            <a href="<?php echo esc_url( get_author_posts_url( $user->ID ) ); ?>" class="btn btn-primary mb-6 w-100">Posaljite poruku</a>
+            <div class="user-info-wrapper d-flex mb-6 justify-content-between">
+              <div class="ratings-wrapper d-flex fw-bold">
+                <div class="rating p-5 rounded-3 bg-primary">
+                  <p class="mb-0 text-white">4.6</p>
+                </div>
+                <div class="rating-txt lh-1 ms-4 mt-1">
+                  <p class="p-big mb-3">Izvrsno</p>
+                  <p class="p-small m-0 text-secondary">25 Ocena</p>
+                </div>
+              </div>
+              <div class="date-created">
+                <p class="p-small mb-0 text-gray-200 text-end">Clan od<br><?php echo date( 'd.m.Y', strtotime($user->user_registered) ) ?></p>
+              </div>
+            </div>
+            <a href="" class="btn btn-primary mb-6 w-100">Posaljite poruku</a>
             <a href="<?php echo esc_url( get_author_posts_url( $user->ID ) ); ?>" class="btn btn-orange-ghost mb-6 w-100">Pogledaj profil</a>
 
           </div>

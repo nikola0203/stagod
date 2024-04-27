@@ -10,7 +10,7 @@
 ?>
 <main id="primary" class="site-main">
   <div class="container">
-    <div class="row">
+    <div class="row py-15">
       <div class="col-lg-8">
         <?php 
         get_template_part( 'template-parts/author/public/video' );

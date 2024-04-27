@@ -119,6 +119,21 @@ button {
     }
   }
 
+  &.btn-save-user {
+    color: $black;
+    background-color: $white;
+    border: 1px solid $border-gray;
+    text-align: center;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $white;
+      background-color: $secondary;
+      border: 1px solid $secondary;
+    }
+  }
+
   &.btn-secondary {
     background-color: $transparent;
     color: $primary;

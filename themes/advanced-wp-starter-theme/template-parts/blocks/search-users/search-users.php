@@ -40,7 +40,7 @@ $services = get_field( 'taxonomy' );
                       $user_services = get_field( 'services', $user );
                       $more_services = count( $services ) - 4;
                       ?>
-                      <div class="swiper-slide border border-2 border-light rounded-3">
+                      <div class="swiper-slide border border-2 border-light rounded-3 px-6">
                         <?php
                         if ( ! empty( $image ) ) :
                           ?>
@@ -55,7 +55,7 @@ $services = get_field( 'taxonomy' );
                           <?php
                         endif;
                         ?>
-                        <ul class="ps-0 justify-content-center text-center">
+                        <ul class="ps-0 justify-content-center text-center border-bottom mb-6 border-light">
                           <?php
                           if ( ! empty( $user_services ) ) :
                             foreach( $user_services as $service_key => $service ) :
@@ -67,12 +67,26 @@ $services = get_field( 'taxonomy' );
                             endforeach;  
                             if ( $more_services > 0 ) :      
                               ?>
-                              <a href="" class="txt-primary d-inline-flex"><li>+<?php echo $more_services; ?></li></a>
+                              <a href="" class="txt-primary d-inline-flex mb-6"><li>+<?php echo $more_services; ?></li></a>
                               <?php 
                             endif;
                           endif;
                           ?>
                         </ul>
+                        <div class="user-info-wrapper d-flex mb-6 justify-content-between">
+                          <div class="ratings-wrapper d-flex fw-bold">
+                            <div class="rating p-5 rounded-3 bg-primary">
+                              <p class="mb-0 text-white">4.6</p>
+                            </div>
+                            <div class="rating-txt lh-1 ms-4 mt-1">
+                              <p class="p-big mb-3">Izvrsno</p>
+                              <p class="p-small m-0 text-secondary">25 Ocena</p>
+                            </div>
+                          </div>
+                          <div class="date-created">
+                            <p class="p-small mb-0 text-gray-200 text-end">Clan od<br><?php echo date( 'd.m.Y', strtotime($user->user_registered) ) ?></p>
+                          </div>
+                        </div>
                         <a href="<?php echo esc_url( get_author_posts_url( $userID ) ); ?>" class="btn btn-orange-ghost mb-8">Pogledaj profil</a>
                       </div>
                       <?php
