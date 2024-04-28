@@ -57,6 +57,20 @@ $count_users = count( $get_favorite_users );
             endif;
             ?>
           </ul>
+          <div class="user-info-wrapper d-flex mb-6 justify-content-between">
+            <div class="ratings-wrapper d-flex fw-bold">
+              <div class="rating p-5 rounded-3 bg-primary">
+                <p class="mb-0 text-white">4.6</p>
+              </div>
+              <div class="rating-txt lh-1 ms-4 mt-1">
+                <p class="p-big mb-3">Izvrsno</p>
+                <p class="p-small m-0 text-secondary">25 Ocena</p>
+              </div>
+            </div>
+            <div class="date-created">
+              <p class="p-small mb-0 text-gray-200 text-end">Clan od<br><?php echo date( 'd.m.Y', strtotime($user->user_registered) ) ?></p>
+            </div>
+          </div>
           <a href="<?php echo esc_url( get_author_posts_url( $user->ID ) ); ?>" class="btn btn-primary mb-6 w-100">Posaljite poruku</a>
           <a href="<?php echo esc_url( get_author_posts_url( $user->ID ) ); ?>" class="btn btn-orange-ghost mb-6 w-100">Pogledaj profil</a>
 
