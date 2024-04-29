@@ -38,6 +38,7 @@ final class Init
 			Plugins\Acf::class,
 			Plugins\AcfBlocks::class,
 			Chat\Chat::class,
+			REST\UserExtendEndpoint::class,
 			REST\UserRegister::class,
 			REST\UserLogin::class,
 			REST\UserResetPassword::class,

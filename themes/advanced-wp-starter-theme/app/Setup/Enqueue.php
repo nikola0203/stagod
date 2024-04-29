@@ -51,10 +51,10 @@ class Enqueue
 		wp_register_script( 'manifest', mix( 'js/blocks/manifest.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 		wp_register_script( 'vendor', mix( 'js/blocks/vendor.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 
-		wp_enqueue_script( 'main', mix( 'js/app.js' ), [], false, ['strategy' => 'async', 'in_footer' => true] );
+		wp_enqueue_script( 'main', mix( 'js/app.js' ), ['manifest', 'vendor'], false, ['strategy' => 'async', 'in_footer' => true] );
 		
 		if ( ! is_user_logged_in() ) {
-			wp_enqueue_script( 'user-register', mix( 'js/react/user-register.js' ), [], false, ['strategy' => 'async', 'in_footer' => true] );
+			wp_enqueue_script( 'user-register', mix( 'js/react/user-register.js' ), ['manifest', 'vendor'], false, ['strategy' => 'async', 'in_footer' => true] );
 		}
 
 		if ( is_author() ) {
@@ -84,7 +84,7 @@ class Enqueue
 		wp_register_script( 'find-services', mix( 'js/blocks/find-services.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 		wp_register_script( 'recent-users', mix( 'js/blocks/recent-users.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 		wp_register_script( 'search-users', mix( 'js/blocks/search-users.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
-		wp_register_script( 'faq', mix( 'js/blocks/faq.js' ), [], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+		wp_register_script( 'faq', mix( 'js/blocks/faq.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 	}
 
 	public function reset_password_script()

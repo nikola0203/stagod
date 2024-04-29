@@ -1,17 +1,19 @@
 import axios from 'axios'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import FormikControl from './FormikControl'
 import listOfCities from '../../../cities.json'
 
-function FormikUpdateUserData() {
-  const [defaultCity, setDefaultCity] = useState('Beograd')
+function FormikUpdateUserData(props) {
+  const { user_id, user_city } = props
+
+  const formikRef = useRef();
 
   const initialValues = {
     first_name: '',
     last_name: '',
-    city: ''
+    city: user_city
   }
   const validationSchema = Yup.object({
     first_name: Yup.string().min(2, 'Prekratko').max(50, 'Predugacko').required('Ime je obavezno'),
@@ -20,13 +22,21 @@ function FormikUpdateUserData() {
   })
 
   useEffect(() => {
-    console.log(initialValues)
-    initialValues.first_name = 'First Name'
-    initialValues.last_name = 'Last Name'
-  })
+    axios.get('http://stagod.local/wp-json/wp/v2/users/' + user_id)
+      .then((response) => {
+        return response.data
+      })
+      .then((data) => {
+        formikRef.current.setFieldValue("first_name", data.first_name)
+        formikRef.current.setFieldValue("last_name", data.last_name)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+
+  }, [initialValues])
 
   const onSubmit = (values, formikBag) => {
-    console.log('test')
     const { setSubmitting, setFieldError } = formikBag
 
     axios.post('http://stagod.local/wp-json/wp/v2/users/register/', values)
@@ -48,18 +58,18 @@ function FormikUpdateUserData() {
   return (
     <>
       <h2 className="h5">Izmena ličnih podataka</h2>
-      <Formik initialValues={initialValues} validationSchema={validationSchema} enableReinitialize={true} onSubmit={onSubmit}>
+      <Formik innerRef={formikRef} initialValues={initialValues} validationSchema={validationSchema} enableReinitialize={true} onSubmit={onSubmit}>
         {
           (formik) => <Form>
             <div className='row'>
               <div className='col-xl-6'>
-                <FormikControl control='input' type='text' label='Ime' name='first_name' value={initialValues.first_name} />
+                <FormikControl control='input' type='text' label='Ime' name='first_name' />
               </div>
               <div className='col-xl-6'>
-                <FormikControl control='input' type='text' label='Prezime' name='last_name' value={initialValues.last_name} />
+                <FormikControl control='input' type='text' label='Prezime' name='last_name' />
               </div>
             </div>
-            <FormikControl name='city' control='select' label='Grad' placeholder="Izaberi grad" options={listOfCities} defaultValue={defaultCity} />
+            <FormikControl name='city' control='select' label='Grad' placeholder="Izaberi grad" options={listOfCities} defaultValue={initialValues.city} />
             <div className='d-flex align-items-center'>
               <button type='submit' className='btn btn-primary me-4'>Registruj Se</button>
               {(formik.isSubmitting) ? <i className='icon-spinner'></i> : ''}

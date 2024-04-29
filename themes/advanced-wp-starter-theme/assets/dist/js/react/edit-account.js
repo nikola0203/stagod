@@ -203,20 +203,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.6.8-85cf1e7152-3f9a79eaf1.zip/node_modules/axios/lib/axios.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.6.7-d7b9974d1b-a1932b089e.zip/node_modules/axios/lib/axios.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-2111337816/0/cache/formik-npm-2.4.5-d97cd46456-223fb3e6b0.zip/node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! yup */ "./.yarn/cache/yup-npm-1.4.0-599c24806a-3d1277e5e1.zip/node_modules/yup/index.esm.js");
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! yup */ "./.yarn/cache/yup-npm-1.3.3-bef3f67698-28c119896c.zip/node_modules/yup/index.esm.js");
 /* harmony import */ var _FormikControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormikControl */ "./assets/src/scripts/react/components/formik/FormikControl.js");
 /* harmony import */ var _cities_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../cities.json */ "./assets/src/scripts/cities.json");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -226,15 +220,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function FormikUpdateUserData() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('Beograd'),
-    _useState2 = _slicedToArray(_useState, 2),
-    defaultCity = _useState2[0],
-    setDefaultCity = _useState2[1];
+function FormikUpdateUserData(props) {
+  var user_id = props.user_id,
+    user_city = props.user_city;
+  var formikRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   var initialValues = {
     first_name: '',
     last_name: '',
-    city: ''
+    city: user_city
   };
   var validationSchema = yup__WEBPACK_IMPORTED_MODULE_1__.object({
     first_name: yup__WEBPACK_IMPORTED_MODULE_1__.string().min(2, 'Prekratko').max(50, 'Predugacko').required('Ime je obavezno'),
@@ -242,12 +235,16 @@ function FormikUpdateUserData() {
     city: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Izaberi grad')
   });
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log(initialValues);
-    initialValues.first_name = 'First Name';
-    initialValues.last_name = 'Last Name';
-  });
+    axios__WEBPACK_IMPORTED_MODULE_5__["default"].get('http://stagod.local/wp-json/wp/v2/users/' + user_id).then(function (response) {
+      return response.data;
+    }).then(function (data) {
+      formikRef.current.setFieldValue("first_name", data.first_name);
+      formikRef.current.setFieldValue("last_name", data.last_name);
+    })["catch"](function (error) {
+      console.log(error);
+    });
+  }, [initialValues]);
   var onSubmit = function onSubmit(values, formikBag) {
-    console.log('test');
     var setSubmitting = formikBag.setSubmitting,
       setFieldError = formikBag.setFieldError;
     axios__WEBPACK_IMPORTED_MODULE_5__["default"].post('http://stagod.local/wp-json/wp/v2/users/register/', values).then(function (response) {
@@ -268,6 +265,7 @@ function FormikUpdateUserData() {
       className: "h5",
       children: "Izmena li\u010Dnih podataka"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(formik__WEBPACK_IMPORTED_MODULE_6__.Formik, {
+      innerRef: formikRef,
       initialValues: initialValues,
       validationSchema: validationSchema,
       enableReinitialize: true,
@@ -282,8 +280,7 @@ function FormikUpdateUserData() {
                 control: "input",
                 type: "text",
                 label: "Ime",
-                name: "first_name",
-                value: initialValues.first_name
+                name: "first_name"
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
               className: "col-xl-6",
@@ -291,8 +288,7 @@ function FormikUpdateUserData() {
                 control: "input",
                 type: "text",
                 label: "Prezime",
-                name: "last_name",
-                value: initialValues.last_name
+                name: "last_name"
               })
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -301,7 +297,7 @@ function FormikUpdateUserData() {
             label: "Grad",
             placeholder: "Izaberi grad",
             options: _cities_json__WEBPACK_IMPORTED_MODULE_3__,
-            defaultValue: defaultCity
+            defaultValue: initialValues.city
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "d-flex align-items-center",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
@@ -407,8 +403,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var domNode = document.getElementById('form-update-personal-data');
+var user_id = domNode.getAttribute('data-user_id');
+var user_city = domNode.getAttribute('data-user_city');
 var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(domNode);
-root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_formik_FormikUpdateUserData__WEBPACK_IMPORTED_MODULE_1__["default"], {}));
+root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_formik_FormikUpdateUserData__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  user_id: user_id,
+  user_city: user_city
+}));
 
 /***/ }),
 
