@@ -73,6 +73,11 @@ class Enqueue
 
 		if ( 'author/admin/edit-account' == $wp->request ) {
 			wp_enqueue_script( 'edit-account', mix( 'js/react/edit-account.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+			wp_localize_script( 'edit-account', 'edit_account_data', [
+				'ajax_url'                 => admin_url( 'admin-ajax.php' ),
+				'nonce_edit_personal_data' => wp_create_nonce( 'nonce-edit-personal-data' ),
+				'current_user_id'          => get_current_user_id()
+			]);
 		}
 		
 		if ( 'author/admin/saved' == $wp->request ) {

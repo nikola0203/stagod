@@ -8,7 +8,6 @@ function FieldSelect(props) {
 
   const onChange = (selectedOptions) => {
     setValue(selectedOptions)
-    console.log(selectedOptions)
   }
 
   return (
@@ -18,8 +17,8 @@ function FieldSelect(props) {
         id={name}
         name={name}
         // isMulti={true}
-        defaultChecked={true}
-        defaultValue={{ city: defaultValue }}
+        // defaultChecked={true}
+        defaultValue={(defaultValue ? { city: defaultValue } : '')}
         placeholder={placeholder}
         onChange={onChange}
         options={options}

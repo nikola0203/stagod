@@ -22,7 +22,7 @@ class AjaxMethods
 
     add_action( 'wp_ajax_save_favorite_user', array( $this, 'save_favorite_user' ) );
     add_action( 'wp_ajax_delete_favorite_user', array( $this, 'delete_favorite_user' ) );
-    // add_action( 'wp_ajax_nopriv_save_favorite_user', array( $this, 'save_favorite_user' ) );
+    add_action( 'wp_ajax_edit_personal_data', array( $this, 'edit_personal_data' ) );
   }
 
   function save_favorite_user() {
@@ -250,5 +250,46 @@ class AjaxMethods
     );
 
     wp_send_json($data);
+  }
+
+  function edit_personal_data()
+  {
+    check_ajax_referer( 'nonce-edit-personal-data', 'nonce' );
+
+    $field_updated   = false;
+    $current_user_id = ( isset( $_POST['current_user_id'] ) ) ? $_POST['current_user_id'] : 0;
+    $first_name      = ( isset( $_POST['first_name'] ) ) ? $_POST['first_name'] : 0;
+    $last_name       = ( isset( $_POST['last_name'] ) ) ? $_POST['last_name'] : 0;
+    $city            = ( isset( $_POST['city'] ) ) ? $_POST['city'] : 0;
+    $get_first_name  = get_user_meta( $current_user_id, 'first_name', true );
+    $get_last_name   = get_user_meta( $current_user_id, 'last_name', true );
+    $get_city        = get_user_meta( $current_user_id, 'city', true );
+    $success_message = '';
+    $error_message   = '';
+
+    if ( $first_name && ( $first_name !== $get_first_name ) ) {
+      update_user_meta( $current_user_id, 'first_name', $first_name );
+      $field_updated = true;
+    }
+    if ( $last_name && ( $last_name !== $get_last_name ) ) {
+      update_user_meta( $current_user_id, 'last_name', $last_name );
+      $field_updated = true;
+    }
+    if ( $city && ( $city !== $get_city ) ) {
+      update_user_meta( $current_user_id, 'city', $city );
+      $field_updated = true;
+    }
+
+    if ( $field_updated ) {
+      $success_status = $field_updated;
+    } else {
+      $success_status = false;
+    }
+
+    $data = [
+      'success_status' => $success_status
+    ];
+
+    wp_send_json( $data );  
   }
 }

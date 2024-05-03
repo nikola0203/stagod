@@ -103,7 +103,6 @@ function FieldSelect(props) {
     setValue = _useField2[2].setValue;
   var onChange = function onChange(selectedOptions) {
     setValue(selectedOptions);
-    console.log(selectedOptions);
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "form-control mb-6",
@@ -115,11 +114,11 @@ function FieldSelect(props) {
       id: name,
       name: name
       // isMulti={true}
+      // defaultChecked={true}
       ,
-      defaultChecked: true,
-      defaultValue: {
+      defaultValue: defaultValue ? {
         city: defaultValue
-      },
+      } : '',
       placeholder: placeholder,
       onChange: onChange,
       options: options,
@@ -211,6 +210,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FormikControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormikControl */ "./assets/src/scripts/react/components/formik/FormikControl.js");
 /* harmony import */ var _cities_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../cities.json */ "./assets/src/scripts/cities.json");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -223,6 +228,10 @@ __webpack_require__.r(__webpack_exports__);
 function FormikUpdateUserData(props) {
   var user_id = props.user_id,
     user_city = props.user_city;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    dataUpdated = _useState2[0],
+    setDataUpdated = _useState2[1];
   var formikRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   var initialValues = {
     first_name: '',
@@ -232,7 +241,13 @@ function FormikUpdateUserData(props) {
   var validationSchema = yup__WEBPACK_IMPORTED_MODULE_1__.object({
     first_name: yup__WEBPACK_IMPORTED_MODULE_1__.string().min(2, 'Prekratko').max(50, 'Predugacko').required('Ime je obavezno'),
     last_name: yup__WEBPACK_IMPORTED_MODULE_1__.string().min(2, 'Prekratko').max(50, 'Predugacko').required('Prezime je obavezno'),
-    city: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Izaberi grad')
+    validationCity: validationCity
+  });
+  var validationCity = yup__WEBPACK_IMPORTED_MODULE_1__.object().shape({
+    city: yup__WEBPACK_IMPORTED_MODULE_1__.object().shape({
+      label: yup__WEBPACK_IMPORTED_MODULE_1__.string().required("Izaberi grad"),
+      value: yup__WEBPACK_IMPORTED_MODULE_1__.string().required("Izaberi grad")
+    })
   });
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     axios__WEBPACK_IMPORTED_MODULE_5__["default"].get('http://stagod.local/wp-json/wp/v2/users/' + user_id).then(function (response) {
@@ -240,20 +255,46 @@ function FormikUpdateUserData(props) {
     }).then(function (data) {
       formikRef.current.setFieldValue("first_name", data.first_name);
       formikRef.current.setFieldValue("last_name", data.last_name);
+      formikRef.current.setFieldValue("city", data.acf.city);
     })["catch"](function (error) {
       console.log(error);
     });
   }, [initialValues]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    // when the component is mounted, the alert is displayed for 3 seconds
+    var timer = setTimeout(function () {
+      setDataUpdated(false);
+    }, 3000);
+
+    // To clear or cancel a timer, you call the clearTimeout(); method, 
+    // passing in the timer object that you created into clearTimeout().
+    return function () {
+      return clearTimeout(timer);
+    };
+  }, [dataUpdated]);
   var onSubmit = function onSubmit(values, formikBag) {
     var setSubmitting = formikBag.setSubmitting,
-      setFieldError = formikBag.setFieldError;
-    axios__WEBPACK_IMPORTED_MODULE_5__["default"].post('http://stagod.local/wp-json/wp/v2/users/register/', values).then(function (response) {
-      errorMessageHandler(setFieldError, response.data, 'first_name');
-      errorMessageHandler(setFieldError, response.data, 'last_name');
-      errorMessageHandler(setFieldError, response.data, 'city');
-      if (response.data.args.user_registered) {
-        window.location.href = response.data.args.redirect_url;
-      } else {
+      setFieldError = formikBag.setFieldError,
+      isSubmitting = formikBag.isSubmitting;
+    var city = '';
+    if (formikRef.current.values.city.city) {
+      city = formikRef.current.values.city.city;
+    } else {
+      city = formikRef.current.values.city;
+    }
+    var data = new FormData();
+    data.append('action', 'edit_personal_data');
+    data.append('nonce', edit_account_data.nonce_edit_personal_data);
+    data.append('current_user_id', edit_account_data.current_user_id);
+    data.append('first_name', values.first_name);
+    data.append('last_name', values.last_name);
+    data.append('city', city);
+    axios__WEBPACK_IMPORTED_MODULE_5__["default"].post(edit_account_data.ajax_url, data).then(function (response) {
+      return response.data;
+    }).then(function (data) {
+      console.log(data);
+      if (data.success_status) {
+        setDataUpdated(true);
         setSubmitting(false);
       }
     })["catch"](function (error) {
@@ -303,11 +344,15 @@ function FormikUpdateUserData(props) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
               type: "submit",
               className: "btn btn-primary me-4",
-              children: "Registruj Se"
+              disabled: !formik.isValid,
+              children: "Sa\u010Duvaj izmene"
             }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
               className: "icon-spinner"
             }) : '']
-          })]
+          }), dataUpdated ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: "alert alert-success mt-6",
+            children: "Va\u0161e izmene su sa\u010Duvane."
+          }) : '']
         });
       }
     })]

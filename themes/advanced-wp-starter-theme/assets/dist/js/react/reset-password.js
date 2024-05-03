@@ -103,7 +103,6 @@ function FieldSelect(props) {
     setValue = _useField2[2].setValue;
   var onChange = function onChange(selectedOptions) {
     setValue(selectedOptions);
-    console.log(selectedOptions);
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "form-control mb-6",
@@ -115,11 +114,11 @@ function FieldSelect(props) {
       id: name,
       name: name
       // isMulti={true}
+      // defaultChecked={true}
       ,
-      defaultChecked: true,
-      defaultValue: {
+      defaultValue: defaultValue ? {
         city: defaultValue
-      },
+      } : '',
       placeholder: placeholder,
       onChange: onChange,
       options: options,

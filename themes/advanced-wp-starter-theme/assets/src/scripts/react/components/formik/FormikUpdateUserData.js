@@ -8,6 +8,8 @@ import listOfCities from '../../../cities.json'
 function FormikUpdateUserData(props) {
   const { user_id, user_city } = props
 
+  const [dataUpdated, setDataUpdated] = useState(false)
+
   const formikRef = useRef();
 
   const initialValues = {
@@ -18,7 +20,13 @@ function FormikUpdateUserData(props) {
   const validationSchema = Yup.object({
     first_name: Yup.string().min(2, 'Prekratko').max(50, 'Predugacko').required('Ime je obavezno'),
     last_name: Yup.string().min(2, 'Prekratko').max(50, 'Predugacko').required('Prezime je obavezno'),
-    city: Yup.string().required('Izaberi grad')
+    validationCity
+  })
+  const validationCity = Yup.object().shape({
+    city: Yup.object().shape({
+      label: Yup.string().required("Izaberi grad"),
+      value: Yup.string().required("Izaberi grad")
+    })
   })
 
   useEffect(() => {
@@ -29,6 +37,7 @@ function FormikUpdateUserData(props) {
       .then((data) => {
         formikRef.current.setFieldValue("first_name", data.first_name)
         formikRef.current.setFieldValue("last_name", data.last_name)
+        formikRef.current.setFieldValue("city", data.acf.city)
       })
       .catch((error) => {
         console.log(error)
@@ -36,18 +45,43 @@ function FormikUpdateUserData(props) {
 
   }, [initialValues])
 
+  useEffect(() => {
+    // when the component is mounted, the alert is displayed for 3 seconds
+    const timer = setTimeout(() => {
+      setDataUpdated(false);
+    }, 3000);
+
+    // To clear or cancel a timer, you call the clearTimeout(); method, 
+    // passing in the timer object that you created into clearTimeout().
+    return () => clearTimeout(timer);
+  }, [dataUpdated]);
+
   const onSubmit = (values, formikBag) => {
-    const { setSubmitting, setFieldError } = formikBag
+    const { setSubmitting, setFieldError, isSubmitting } = formikBag
 
-    axios.post('http://stagod.local/wp-json/wp/v2/users/register/', values)
-      .then((response) => {
-        errorMessageHandler(setFieldError, response.data, 'first_name')
-        errorMessageHandler(setFieldError, response.data, 'last_name')
-        errorMessageHandler(setFieldError, response.data, 'city')
+    let city = ''
+    if (formikRef.current.values.city.city) {
+      city = formikRef.current.values.city.city
+    } else {
+      city = formikRef.current.values.city
+    }
 
-        if (response.data.args.user_registered) {
-          window.location.href = response.data.args.redirect_url
-        } else {
+    const data = new FormData()
+
+    data.append('action', 'edit_personal_data')
+    data.append('nonce', edit_account_data.nonce_edit_personal_data)
+    data.append('current_user_id', edit_account_data.current_user_id)
+    data.append('first_name', values.first_name)
+    data.append('last_name', values.last_name)
+    data.append('city', city)
+
+    axios.post(edit_account_data.ajax_url, data)
+      .then((response) => response.data)
+      .then((data) => {
+        console.log(data)
+
+        if (data.success_status) {
+          setDataUpdated(true)
           setSubmitting(false)
         }
       }).catch((error) => {
@@ -71,9 +105,10 @@ function FormikUpdateUserData(props) {
             </div>
             <FormikControl name='city' control='select' label='Grad' placeholder="Izaberi grad" options={listOfCities} defaultValue={initialValues.city} />
             <div className='d-flex align-items-center'>
-              <button type='submit' className='btn btn-primary me-4'>Registruj Se</button>
+              <button type='submit' className='btn btn-primary me-4' disabled={!formik.isValid}>Sačuvaj izmene</button>
               {(formik.isSubmitting) ? <i className='icon-spinner'></i> : ''}
             </div>
+            {(dataUpdated) ? <div className='alert alert-success mt-6'>Vaše izmene su sačuvane.</div> : ''}
           </Form>
         }
       </Formik>
