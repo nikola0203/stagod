@@ -57,7 +57,7 @@ function FormikUpdateUserData(props) {
   }, [dataUpdated]);
 
   const onSubmit = (values, formikBag) => {
-    const { setSubmitting, setFieldError, isSubmitting } = formikBag
+    const { setSubmitting } = formikBag
 
     let city = ''
     if (formikRef.current.values.city.city) {

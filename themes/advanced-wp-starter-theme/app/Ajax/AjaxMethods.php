@@ -22,7 +22,9 @@ class AjaxMethods
 
     add_action( 'wp_ajax_save_favorite_user', array( $this, 'save_favorite_user' ) );
     add_action( 'wp_ajax_delete_favorite_user', array( $this, 'delete_favorite_user' ) );
+
     add_action( 'wp_ajax_edit_personal_data', array( $this, 'edit_personal_data' ) );
+    add_action( 'wp_ajax_change_current_user_email', array( $this, 'change_current_user_email' ) );
   }
 
   function save_favorite_user() {
@@ -291,5 +293,35 @@ class AjaxMethods
     ];
 
     wp_send_json( $data );  
+  }
+
+  function change_current_user_email()
+  {
+    check_ajax_referer( 'nonce-change-current-user-email', 'nonce' );
+
+    $user_id        = $_POST['current_user_id'];
+    $email          = $_POST['email'];
+    $password       = $_POST['password'];
+    $user           = get_user_by( 'ID', $user_id );
+    $email_changed = false;
+    
+    if ( $user && wp_check_password( $password, $user->data->user_pass, $user_id ) ) {
+      $email_changed = true;
+      
+      $userdata = [
+        'ID'         => $user_id,
+        'user_email' => $email
+      ];
+      wp_update_user( $userdata );
+    } else {
+      $email_changed = false;
+    }
+
+    $data = [
+      'new_email'     => $email,
+      'email_changed' => $email_changed
+    ];
+
+    wp_send_json( $data );
   }
 }
