@@ -228,7 +228,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function FormikUpdateEmail(props) {
-  console.log(props);
   var user_id = props.user_id;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
     _useState2 = _slicedToArray(_useState, 2),
@@ -238,6 +237,10 @@ function FormikUpdateEmail(props) {
     _useState4 = _slicedToArray(_useState3, 2),
     dataUpdated = _useState4[0],
     setDataUpdated = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    errorMessage = _useState6[0],
+    setErrorMessage = _useState6[1];
   var initialValues = {
     email: '',
     password: ''
@@ -250,7 +253,6 @@ function FormikUpdateEmail(props) {
     axios__WEBPACK_IMPORTED_MODULE_5__["default"].get('http://stagod.local/wp-json/wp/v2/users/' + user_id).then(function (response) {
       return response.data;
     }).then(function (data) {
-      console.log(data);
       setUserEmail(data.user_email);
     })["catch"](function (error) {
       console.log(error);
@@ -270,10 +272,17 @@ function FormikUpdateEmail(props) {
     axios__WEBPACK_IMPORTED_MODULE_5__["default"].post(edit_account_data.ajax_url, data).then(function (response) {
       return response.data;
     }).then(function (data) {
+      console.log(data);
+      if (!data.success) {
+        setDataUpdated(false);
+        setErrorMessage(true);
+        setSubmitting(false);
+      }
       if (data.email_changed) {
-        setUserEmail(data.new_email);
+        setErrorMessage(false);
         setDataUpdated(true);
         setSubmitting(false);
+        setUserEmail(data.new_email);
       }
     })["catch"](function (error) {
       console.log(error.data);
@@ -281,16 +290,30 @@ function FormikUpdateEmail(props) {
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "border p-4 p-xl-8 mb-6 rounded-4 bg-white",
+      className: "border p-4 p-xl-8 mb-6 rounded-4 bg-white d-flex align-items-center justify-content-between",
       type: "button",
       "data-bs-toggle": "modal",
       "data-bs-target": "#modal-update-email",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "fw-bold",
-        children: "Promena e-maila"
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "h5 mb-0 fw-bold",
+          children: "Promena e-maila"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "text-gray-200 fw-bold",
+          children: userEmail
+        })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "text-gray-200 fw-bold",
-        children: userEmail
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
+          width: "16",
+          height: "16",
+          viewBox: "0 0 16 16",
+          fill: "#EA4900",
+          xmlns: "http://www.w3.org/2000/svg",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+            fillRule: "evenodd",
+            d: "M12.2929,5.292875 C12.6834,4.902375 13.3166,4.902375 13.7071,5.292875 C14.0976,5.683375 14.0976,6.316555 13.7071,6.707085 L8.70711,11.707085 C8.31658,12.097605 7.68342,12.097605 7.29289,11.707085 L2.29289,6.707085 C1.90237,6.316555 1.90237,5.683375 2.29289,5.292875 C2.68342,4.902375 3.31658,4.902375 3.70711,5.292875 L8,9.585765 L12.2929,5.292875 Z"
+          })
+        })
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "modal fade",
@@ -312,7 +335,7 @@ function FormikUpdateEmail(props) {
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
             className: "h3",
-            id: "modal-label-user-register",
+            id: "modal-label-user-update-email",
             children: "Promena e-maila"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
             className: "fw-700 mb-0",
@@ -342,13 +365,16 @@ function FormikUpdateEmail(props) {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
                     type: "submit",
                     className: "btn btn-primary me-4",
-                    children: "Promeni"
+                    children: "Promeni email"
                   }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
                     className: "icon-spinner"
                   }) : '']
                 }), dataUpdated ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                   className: "alert alert-success mt-6",
                   children: "Va\u0161e izmene su sa\u010Duvane."
+                }) : '', errorMessage ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                  className: "alert alert-warning mt-6",
+                  children: "Email adresa je ista kao i trenutna."
                 }) : '']
               });
             }
@@ -359,6 +385,188 @@ function FormikUpdateEmail(props) {
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikUpdateEmail);
+
+/***/ }),
+
+/***/ "./assets/src/scripts/react/components/formik/FormikUpdatePassword.js":
+/*!****************************************************************************!*\
+  !*** ./assets/src/scripts/react/components/formik/FormikUpdatePassword.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap/js/dist/modal */ "./.yarn/__virtual__/bootstrap-virtual-fe983d1d46/0/cache/bootstrap-npm-5.3.2-20b391b636-5c3eb06342.zip/node_modules/bootstrap/js/dist/modal.js");
+/* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.6.7-d7b9974d1b-a1932b089e.zip/node_modules/axios/lib/axios.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-2111337816/0/cache/formik-npm-2.4.5-d97cd46456-223fb3e6b0.zip/node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./.yarn/cache/yup-npm-1.3.3-bef3f67698-28c119896c.zip/node_modules/yup/index.esm.js");
+/* harmony import */ var _FormikControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FormikControl */ "./assets/src/scripts/react/components/formik/FormikControl.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+// import listOfCities from '../../../cities.json'
+
+
+
+function FormikUpdatePassword(props) {
+  var user_id = props.user_id;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    dataUpdated = _useState2[0],
+    setDataUpdated = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    errorMessage = _useState4[0],
+    setErrorMessage = _useState4[1];
+  var initialValues = {
+    current_password: '',
+    update_password: '',
+    confirm_update_password: ''
+  };
+  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object({
+    current_password: yup__WEBPACK_IMPORTED_MODULE_2__.string().min(8, 'Lozinka mora biti duža od 8 karaktera').matches(/[0-9]/, 'Lozinka mora da sadrži bar jedan broj').matches(/[a-z]/, 'Lozinka mora da sadrži bar jedno malo slovo').matches(/[A-Z]/, 'Lozinka mora da sadrži bar jedno veliko slovo').required('Lozinka je obavezna'),
+    update_password: yup__WEBPACK_IMPORTED_MODULE_2__.string().min(8, 'Lozinka mora biti duža od 8 karaktera').matches(/[0-9]/, 'Lozinka mora da sadrži bar jedan broj').matches(/[a-z]/, 'Lozinka mora da sadrži bar jedno malo slovo').matches(/[A-Z]/, 'Lozinka mora da sadrži bar jedno veliko slovo').required('Lozinka je obavezna'),
+    confirm_update_password: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Potvrdite lozinku").oneOf([yup__WEBPACK_IMPORTED_MODULE_2__.ref("update_password")], "Lozinka mora da se poklapa")
+  });
+  var onSubmit = function onSubmit(values, formikBag) {
+    var setSubmitting = formikBag.setSubmitting,
+      setFieldError = formikBag.setFieldError;
+
+    // console.log(values)
+    var data = new FormData();
+    data.append('action', 'change_current_user_password');
+    data.append('nonce', edit_account_data.nonce_change_current_user_password);
+    data.append('current_user_id', edit_account_data.current_user_id);
+    data.append('current_password', values.current_password);
+    data.append('update_password', values.update_password);
+    axios__WEBPACK_IMPORTED_MODULE_5__["default"].post(edit_account_data.ajax_url, data).then(function (response) {
+      return response.data;
+    }).then(function (data) {
+      console.log(data);
+      if (!data.success) {
+        setDataUpdated(false);
+        setErrorMessage(true);
+        setSubmitting(false);
+      }
+      if (data.password_changed) {
+        setErrorMessage(false);
+        setDataUpdated(true);
+        setSubmitting(false);
+      }
+    })["catch"](function (error) {
+      console.log(error.data);
+    });
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "border p-4 p-xl-8 mb-6 rounded-4 bg-white d-flex align-items-center justify-content-between",
+      type: "button",
+      "data-bs-toggle": "modal",
+      "data-bs-target": "#modal-update-password",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "h5 mb-0 fw-bold",
+          children: "Promena lozinke"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
+          width: "16",
+          height: "16",
+          viewBox: "0 0 16 16",
+          fill: "#EA4900",
+          xmlns: "http://www.w3.org/2000/svg",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+            fillRule: "evenodd",
+            d: "M12.2929,5.292875 C12.6834,4.902375 13.3166,4.902375 13.7071,5.292875 C14.0976,5.683375 14.0976,6.316555 13.7071,6.707085 L8.70711,11.707085 C8.31658,12.097605 7.68342,12.097605 7.29289,11.707085 L2.29289,6.707085 C1.90237,6.316555 1.90237,5.683375 2.29289,5.292875 C2.68342,4.902375 3.31658,4.902375 3.70711,5.292875 L8,9.585765 L12.2929,5.292875 Z"
+          })
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "modal fade",
+      id: "modal-update-password",
+      tabIndex: "-1",
+      "aria-labelledby": "modal-label-update-password",
+      "aria-hidden": "true",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "modal-dialog modal-dialog-centered",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "modal-content p-4 p-xl-8",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: "modal-header border-0",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+              type: "button",
+              className: "btn-close",
+              "data-bs-dismiss": "modal",
+              "aria-label": "Close"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
+            className: "h3",
+            id: "modal-label-user-update-password",
+            children: "Promena lozinke"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(formik__WEBPACK_IMPORTED_MODULE_6__.Formik, {
+            initialValues: initialValues,
+            validationSchema: validationSchema,
+            onSubmit: onSubmit,
+            children: function children(formik) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_6__.Form, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                  control: "input",
+                  type: "password",
+                  label: "Va\u017Ee\u0107a lozinka",
+                  name: "current_password",
+                  autoComplete: "on"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                  control: "input",
+                  type: "password",
+                  label: "Nova lozinka",
+                  name: "update_password",
+                  autoComplete: "on"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                  control: "input",
+                  type: "password",
+                  label: "Ponovite novu lozinku",
+                  name: "confirm_update_password",
+                  autoComplete: "on"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                  className: "d-flex align-items-center",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+                    type: "submit",
+                    className: "btn btn-primary me-4",
+                    children: "Promeni lozinku"
+                  }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+                    className: "icon-spinner"
+                  }) : '']
+                }), dataUpdated ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                  className: "alert alert-success mt-6",
+                  children: "Va\u0161e izmene su sa\u010Duvane."
+                }) : '', errorMessage ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                  className: "alert alert-warning mt-6",
+                  children: "Va\u017Ee\u0107a lozinka nije ispravna."
+                }) : '']
+              });
+            }
+          })]
+        })
+      })
+    })]
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikUpdatePassword);
 
 /***/ }),
 
@@ -460,7 +668,6 @@ function FormikUpdateUserData(props) {
     axios__WEBPACK_IMPORTED_MODULE_5__["default"].post(edit_account_data.ajax_url, data).then(function (response) {
       return response.data;
     }).then(function (data) {
-      console.log(data);
       if (data.success_status) {
         setDataUpdated(true);
         setSubmitting(false);
@@ -469,61 +676,64 @@ function FormikUpdateUserData(props) {
       console.log(error.data);
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-      className: "h5",
-      children: "Izmena li\u010Dnih podataka"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(formik__WEBPACK_IMPORTED_MODULE_6__.Formik, {
-      innerRef: formikRef,
-      initialValues: initialValues,
-      validationSchema: validationSchema,
-      enableReinitialize: true,
-      onSubmit: onSubmit,
-      children: function children(formik) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_6__.Form, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              className: "col-xl-6",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
-                control: "input",
-                type: "text",
-                label: "Ime",
-                name: "first_name"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              className: "col-xl-6",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
-                control: "input",
-                type: "text",
-                label: "Prezime",
-                name: "last_name"
-              })
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            name: "city",
-            control: "select",
-            label: "Grad",
-            placeholder: "Izaberi grad",
-            options: _cities_json__WEBPACK_IMPORTED_MODULE_3__,
-            defaultValue: initialValues.city
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "d-flex align-items-center",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              type: "submit",
-              className: "btn btn-primary me-4",
-              disabled: !formik.isValid,
-              children: "Sa\u010Duvaj izmene"
-            }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
-              className: "icon-spinner"
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "border p-4 p-xl-8 mb-6 rounded-4 bg-white",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
+        className: "h5",
+        children: "Izmena li\u010Dnih podataka"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(formik__WEBPACK_IMPORTED_MODULE_6__.Formik, {
+        innerRef: formikRef,
+        initialValues: initialValues,
+        validationSchema: validationSchema,
+        enableReinitialize: true,
+        onSubmit: onSubmit,
+        children: function children(formik) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_6__.Form, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              className: "row",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                className: "col-xl-6",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
+                  control: "input",
+                  type: "text",
+                  label: "Ime",
+                  name: "first_name"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                className: "col-xl-6",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
+                  control: "input",
+                  type: "text",
+                  label: "Prezime",
+                  name: "last_name"
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              name: "city",
+              control: "select",
+              label: "Grad",
+              placeholder: "Izaberi grad",
+              options: _cities_json__WEBPACK_IMPORTED_MODULE_3__,
+              defaultValue: initialValues.city
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              className: "d-flex align-items-center",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+                type: "submit",
+                className: "btn btn-primary me-4",
+                disabled: !formik.isValid,
+                children: "Sa\u010Duvaj izmene"
+              }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+                className: "icon-spinner"
+              }) : '']
+            }), dataUpdated ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+              className: "alert alert-success mt-6",
+              children: "Va\u0161e izmene su sa\u010Duvane."
             }) : '']
-          }), dataUpdated ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "alert alert-success mt-6",
-            children: "Va\u0161e izmene su sa\u010Duvane."
-          }) : '']
-        });
-      }
-    })]
+          });
+        }
+      })]
+    })
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikUpdateUserData);
@@ -612,22 +822,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ "./.yarn/__virtual__/react-dom-virtual-a12088770f/0/cache/react-dom-npm-18.2.0-dd675bca1c-ca5e7762ec.zip/node_modules/react-dom/client.js");
 /* harmony import */ var _components_formik_FormikUpdateUserData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/formik/FormikUpdateUserData */ "./assets/src/scripts/react/components/formik/FormikUpdateUserData.js");
 /* harmony import */ var _components_formik_FormikUpdateEmail__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/formik/FormikUpdateEmail */ "./assets/src/scripts/react/components/formik/FormikUpdateEmail.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_formik_FormikUpdatePassword__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/formik/FormikUpdatePassword */ "./assets/src/scripts/react/components/formik/FormikUpdatePassword.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
 
 
 
 
+
+var el_account_settings = document.getElementById('account-settings');
+var user_id = el_account_settings.getAttribute('data-user_id');
 var el_update_personal_data = document.getElementById('form-update-personal-data');
-var user_id = el_update_personal_data.getAttribute('data-user_id');
 var user_city = el_update_personal_data.getAttribute('data-user_city');
 var update_personal_data_root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(el_update_personal_data);
-update_personal_data_root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_formik_FormikUpdateUserData__WEBPACK_IMPORTED_MODULE_1__["default"], {
+update_personal_data_root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_formik_FormikUpdateUserData__WEBPACK_IMPORTED_MODULE_1__["default"], {
   user_id: user_id,
   user_city: user_city
 }));
 var el_update_email = document.getElementById('form-update-email');
 var update_email_root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(el_update_email);
-update_email_root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_formik_FormikUpdateEmail__WEBPACK_IMPORTED_MODULE_2__["default"], {
+update_email_root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_formik_FormikUpdateEmail__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  user_id: user_id
+}));
+var el_update_password = document.getElementById('form-update-password');
+var update_password_root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(el_update_password);
+update_password_root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_formik_FormikUpdatePassword__WEBPACK_IMPORTED_MODULE_3__["default"], {
   user_id: user_id
 }));
 

@@ -25,6 +25,7 @@ class AjaxMethods
 
     add_action( 'wp_ajax_edit_personal_data', array( $this, 'edit_personal_data' ) );
     add_action( 'wp_ajax_change_current_user_email', array( $this, 'change_current_user_email' ) );
+    add_action( 'wp_ajax_change_current_user_password', array( $this, 'change_current_user_password' ) );
   }
 
   function save_favorite_user() {
@@ -299,20 +300,26 @@ class AjaxMethods
   {
     check_ajax_referer( 'nonce-change-current-user-email', 'nonce' );
 
-    $user_id        = $_POST['current_user_id'];
-    $email          = $_POST['email'];
-    $password       = $_POST['password'];
-    $user           = get_user_by( 'ID', $user_id );
+    $user_id       = $_POST['current_user_id'];
+    $email         = $_POST['email'];
+    $password      = $_POST['password'];
+    $user          = get_user_by( 'ID', $user_id );
     $email_changed = false;
+
+    if ( $user->data->user_email == $email ) {
+      wp_send_json_error();
+    }
     
     if ( $user && wp_check_password( $password, $user->data->user_pass, $user_id ) ) {
-      $email_changed = true;
-      
       $userdata = [
         'ID'         => $user_id,
         'user_email' => $email
       ];
       wp_update_user( $userdata );
+
+      update_user_meta( $user_id, 'account_activated', 0 );
+
+      $email_changed = true;
     } else {
       $email_changed = false;
     }
@@ -323,5 +330,33 @@ class AjaxMethods
     ];
 
     wp_send_json( $data );
+  }
+
+  function change_current_user_password()
+  {
+    $current_password = $_POST['current_password'];
+    $update_password  = $_POST['update_password'];
+    $user_id          = $_POST['current_user_id'];
+    $user             = get_user_by( 'ID', $user_id );
+    $password_changed = false;
+
+    if ( ! wp_check_password( $current_password, $user->data->user_pass, $user_id ) ) {
+      wp_send_json_error();
+    } else {
+      $userdata = [
+        'ID'        => $user_id,
+        'user_pass' => $update_password
+      ];
+      wp_update_user( $userdata );
+
+      $password_changed = true;
+    }
+    
+    $data = [
+      'password_changed' => $password_changed,
+      'user'             => $user,
+    ];
+
+    wp_send_json( $data );  
   }
 }

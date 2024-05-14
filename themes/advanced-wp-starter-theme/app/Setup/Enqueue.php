@@ -74,10 +74,11 @@ class Enqueue
 		if ( 'author/admin/edit-account' == $wp->request ) {
 			wp_enqueue_script( 'edit-account', mix( 'js/react/edit-account.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 			wp_localize_script( 'edit-account', 'edit_account_data', [
-				'ajax_url'                        => admin_url( 'admin-ajax.php' ),
-				'nonce_edit_personal_data'        => wp_create_nonce( 'nonce-edit-personal-data' ),
-				'nonce_change_current_user_email' => wp_create_nonce( 'nonce-change-current-user-email' ),
-				'current_user_id'                 => get_current_user_id()
+				'ajax_url'                           => admin_url( 'admin-ajax.php' ),
+				'nonce_edit_personal_data'           => wp_create_nonce( 'nonce-edit-personal-data' ),
+				'nonce_change_current_user_email'    => wp_create_nonce( 'nonce-change-current-user-email' ),
+				'nonce_change_current_user_password' => wp_create_nonce( 'nonce-change-current-user-password' ),
+				'current_user_id'                    => get_current_user_id()
 			]);
 		}
 		

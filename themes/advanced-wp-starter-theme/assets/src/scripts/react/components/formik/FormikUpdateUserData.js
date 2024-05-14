@@ -78,8 +78,6 @@ function FormikUpdateUserData(props) {
     axios.post(edit_account_data.ajax_url, data)
       .then((response) => response.data)
       .then((data) => {
-        console.log(data)
-
         if (data.success_status) {
           setDataUpdated(true)
           setSubmitting(false)
@@ -91,27 +89,29 @@ function FormikUpdateUserData(props) {
 
   return (
     <>
-      <h2 className="h5">Izmena ličnih podataka</h2>
-      <Formik innerRef={formikRef} initialValues={initialValues} validationSchema={validationSchema} enableReinitialize={true} onSubmit={onSubmit}>
-        {
-          (formik) => <Form>
-            <div className='row'>
-              <div className='col-xl-6'>
-                <FormikControl control='input' type='text' label='Ime' name='first_name' />
+      <div className="border p-4 p-xl-8 mb-6 rounded-4 bg-white">
+        <h2 className="h5">Izmena ličnih podataka</h2>
+        <Formik innerRef={formikRef} initialValues={initialValues} validationSchema={validationSchema} enableReinitialize={true} onSubmit={onSubmit}>
+          {
+            (formik) => <Form>
+              <div className='row'>
+                <div className='col-xl-6'>
+                  <FormikControl control='input' type='text' label='Ime' name='first_name' />
+                </div>
+                <div className='col-xl-6'>
+                  <FormikControl control='input' type='text' label='Prezime' name='last_name' />
+                </div>
               </div>
-              <div className='col-xl-6'>
-                <FormikControl control='input' type='text' label='Prezime' name='last_name' />
+              <FormikControl name='city' control='select' label='Grad' placeholder="Izaberi grad" options={listOfCities} defaultValue={initialValues.city} />
+              <div className='d-flex align-items-center'>
+                <button type='submit' className='btn btn-primary me-4' disabled={!formik.isValid}>Sačuvaj izmene</button>
+                {(formik.isSubmitting) ? <i className='icon-spinner'></i> : ''}
               </div>
-            </div>
-            <FormikControl name='city' control='select' label='Grad' placeholder="Izaberi grad" options={listOfCities} defaultValue={initialValues.city} />
-            <div className='d-flex align-items-center'>
-              <button type='submit' className='btn btn-primary me-4' disabled={!formik.isValid}>Sačuvaj izmene</button>
-              {(formik.isSubmitting) ? <i className='icon-spinner'></i> : ''}
-            </div>
-            {(dataUpdated) ? <div className='alert alert-success mt-6'>Vaše izmene su sačuvane.</div> : ''}
-          </Form>
-        }
-      </Formik>
+              {(dataUpdated) ? <div className='alert alert-success mt-6'>Vaše izmene su sačuvane.</div> : ''}
+            </Form>
+          }
+        </Formik>
+      </div>
     </>
   )
 }
