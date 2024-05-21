@@ -14,18 +14,19 @@ class AjaxMethods
    */
 	public function register() 
 	{
-    add_action( 'wp_ajax_posts_archive_load_more_posts', array( $this, 'posts_archive_load_more_posts' ) );
-    add_action( 'wp_ajax_nopriv_posts_archive_load_more_posts', array( $this, 'posts_archive_load_more_posts' ) );
+    add_action( 'wp_ajax_posts_archive_load_more_posts', [$this, 'posts_archive_load_more_posts'] );
+    add_action( 'wp_ajax_nopriv_posts_archive_load_more_posts', [$this, 'posts_archive_load_more_posts'] );
 
-    add_action( 'wp_ajax_filter_posts_by_category', array( $this, 'filter_posts_by_category' ) );
-    add_action( 'wp_ajax_nopriv_filter_posts_by_category', array( $this, 'filter_posts_by_category' ) );
+    add_action( 'wp_ajax_filter_posts_by_category', [$this, 'filter_posts_by_category'] );
+    add_action( 'wp_ajax_nopriv_filter_posts_by_category', [$this, 'filter_posts_by_category'] );
 
-    add_action( 'wp_ajax_save_favorite_user', array( $this, 'save_favorite_user' ) );
-    add_action( 'wp_ajax_delete_favorite_user', array( $this, 'delete_favorite_user' ) );
+    add_action( 'wp_ajax_save_favorite_user', [$this, 'save_favorite_user'] );
+    add_action( 'wp_ajax_delete_favorite_user', [$this, 'delete_favorite_user'] );
 
-    add_action( 'wp_ajax_edit_personal_data', array( $this, 'edit_personal_data' ) );
-    add_action( 'wp_ajax_change_current_user_email', array( $this, 'change_current_user_email' ) );
-    add_action( 'wp_ajax_change_current_user_password', array( $this, 'change_current_user_password' ) );
+    add_action( 'wp_ajax_edit_personal_data', [$this, 'edit_personal_data'] );
+    add_action( 'wp_ajax_change_current_user_email', [$this, 'change_current_user_email'] );
+    add_action( 'wp_ajax_change_current_user_password', [$this, 'change_current_user_password'] );
+    add_action( 'wp_ajax_delete_account', [$this, 'delete_account'] );
   }
 
   function save_favorite_user() {
@@ -334,6 +335,8 @@ class AjaxMethods
 
   function change_current_user_password()
   {
+    check_ajax_referer( 'nonce-change-current-user-password', 'nonce' );
+
     $current_password = $_POST['current_password'];
     $update_password  = $_POST['update_password'];
     $user_id          = $_POST['current_user_id'];
@@ -358,5 +361,28 @@ class AjaxMethods
     ];
 
     wp_send_json( $data );  
+  }
+
+  function delete_account() {
+    check_ajax_referer( 'nonce-delete-account', 'nonce' );
+
+    $password        = $_POST['password'];
+    $user_id         = $_POST['current_user_id'];
+    $user            = get_user_by( 'ID', $user_id );
+    $account_deleted = false;
+
+    if ( ! wp_check_password( $password, $user->data->user_pass, $user_id ) ) {
+      wp_send_json_error();
+    } else {
+      wp_delete_user( $user_id );
+
+      $account_deleted = true;
+    }
+
+    $data = [
+      'account_deleted' => $account_deleted
+    ];
+
+    wp_send_json( $data );
   }
 }

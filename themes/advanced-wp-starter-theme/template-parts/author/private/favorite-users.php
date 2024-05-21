@@ -5,10 +5,18 @@
 use Awpt\Plugins\Acf;
 
 $get_favorite_users = get_user_meta( get_current_user_id(), 'favorite_users', true );
-$count_users = count( $get_favorite_users );
-?>
+$count_users        = ( $get_favorite_users ) ? count( $get_favorite_users ) : 0;
 
-<h3 id="count-saved-users">Sacuvano (<span class="count-saved-users-number"><?php esc_html_e( $count_users ); ?></span>)</h3>
+if ( $count_users ) :
+  ?>
+  <h3 id="count-saved-users">Sačuvano (<span class="count-saved-users-number"><?php esc_html_e( $count_users ); ?></span>)</h3>
+  <?php
+else :
+  ?>
+  <h3 id="count-saved-users">Nema sačuvanih korisnika.</h3>
+  <?php
+endif;
+?>
 <section class="section-favorite-users text-center">
 <div class="row">
   <?php 

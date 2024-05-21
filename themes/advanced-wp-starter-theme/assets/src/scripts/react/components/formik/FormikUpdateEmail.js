@@ -26,7 +26,10 @@ function FormikUpdateEmail(props) {
   })
 
   useEffect(() => {
-    axios.get('http://stagod.local/wp-json/wp/v2/users/' + user_id)
+    axios.get(
+      edit_account_data.home_url + '/wp-json/wp/v2/users/' + user_id, {
+      headers: { 'X-WP-Nonce': edit_account_data.nonce }
+    })
       .then((response) => {
         return response.data
       })

@@ -192,6 +192,176 @@ function FormikControl(props) {
 
 /***/ }),
 
+/***/ "./assets/src/scripts/react/components/formik/FormikDeleteAccount.js":
+/*!***************************************************************************!*\
+  !*** ./assets/src/scripts/react/components/formik/FormikDeleteAccount.js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap/js/dist/modal */ "./.yarn/__virtual__/bootstrap-virtual-fe983d1d46/0/cache/bootstrap-npm-5.3.2-20b391b636-5c3eb06342.zip/node_modules/bootstrap/js/dist/modal.js");
+/* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.6.7-d7b9974d1b-a1932b089e.zip/node_modules/axios/lib/axios.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-2111337816/0/cache/formik-npm-2.4.5-d97cd46456-223fb3e6b0.zip/node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./.yarn/cache/yup-npm-1.3.3-bef3f67698-28c119896c.zip/node_modules/yup/index.esm.js");
+/* harmony import */ var _FormikControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FormikControl */ "./assets/src/scripts/react/components/formik/FormikControl.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+function FormikDeleteAccount(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    dataUpdated = _useState2[0],
+    setDataUpdated = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    errorMessage = _useState4[0],
+    setErrorMessage = _useState4[1];
+  var initialValues = {
+    password_delete_account: ''
+  };
+  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object({
+    password_delete_account: yup__WEBPACK_IMPORTED_MODULE_2__.string().min(8, 'Lozinka mora biti duža od 8 karaktera').matches(/[0-9]/, 'Lozinka mora da sadrži bar jedan broj').matches(/[a-z]/, 'Lozinka mora da sadrži bar jedno malo slovo').matches(/[A-Z]/, 'Lozinka mora da sadrži bar jedno veliko slovo').required('Lozinka je obavezna')
+  });
+  var onSubmit = function onSubmit(values, formikBag) {
+    var setSubmitting = formikBag.setSubmitting;
+
+    // console.log(values)
+    var data = new FormData();
+    data.append('action', 'delete_account');
+    data.append('nonce', edit_account_data.nonce_delete_account);
+    data.append('current_user_id', edit_account_data.current_user_id);
+    data.append('password', values.password_delete_account);
+    axios__WEBPACK_IMPORTED_MODULE_5__["default"].post(edit_account_data.ajax_url, data).then(function (response) {
+      return response.data;
+    }).then(function (data) {
+      console.log(data);
+      if (!data.success) {
+        setDataUpdated(false);
+        setErrorMessage(true);
+        setSubmitting(false);
+      }
+      if (data.account_deleted) {
+        setErrorMessage(false);
+        setDataUpdated(true);
+        setSubmitting(false);
+        // sessionStorage.setItem("account_deleted", "true")
+        // window.location.replace(edit_account_data.home_url)
+      }
+    })["catch"](function (error) {
+      console.log(error.data);
+    });
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "border p-4 p-xl-8 mb-6 rounded-4 bg-white d-flex align-items-center justify-content-between",
+      type: "button",
+      "data-bs-toggle": "modal",
+      "data-bs-target": "#modal-delete-account",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "h5 mb-0 fw-bold",
+          children: "\u017Delim da izbri\u0161em svoj nalog"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
+          width: "16",
+          height: "16",
+          viewBox: "0 0 16 16",
+          fill: "#EA4900",
+          xmlns: "http://www.w3.org/2000/svg",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+            fillRule: "evenodd",
+            d: "M12.2929,5.292875 C12.6834,4.902375 13.3166,4.902375 13.7071,5.292875 C14.0976,5.683375 14.0976,6.316555 13.7071,6.707085 L8.70711,11.707085 C8.31658,12.097605 7.68342,12.097605 7.29289,11.707085 L2.29289,6.707085 C1.90237,6.316555 1.90237,5.683375 2.29289,5.292875 C2.68342,4.902375 3.31658,4.902375 3.70711,5.292875 L8,9.585765 L12.2929,5.292875 Z"
+          })
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "modal fade",
+      id: "modal-delete-account",
+      tabIndex: "-1",
+      "aria-labelledby": "modal-label-delete-account",
+      "aria-hidden": "true",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "modal-dialog modal-dialog-centered",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "modal-content p-4 p-xl-8",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: "modal-header border-0",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+              type: "button",
+              className: "btn-close",
+              "data-bs-dismiss": "modal",
+              "aria-label": "Close"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
+            className: "h3",
+            id: "modal-label-user-delete-account",
+            children: "\u017Delite da obri\u0161ete nalog?"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+            className: "mb-0 text-danger",
+            children: "Brisanjem naloga \u0107e se obrisati svi va\u0161i podaci iz baze."
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+            className: "text-danger",
+            children: "Ova radnja se ne mo\u017Ee poni\u0161titi."
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(formik__WEBPACK_IMPORTED_MODULE_6__.Formik, {
+            initialValues: initialValues,
+            validationSchema: validationSchema,
+            onSubmit: onSubmit,
+            children: function children(formik) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_6__.Form, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                  control: "input",
+                  type: "password",
+                  label: "Va\u017Ee\u0107a lozinka",
+                  name: "password_delete_account",
+                  autoComplete: "on"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                  className: "d-flex align-items-center",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+                    type: "submit",
+                    className: "btn btn-primary me-4",
+                    children: "Obri\u0161i"
+                  }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+                    className: "icon-spinner"
+                  }) : '']
+                }), dataUpdated ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                  className: "alert alert-success mt-6",
+                  children: "Va\u0161 nalog je obrisan."
+                }) : '', errorMessage ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                  className: "alert alert-warning mt-6",
+                  children: "Va\u017Ee\u0107a lozinka nije ispravna."
+                }) : '']
+              });
+            }
+          })]
+        })
+      })
+    })]
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikDeleteAccount);
+
+/***/ }),
+
 /***/ "./assets/src/scripts/react/components/formik/FormikUpdateEmail.js":
 /*!*************************************************************************!*\
   !*** ./assets/src/scripts/react/components/formik/FormikUpdateEmail.js ***!
@@ -250,7 +420,11 @@ function FormikUpdateEmail(props) {
     password: yup__WEBPACK_IMPORTED_MODULE_2__.string().min(8, 'Lozinka mora biti duža od 8 karaktera').matches(/[0-9]/, 'Lozinka mora da sadrži bar jedan broj').matches(/[a-z]/, 'Lozinka mora da sadrži bar jedno malo slovo').matches(/[A-Z]/, 'Lozinka mora da sadrži bar jedno veliko slovo').required('Lozinka je obavezna')
   });
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_5__["default"].get('http://stagod.local/wp-json/wp/v2/users/' + user_id).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_5__["default"].get(edit_account_data.home_url + '/wp-json/wp/v2/users/' + user_id, {
+      headers: {
+        'X-WP-Nonce': edit_account_data.nonce
+      }
+    }).then(function (response) {
       return response.data;
     }).then(function (data) {
       setUserEmail(data.user_email);
@@ -424,7 +598,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function FormikUpdatePassword(props) {
-  var user_id = props.user_id;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     dataUpdated = _useState2[0],
@@ -628,7 +801,11 @@ function FormikUpdateUserData(props) {
     })
   });
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_5__["default"].get('http://stagod.local/wp-json/wp/v2/users/' + user_id).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_5__["default"].get(edit_account_data.home_url + '/wp-json/wp/v2/users/' + user_id, {
+      headers: {
+        'X-WP-Nonce': edit_account_data.nonce
+      }
+    }).then(function (response) {
       return response.data;
     }).then(function (data) {
       formikRef.current.setFieldValue("first_name", data.first_name);
@@ -823,7 +1000,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_formik_FormikUpdateUserData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/formik/FormikUpdateUserData */ "./assets/src/scripts/react/components/formik/FormikUpdateUserData.js");
 /* harmony import */ var _components_formik_FormikUpdateEmail__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/formik/FormikUpdateEmail */ "./assets/src/scripts/react/components/formik/FormikUpdateEmail.js");
 /* harmony import */ var _components_formik_FormikUpdatePassword__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/formik/FormikUpdatePassword */ "./assets/src/scripts/react/components/formik/FormikUpdatePassword.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_formik_FormikDeleteAccount__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/formik/FormikDeleteAccount */ "./assets/src/scripts/react/components/formik/FormikDeleteAccount.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.2.0-1eae08fee2-b9214a9bd7.zip/node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -834,18 +1013,23 @@ var user_id = el_account_settings.getAttribute('data-user_id');
 var el_update_personal_data = document.getElementById('form-update-personal-data');
 var user_city = el_update_personal_data.getAttribute('data-user_city');
 var update_personal_data_root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(el_update_personal_data);
-update_personal_data_root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_formik_FormikUpdateUserData__WEBPACK_IMPORTED_MODULE_1__["default"], {
+update_personal_data_root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_formik_FormikUpdateUserData__WEBPACK_IMPORTED_MODULE_1__["default"], {
   user_id: user_id,
   user_city: user_city
 }));
 var el_update_email = document.getElementById('form-update-email');
 var update_email_root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(el_update_email);
-update_email_root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_formik_FormikUpdateEmail__WEBPACK_IMPORTED_MODULE_2__["default"], {
+update_email_root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_formik_FormikUpdateEmail__WEBPACK_IMPORTED_MODULE_2__["default"], {
   user_id: user_id
 }));
 var el_update_password = document.getElementById('form-update-password');
 var update_password_root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(el_update_password);
-update_password_root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_formik_FormikUpdatePassword__WEBPACK_IMPORTED_MODULE_3__["default"], {
+update_password_root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_formik_FormikUpdatePassword__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  user_id: user_id
+}));
+var el_delete_account = document.getElementById('form-delete-account');
+var delete_account_root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(el_delete_account);
+delete_account_root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_formik_FormikDeleteAccount__WEBPACK_IMPORTED_MODULE_4__["default"], {
   user_id: user_id
 }));
 

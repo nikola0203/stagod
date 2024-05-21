@@ -15,5 +15,6 @@ $profile_image = get_field( 'profile_image', get_user_by( 'id', get_current_user
     <li class="pe-0"><a href="<?php echo esc_url( get_author_posts_url( $user_id ) . 'saved/' ); ?>" class="d-flex py-3" title="Sačuvano">Sačuvano</a></li>
     <li class="pe-0"><a href="<?php echo esc_url( get_author_posts_url( $user_id ) . 'edit-account/' ); ?>" class="d-flex py-3" title="Podešavanje naloga">Podešavanje naloga</a></li>
     <li class="pe-0"><a href="<?php echo esc_url( get_author_posts_url( $user_id ) . 'edit-profile/' ); ?>" class="d-flex py-3" title="Podešavanje profila">Podešavanje profila usluga</a></li>
+    <li class="pe-0"><a href="<?php echo esc_url( wp_logout_url( home_url() ) ); ?>" class="d-flex py-3" title="Odjavi se">Odjavi se</a></li>
   </ul>
 </div>
