@@ -27,6 +27,57 @@ class AjaxMethods
     add_action( 'wp_ajax_change_current_user_email', [$this, 'change_current_user_email'] );
     add_action( 'wp_ajax_change_current_user_password', [$this, 'change_current_user_password'] );
     add_action( 'wp_ajax_delete_account', [$this, 'delete_account'] );
+    add_action( 'wp_ajax_upload_profile_image', [$this, 'upload_profile_image'] );
+  }
+
+  function upload_profile_image() {
+    check_ajax_referer( 'nonce-upload-profile-image', 'nonce' );
+
+    if ( empty( $_FILES['image'] ) ) {
+      wp_send_json_error( 'No file uploaded.' );
+      return;
+    }
+
+    // Load image.
+    $image  = $_FILES['image'];
+    $upload = wp_handle_upload( $image, array( 'test_form' => false ) );
+
+    if ( ! empty( $upload['error'] ) ) {
+      wp_send_json_error( $upload['error'] );
+      return;
+    }
+
+    // Upload to media library
+    $attachment_id = wp_insert_attachment(
+      array(
+        'guid'           => $upload['url'], 
+        'post_mime_type' => $upload['type'],
+        'post_title'     => sanitize_file_name( $file['name'] ),
+        'post_content'   => '',
+        'post_status'    => 'inherit',
+      ),
+      $upload['file']
+    );
+
+    // Generate metadata
+    require_once( ABSPATH . 'wp-admin/includes/image.php' );
+    $attach_data = wp_generate_attachment_metadata( $attachment_id, $upload['file'] );
+    wp_update_attachment_metadata( $attachment_id, $attach_data );
+
+    // Poveži sa ACF poljem
+    // if ( isset( $_POST['acf_field_key'] ) ) {
+      $user = get_user_by( 'id', get_current_user_id() );
+      update_field( sanitize_text_field( 'profile_image' ), $attachment_id, $user );
+    // }
+    
+    // wp_send_json( $_FILES['image'] );
+
+    wp_send_json(
+      array(
+        'attachment_id' => $attachment_id,
+        'url'           => $upload['url'],
+      )
+    );
   }
 
   function save_favorite_user() {

@@ -75,11 +75,12 @@ class Enqueue
 			wp_enqueue_script( 'edit-account', mix( 'js/react/edit-account.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 			wp_localize_script( 'edit-account', 'edit_account_data', [
 				'ajax_url'                           => admin_url( 'admin-ajax.php' ),
-				'nonce' => wp_create_nonce( 'wp_rest' ),
+				'nonce'                              => wp_create_nonce( 'wp_rest' ),
 				'nonce_edit_personal_data'           => wp_create_nonce( 'nonce-edit-personal-data' ),
 				'nonce_change_current_user_email'    => wp_create_nonce( 'nonce-change-current-user-email' ),
 				'nonce_change_current_user_password' => wp_create_nonce( 'nonce-change-current-user-password' ),
 				'nonce_delete_account'               => wp_create_nonce( 'nonce-delete-account' ),
+				'nonce_upload_profile_image'         => wp_create_nonce( 'nonce-upload-profile-image' ),
 				'current_user_id'                    => get_current_user_id(),
 				'home_url'                           => home_url()
 			]);
@@ -95,6 +96,8 @@ class Enqueue
 		wp_register_script( 'recent-users', mix( 'js/blocks/recent-users.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 		wp_register_script( 'search-users', mix( 'js/blocks/search-users.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
 		wp_register_script( 'faq', mix( 'js/blocks/faq.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+
+		wp_enqueue_script('accessibility-test', get_template_directory_uri() . '/js/accessibility-test.js', array('jquery'), null, true);
 	}
 
 	public function reset_password_script()

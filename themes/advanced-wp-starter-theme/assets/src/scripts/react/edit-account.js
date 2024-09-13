@@ -3,6 +3,7 @@ import FormikUpdateUserData from './components/formik/FormikUpdateUserData'
 import FormikUpdateEmail from './components/formik/FormikUpdateEmail'
 import FormikUpdatePassword from './components/formik/FormikUpdatePassword'
 import FormikDeleteAccount from './components/formik/FormikDeleteAccount'
+import FormikUpdateProfileImage from './components/formik/FormikUpdateProfileImage'
 
 const el_account_settings = document.getElementById('account-settings')
 const user_id = el_account_settings.getAttribute('data-user_id')
@@ -23,3 +24,7 @@ update_password_root.render(<FormikUpdatePassword user_id={user_id} />)
 const el_delete_account = document.getElementById('form-delete-account')
 const delete_account_root = createRoot(el_delete_account)
 delete_account_root.render(<FormikDeleteAccount user_id={user_id} />)
+
+const el_update_image = document.getElementById('form-update-image')
+const update_image_root = createRoot(el_update_image)
+update_image_root.render(<FormikUpdateProfileImage user_id={user_id} />)

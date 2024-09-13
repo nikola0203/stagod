@@ -38,6 +38,7 @@ mix.js('assets/src/scripts/app.js', 'assets/dist/js')
 	.sass('assets/src/sass/style.scss', 'assets/dist/css')
 	.sass('assets/src/sass/admin.scss', 'assets/dist/css')
 	.copy('assets/src/sass/img', 'assets/dist/img')
+	.copy('assets/src/sass/fonts', 'assets/dist/fonts')
 
 // Add versioning to assets in production environment
 if (mix.inProduction()) {

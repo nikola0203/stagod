@@ -1,0 +1,35 @@
+.modal {
+  .icon-upload-image {
+    height: 48px;
+    width: 48px;
+    background-image: url('../img/icon-upload-image.svg');
+  }
+
+  .btn-remove-image {
+    right: 8px;
+    top: 8px;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+    background-image: url('../img/icon-delete-image.svg');
+  }
+
+  .image-uploaded {
+    z-index: 9;
+    width: 100px;
+    height: 100px;
+  }
+
+  .modal-upload-image-box {
+    cursor: grabbing;
+    min-height: 220px;
+    border-style: dashed !important;
+  }
+
+  @include media-breakpoint-up(xl) {
+    .image-uploaded {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}

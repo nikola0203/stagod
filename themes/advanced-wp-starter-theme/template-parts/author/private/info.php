@@ -19,9 +19,7 @@ $edit_profile_url  = get_author_posts_url( $page_id ) . 'edit-profile';
 <div class="author-info-wrapper border border-light rounded-4 bg-white">
   <div class="author-info-top d-flex flex-column justify-content-center align-items-center p-lg-8">
     <div class="img-wrapper-profile mb-2">
-      <?php
-      Acf::image( $image, 'large', 'rounded-circle object-fit-cover' );
-      ?>
+      <?php Acf::image( $image, 'large', 'rounded-circle object-fit-cover' ); ?>
     </div>
     <?php
     if ( $current_user->user_firstname && $current_user->user_lastname ) :

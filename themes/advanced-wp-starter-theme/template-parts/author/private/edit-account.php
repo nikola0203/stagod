@@ -1,5 +1,8 @@
 <?php
-$city = get_field( 'city' );
+use Awpt\Plugins\Acf;
+
+$city  = get_field( 'city' );
+$image = get_field( 'profile_image' );
 ?>
 <h1 class="h3">Podešavanje naloga</h1>
 
@@ -13,7 +16,12 @@ $city = get_field( 'city' );
   <div class="col-xl-4">
     <div class="border p-4 p-xl-8 mb-6 rounded-4 bg-white">
       <h2 class="h5">Profilna slika</h2>
-      <div id="form-update-image"></div>
+      <div class="d-flex align-items-center">
+        <div class="img-wrapper-profile">
+          <?php Acf::image( $image, 'medium', 'rounded-circle object-fit-cover' ); ?>
+        </div>
+        <div id="form-update-image"></div>
+      </div>
     </div>
   </div>
 </div>

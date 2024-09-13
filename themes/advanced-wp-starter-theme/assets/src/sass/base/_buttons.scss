@@ -43,6 +43,15 @@ button {
     background-color: darken($primary, 5%);
   }
 
+  &.bg-transparent {
+    color: $secondary;
+
+    &:hover,
+    &:focus {
+      color: $primary;
+    }
+  }
+
   &.btn-white {
     color: $black;
     border: 1px solid $gray-200;
