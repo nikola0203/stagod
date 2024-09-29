@@ -26,6 +26,7 @@ const delete_account_root = createRoot(el_delete_account)
 delete_account_root.render(<FormikDeleteAccount user_id={user_id} />)
 
 const el_update_image = document.getElementById('form-update-image')
-const profile_image = el_update_image.getAttribute('data-profile_image')
+const profile_image = (el_update_image.getAttribute('data-profile_image')) ? el_update_image.getAttribute('data-profile_image') : edit_account_data.theme_uri + '/assets/dist/img/placeholder-profile.svg'
+
 const update_image_root = createRoot(el_update_image)
 update_image_root.render(<FormikUpdateProfileImage user_id={user_id} profile_image={profile_image} />)

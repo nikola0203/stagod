@@ -15,10 +15,8 @@ $image = get_field( 'profile_image' );
   </div>
   <div class="col-xl-4">
     <div class="border p-4 p-xl-8 mb-6 rounded-4 bg-white">
-      <h2 class="h5">Profilna slika</h2>
-      <div class="d-flex align-items-center">
-        <div id="form-update-image" data-profile_image="<?php echo ( ! empty( $image ) ) ? esc_url( $image['sizes']['medium'] ) : '' ?>"></div>
-      </div>
+      <h2 class="h5 text-center text-xxl-start">Profilna slika</h2>
+      <div id="form-update-image" data-profile_image="<?php echo ( ! empty( $image ) ) ? esc_url( $image['sizes']['medium'] ) : '' ?>"></div>
     </div>
   </div>
 </div>

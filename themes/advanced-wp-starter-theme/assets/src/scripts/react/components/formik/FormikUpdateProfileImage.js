@@ -10,6 +10,8 @@ function FormikUpdateProfileImage(props) {
   const [dataUpdated, setDataUpdated] = useState(false)
   const [uploadedImage, setUploadedImage] = useState(null)
   const [image, setImage] = useState(null)
+  const [imageDeleted, setImageDeleted] = useState(null)
+  const [deletingImage, setDeletingImage] = useState(null)
   const [profileImage, setProfileImage] = useState(profile_image)
 
   const initialValues = {
@@ -71,16 +73,43 @@ function FormikUpdateProfileImage(props) {
       })
   }
 
+  const deleteProfileImage = () => {
+    setDeletingImage(true)
+
+    const data = new FormData()
+
+    data.append('action', 'delete_profile_image')
+    data.append('nonce', edit_account_data.nonce_delete_profile_image)
+    data.append('current_user_id', edit_account_data.current_user_id)
+
+    axios.post(edit_account_data.ajax_url, data)
+      .then((response) => response.data)
+      .then((data) => {
+        console.log(data)
+        if (data.image_id) {
+          setImageDeleted(true)
+          setDeletingImage(false)
+          setProfileImage(edit_account_data.theme_uri + '/assets/dist/img/placeholder-profile.svg')
+        }
+      }).catch((error) => {
+        console.log(error.data)
+      })
+  }
+
   return (
     <>
-      <div className="img-wrapper-profile">
-        <img
-          src={profileImage}
-          className='lazyload lazy-fade rounded-circle object-fit-cover'
-        />
+      <div className='d-flex flex-wrap align-items-center justify-content-center justify-content-xxl-start'>
+        <div className="img-wrapper-profile">
+          <img
+            src={profileImage}
+            className='lazyload lazy-fade rounded-circle object-fit-cover'
+          />
+        </div>
+        <div className='d-flex flex-column ms-lg-6'>
+          <button className='btn btn-update-profile-image' type="button" data-bs-toggle="modal" data-bs-target="#modal-update-profile-image">Promeni sliku</button>
+          <button className='btn bg-transparent py-4 mt-4' type="button" data-bs-toggle="modal" data-bs-target="#modal-delete-profile-image">Ukloni sliku</button>
+        </div>
       </div>
-      <button className='btn' type="button" data-bs-toggle="modal" data-bs-target="#modal-update-profile-image">Promeni sliku</button>
-      <button className='btn' type="button" data-bs-toggle="modal" data-bs-target="#modal-delete-profile-image">Ukloni sliku</button>
       <div className="modal modal-lg fade" id="modal-update-profile-image" tabIndex="-1" aria-labelledby="modal-label-update-profile-image" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content p-4 p-xl-14 bg-light">
@@ -91,8 +120,6 @@ function FormikUpdateProfileImage(props) {
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
               {
                 (formik) => {
-                  console.log(formik.isValid)
-
                   const removeAll = () => {
                     formik.setFieldValue('image', false);
                     formik.setFieldTouched('image', false)
@@ -197,6 +224,37 @@ function FormikUpdateProfileImage(props) {
                 }
               }
             </Formik>
+          </div>
+        </div>
+      </div>
+
+      <div className="modal modal-lg fade" id="modal-delete-profile-image" tabIndex="-1" aria-labelledby="modal-label-delete-profile-image" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content p-4 p-xl-14 bg-light">
+            <button type="button" className="btn-close border rounded-circle p-5 absolute" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className='row'>
+              <div className='col-lg-4'>
+                <div className='modal-content'>
+                  <div className='current-profile-image relative w-100 p-6 border rounded'>
+                    <img
+                      src={profileImage}
+                      className='object-fit-cover w-100 h-100 rounded lazyload lazy-fade'
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className='col-lg-8 pt-lg-6'>
+                <div className='h-100 d-flex flex-column justify-content-between'>
+                  <h2 className="h3 mb-8" id="modal-label-user-delete-profile-image">Da li ste sigurni da želite da obiršete profilnu sliku?</h2>
+                  <div className='d-flex align-items-center justify-content-lg-end'>
+                    <button type='button' className='me-4 btn bg-transparent' data-bs-dismiss="modal" aria-label="Close">Otkaži</button>
+                    <button type='submit' className='btn btn-primary' onClick={deleteProfileImage}>Da, siguran sam</button>
+                    {(deletingImage) ? <i className='icon-spinner'></i> : ''}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {(imageDeleted) ? <div className='alert alert-success mt-6 mb-0 lazy-fade text-center fw-600'>Uspešno ste obrisali profilnu sliku</div> : ''}
           </div>
         </div>
       </div >

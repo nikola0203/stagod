@@ -16,8 +16,8 @@ $saved_url         = get_author_posts_url( $page_id ) . 'saved';
 $edit_account_url  = get_author_posts_url( $page_id ) . 'edit-account';
 $edit_profile_url  = get_author_posts_url( $page_id ) . 'edit-profile';
 ?>
-<div class="author-info-wrapper border border-light rounded-4 bg-white">
-  <div class="author-info-top d-flex flex-column justify-content-center align-items-center p-lg-8">
+<div class="author-info-wrapper border rounded-4 bg-white">
+  <div class="author-info-top d-flex flex-column justify-content-center align-items-center py-6 pt-lg-8 px-lg-6">
     <div class="img-wrapper-profile mb-2">
       <?php Acf::image( $image, 'large', 'rounded-circle object-fit-cover' ); ?>
     </div>
@@ -30,14 +30,24 @@ $edit_profile_url  = get_author_posts_url( $page_id ) . 'edit-profile';
     ?>
     <hr>
   </div>
-  <div class="author-info-bottom">
-    <ul>
-      <li class="mb-6 mb-xl-8 <?php echo ( $current_url == $messages_url ) ? 'active' : ''; ?>"><a href="<?php echo esc_url( $messages_url ); ?>">Poruke <?php echo icon_arrow_down(); ?></a></li>
-      <li class="mb-6 mb-xl-8 <?php echo ( $current_url == $notifications_url ) ? 'active' : ''; ?>"><a href="<?php echo esc_url( $notifications_url ); ?>">Obavestenja <?php echo icon_arrow_down(); ?></a></li>
-      <li class="mb-6 mb-xl-8 <?php echo ( $current_url == $ratings_url ) ? 'active' : ''; ?>"><a href="<?php echo esc_url( $ratings_url ); ?>">Ocene <?php echo icon_arrow_down(); ?></a></li>
-      <li class="mb-6 mb-xl-8 <?php echo ( $current_url == $saved_url ) ? 'active' : ''; ?>"><a href="<?php echo esc_url( $saved_url ); ?>">Sacuvano <?php echo icon_arrow_down(); ?></a></li>
-      <li class="mb-6 mb-xl-8 <?php echo ( $current_url == $edit_account_url ) ? 'active' : ''; ?>"><a href="<?php echo esc_url( $edit_account_url ); ?>">Podesavanje naloga <?php echo icon_arrow_down(); ?></a></li>
-      <li class="mb-6 mb-xl-8 <?php echo ( $current_url == $edit_profile_url ) ? 'active' : ''; ?>"><a href="<?php echo esc_url( $edit_profile_url ); ?>">Podesavanje profila usluga <?php echo icon_arrow_down(); ?></a></li>
-    </ul>
-  </div>
+  <ul class="author-info-bottom px-6 mb-0">
+    <li class="mb-6 <?php echo ( $current_url == $messages_url ) ? 'active' : ''; ?>">
+      <a class="d-flex align-items-center justify-content-between txt-black fw-bold" href="<?php echo esc_url( $messages_url ); ?>">Poruke <?php echo icon_arrow_down(); ?></a>
+    </li>
+    <li class="mb-6 <?php echo ( $current_url == $notifications_url ) ? 'active' : ''; ?>">
+      <a class="d-flex align-items-center justify-content-between txt-black fw-bold" href="<?php echo esc_url( $notifications_url ); ?>">Obaveštenja <?php echo icon_arrow_down(); ?></a>
+    </li>
+    <li class="mb-6 <?php echo ( $current_url == $ratings_url ) ? 'active' : ''; ?>">
+      <a class="d-flex align-items-center justify-content-between txt-black fw-bold" href="<?php echo esc_url( $ratings_url ); ?>">Ocene <?php echo icon_arrow_down(); ?></a>
+    </li>
+    <li class="mb-6 <?php echo ( $current_url == $saved_url ) ? 'active' : ''; ?>">
+      <a class="d-flex align-items-center justify-content-between txt-black fw-bold" href="<?php echo esc_url( $saved_url ); ?>">Sačuvano <?php echo icon_arrow_down(); ?></a>
+    </li>
+    <li class="mb-6 <?php echo ( $current_url == $edit_account_url ) ? 'active' : ''; ?>">
+      <a class="d-flex align-items-center justify-content-between txt-black fw-bold" href="<?php echo esc_url( $edit_account_url ); ?>">Podešavanje naloga <?php echo icon_arrow_down(); ?></a>
+    </li>
+    <li class="mb-6 <?php echo ( $current_url == $edit_profile_url ) ? 'active' : ''; ?>">
+      <a class="d-flex align-items-center justify-content-between txt-black fw-bold" href="<?php echo esc_url( $edit_profile_url ); ?>">Podešavanje profila usluga <?php echo icon_arrow_down(); ?></a>
+    </li>
+  </ul>
 </div>

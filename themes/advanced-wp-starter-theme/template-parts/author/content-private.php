@@ -36,13 +36,13 @@
     }
     ?>
     <div class="row">
-      <div class="col-lg-4">
+      <div class="col-lg-4 col-xl-3">
         <?php 
         get_template_part( 'template-parts/author/private/info' );
         get_template_part( 'template-parts/author/public/map' );
         ?>
       </div>
-      <div class="col-lg-8">
+      <div class="col-lg-8 col-lg-9">
         <?php
         $get_query_vars = ( ! empty( $wp->query_vars['author_page'] ) ) ? $wp->query_vars['author_page'] : false;
         switch ( $get_query_vars ) :

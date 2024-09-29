@@ -81,7 +81,9 @@ class Enqueue
 				'nonce_change_current_user_password' => wp_create_nonce( 'nonce-change-current-user-password' ),
 				'nonce_delete_account'               => wp_create_nonce( 'nonce-delete-account' ),
 				'nonce_upload_profile_image'         => wp_create_nonce( 'nonce-upload-profile-image' ),
+				'nonce_delete_profile_image'         => wp_create_nonce( 'nonce-delete-profile-image' ),
 				'current_user_id'                    => get_current_user_id(),
+				'theme_uri'                          => get_template_directory_uri(),
 				'home_url'                           => home_url()
 			]);
 		}

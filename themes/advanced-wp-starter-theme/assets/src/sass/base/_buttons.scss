@@ -176,6 +176,20 @@ button {
     @include padding(15px 40px);
   }
 
+  &.btn-update-profile-image {
+    @include padding(6px);
+    border: 2px solid $secondary;
+    border-radius: 20px;
+    color: $secondary;
+    background-color: $white;
+
+    &:hover,
+    &:focus {
+      color: $white;
+      background-color: $secondary;
+    }
+  }
+
   // &.btn-medium {
   //   @include font-size(16px);
   //   @include padding(17.5px 20px);

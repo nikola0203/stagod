@@ -1,14 +1,11 @@
+.img-wrapper-profile {
+  height: 104px;
+  width: 104px;
+}
+
 .author-info-wrapper {
-  .img-wrapper-profile {
-    height: 104px;
-    width: 104px;
-  }
 
   a {
-    font-weight: bold;
-    display: flex;
-    color: $black;
-
     svg {
       transform: rotate(-90deg);
     }

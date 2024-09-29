@@ -788,10 +788,18 @@ function FormikUpdateProfileImage(props) {
     _useState6 = _slicedToArray(_useState5, 2),
     image = _useState6[0],
     setImage = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(profile_image),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
     _useState8 = _slicedToArray(_useState7, 2),
-    profileImage = _useState8[0],
-    setProfileImage = _useState8[1];
+    imageDeleted = _useState8[0],
+    setImageDeleted = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+    _useState10 = _slicedToArray(_useState9, 2),
+    deletingImage = _useState10[0],
+    setDeletingImage = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(profile_image),
+    _useState12 = _slicedToArray(_useState11, 2),
+    profileImage = _useState12[0],
+    setProfileImage = _useState12[1];
   var initialValues = {
     image: null
   };
@@ -839,25 +847,50 @@ function FormikUpdateProfileImage(props) {
       console.log(error.data);
     });
   };
+  var deleteProfileImage = function deleteProfileImage() {
+    setDeletingImage(true);
+    var data = new FormData();
+    data.append('action', 'delete_profile_image');
+    data.append('nonce', edit_account_data.nonce_delete_profile_image);
+    data.append('current_user_id', edit_account_data.current_user_id);
+    axios__WEBPACK_IMPORTED_MODULE_4__["default"].post(edit_account_data.ajax_url, data).then(function (response) {
+      return response.data;
+    }).then(function (data) {
+      console.log(data);
+      if (data.image_id) {
+        setImageDeleted(true);
+        setDeletingImage(false);
+        setProfileImage(edit_account_data.theme_uri + '/assets/dist/img/placeholder-profile.svg');
+      }
+    })["catch"](function (error) {
+      console.log(error.data);
+    });
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "img-wrapper-profile",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-        src: profileImage,
-        className: "lazyload lazy-fade rounded-circle object-fit-cover"
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-      className: "btn",
-      type: "button",
-      "data-bs-toggle": "modal",
-      "data-bs-target": "#modal-update-profile-image",
-      children: "Promeni sliku"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-      className: "btn",
-      type: "button",
-      "data-bs-toggle": "modal",
-      "data-bs-target": "#modal-delete-profile-image",
-      children: "Ukloni sliku"
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      className: "d-flex flex-wrap align-items-center justify-content-center justify-content-xxl-start",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "img-wrapper-profile",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+          src: profileImage,
+          className: "lazyload lazy-fade rounded-circle object-fit-cover"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: "d-flex flex-column ms-lg-6",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+          className: "btn btn-update-profile-image",
+          type: "button",
+          "data-bs-toggle": "modal",
+          "data-bs-target": "#modal-update-profile-image",
+          children: "Promeni sliku"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+          className: "btn bg-transparent py-4 mt-4",
+          type: "button",
+          "data-bs-toggle": "modal",
+          "data-bs-target": "#modal-delete-profile-image",
+          children: "Ukloni sliku"
+        })]
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "modal modal-lg fade",
       id: "modal-update-profile-image",
@@ -885,7 +918,6 @@ function FormikUpdateProfileImage(props) {
             validationSchema: validationSchema,
             onSubmit: onSubmit,
             children: function children(formik) {
-              console.log(formik.isValid);
               var removeAll = function removeAll() {
                 formik.setFieldValue('image', false);
                 formik.setFieldTouched('image', false);
@@ -1014,6 +1046,68 @@ function FormikUpdateProfileImage(props) {
               });
             }
           })]
+        })
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "modal modal-lg fade",
+      id: "modal-delete-profile-image",
+      tabIndex: "-1",
+      "aria-labelledby": "modal-label-delete-profile-image",
+      "aria-hidden": "true",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "modal-dialog modal-dialog-centered",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "modal-content p-4 p-xl-14 bg-light",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+            type: "button",
+            className: "btn-close border rounded-circle p-5 absolute",
+            "data-bs-dismiss": "modal",
+            "aria-label": "Close"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              className: "col-lg-4",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                className: "modal-content",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                  className: "current-profile-image relative w-100 p-6 border rounded",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+                    src: profileImage,
+                    className: "object-fit-cover w-100 h-100 rounded lazyload lazy-fade"
+                  })
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              className: "col-lg-8 pt-lg-6",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                className: "h-100 d-flex flex-column justify-content-between",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
+                  className: "h3 mb-8",
+                  id: "modal-label-user-delete-profile-image",
+                  children: "Da li ste sigurni da \u017Eelite da obir\u0161ete profilnu sliku?"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                  className: "d-flex align-items-center justify-content-lg-end",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                    type: "button",
+                    className: "me-4 btn bg-transparent",
+                    "data-bs-dismiss": "modal",
+                    "aria-label": "Close",
+                    children: "Otka\u017Ei"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                    type: "submit",
+                    className: "btn btn-primary",
+                    onClick: deleteProfileImage,
+                    children: "Da, siguran sam"
+                  }), deletingImage ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+                    className: "icon-spinner"
+                  }) : '']
+                })]
+              })
+            })]
+          }), imageDeleted ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "alert alert-success mt-6 mb-0 lazy-fade text-center fw-600",
+            children: "Uspe\u0161no ste obrisali profilnu sliku"
+          }) : '']
         })
       })
     })]
@@ -1312,7 +1406,7 @@ delete_account_root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_M
   user_id: user_id
 }));
 var el_update_image = document.getElementById('form-update-image');
-var profile_image = el_update_image.getAttribute('data-profile_image');
+var profile_image = el_update_image.getAttribute('data-profile_image') ? el_update_image.getAttribute('data-profile_image') : edit_account_data.theme_uri + '/assets/dist/img/placeholder-profile.svg';
 var update_image_root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(el_update_image);
 update_image_root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_formik_FormikUpdateProfileImage__WEBPACK_IMPORTED_MODULE_5__["default"], {
   user_id: user_id,

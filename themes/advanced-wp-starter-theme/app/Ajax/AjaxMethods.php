@@ -28,6 +28,7 @@ class AjaxMethods
     add_action( 'wp_ajax_change_current_user_password', [$this, 'change_current_user_password'] );
     add_action( 'wp_ajax_delete_account', [$this, 'delete_account'] );
     add_action( 'wp_ajax_upload_profile_image', [$this, 'upload_profile_image'] );
+    add_action( 'wp_ajax_delete_profile_image', [$this, 'delete_profile_image'] );
   }
 
   function upload_profile_image()
@@ -79,6 +80,20 @@ class AjaxMethods
         'url'           => $upload['url'],
       )
     );
+  }
+
+  function delete_profile_image()
+  {
+    check_ajax_referer( 'nonce-delete-profile-image', 'nonce' );
+
+    $user               = get_user_by( 'id', get_current_user_id() );
+    $current_user_image = get_field( 'profile_image', $user );
+    $delete_image       = wp_delete_attachment( $current_user_image['ID'], true );
+
+    $response = [
+      'image_id' => $delete_image->ID
+    ];
+    wp_send_json( $response );
   }
 
   function save_favorite_user()

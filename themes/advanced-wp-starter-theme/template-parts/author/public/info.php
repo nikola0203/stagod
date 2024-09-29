@@ -10,8 +10,8 @@ $current_user = get_user_by( 'id', get_queried_object_id() );
 $image        = get_field( 'profile_image' );
 $chat         = new Chat();
 ?>
-<div class="author-info-wrapper border border-light rounded-4 pb-8 mb-8">
-  <div class="author-info-top border-light d-flex flex-column justify-content-center align-items-center p-lg-8">
+<div class="author-info-wrapper border rounded-4 pb-8 mb-8">
+  <div class="author-info-top border-light d-flex flex-column justify-content-center align-items-center p-lg-6">
     <?php
     if ( $image ) :
       ?>
@@ -61,10 +61,6 @@ $chat         = new Chat();
   $user_id            = get_queried_object_id();
   $element_index      = ( ! empty( $element_index ) ) ? array_search( $user_id, $get_favorite_users ) : 0;
   $user_saved_id      = ( ! empty( $element_index ) ) ? $get_favorite_users[$element_index] : 0;
-  // print_var($get_favorite_users);
-  // print_var('element_index '.  $element_index);
-  // print_var('user_saved_id '.  $user_saved_id);
-  // print_var('user_id ' . $user_id);
   ?>
   <a href="javascript:void(0)" id="btn-save-user" data-user_id=<?php esc_attr_e( get_queried_object_id() ); ?> class="d-block mx-8 btn btn-save-user <?php echo ( $user_id == $user_saved_id ) ? 'favorite-user' : ''; ?>">Sačuvajte profil</a>
 </div>
