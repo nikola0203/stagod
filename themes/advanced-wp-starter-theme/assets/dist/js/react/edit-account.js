@@ -182,6 +182,7 @@ function FormikControl(props) {
     case 'checkbox':
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Checkbox__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({}, rest));
     case 'date':
+    case 'file-upload':
     default:
       return null;
   }
@@ -747,14 +748,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap/js/dist/modal */ "./.yarn/__virtual__/bootstrap-virtual-178a5b5195/0/cache/bootstrap-npm-5.3.3-da08e2f0fe-f05183948b.zip/node_modules/bootstrap/js/dist/modal.js");
 /* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.7.7-cfbedc233d-7f875ea13b.zip/node_modules/axios/lib/axios.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.7.7-cfbedc233d-7f875ea13b.zip/node_modules/axios/lib/axios.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-18.3.1-af38f3c1ae-261137d3f3.zip/node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-35d3f03f1c/0/cache/formik-npm-2.4.6-6674fd4617-65d6845d91.zip/node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-35d3f03f1c/0/cache/formik-npm-2.4.6-6674fd4617-65d6845d91.zip/node_modules/formik/dist/formik.esm.js");
 /* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./.yarn/cache/yup-npm-1.4.0-599c24806a-3d1277e5e1.zip/node_modules/yup/index.esm.js");
-/* harmony import */ var _FormikControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FormikControl */ "./assets/src/scripts/react/components/formik/FormikControl.js");
-/* harmony import */ var react_dropzone__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-dropzone */ "./.yarn/__virtual__/react-dropzone-virtual-2a557ff58d/0/cache/react-dropzone-npm-14.2.3-b5d5b11ea4-34cf1758a8.zip/node_modules/react-dropzone/dist/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.3.1-af38f3c1ae-261137d3f3.zip/node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_dropzone__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-dropzone */ "./.yarn/__virtual__/react-dropzone-virtual-2a557ff58d/0/cache/react-dropzone-npm-14.2.3-b5d5b11ea4-34cf1758a8.zip/node_modules/react-dropzone/dist/es/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-18.3.1-af38f3c1ae-261137d3f3.zip/node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -774,164 +774,243 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
-
-
 function FormikUpdateProfileImage(props) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  var profile_image = props.profile_image;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
-    image = _useState2[0],
-    setImage = _useState2[1];
-  // const onDrop = useCallback(acceptedFiles => {
-  //   // Do something with the files
-  //   console.log(acceptedFiles)
-  // }, [])
-  // const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
+    dataUpdated = _useState2[0],
+    setDataUpdated = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+    _useState4 = _slicedToArray(_useState3, 2),
+    uploadedImage = _useState4[0],
+    setUploadedImage = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+    _useState6 = _slicedToArray(_useState5, 2),
+    image = _useState6[0],
+    setImage = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(profile_image),
+    _useState8 = _slicedToArray(_useState7, 2),
+    profileImage = _useState8[0],
+    setProfileImage = _useState8[1];
   var initialValues = {
-    image: ''
+    image: null
   };
-  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object({
-    image: yup__WEBPACK_IMPORTED_MODULE_2__.mixed().required()
-  });
-  var _useDropzone = (0,react_dropzone__WEBPACK_IMPORTED_MODULE_5__.useDropzone)({
-      accept: {
-        'image/*': []
-      },
-      multiple: false,
-      maxFiles: 1,
-      onDrop: function onDrop(acceptedFiles) {
-        console.log(acceptedFiles);
-        setImage(acceptedFiles.map(function (image) {
-          return Object.assign(image, {
-            preview: URL.createObjectURL(image)
-          });
-        }));
-      }
-    }),
-    getRootProps = _useDropzone.getRootProps,
-    getInputProps = _useDropzone.getInputProps,
-    isDragActive = _useDropzone.isDragActive;
-  var removeAll = function removeAll() {
-    setImage([]);
-  };
-  var thumbs = image.map(function (image) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "relative image-uploaded",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-        type: "button",
-        className: "btn-remove-image bg-transparent absolute",
-        "aria-label": "Remove Uploaded Image",
-        onClick: removeAll
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-        className: "object-fit-cover w-100 h-100 rounded",
-        src: image.preview
-        // Revoke data uri after image is loaded
-        ,
-        onLoad: function onLoad() {
-          URL.revokeObjectURL(image.preview);
-        }
-      })]
-    }, image.name);
+  var SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
+  var MAX_FILE_SIZE = 1000000; // 1MB
+
+  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
+    image: yup__WEBPACK_IMPORTED_MODULE_2__.mixed().required('Slika je obavezna').test('fileSize', 'Slika je prevelika', function (value) {
+      return value && value.size <= MAX_FILE_SIZE;
+    }).test('fileFormat', 'Nepodržani format (slika mora biti u jpg ili png formatu)', function (value) {
+      return value && SUPPORTED_FORMATS.includes(value.type);
+    })
   });
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
     return function () {
-      return image.forEach(function (file) {
-        return URL.revokeObjectURL(file.preview);
-      });
+      if (uploadedImage) {
+        URL.revokeObjectURL(uploadedImage.preview);
+      }
     };
-  }, []);
+  }, [uploadedImage]);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    var timer = setTimeout(function () {
+      setDataUpdated(false);
+    }, 3000);
+    return function () {
+      clearTimeout(timer);
+    };
+  }, [dataUpdated]);
   var onSubmit = function onSubmit(values, formikBag) {
+    var setSubmitting = formikBag.setSubmitting,
+      setFieldError = formikBag.setFieldError;
     var data = new FormData();
     data.append('action', 'upload_profile_image');
     data.append('nonce', edit_account_data.nonce_upload_profile_image);
     data.append('current_user_id', edit_account_data.current_user_id);
-    data.append('image', image[0]);
-    axios__WEBPACK_IMPORTED_MODULE_6__["default"].post(edit_account_data.ajax_url, data).then(function (response) {
+    data.append('image', image);
+    axios__WEBPACK_IMPORTED_MODULE_4__["default"].post(edit_account_data.ajax_url, data).then(function (response) {
       return response.data;
     }).then(function (data) {
       console.log(data);
-      // if (data.success_status) {
-      // }
+      setDataUpdated(true);
+      setSubmitting(false);
+      setProfileImage(data.url);
     })["catch"](function (error) {
       console.log(error.data);
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "img-wrapper-profile",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+        src: profileImage,
+        className: "lazyload lazy-fade rounded-circle object-fit-cover"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
       className: "btn",
       type: "button",
       "data-bs-toggle": "modal",
       "data-bs-target": "#modal-update-profile-image",
       children: "Promeni sliku"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
       className: "btn",
       type: "button",
       "data-bs-toggle": "modal",
       "data-bs-target": "#modal-delete-profile-image",
       children: "Ukloni sliku"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "modal modal-lg fade",
       id: "modal-update-profile-image",
       tabIndex: "-1",
       "aria-labelledby": "modal-label-update-profile-image",
       "aria-hidden": "true",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "modal-dialog modal-dialog-centered",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "modal-content p-4 p-xl-14 bg-light",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             type: "button",
             className: "btn-close border rounded-circle p-5 absolute",
             "data-bs-dismiss": "modal",
             "aria-label": "Close"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "modal-header border-0 p-0",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
               className: "h3 mb-8",
               id: "modal-label-user-update-profile-image",
               children: "Promeni sliku:"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(formik__WEBPACK_IMPORTED_MODULE_7__.Formik, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(formik__WEBPACK_IMPORTED_MODULE_5__.Formik, {
             initialValues: initialValues,
-            enableReinitialize: true,
+            validationSchema: validationSchema,
             onSubmit: onSubmit,
             children: function children(formik) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_7__.Form, {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", _objectSpread(_objectSpread({
-                  className: "modal-upload-image-box d-flex align-items-center justify-content-center p-10 bg-white mb-6 mb-xl-12 border border-primary rounded"
-                }, getRootProps()), {}, {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", _objectSpread({
-                    id: "image",
-                    name: "image"
-                  }, getInputProps())), isDragActive ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                    className: "d-flex flex-column justify-content-center align-items-center text-big text-primary fw-bold",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                      className: "icon-upload-image bg-cover mb-6"
-                    }), "Privuci sliku ovde ..."]
-                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                    className: "d-flex flex-column justify-content-center align-items-center text-big text-primary fw-bold",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                      className: "icon-upload-image bg-cover mb-6"
-                    }), "Dodaj ili privuci sliku..."]
-                  }), thumbs]
-                })), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              console.log(formik.isValid);
+              var removeAll = function removeAll() {
+                formik.setFieldValue('image', false);
+                formik.setFieldTouched('image', false);
+                setUploadedImage(false);
+                setImage(false);
+              };
+              var onDrop = function onDrop(acceptedFiles) {
+                if (acceptedFiles.length > 0) {
+                  // Dodaj preview za sliku
+                  Object.assign(acceptedFiles[0], {
+                    preview: URL.createObjectURL(acceptedFiles[0])
+                  });
+                  setImage(acceptedFiles[0]);
+                  setUploadedImage(acceptedFiles[0]);
+                  // Init validation
+                  formik.setFieldTouched('image', true);
+                  // Set field value to formik
+                  formik.setFieldValue('image', acceptedFiles[0]);
+                }
+              };
+              var _useDropzone = (0,react_dropzone__WEBPACK_IMPORTED_MODULE_6__.useDropzone)({
+                  onDrop: onDrop,
+                  accept: {
+                    'image/jpg': [],
+                    'image/jpeg': [],
+                    'image/png': []
+                  },
+                  multiple: false,
+                  maxFiles: 1
+                }),
+                getRootProps = _useDropzone.getRootProps,
+                getInputProps = _useDropzone.getInputProps,
+                isDragActive = _useDropzone.isDragActive;
+              var onClickUpload = function onClickUpload(e) {
+                var file = e.target.files[0];
+                console.log(file);
+                if (file) {
+                  Object.assign(file, {
+                    preview: URL.createObjectURL(file)
+                  });
+                  // Init validation
+                  formik.setFieldTouched('image', true);
+                  // Set field value to formik
+                  formik.setFieldValue('image', file);
+                  setUploadedImage(file);
+                  setImage(file);
+                }
+              };
+              var current_profile_image = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                className: "current-profile-image relative w-100 p-6 border rounded",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+                  src: profileImage,
+                  className: "object-fit-cover w-100 h-100 rounded lazyload lazy-fade"
+                })
+              });
+              var uploaded_image = uploadedImage ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                className: "relative w-100 p-6 border rounded image-uploaded",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                  type: "button",
+                  className: "btn-remove-image bg-transparent absolute",
+                  "aria-label": "Remove Uploaded Image",
+                  onClick: removeAll
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+                  className: "object-fit-cover w-100 h-100 rounded",
+                  src: uploadedImage.preview
+                  // Revoke data uri after image is loaded
+                  ,
+                  onLoad: function onLoad() {
+                    URL.revokeObjectURL(uploadedImage.preview);
+                  }
+                })]
+              }, uploadedImage.name) : false;
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_5__.Form, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                  className: "row mb-6 mb-xl-12",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                    className: "col-lg-4",
+                    children: uploaded_image == false ? current_profile_image : uploaded_image
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                    className: "col-lg-8",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", _objectSpread(_objectSpread({
+                      className: "modal-upload-image-box d-flex align-items-center justify-content-center p-10 bg-white border border-primary rounded"
+                    }, getRootProps()), {}, {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", _objectSpread(_objectSpread({
+                        name: "image"
+                      }, getInputProps()), {}, {
+                        onChange: onClickUpload
+                      })), isDragActive ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                        className: "d-flex flex-column justify-content-center align-items-center text-big text-primary fw-bold",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                          className: "icon-upload-image bg-cover mb-6"
+                        }), "Privuci sliku ovde..."]
+                      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                        className: "d-flex flex-column justify-content-center align-items-center text-big text-primary fw-bold",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                          className: "icon-upload-image bg-cover mb-6"
+                        }), "Dodaj ili privuci sliku..."]
+                      })]
+                    })), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(formik__WEBPACK_IMPORTED_MODULE_5__.ErrorMessage, {
+                      name: "image",
+                      component: "div",
+                      className: "fs-6 text-danger fw-bold"
+                    })]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                   className: "d-flex align-items-center justify-content-lg-end",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
                     type: "button",
                     className: "me-4 btn bg-transparent",
                     "data-bs-dismiss": "modal",
                     "aria-label": "Close",
                     onClick: removeAll,
                     children: "Otka\u017Ei"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
                     type: "submit",
                     className: "btn btn-primary",
                     disabled: !formik.isValid,
                     children: "Sa\u010Duvaj"
-                  }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+                  }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
                     className: "icon-spinner"
                   }) : '']
-                })]
+                }), dataUpdated ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                  className: "alert alert-success mt-6 mb-0 lazy-fade text-center fw-600",
+                  children: "Va\u0161a profilna slika je sa\u010Duvana."
+                }) : '']
               });
             }
           })]
@@ -1233,9 +1312,11 @@ delete_account_root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_M
   user_id: user_id
 }));
 var el_update_image = document.getElementById('form-update-image');
+var profile_image = el_update_image.getAttribute('data-profile_image');
 var update_image_root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(el_update_image);
 update_image_root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_formik_FormikUpdateProfileImage__WEBPACK_IMPORTED_MODULE_5__["default"], {
-  user_id: user_id
+  user_id: user_id,
+  profile_image: profile_image
 }));
 
 /***/ }),

@@ -30,7 +30,8 @@ class AjaxMethods
     add_action( 'wp_ajax_upload_profile_image', [$this, 'upload_profile_image'] );
   }
 
-  function upload_profile_image() {
+  function upload_profile_image()
+  {
     check_ajax_referer( 'nonce-upload-profile-image', 'nonce' );
 
     if ( empty( $_FILES['image'] ) ) {
@@ -46,6 +47,11 @@ class AjaxMethods
       wp_send_json_error( $upload['error'] );
       return;
     }
+
+    // Delete current image.
+    $user               = get_user_by( 'id', get_current_user_id() );
+    $current_user_image = get_field( 'profile_image', $user );
+    wp_delete_attachment( $current_user_image['ID'], true );
 
     // Upload to media library
     $attachment_id = wp_insert_attachment(
@@ -65,12 +71,7 @@ class AjaxMethods
     wp_update_attachment_metadata( $attachment_id, $attach_data );
 
     // Poveži sa ACF poljem
-    // if ( isset( $_POST['acf_field_key'] ) ) {
-      $user = get_user_by( 'id', get_current_user_id() );
-      update_field( sanitize_text_field( 'profile_image' ), $attachment_id, $user );
-    // }
-    
-    // wp_send_json( $_FILES['image'] );
+    update_field( sanitize_text_field( 'profile_image' ), $attachment_id, $user );
 
     wp_send_json(
       array(
@@ -80,7 +81,8 @@ class AjaxMethods
     );
   }
 
-  function save_favorite_user() {
+  function save_favorite_user()
+  {
     check_ajax_referer( 'nonce-favorite-users', 'nonce' );
 
     $user_id            = (int) $_POST['user_id'];
@@ -123,7 +125,8 @@ class AjaxMethods
     wp_send_json( $data );
   }
 
-  function delete_favorite_user() {
+  function delete_favorite_user()
+  {
     $user_id = (int) $_POST['user_id'];
     $current_user_id = (int) $_POST['current_user_id'];
     

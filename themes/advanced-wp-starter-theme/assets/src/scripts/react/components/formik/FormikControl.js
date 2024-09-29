@@ -15,6 +15,7 @@ function FormikControl(props) {
     case 'checkbox':
       return <Checkbox {...rest} />
     case 'date':
+    case 'file-upload':
     default:
       return null
   }

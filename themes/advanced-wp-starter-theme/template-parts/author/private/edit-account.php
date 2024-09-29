@@ -17,10 +17,7 @@ $image = get_field( 'profile_image' );
     <div class="border p-4 p-xl-8 mb-6 rounded-4 bg-white">
       <h2 class="h5">Profilna slika</h2>
       <div class="d-flex align-items-center">
-        <div class="img-wrapper-profile">
-          <?php Acf::image( $image, 'medium', 'rounded-circle object-fit-cover' ); ?>
-        </div>
-        <div id="form-update-image"></div>
+        <div id="form-update-image" data-profile_image="<?php echo ( ! empty( $image ) ) ? esc_url( $image['sizes']['medium'] ) : '' ?>"></div>
       </div>
     </div>
   </div>

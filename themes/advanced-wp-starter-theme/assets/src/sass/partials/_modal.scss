@@ -6,8 +6,8 @@
   }
 
   .btn-remove-image {
-    right: 8px;
-    top: 8px;
+    right: 2px;
+    top: 2px;
     height: 32px;
     width: 32px;
     cursor: pointer;
@@ -17,7 +17,7 @@
   .image-uploaded {
     z-index: 9;
     width: 100px;
-    height: 100px;
+    // height: 100px;
   }
 
   .modal-upload-image-box {
@@ -27,9 +27,11 @@
   }
 
   @include media-breakpoint-up(xl) {
+
+    .current-profile-image,
     .image-uploaded {
-      width: 200px;
-      height: 200px;
+      // width: 200px;
+      height: 220px;
     }
   }
 }

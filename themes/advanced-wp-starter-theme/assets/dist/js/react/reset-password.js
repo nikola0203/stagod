@@ -182,6 +182,7 @@ function FormikControl(props) {
     case 'checkbox':
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Checkbox__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({}, rest));
     case 'date':
+    case 'file-upload':
     default:
       return null;
   }
