@@ -9,13 +9,9 @@ $short_desc = get_user_meta( $user_id, 'description', true );
 // print_var($user);
 ?>
 
-<h1>Edit Profile</h1>
-<div class="border p-4 p-xl-8 mb-6 rounded-4">
-  <?php
-  if ( $short_desc ) :
-    ?>
-    <h2 class="h4 mb-0"><?php echo wp_kses_post( $short_desc ); ?></h2>
-    <?php
-  endif;
-  ?>
+<h1 class="h3">Podešavanje profila usluga</h1>
+<div id="settings-edit-profile" data-user_id="<?php esc_attr_e( get_current_user_id() ); ?>">
+  <div id="form-edit-short-desc"></div> 
+  <div id="form-edit-city"></div>
+  <div id="form-edit-long-desc"></div>
 </div>

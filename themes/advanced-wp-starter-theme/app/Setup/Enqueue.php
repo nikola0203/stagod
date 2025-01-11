@@ -87,6 +87,20 @@ class Enqueue
 				'home_url'                           => home_url()
 			]);
 		}
+
+		if ( get_author_posts_url( get_current_user_id() ) . 'edit-profile' == home_url( $wp->request ) ) {
+			wp_enqueue_script( 'edit-profile', mix( 'js/react/edit-profile.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );
+			wp_localize_script( 'edit-profile', 'edit_profile_data', [
+				'ajax_url'              => admin_url( 'admin-ajax.php' ),
+				'nonce'                 => wp_create_nonce( 'wp_rest' ),
+				'nonce_edit_short_desc' => wp_create_nonce( 'nonce-edit-short-desc' ),
+				'nonce_edit_city'       => wp_create_nonce( 'nonce-edit-city' ),
+				'nonce_edit_long_desc'  => wp_create_nonce( 'nonce-long-desc' ),
+				'current_user_id'       => get_current_user_id(),
+				'theme_uri'             => get_template_directory_uri(),
+				'home_url'              => home_url()
+			]);
+		}
 		
 		if ( 'author/admin/saved' == $wp->request ) {
 			wp_enqueue_script( 'saved-users', mix( 'js/saved-users.js' ), ['manifest', 'vendor'], '1.0.0', ['strategy' => 'async', 'in_footer' => true] );

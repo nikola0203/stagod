@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkadvanced_wp_starter_theme"] = self["webpackChunkadvanced_wp_starter_theme"] || []).push([["/js/react/edit-account"],{
+(self["webpackChunkadvanced_wp_starter_theme"] = self["webpackChunkadvanced_wp_starter_theme"] || []).push([["/js/react/edit-profile"],{
 
 /***/ "./assets/src/scripts/react/components/formik/Checkbox.js":
 /*!****************************************************************!*\
@@ -188,9 +188,517 @@ function FormikControl(props) {
 
 /***/ }),
 
-/***/ "./assets/src/scripts/react/components/formik/FormikDeleteAccount.js":
+/***/ "./assets/src/scripts/react/components/formik/FormikEditCity.js":
+/*!**********************************************************************!*\
+  !*** ./assets/src/scripts/react/components/formik/FormikEditCity.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.7.9-3c98466f87-b7a5f660ea.zip/node_modules/axios/lib/axios.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-35d3f03f1c/0/cache/formik-npm-2.4.6-6674fd4617-65d6845d91.zip/node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! yup */ "./.yarn/cache/yup-npm-1.6.1-e90c4f7113-19dba13403.zip/node_modules/yup/index.esm.js");
+/* harmony import */ var _FieldSelect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FieldSelect */ "./assets/src/scripts/react/components/formik/FieldSelect.js");
+/* harmony import */ var _cities_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../cities.json */ "./assets/src/scripts/cities.json");
+/* harmony import */ var react_loading_skeleton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-loading-skeleton */ "./.yarn/__virtual__/react-loading-skeleton-virtual-e500b29a1a/0/cache/react-loading-skeleton-npm-3.5.0-ec0f6b1af3-e6a1385d07.zip/node_modules/react-loading-skeleton/dist/index.js");
+/* harmony import */ var react_loading_skeleton_dist_skeleton_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-loading-skeleton/dist/skeleton.css */ "./.yarn/__virtual__/react-loading-skeleton-virtual-e500b29a1a/0/cache/react-loading-skeleton-npm-3.5.0-ec0f6b1af3-e6a1385d07.zip/node_modules/react-loading-skeleton/dist/skeleton.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/jsx-runtime.js");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+
+
+
+
+
+
+function FormikEditCity(_ref) {
+  var user_id = _ref.user_id;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState2 = _slicedToArray(_useState, 2),
+    userCity = _useState2[0],
+    setUserCity = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    dataUpdated = _useState4[0],
+    setDataUpdated = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    errorMessage = _useState6[0],
+    setErrorMessage = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState8 = _slicedToArray(_useState7, 2),
+    isLoading = _useState8[0],
+    setIsLoading = _useState8[1];
+  var cityOptions = _cities_json__WEBPACK_IMPORTED_MODULE_3__.map(function (city) {
+    return {
+      label: city.city,
+      value: city._id
+    };
+  });
+  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_1__.object({
+    city: yup__WEBPACK_IMPORTED_MODULE_1__.object().shape({
+      label: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Izaberi grad'),
+      value: yup__WEBPACK_IMPORTED_MODULE_1__.number().required('Izaberi grad')
+    }).nullable().required('Izaberi grad')
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("".concat(edit_profile_data.home_url, "/wp-json/wp/v2/users/").concat(user_id), {
+      headers: {
+        'X-WP-Nonce': edit_profile_data.nonce
+      }
+    }).then(function (response) {
+      var data = response.data.acf;
+      if (data && data.city) {
+        setUserCity({
+          label: data.city,
+          value: data.city
+        });
+      } else {
+        setUserCity(null);
+      }
+    })["catch"](function (error) {
+      console.error('Greška pri učitavanju podataka:', error);
+      setUserCity(null);
+    })["finally"](function () {
+      setIsLoading(false);
+    });
+  }, [user_id]);
+  var onSubmit = function onSubmit(values, _ref2) {
+    var _values$city;
+    var setSubmitting = _ref2.setSubmitting;
+    var cityName = (_values$city = values.city) === null || _values$city === void 0 ? void 0 : _values$city.label;
+    var data = new FormData();
+    data.append('action', 'edit_city');
+    data.append('nonce', edit_profile_data.nonce_edit_city);
+    data.append('current_user_id', edit_profile_data.current_user_id);
+    data.append('city', cityName);
+    axios__WEBPACK_IMPORTED_MODULE_6__["default"].post(edit_profile_data.ajax_url, data).then(function (response) {
+      // console.log(response.data)
+      if (!response.data.success) {
+        setDataUpdated(false);
+        setErrorMessage(true);
+      } else {
+        console.log(response.data.city);
+        setDataUpdated(true);
+        setErrorMessage(false);
+        setUserCity({
+          label: response.data.city,
+          value: response.data.city
+        });
+      }
+      setSubmitting(false);
+    })["catch"](function (error) {
+      console.error(error);
+      setErrorMessage(true);
+      setSubmitting(false);
+    });
+  };
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    // when the component is mounted, the alert is displayed for 3 seconds
+    var timer = setTimeout(function () {
+      setDataUpdated(false);
+    }, 3000);
+
+    // To clear or cancel a timer, you call the clearTimeout(); method, 
+    // passing in the timer object that you created into clearTimeout().
+    return function () {
+      return clearTimeout(timer);
+    };
+  }, [dataUpdated]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+    children: isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      width: "33%",
+      height: 74,
+      className: "rounded-4 mb-6"
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "row",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-xl-4",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            className: "border p-4 p-xl-7 mb-6 rounded-4 bg-white d-flex align-items-center justify-content-between",
+            type: "button",
+            "data-bs-toggle": "modal",
+            "data-bs-target": "#modal-edit-city",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "d-flex align-items-center mb-0 txt-black fw-bold",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                className: "me-2 mb-1",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("svg", {
+                  width: "16",
+                  height: "16",
+                  viewBox: "0 0 16 16",
+                  fill: "none",
+                  xmlns: "http://www.w3.org/2000/svg",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                    fillRule: "evenodd",
+                    clipRule: "evenodd",
+                    d: "M8 2.26659C6.66424 2.26659 5.38319 2.7806 4.43866 3.69555C3.49413 4.6105 2.9635 5.85144 2.9635 7.14537C2.9635 9.03659 4.23021 10.8531 5.59061 12.2441C6.26095 12.9296 6.93293 13.4903 7.43787 13.8797C7.66507 14.055 7.85765 14.195 8 14.2954C8.14234 14.195 8.33493 14.055 8.56213 13.8797C9.06707 13.4903 9.73905 12.9296 10.4094 12.2441C11.7698 10.8531 13.0365 9.03659 13.0365 7.14537C13.0365 5.85144 12.5059 4.6105 11.5613 3.69555C10.6168 2.7806 9.33576 2.26659 8 2.26659ZM8 14.8666C7.73277 15.2549 7.73265 15.2548 7.7325 15.2547L7.7321 15.2544L7.73092 15.2537L7.72707 15.2512L7.71349 15.2423C7.70187 15.2346 7.68517 15.2236 7.66373 15.2092C7.62085 15.1804 7.55898 15.1383 7.48083 15.0837C7.32456 14.9743 7.10293 14.8145 6.83768 14.6099C6.30794 14.2013 5.60036 13.6112 4.89115 12.886C3.49242 11.4558 2 9.41173 2 7.14537C2 5.6039 2.63214 4.12557 3.75736 3.03558C4.88258 1.9456 6.4087 1.33325 8 1.33325C9.5913 1.33325 11.1174 1.9456 12.2426 3.03558C13.3679 4.12557 14 5.6039 14 7.14537C14 9.41173 12.5076 11.4558 11.1089 12.886C10.3996 13.6112 9.69206 14.2013 9.16232 14.6099C8.89707 14.8145 8.67544 14.9743 8.51917 15.0837C8.44102 15.1383 8.37915 15.1804 8.33627 15.2092C8.31483 15.2236 8.29813 15.2346 8.28651 15.2423L8.27293 15.2512L8.26908 15.2537L8.2679 15.2544L8.2675 15.2547C8.26735 15.2548 8.26723 15.2549 8 14.8666ZM8 14.8666L8.26723 15.2549C8.10541 15.3594 7.89459 15.3594 7.73277 15.2549L8 14.8666Z",
+                    fill: "#000000"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                    fillRule: "evenodd",
+                    clipRule: "evenodd",
+                    d: "M7.99992 5.77367C7.13849 5.77367 6.44017 6.47199 6.44017 7.33341C6.44017 8.19484 7.13849 8.89316 7.99992 8.89316C8.86134 8.89316 9.55967 8.19484 9.55967 7.33341C9.55967 6.47199 8.86134 5.77367 7.99992 5.77367ZM5.33325 7.33341C5.33325 5.86066 6.52716 4.66675 7.99992 4.66675C9.47268 4.66675 10.6666 5.86066 10.6666 7.33341C10.6666 8.80617 9.47268 10.0001 7.99992 10.0001C6.52716 10.0001 5.33325 8.80617 5.33325 7.33341Z",
+                    fill: "#000000"
+                  })]
+                })
+              }), (userCity === null || userCity === void 0 ? void 0 : userCity.label) || 'Niste izabrali grad']
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("svg", {
+                width: "32",
+                height: "32",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("rect", {
+                  x: "1",
+                  y: "1",
+                  width: "30",
+                  height: "30",
+                  rx: "15",
+                  fill: "#fff"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("rect", {
+                  x: "1",
+                  y: "1",
+                  width: "30",
+                  height: "30",
+                  rx: "15",
+                  stroke: "#EA4900",
+                  strokeWidth: "2"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                  fillRule: "evenodd",
+                  clipRule: "evenodd",
+                  d: "M17.737 9.92a2 2 0 0 1 2.829 0l.78.78a2 2 0 0 1 0 2.829l-7.438 7.438a2 2 0 0 1-1.022.547l-1.956.391a1.333 1.333 0 0 1-1.57-1.569l.392-1.956a2 2 0 0 1 .547-1.022l7.438-7.439zm1.886.942a.667.667 0 0 0-.943 0L11.242 18.3a.666.666 0 0 0-.183.341l-.39 1.957 1.956-.392a.666.666 0 0 0 .34-.182l7.439-7.438a.667.667 0 0 0 0-.943l-.781-.781zM17.152 21.448c0-.368.298-.667.666-.667h3.334a.667.667 0 0 1 0 1.333h-3.334a.667.667 0 0 1-.666-.666z",
+                  fill: "#EA4900"
+                })]
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            className: "modal modal-lg fade",
+            id: "modal-edit-city",
+            tabIndex: "-1",
+            "aria-labelledby": "modal-label-edit-city",
+            "aria-hidden": "true",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+              className: "modal-dialog modal-dialog-centered",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "modal-content p-4 p-xl-8",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  className: "modal-header border-0",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                    type: "button",
+                    className: "btn-close",
+                    "data-bs-dismiss": "modal",
+                    "aria-label": "Close"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+                  className: "h3",
+                  id: "modal-label-user-edit-city",
+                  children: "Izaberite mesto u kome nudite uslugu"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(formik__WEBPACK_IMPORTED_MODULE_8__.Formik, {
+                  initialValues: {
+                    city: userCity || {
+                      label: '',
+                      value: ''
+                    }
+                  },
+                  validationSchema: validationSchema,
+                  onSubmit: onSubmit,
+                  enableReinitialize: true,
+                  children: function children(formik) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_8__.Form, {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FieldSelect__WEBPACK_IMPORTED_MODULE_2__["default"], {
+                        name: "city",
+                        label: "Mesto/Grad",
+                        placeholder: "Izaberi grad",
+                        labelClass: "fs-5",
+                        options: cityOptions
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                        className: "d-flex align-items-center justify-content-lg-end",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                          type: "button",
+                          className: "me-4 btn bg-transparent",
+                          "data-bs-dismiss": "modal",
+                          "aria-label": "Close",
+                          children: "Otka\u017Ei"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                          type: "submit",
+                          className: "btn btn-primary",
+                          children: "Sa\u010Duvaj"
+                        })]
+                      }), dataUpdated && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                        className: "alert alert-success mt-6",
+                        children: "Va\u0161e izmene su sa\u010Duvane."
+                      }), errorMessage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                        className: "alert alert-danger mt-6",
+                        children: "Do\u0161lo je do gre\u0161ke. Poku\u0161ajte ponovo."
+                      })]
+                    });
+                  }
+                })]
+              })
+            })
+          })]
+        })
+      })
+    })
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikEditCity);
+
+/***/ }),
+
+/***/ "./assets/src/scripts/react/components/formik/FormikEditLongDesc.js":
+/*!**************************************************************************!*\
+  !*** ./assets/src/scripts/react/components/formik/FormikEditLongDesc.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap/js/dist/modal */ "./.yarn/__virtual__/bootstrap-virtual-178a5b5195/0/cache/bootstrap-npm-5.3.3-da08e2f0fe-f05183948b.zip/node_modules/bootstrap/js/dist/modal.js");
+/* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.7.9-3c98466f87-b7a5f660ea.zip/node_modules/axios/lib/axios.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-35d3f03f1c/0/cache/formik-npm-2.4.6-6674fd4617-65d6845d91.zip/node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./.yarn/cache/yup-npm-1.6.1-e90c4f7113-19dba13403.zip/node_modules/yup/index.esm.js");
+/* harmony import */ var _FormikControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FormikControl */ "./assets/src/scripts/react/components/formik/FormikControl.js");
+/* harmony import */ var react_loading_skeleton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-loading-skeleton */ "./.yarn/__virtual__/react-loading-skeleton-virtual-e500b29a1a/0/cache/react-loading-skeleton-npm-3.5.0-ec0f6b1af3-e6a1385d07.zip/node_modules/react-loading-skeleton/dist/index.js");
+/* harmony import */ var react_loading_skeleton_dist_skeleton_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-loading-skeleton/dist/skeleton.css */ "./.yarn/__virtual__/react-loading-skeleton-virtual-e500b29a1a/0/cache/react-loading-skeleton-npm-3.5.0-ec0f6b1af3-e6a1385d07.zip/node_modules/react-loading-skeleton/dist/skeleton.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/jsx-runtime.js");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+
+
+
+
+
+
+function FormikEditLongDesc(props) {
+  var user_id = props.user_id;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+    _useState2 = _slicedToArray(_useState, 2),
+    userLongDesc = _useState2[0],
+    setUserLongDesc = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    dataUpdated = _useState4[0],
+    setDataUpdated = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    errorMessage = _useState6[0],
+    setErrorMessage = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+    _useState8 = _slicedToArray(_useState7, 2),
+    isLoading = _useState8[0],
+    setIsLoading = _useState8[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("".concat(edit_profile_data.home_url, "/wp-json/wp/v2/users/").concat(user_id), {
+      headers: {
+        'X-WP-Nonce': edit_profile_data.nonce
+      }
+    }).then(function (response) {
+      return response.data;
+    }).then(function (data) {
+      console.log(data.acf);
+      setUserLongDesc(data.acf.long_description);
+    })["catch"](function (error) {
+      console.error('Greška pri učitavanju podataka:', error);
+    })["finally"](function () {
+      setIsLoading(false);
+    });
+  }, [user_id]);
+  var initialValues = {
+    long_desc: userLongDesc || ''
+  };
+  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object({
+    long_desc: yup__WEBPACK_IMPORTED_MODULE_2__.string().min(4, 'Prekratko')
+    // .max(50, 'Predugačko')
+    .required('Kratak opis je obavezan')
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    // when the component is mounted, the alert is displayed for 3 seconds
+    var timer = setTimeout(function () {
+      setDataUpdated(false);
+    }, 3000);
+
+    // To clear or cancel a timer, you call the clearTimeout(); method, 
+    // passing in the timer object that you created into clearTimeout().
+    return function () {
+      return clearTimeout(timer);
+    };
+  }, [dataUpdated]);
+  var onSubmit = function onSubmit(values, formikBag) {
+    var setSubmitting = formikBag.setSubmitting;
+    var data = new FormData();
+    data.append('action', 'edit_long_desc');
+    data.append('nonce', edit_profile_data.nonce_edit_long_desc);
+    data.append('current_user_id', edit_profile_data.current_user_id);
+    data.append('long_desc', values.long_desc);
+    axios__WEBPACK_IMPORTED_MODULE_6__["default"].post(edit_profile_data.ajax_url, data).then(function (response) {
+      return response.data;
+    }).then(function (data) {
+      if (!data.success) {
+        setDataUpdated(false);
+        setErrorMessage(true);
+      } else {
+        setDataUpdated(true);
+        setErrorMessage(false);
+      }
+      setSubmitting(false);
+    })["catch"](function (error) {
+      console.error(error);
+      setSubmitting(false);
+    });
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+    children: isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      width: "100%",
+      height: 244,
+      className: "rounded-4 mb-6"
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "border p-4 p-xl-8 mb-6 rounded-4 bg-white",
+        type: "button",
+        "data-bs-toggle": "modal",
+        "data-bs-target": "#modal-edit-long-desc",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+          className: "h3",
+          children: "O Meni"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "d-flex",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            className: "mb-0 me-6 fw-bold",
+            style: {
+              whiteSpace: 'pre-wrap'
+            },
+            children: userLongDesc
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("svg", {
+              width: "32",
+              height: "32",
+              fill: "none",
+              xmlns: "http://www.w3.org/2000/svg",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("rect", {
+                x: "1",
+                y: "1",
+                width: "30",
+                height: "30",
+                rx: "15",
+                fill: "#fff"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("rect", {
+                x: "1",
+                y: "1",
+                width: "30",
+                height: "30",
+                rx: "15",
+                stroke: "#EA4900",
+                strokeWidth: "2"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                fillRule: "evenodd",
+                clipRule: "evenodd",
+                d: "M17.737 9.92a2 2 0 0 1 2.829 0l.78.78a2 2 0 0 1 0 2.829l-7.438 7.438a2 2 0 0 1-1.022.547l-1.956.391a1.333 1.333 0 0 1-1.57-1.569l.392-1.956a2 2 0 0 1 .547-1.022l7.438-7.439zm1.886.942a.667.667 0 0 0-.943 0L11.242 18.3a.666.666 0 0 0-.183.341l-.39 1.957 1.956-.392a.666.666 0 0 0 .34-.182l7.439-7.438a.667.667 0 0 0 0-.943l-.781-.781zM17.152 21.448c0-.368.298-.667.666-.667h3.334a.667.667 0 0 1 0 1.333h-3.334a.667.667 0 0 1-.666-.666z",
+                fill: "#EA4900"
+              })]
+            })
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "modal modal-lg fade",
+        id: "modal-edit-long-desc",
+        tabIndex: "-1",
+        "aria-labelledby": "modal-label-edit-long-desc",
+        "aria-hidden": "true",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          className: "modal-dialog modal-dialog-centered",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            className: "modal-content p-4 p-xl-8",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+              className: "modal-header border-0",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                type: "button",
+                className: "btn-close",
+                "data-bs-dismiss": "modal",
+                "aria-label": "Close"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+              className: "h3",
+              id: "modal-label-user-edit-long-desc",
+              children: "O meni"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+              className: "text-gray-200 fw-bold",
+              children: "Opi\u0161i detaljnije uslugu koju nudi\u0161"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(formik__WEBPACK_IMPORTED_MODULE_8__.Formik, {
+              initialValues: initialValues,
+              validationSchema: validationSchema,
+              onSubmit: onSubmit,
+              enableReinitialize: true,
+              children: function children(formik) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_8__.Form, {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                    control: "textarea",
+                    type: "textarea",
+                    label: "Tvoj opis",
+                    name: "long_desc",
+                    className: "text-small",
+                    labelClass: "fs-5",
+                    onChange: formik.handleChange
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                    className: "d-flex align-items-center justify-content-lg-end",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                      type: "button",
+                      className: "me-4 btn bg-transparent",
+                      "data-bs-dismiss": "modal",
+                      "aria-label": "Close",
+                      children: "Otka\u017Ei"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                      type: "submit",
+                      className: "btn btn-primary",
+                      children: "Sa\u010Duvaj"
+                    }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
+                      className: "icon-spinner"
+                    }) : '']
+                  }), dataUpdated ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "alert alert-success mt-6",
+                    children: "Va\u0161e izmene su sa\u010Duvane."
+                  }) : '']
+                });
+              }
+            })]
+          })
+        })
+      })]
+    })
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikEditLongDesc);
+
+/***/ }),
+
+/***/ "./assets/src/scripts/react/components/formik/FormikEditShortDesc.js":
 /*!***************************************************************************!*\
-  !*** ./assets/src/scripts/react/components/formik/FormikDeleteAccount.js ***!
+  !*** ./assets/src/scripts/react/components/formik/FormikEditShortDesc.js ***!
   \***************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -200,13 +708,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap/js/dist/modal */ "./.yarn/__virtual__/bootstrap-virtual-178a5b5195/0/cache/bootstrap-npm-5.3.3-da08e2f0fe-f05183948b.zip/node_modules/bootstrap/js/dist/modal.js");
 /* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.7.9-3c98466f87-b7a5f660ea.zip/node_modules/axios/lib/axios.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.7.9-3c98466f87-b7a5f660ea.zip/node_modules/axios/lib/axios.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-35d3f03f1c/0/cache/formik-npm-2.4.6-6674fd4617-65d6845d91.zip/node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-35d3f03f1c/0/cache/formik-npm-2.4.6-6674fd4617-65d6845d91.zip/node_modules/formik/dist/formik.esm.js");
 /* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./.yarn/cache/yup-npm-1.6.1-e90c4f7113-19dba13403.zip/node_modules/yup/index.esm.js");
 /* harmony import */ var _FormikControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FormikControl */ "./assets/src/scripts/react/components/formik/FormikControl.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_loading_skeleton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-loading-skeleton */ "./.yarn/__virtual__/react-loading-skeleton-virtual-e500b29a1a/0/cache/react-loading-skeleton-npm-3.5.0-ec0f6b1af3-e6a1385d07.zip/node_modules/react-loading-skeleton/dist/index.js");
+/* harmony import */ var react_loading_skeleton_dist_skeleton_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-loading-skeleton/dist/skeleton.css */ "./.yarn/__virtual__/react-loading-skeleton-virtual-e500b29a1a/0/cache/react-loading-skeleton-npm-3.5.0-ec0f6b1af3-e6a1385d07.zip/node_modules/react-loading-skeleton/dist/skeleton.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/jsx-runtime.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -220,181 +730,14 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
-function FormikDeleteAccount(props) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    dataUpdated = _useState2[0],
-    setDataUpdated = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-    _useState4 = _slicedToArray(_useState3, 2),
-    errorMessage = _useState4[0],
-    setErrorMessage = _useState4[1];
-  var initialValues = {
-    password_delete_account: ''
-  };
-  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object({
-    password_delete_account: yup__WEBPACK_IMPORTED_MODULE_2__.string().min(8, 'Lozinka mora biti duža od 8 karaktera').matches(/[0-9]/, 'Lozinka mora da sadrži bar jedan broj').matches(/[a-z]/, 'Lozinka mora da sadrži bar jedno malo slovo').matches(/[A-Z]/, 'Lozinka mora da sadrži bar jedno veliko slovo').required('Lozinka je obavezna')
-  });
-  var onSubmit = function onSubmit(values, formikBag) {
-    var setSubmitting = formikBag.setSubmitting;
-
-    // console.log(values)
-    var data = new FormData();
-    data.append('action', 'delete_account');
-    data.append('nonce', edit_account_data.nonce_delete_account);
-    data.append('current_user_id', edit_account_data.current_user_id);
-    data.append('password', values.password_delete_account);
-    axios__WEBPACK_IMPORTED_MODULE_5__["default"].post(edit_account_data.ajax_url, data).then(function (response) {
-      return response.data;
-    }).then(function (data) {
-      console.log(data);
-      if (!data.success) {
-        setDataUpdated(false);
-        setErrorMessage(true);
-        setSubmitting(false);
-      }
-      if (data.account_deleted) {
-        setErrorMessage(false);
-        setDataUpdated(true);
-        setSubmitting(false);
-        // sessionStorage.setItem("account_deleted", "true")
-        // window.location.replace(edit_account_data.home_url)
-      }
-    })["catch"](function (error) {
-      console.log(error.data);
-    });
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "border p-4 p-xl-8 mb-6 rounded-4 bg-white d-flex align-items-center justify-content-between",
-      type: "button",
-      "data-bs-toggle": "modal",
-      "data-bs-target": "#modal-delete-account",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "h5 mb-0 fw-bold",
-          children: "\u017Delim da izbri\u0161em svoj nalog"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
-          width: "16",
-          height: "16",
-          viewBox: "0 0 16 16",
-          fill: "#EA4900",
-          xmlns: "http://www.w3.org/2000/svg",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
-            fillRule: "evenodd",
-            d: "M12.2929,5.292875 C12.6834,4.902375 13.3166,4.902375 13.7071,5.292875 C14.0976,5.683375 14.0976,6.316555 13.7071,6.707085 L8.70711,11.707085 C8.31658,12.097605 7.68342,12.097605 7.29289,11.707085 L2.29289,6.707085 C1.90237,6.316555 1.90237,5.683375 2.29289,5.292875 C2.68342,4.902375 3.31658,4.902375 3.70711,5.292875 L8,9.585765 L12.2929,5.292875 Z"
-          })
-        })
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "modal fade",
-      id: "modal-delete-account",
-      tabIndex: "-1",
-      "aria-labelledby": "modal-label-delete-account",
-      "aria-hidden": "true",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "modal-dialog modal-dialog-centered",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "modal-content p-4 p-xl-8",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "modal-header border-0",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              type: "button",
-              className: "btn-close",
-              "data-bs-dismiss": "modal",
-              "aria-label": "Close"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-            className: "h3",
-            id: "modal-label-user-delete-account",
-            children: "\u017Delite da obri\u0161ete nalog?"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-            className: "mb-0 text-danger",
-            children: "Brisanjem naloga \u0107e se obrisati svi va\u0161i podaci iz baze."
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-            className: "text-danger",
-            children: "Ova radnja se ne mo\u017Ee poni\u0161titi."
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(formik__WEBPACK_IMPORTED_MODULE_6__.Formik, {
-            initialValues: initialValues,
-            validationSchema: validationSchema,
-            onSubmit: onSubmit,
-            children: function children(formik) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_6__.Form, {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                  control: "input",
-                  type: "password",
-                  label: "Va\u017Ee\u0107a lozinka",
-                  name: "password_delete_account",
-                  autoComplete: "on"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                  className: "d-flex align-items-center",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                    type: "submit",
-                    className: "btn btn-primary me-4",
-                    children: "Obri\u0161i"
-                  }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
-                    className: "icon-spinner"
-                  }) : '']
-                }), dataUpdated ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  className: "alert alert-success mt-6",
-                  children: "Va\u0161 nalog je obrisan."
-                }) : '', errorMessage ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  className: "alert alert-warning mt-6",
-                  children: "Va\u017Ee\u0107a lozinka nije ispravna."
-                }) : '']
-              });
-            }
-          })]
-        })
-      })
-    })]
-  });
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikDeleteAccount);
-
-/***/ }),
-
-/***/ "./assets/src/scripts/react/components/formik/FormikUpdateEmail.js":
-/*!*************************************************************************!*\
-  !*** ./assets/src/scripts/react/components/formik/FormikUpdateEmail.js ***!
-  \*************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap/js/dist/modal */ "./.yarn/__virtual__/bootstrap-virtual-178a5b5195/0/cache/bootstrap-npm-5.3.3-da08e2f0fe-f05183948b.zip/node_modules/bootstrap/js/dist/modal.js");
-/* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.7.9-3c98466f87-b7a5f660ea.zip/node_modules/axios/lib/axios.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-35d3f03f1c/0/cache/formik-npm-2.4.6-6674fd4617-65d6845d91.zip/node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./.yarn/cache/yup-npm-1.6.1-e90c4f7113-19dba13403.zip/node_modules/yup/index.esm.js");
-/* harmony import */ var _FormikControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FormikControl */ "./assets/src/scripts/react/components/formik/FormikControl.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/jsx-runtime.js");
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
-
-
-
-
-// import listOfCities from '../../../cities.json'
-
-function FormikUpdateEmail(props) {
+function FormikEditShortDesc(props) {
   var user_id = props.user_id;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
     _useState2 = _slicedToArray(_useState, 2),
-    userEmail = _useState2[0],
-    setUserEmail = _useState2[1];
+    userShortDesc = _useState2[0],
+    setUserShortDesc = _useState2[1];
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
     _useState4 = _slicedToArray(_useState3, 2),
     dataUpdated = _useState4[0],
@@ -403,915 +746,182 @@ function FormikUpdateEmail(props) {
     _useState6 = _slicedToArray(_useState5, 2),
     errorMessage = _useState6[0],
     setErrorMessage = _useState6[1];
-  var initialValues = {
-    email: '',
-    password: ''
-  };
-  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object({
-    email: yup__WEBPACK_IMPORTED_MODULE_2__.string().email('Neispravan email').required('Email je obavezan'),
-    password: yup__WEBPACK_IMPORTED_MODULE_2__.string().min(8, 'Lozinka mora biti duža od 8 karaktera').matches(/[0-9]/, 'Lozinka mora da sadrži bar jedan broj').matches(/[a-z]/, 'Lozinka mora da sadrži bar jedno malo slovo').matches(/[A-Z]/, 'Lozinka mora da sadrži bar jedno veliko slovo').required('Lozinka je obavezna')
-  });
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+    _useState8 = _slicedToArray(_useState7, 2),
+    isLoading = _useState8[0],
+    setIsLoading = _useState8[1];
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_5__["default"].get(edit_account_data.home_url + '/wp-json/wp/v2/users/' + user_id, {
+    axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("".concat(edit_profile_data.home_url, "/wp-json/wp/v2/users/").concat(user_id), {
       headers: {
-        'X-WP-Nonce': edit_account_data.nonce
+        'X-WP-Nonce': edit_profile_data.nonce
       }
     }).then(function (response) {
       return response.data;
     }).then(function (data) {
-      setUserEmail(data.user_email);
-    })["catch"](function (error) {
-      console.log(error);
-    });
-  }, []);
-  var onSubmit = function onSubmit(values, formikBag) {
-    var setSubmitting = formikBag.setSubmitting,
-      setFieldError = formikBag.setFieldError;
-
-    // console.log(values)
-    var data = new FormData();
-    data.append('action', 'change_current_user_email');
-    data.append('nonce', edit_account_data.nonce_change_current_user_email);
-    data.append('current_user_id', edit_account_data.current_user_id);
-    data.append('password', values.password);
-    data.append('email', values.email);
-    axios__WEBPACK_IMPORTED_MODULE_5__["default"].post(edit_account_data.ajax_url, data).then(function (response) {
-      return response.data;
-    }).then(function (data) {
-      console.log(data);
-      if (!data.success) {
-        setDataUpdated(false);
-        setErrorMessage(true);
-        setSubmitting(false);
-      }
-      if (data.email_changed) {
-        setErrorMessage(false);
-        setDataUpdated(true);
-        setSubmitting(false);
-        setUserEmail(data.new_email);
-      }
-    })["catch"](function (error) {
-      console.log(error.data);
-    });
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "border p-4 p-xl-8 mb-6 rounded-4 bg-white d-flex align-items-center justify-content-between",
-      type: "button",
-      "data-bs-toggle": "modal",
-      "data-bs-target": "#modal-update-email",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "h5 mb-0 fw-bold",
-          children: "Promena e-maila"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "text-gray-200 fw-bold",
-          children: userEmail
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
-          width: "16",
-          height: "16",
-          viewBox: "0 0 16 16",
-          fill: "#EA4900",
-          xmlns: "http://www.w3.org/2000/svg",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
-            fillRule: "evenodd",
-            d: "M12.2929,5.292875 C12.6834,4.902375 13.3166,4.902375 13.7071,5.292875 C14.0976,5.683375 14.0976,6.316555 13.7071,6.707085 L8.70711,11.707085 C8.31658,12.097605 7.68342,12.097605 7.29289,11.707085 L2.29289,6.707085 C1.90237,6.316555 1.90237,5.683375 2.29289,5.292875 C2.68342,4.902375 3.31658,4.902375 3.70711,5.292875 L8,9.585765 L12.2929,5.292875 Z"
-          })
-        })
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "modal fade",
-      id: "modal-update-email",
-      tabIndex: "-1",
-      "aria-labelledby": "modal-label-update-email",
-      "aria-hidden": "true",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "modal-dialog modal-dialog-centered",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "modal-content p-4 p-xl-8",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "modal-header border-0",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              type: "button",
-              className: "btn-close",
-              "data-bs-dismiss": "modal",
-              "aria-label": "Close"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-            className: "h3",
-            id: "modal-label-user-update-email",
-            children: "Promena e-maila"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-            className: "fw-700 mb-0",
-            children: "Trenutna e-mail adresa"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-            className: "text-gray-200 fw-bold",
-            children: userEmail
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(formik__WEBPACK_IMPORTED_MODULE_6__.Formik, {
-            initialValues: initialValues,
-            validationSchema: validationSchema,
-            onSubmit: onSubmit,
-            children: function children(formik) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_6__.Form, {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                  control: "input",
-                  type: "email",
-                  label: "Nova email adresa",
-                  name: "email"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                  control: "input",
-                  type: "password",
-                  label: "Va\u017Ee\u0107a lozinka",
-                  name: "password",
-                  autoComplete: "on"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                  className: "d-flex align-items-center",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                    type: "submit",
-                    className: "btn btn-primary me-4",
-                    children: "Promeni email"
-                  }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
-                    className: "icon-spinner"
-                  }) : '']
-                }), dataUpdated ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  className: "alert alert-success mt-6",
-                  children: "Va\u0161e izmene su sa\u010Duvane."
-                }) : '', errorMessage ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  className: "alert alert-warning mt-6",
-                  children: "Email adresa je ista kao i trenutna."
-                }) : '']
-              });
-            }
-          })]
-        })
-      })
-    })]
-  });
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikUpdateEmail);
-
-/***/ }),
-
-/***/ "./assets/src/scripts/react/components/formik/FormikUpdatePassword.js":
-/*!****************************************************************************!*\
-  !*** ./assets/src/scripts/react/components/formik/FormikUpdatePassword.js ***!
-  \****************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap/js/dist/modal */ "./.yarn/__virtual__/bootstrap-virtual-178a5b5195/0/cache/bootstrap-npm-5.3.3-da08e2f0fe-f05183948b.zip/node_modules/bootstrap/js/dist/modal.js");
-/* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.7.9-3c98466f87-b7a5f660ea.zip/node_modules/axios/lib/axios.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-35d3f03f1c/0/cache/formik-npm-2.4.6-6674fd4617-65d6845d91.zip/node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./.yarn/cache/yup-npm-1.6.1-e90c4f7113-19dba13403.zip/node_modules/yup/index.esm.js");
-/* harmony import */ var _FormikControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FormikControl */ "./assets/src/scripts/react/components/formik/FormikControl.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/jsx-runtime.js");
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-
-
-// import listOfCities from '../../../cities.json'
-
-function FormikUpdatePassword(props) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    dataUpdated = _useState2[0],
-    setDataUpdated = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-    _useState4 = _slicedToArray(_useState3, 2),
-    errorMessage = _useState4[0],
-    setErrorMessage = _useState4[1];
-  var initialValues = {
-    current_password: '',
-    update_password: '',
-    confirm_update_password: ''
-  };
-  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object({
-    current_password: yup__WEBPACK_IMPORTED_MODULE_2__.string().min(8, 'Lozinka mora biti duža od 8 karaktera').matches(/[0-9]/, 'Lozinka mora da sadrži bar jedan broj').matches(/[a-z]/, 'Lozinka mora da sadrži bar jedno malo slovo').matches(/[A-Z]/, 'Lozinka mora da sadrži bar jedno veliko slovo').required('Lozinka je obavezna'),
-    update_password: yup__WEBPACK_IMPORTED_MODULE_2__.string().min(8, 'Lozinka mora biti duža od 8 karaktera').matches(/[0-9]/, 'Lozinka mora da sadrži bar jedan broj').matches(/[a-z]/, 'Lozinka mora da sadrži bar jedno malo slovo').matches(/[A-Z]/, 'Lozinka mora da sadrži bar jedno veliko slovo').required('Lozinka je obavezna'),
-    confirm_update_password: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Potvrdite lozinku").oneOf([yup__WEBPACK_IMPORTED_MODULE_2__.ref("update_password")], "Lozinka mora da se poklapa")
-  });
-  var onSubmit = function onSubmit(values, formikBag) {
-    var setSubmitting = formikBag.setSubmitting,
-      setFieldError = formikBag.setFieldError;
-
-    // console.log(values)
-    var data = new FormData();
-    data.append('action', 'change_current_user_password');
-    data.append('nonce', edit_account_data.nonce_change_current_user_password);
-    data.append('current_user_id', edit_account_data.current_user_id);
-    data.append('current_password', values.current_password);
-    data.append('update_password', values.update_password);
-    axios__WEBPACK_IMPORTED_MODULE_5__["default"].post(edit_account_data.ajax_url, data).then(function (response) {
-      return response.data;
-    }).then(function (data) {
-      console.log(data);
-      if (!data.success) {
-        setDataUpdated(false);
-        setErrorMessage(true);
-        setSubmitting(false);
-      }
-      if (data.password_changed) {
-        setErrorMessage(false);
-        setDataUpdated(true);
-        setSubmitting(false);
-      }
-    })["catch"](function (error) {
-      console.log(error.data);
-    });
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "border p-4 p-xl-8 mb-6 rounded-4 bg-white d-flex align-items-center justify-content-between",
-      type: "button",
-      "data-bs-toggle": "modal",
-      "data-bs-target": "#modal-update-password",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "h5 mb-0 fw-bold",
-          children: "Promena lozinke"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
-          width: "16",
-          height: "16",
-          viewBox: "0 0 16 16",
-          fill: "#EA4900",
-          xmlns: "http://www.w3.org/2000/svg",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
-            fillRule: "evenodd",
-            d: "M12.2929,5.292875 C12.6834,4.902375 13.3166,4.902375 13.7071,5.292875 C14.0976,5.683375 14.0976,6.316555 13.7071,6.707085 L8.70711,11.707085 C8.31658,12.097605 7.68342,12.097605 7.29289,11.707085 L2.29289,6.707085 C1.90237,6.316555 1.90237,5.683375 2.29289,5.292875 C2.68342,4.902375 3.31658,4.902375 3.70711,5.292875 L8,9.585765 L12.2929,5.292875 Z"
-          })
-        })
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "modal fade",
-      id: "modal-update-password",
-      tabIndex: "-1",
-      "aria-labelledby": "modal-label-update-password",
-      "aria-hidden": "true",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "modal-dialog modal-dialog-centered",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "modal-content p-4 p-xl-8",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "modal-header border-0",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              type: "button",
-              className: "btn-close",
-              "data-bs-dismiss": "modal",
-              "aria-label": "Close"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-            className: "h3",
-            id: "modal-label-user-update-password",
-            children: "Promena lozinke"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(formik__WEBPACK_IMPORTED_MODULE_6__.Formik, {
-            initialValues: initialValues,
-            validationSchema: validationSchema,
-            onSubmit: onSubmit,
-            children: function children(formik) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_6__.Form, {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                  control: "input",
-                  type: "password",
-                  label: "Va\u017Ee\u0107a lozinka",
-                  name: "current_password",
-                  autoComplete: "on"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                  control: "input",
-                  type: "password",
-                  label: "Nova lozinka",
-                  name: "update_password",
-                  autoComplete: "on"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                  control: "input",
-                  type: "password",
-                  label: "Ponovite novu lozinku",
-                  name: "confirm_update_password",
-                  autoComplete: "on"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                  className: "d-flex align-items-center",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                    type: "submit",
-                    className: "btn btn-primary me-4",
-                    children: "Promeni lozinku"
-                  }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
-                    className: "icon-spinner"
-                  }) : '']
-                }), dataUpdated ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  className: "alert alert-success mt-6",
-                  children: "Va\u0161e izmene su sa\u010Duvane."
-                }) : '', errorMessage ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  className: "alert alert-warning mt-6",
-                  children: "Va\u017Ee\u0107a lozinka nije ispravna."
-                }) : '']
-              });
-            }
-          })]
-        })
-      })
-    })]
-  });
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikUpdatePassword);
-
-/***/ }),
-
-/***/ "./assets/src/scripts/react/components/formik/FormikUpdateProfileImage.js":
-/*!********************************************************************************!*\
-  !*** ./assets/src/scripts/react/components/formik/FormikUpdateProfileImage.js ***!
-  \********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap/js/dist/modal */ "./.yarn/__virtual__/bootstrap-virtual-178a5b5195/0/cache/bootstrap-npm-5.3.3-da08e2f0fe-f05183948b.zip/node_modules/bootstrap/js/dist/modal.js");
-/* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.7.9-3c98466f87-b7a5f660ea.zip/node_modules/axios/lib/axios.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-35d3f03f1c/0/cache/formik-npm-2.4.6-6674fd4617-65d6845d91.zip/node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./.yarn/cache/yup-npm-1.6.1-e90c4f7113-19dba13403.zip/node_modules/yup/index.esm.js");
-/* harmony import */ var react_dropzone__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-dropzone */ "./.yarn/__virtual__/react-dropzone-virtual-3ab3114e7d/0/cache/react-dropzone-npm-14.3.5-1dc0066433-6124bacd21.zip/node_modules/react-dropzone/dist/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-
-
-
-function FormikUpdateProfileImage(props) {
-  var profile_image = props.profile_image;
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    dataUpdated = _useState2[0],
-    setDataUpdated = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
-    _useState4 = _slicedToArray(_useState3, 2),
-    uploadedImage = _useState4[0],
-    setUploadedImage = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
-    _useState6 = _slicedToArray(_useState5, 2),
-    image = _useState6[0],
-    setImage = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
-    _useState8 = _slicedToArray(_useState7, 2),
-    imageDeleted = _useState8[0],
-    setImageDeleted = _useState8[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
-    _useState10 = _slicedToArray(_useState9, 2),
-    deletingImage = _useState10[0],
-    setDeletingImage = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(profile_image),
-    _useState12 = _slicedToArray(_useState11, 2),
-    profileImage = _useState12[0],
-    setProfileImage = _useState12[1];
-  var initialValues = {
-    image: null
-  };
-  var SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
-  var MAX_FILE_SIZE = 1000000; // 1MB
-
-  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
-    image: yup__WEBPACK_IMPORTED_MODULE_2__.mixed().required('Slika je obavezna').test('fileSize', 'Slika je prevelika', function (value) {
-      return value && value.size <= MAX_FILE_SIZE;
-    }).test('fileFormat', 'Nepodržani format (slika mora biti u jpg ili png formatu)', function (value) {
-      return value && SUPPORTED_FORMATS.includes(value.type);
-    })
-  });
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    return function () {
-      if (uploadedImage) {
-        URL.revokeObjectURL(uploadedImage.preview);
-      }
-    };
-  }, [uploadedImage]);
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    var timer = setTimeout(function () {
-      setDataUpdated(false);
-    }, 3000);
-    return function () {
-      clearTimeout(timer);
-    };
-  }, [dataUpdated]);
-  var onSubmit = function onSubmit(values, formikBag) {
-    var setSubmitting = formikBag.setSubmitting,
-      setFieldError = formikBag.setFieldError;
-    var data = new FormData();
-    data.append('action', 'upload_profile_image');
-    data.append('nonce', edit_account_data.nonce_upload_profile_image);
-    data.append('current_user_id', edit_account_data.current_user_id);
-    data.append('image', image);
-    axios__WEBPACK_IMPORTED_MODULE_4__["default"].post(edit_account_data.ajax_url, data).then(function (response) {
-      return response.data;
-    }).then(function (data) {
-      console.log(data);
-      setDataUpdated(true);
-      setSubmitting(false);
-      setProfileImage(data.url);
-    })["catch"](function (error) {
-      console.log(error.data);
-    });
-  };
-  var deleteProfileImage = function deleteProfileImage() {
-    setDeletingImage(true);
-    var data = new FormData();
-    data.append('action', 'delete_profile_image');
-    data.append('nonce', edit_account_data.nonce_delete_profile_image);
-    data.append('current_user_id', edit_account_data.current_user_id);
-    axios__WEBPACK_IMPORTED_MODULE_4__["default"].post(edit_account_data.ajax_url, data).then(function (response) {
-      return response.data;
-    }).then(function (data) {
-      console.log(data);
-      if (data.image_id) {
-        setImageDeleted(true);
-        setDeletingImage(false);
-        setProfileImage(edit_account_data.theme_uri + '/assets/dist/img/placeholder-profile.svg');
-      }
-    })["catch"](function (error) {
-      console.log(error.data);
-    });
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: "d-flex flex-wrap align-items-center justify-content-center justify-content-xxl-start",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: "img-wrapper-profile",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-          src: profileImage,
-          className: "lazyload lazy-fade rounded-circle object-fit-cover"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "d-flex flex-column ms-lg-6",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-          className: "btn btn-update-profile-image",
-          type: "button",
-          "data-bs-toggle": "modal",
-          "data-bs-target": "#modal-update-profile-image",
-          children: "Promeni sliku"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-          className: "btn bg-transparent py-4 mt-4",
-          type: "button",
-          "data-bs-toggle": "modal",
-          "data-bs-target": "#modal-delete-profile-image",
-          children: "Ukloni sliku"
-        })]
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "modal modal-lg fade",
-      id: "modal-update-profile-image",
-      tabIndex: "-1",
-      "aria-labelledby": "modal-label-update-profile-image",
-      "aria-hidden": "true",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: "modal-dialog modal-dialog-centered",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "modal-content p-4 p-xl-14 bg-light",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-            type: "button",
-            className: "btn-close border rounded-circle p-5 absolute",
-            "data-bs-dismiss": "modal",
-            "aria-label": "Close"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: "modal-header border-0 p-0",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
-              className: "h3 mb-8",
-              id: "modal-label-user-update-profile-image",
-              children: "Promeni sliku:"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(formik__WEBPACK_IMPORTED_MODULE_5__.Formik, {
-            initialValues: initialValues,
-            validationSchema: validationSchema,
-            onSubmit: onSubmit,
-            children: function children(formik) {
-              var removeAll = function removeAll() {
-                formik.setFieldValue('image', false);
-                formik.setFieldTouched('image', false);
-                setUploadedImage(false);
-                setImage(false);
-              };
-              var onDrop = function onDrop(acceptedFiles) {
-                if (acceptedFiles.length > 0) {
-                  // Dodaj preview za sliku
-                  Object.assign(acceptedFiles[0], {
-                    preview: URL.createObjectURL(acceptedFiles[0])
-                  });
-                  setImage(acceptedFiles[0]);
-                  setUploadedImage(acceptedFiles[0]);
-                  // Init validation
-                  formik.setFieldTouched('image', true);
-                  // Set field value to formik
-                  formik.setFieldValue('image', acceptedFiles[0]);
-                }
-              };
-              var _useDropzone = (0,react_dropzone__WEBPACK_IMPORTED_MODULE_6__.useDropzone)({
-                  onDrop: onDrop,
-                  accept: {
-                    'image/jpg': [],
-                    'image/jpeg': [],
-                    'image/png': []
-                  },
-                  multiple: false,
-                  maxFiles: 1
-                }),
-                getRootProps = _useDropzone.getRootProps,
-                getInputProps = _useDropzone.getInputProps,
-                isDragActive = _useDropzone.isDragActive;
-              var onClickUpload = function onClickUpload(e) {
-                var file = e.target.files[0];
-                console.log(file);
-                if (file) {
-                  Object.assign(file, {
-                    preview: URL.createObjectURL(file)
-                  });
-                  // Init validation
-                  formik.setFieldTouched('image', true);
-                  // Set field value to formik
-                  formik.setFieldValue('image', file);
-                  setUploadedImage(file);
-                  setImage(file);
-                }
-              };
-              var current_profile_image = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                className: "current-profile-image relative w-100 p-6 border rounded",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-                  src: profileImage,
-                  className: "object-fit-cover w-100 h-100 rounded lazyload lazy-fade"
-                })
-              });
-              var uploaded_image = uploadedImage ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                className: "relative w-100 p-6 border rounded image-uploaded",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                  type: "button",
-                  className: "btn-remove-image bg-transparent absolute",
-                  "aria-label": "Remove Uploaded Image",
-                  onClick: removeAll
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-                  className: "object-fit-cover w-100 h-100 rounded",
-                  src: uploadedImage.preview
-                  // Revoke data uri after image is loaded
-                  ,
-                  onLoad: function onLoad() {
-                    URL.revokeObjectURL(uploadedImage.preview);
-                  }
-                })]
-              }, uploadedImage.name) : false;
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_5__.Form, {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                  className: "row mb-6 mb-xl-12",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                    className: "col-lg-4",
-                    children: uploaded_image == false ? current_profile_image : uploaded_image
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                    className: "col-lg-8",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", _objectSpread(_objectSpread({
-                      className: "modal-upload-image-box d-flex align-items-center justify-content-center p-10 bg-white border border-primary rounded"
-                    }, getRootProps()), {}, {
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", _objectSpread(_objectSpread({
-                        name: "image"
-                      }, getInputProps()), {}, {
-                        onChange: onClickUpload
-                      })), isDragActive ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                        className: "d-flex flex-column justify-content-center align-items-center text-big text-primary fw-bold",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                          className: "icon-upload-image bg-cover mb-6"
-                        }), "Privuci sliku ovde..."]
-                      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                        className: "d-flex flex-column justify-content-center align-items-center text-big text-primary fw-bold",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                          className: "icon-upload-image bg-cover mb-6"
-                        }), "Dodaj ili privuci sliku..."]
-                      })]
-                    })), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(formik__WEBPACK_IMPORTED_MODULE_5__.ErrorMessage, {
-                      name: "image",
-                      component: "div",
-                      className: "fs-6 text-danger fw-bold"
-                    })]
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                  className: "d-flex align-items-center justify-content-lg-end",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                    type: "button",
-                    className: "me-4 btn bg-transparent",
-                    "data-bs-dismiss": "modal",
-                    "aria-label": "Close",
-                    onClick: removeAll,
-                    children: "Otka\u017Ei"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                    type: "submit",
-                    className: "btn btn-primary",
-                    disabled: !formik.isValid,
-                    children: "Sa\u010Duvaj"
-                  }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
-                    className: "icon-spinner"
-                  }) : '']
-                }), dataUpdated ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                  className: "alert alert-success mt-6 mb-0 lazy-fade text-center fw-600",
-                  children: "Va\u0161a profilna slika je sa\u010Duvana."
-                }) : '']
-              });
-            }
-          })]
-        })
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "modal modal-lg fade",
-      id: "modal-delete-profile-image",
-      tabIndex: "-1",
-      "aria-labelledby": "modal-label-delete-profile-image",
-      "aria-hidden": "true",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: "modal-dialog modal-dialog-centered",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "modal-content p-4 p-xl-14 bg-light",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-            type: "button",
-            className: "btn-close border rounded-circle p-5 absolute",
-            "data-bs-dismiss": "modal",
-            "aria-label": "Close"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-              className: "col-lg-4",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                className: "modal-content",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                  className: "current-profile-image relative w-100 p-6 border rounded",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-                    src: profileImage,
-                    className: "object-fit-cover w-100 h-100 rounded lazyload lazy-fade"
-                  })
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-              className: "col-lg-8 pt-lg-6",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                className: "h-100 d-flex flex-column justify-content-between",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
-                  className: "h3 mb-8",
-                  id: "modal-label-user-delete-profile-image",
-                  children: "Da li ste sigurni da \u017Eelite da obir\u0161ete profilnu sliku?"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                  className: "d-flex align-items-center justify-content-lg-end",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                    type: "button",
-                    className: "me-4 btn bg-transparent",
-                    "data-bs-dismiss": "modal",
-                    "aria-label": "Close",
-                    children: "Otka\u017Ei"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                    type: "submit",
-                    className: "btn btn-primary",
-                    onClick: deleteProfileImage,
-                    children: "Da, siguran sam"
-                  }), deletingImage ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
-                    className: "icon-spinner"
-                  }) : '']
-                })]
-              })
-            })]
-          }), imageDeleted ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: "alert alert-success mt-6 mb-0 lazy-fade text-center fw-600",
-            children: "Uspe\u0161no ste obrisali profilnu sliku"
-          }) : '']
-        })
-      })
-    })]
-  });
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikUpdateProfileImage);
-
-/***/ }),
-
-/***/ "./assets/src/scripts/react/components/formik/FormikUpdateUserData.js":
-/*!****************************************************************************!*\
-  !*** ./assets/src/scripts/react/components/formik/FormikUpdateUserData.js ***!
-  \****************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./.yarn/cache/axios-npm-1.7.9-3c98466f87-b7a5f660ea.zip/node_modules/axios/lib/axios.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! formik */ "./.yarn/__virtual__/formik-virtual-35d3f03f1c/0/cache/formik-npm-2.4.6-6674fd4617-65d6845d91.zip/node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! yup */ "./.yarn/cache/yup-npm-1.6.1-e90c4f7113-19dba13403.zip/node_modules/yup/index.esm.js");
-/* harmony import */ var _FormikControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormikControl */ "./assets/src/scripts/react/components/formik/FormikControl.js");
-/* harmony import */ var _FieldSelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FieldSelect */ "./assets/src/scripts/react/components/formik/FieldSelect.js");
-/* harmony import */ var _cities_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../cities.json */ "./assets/src/scripts/cities.json");
-/* harmony import */ var _skeleton_FormChangePersonalData__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../skeleton/FormChangePersonalData */ "./assets/src/scripts/react/components/skeleton/FormChangePersonalData.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/jsx-runtime.js");
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-
-
-
-
-
-function FormikUpdateUserData(props) {
-  var user_id = props.user_id;
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState2 = _slicedToArray(_useState, 2),
-    userCity = _useState2[0],
-    setUserCity = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
-    _useState4 = _slicedToArray(_useState3, 2),
-    firstName = _useState4[0],
-    setFirstName = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
-    _useState6 = _slicedToArray(_useState5, 2),
-    lastName = _useState6[0],
-    setLastName = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState8 = _slicedToArray(_useState7, 2),
-    dataUpdated = _useState8[0],
-    setDataUpdated = _useState8[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
-    _useState10 = _slicedToArray(_useState9, 2),
-    isLoading = _useState10[0],
-    setIsLoading = _useState10[1];
-  var cityOptions = _cities_json__WEBPACK_IMPORTED_MODULE_4__.map(function (city) {
-    return {
-      label: city.city,
-      value: city._id
-    };
-  });
-  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_1__.object({
-    first_name: yup__WEBPACK_IMPORTED_MODULE_1__.string().min(2, 'Prekratko').max(50, 'Predugacko').required('Ime je obavezno'),
-    last_name: yup__WEBPACK_IMPORTED_MODULE_1__.string().min(2, 'Prekratko').max(50, 'Predugacko').required('Prezime je obavezno'),
-    city: yup__WEBPACK_IMPORTED_MODULE_1__.object().shape({
-      label: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Izaberi grad'),
-      value: yup__WEBPACK_IMPORTED_MODULE_1__.number().required('Izaberi grad')
-    }).nullable().required('Izaberi grad')
-  });
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_7__["default"].get("".concat(edit_account_data.home_url, "/wp-json/wp/v2/users/").concat(user_id), {
-      headers: {
-        'X-WP-Nonce': edit_account_data.nonce
-      }
-    }).then(function (response) {
-      var data = response.data;
-      setFirstName(data.first_name || '');
-      setLastName(data.last_name || '');
-      if (data && data.acf.city) {
-        var _cityOptions$find;
-        setUserCity({
-          label: data.acf.city,
-          value: (_cityOptions$find = cityOptions.find(function (o) {
-            return o.label === data.acf.city;
-          })) === null || _cityOptions$find === void 0 ? void 0 : _cityOptions$find.value
-        });
-      } else {
-        setUserCity(null);
-      }
+      setUserShortDesc(data.description);
     })["catch"](function (error) {
       console.error('Greška pri učitavanju podataka:', error);
     })["finally"](function () {
-      setIsLoading(false); // Ukloni preloader nakon učitavanja
+      setIsLoading(false);
     });
   }, [user_id]);
-  var onSubmit = function onSubmit(values, _ref) {
-    var _values$city;
-    var setSubmitting = _ref.setSubmitting,
-      resetForm = _ref.resetForm;
-    var cityName = (_values$city = values.city) === null || _values$city === void 0 ? void 0 : _values$city.label;
+  var initialValues = {
+    short_desc: userShortDesc || ''
+  };
+  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object({
+    short_desc: yup__WEBPACK_IMPORTED_MODULE_2__.string().min(4, 'Prekratko')
+    // .max(50, 'Predugačko')
+    .required('Kratak opis je obavezan')
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    // when the component is mounted, the alert is displayed for 3 seconds
+    var timer = setTimeout(function () {
+      setDataUpdated(false);
+    }, 3000);
+
+    // To clear or cancel a timer, you call the clearTimeout(); method, 
+    // passing in the timer object that you created into clearTimeout().
+    return function () {
+      return clearTimeout(timer);
+    };
+  }, [dataUpdated]);
+  var onSubmit = function onSubmit(values, formikBag) {
+    var setSubmitting = formikBag.setSubmitting;
     var data = new FormData();
-    data.append('action', 'edit_personal_data');
-    data.append('nonce', edit_account_data.nonce_edit_personal_data);
-    data.append('current_user_id', edit_account_data.current_user_id);
-    data.append('first_name', values.first_name);
-    data.append('last_name', values.last_name);
-    data.append('city', cityName);
-    axios__WEBPACK_IMPORTED_MODULE_7__["default"].post(edit_account_data.ajax_url, data).then(function (response) {
-      if (response.data.success_status) {
-        setFirstName(values.first_name);
-        setLastName(values.last_name);
-        setUserCity(values.city);
+    data.append('action', 'edit_short_description');
+    data.append('nonce', edit_profile_data.nonce_edit_short_desc);
+    data.append('current_user_id', edit_profile_data.current_user_id);
+    data.append('short_desc', values.short_desc);
+    axios__WEBPACK_IMPORTED_MODULE_6__["default"].post(edit_profile_data.ajax_url, data).then(function (response) {
+      return response.data;
+    }).then(function (data) {
+      if (!data.success) {
+        setDataUpdated(false);
+        setErrorMessage(true);
+      } else {
         setDataUpdated(true);
-        resetForm({
-          values: {
-            first_name: values.first_name,
-            last_name: values.last_name,
-            city: values.city
-          }
-        });
+        setErrorMessage(false);
       }
+      setSubmitting(false);
     })["catch"](function (error) {
       console.error(error);
       setSubmitting(false);
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
-    children: isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_skeleton_FormChangePersonalData__WEBPACK_IMPORTED_MODULE_5__["default"], {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-        className: "border p-4 p-xl-8 mb-6 rounded-4 bg-white",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
-          className: "h5",
-          children: "Izmena li\u010Dnih podataka"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(formik__WEBPACK_IMPORTED_MODULE_8__.Formik, {
-          initialValues: {
-            first_name: firstName,
-            last_name: lastName,
-            city: userCity || {
-              label: '',
-              value: ''
-            }
-          },
-          validationSchema: validationSchema,
-          onSubmit: onSubmit,
-          enableReinitialize: true,
-          children: function children(formik) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_8__.Form, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-                className: "row",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-                  className: "col-xl-6",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
-                    control: "input",
-                    type: "text",
-                    label: "Ime",
-                    name: "first_name"
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-                  className: "col-xl-6",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_2__["default"], {
-                    control: "input",
-                    type: "text",
-                    label: "Prezime",
-                    name: "last_name"
-                  })
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_FieldSelect__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                name: "city",
-                label: "Mesto/Grad",
-                placeholder: "Izaberi grad",
-                labelClass: "fs-5",
-                options: cityOptions
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-                className: "d-flex align-items-center",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
-                  type: "submit",
-                  className: "btn btn-primary me-4"
-                  // disabled={!formik.isValid}
-                  ,
-                  disabled: !formik.dirty || !formik.isValid,
-                  children: "Sa\u010Duvaj izmene"
-                }), formik.isSubmitting && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
-                  className: "icon-spinner"
-                })]
-              }), dataUpdated && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-                className: "alert alert-success mt-6",
-                children: "Va\u0161e izmene su sa\u010Duvane."
-              })]
-            });
-          }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+    children: isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      width: "100%",
+      height: 130,
+      className: "rounded-4 mb-6"
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "border p-4 p-xl-8 mb-6 rounded-4 bg-white d-flex justify-content-between",
+        type: "button",
+        "data-bs-toggle": "modal",
+        "data-bs-target": "#modal-edit-short-desc",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            className: "h3 mb-0 me-6 fw-bold",
+            children: userShortDesc
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("svg", {
+            width: "32",
+            height: "32",
+            fill: "none",
+            xmlns: "http://www.w3.org/2000/svg",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("rect", {
+              x: "1",
+              y: "1",
+              width: "30",
+              height: "30",
+              rx: "15",
+              fill: "#fff"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("rect", {
+              x: "1",
+              y: "1",
+              width: "30",
+              height: "30",
+              rx: "15",
+              stroke: "#EA4900",
+              strokeWidth: "2"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+              fillRule: "evenodd",
+              clipRule: "evenodd",
+              d: "M17.737 9.92a2 2 0 0 1 2.829 0l.78.78a2 2 0 0 1 0 2.829l-7.438 7.438a2 2 0 0 1-1.022.547l-1.956.391a1.333 1.333 0 0 1-1.57-1.569l.392-1.956a2 2 0 0 1 .547-1.022l7.438-7.439zm1.886.942a.667.667 0 0 0-.943 0L11.242 18.3a.666.666 0 0 0-.183.341l-.39 1.957 1.956-.392a.666.666 0 0 0 .34-.182l7.439-7.438a.667.667 0 0 0 0-.943l-.781-.781zM17.152 21.448c0-.368.298-.667.666-.667h3.334a.667.667 0 0 1 0 1.333h-3.334a.667.667 0 0 1-.666-.666z",
+              fill: "#EA4900"
+            })]
+          })
         })]
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "modal modal-lg fade",
+        id: "modal-edit-short-desc",
+        tabIndex: "-1",
+        "aria-labelledby": "modal-label-edit-short-desc",
+        "aria-hidden": "true",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          className: "modal-dialog modal-dialog-centered",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            className: "modal-content p-4 p-xl-8",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+              className: "modal-header border-0",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                type: "button",
+                className: "btn-close",
+                "data-bs-dismiss": "modal",
+                "aria-label": "Close"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+              className: "h3",
+              id: "modal-label-user-edit-short-desc",
+              children: "Uredi naslov"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+              className: "text-gray-200 fw-bold",
+              children: "Unesite jednu re\u010Denicu opis svojih profesionalnih ve\u0161tina/iskustva (npr. Diplomirao engleski jezik na Kembrid\u017Eu sa 10 godina iskustva u podu\u010Davanju engleskog jezika i knji\u017Eevnosti)"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(formik__WEBPACK_IMPORTED_MODULE_8__.Formik, {
+              initialValues: initialValues,
+              validationSchema: validationSchema,
+              onSubmit: onSubmit,
+              enableReinitialize: true,
+              children: function children(formik) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_8__.Form, {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FormikControl__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                    control: "input",
+                    type: "text",
+                    label: "Tvoj naslov",
+                    name: "short_desc",
+                    className: "text-small",
+                    labelClass: "fs-5",
+                    onChange: formik.handleChange
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                    className: "d-flex align-items-center justify-content-lg-end",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                      type: "button",
+                      className: "me-4 btn bg-transparent",
+                      "data-bs-dismiss": "modal",
+                      "aria-label": "Close",
+                      children: "Otka\u017Ei"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                      type: "submit",
+                      className: "btn btn-primary",
+                      children: "Sa\u010Duvaj"
+                    }), formik.isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
+                      className: "icon-spinner"
+                    }) : '']
+                  }), dataUpdated ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "alert alert-success mt-6",
+                    children: "Va\u0161e izmene su sa\u010Duvane."
+                  }) : '']
+                });
+              }
+            })]
+          })
+        })
+      })]
     })
   });
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikUpdateUserData);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormikEditShortDesc);
 
 /***/ }),
 
@@ -1440,132 +1050,42 @@ function Textarea(props) {
 
 /***/ }),
 
-/***/ "./assets/src/scripts/react/components/skeleton/FormChangePersonalData.js":
-/*!********************************************************************************!*\
-  !*** ./assets/src/scripts/react/components/skeleton/FormChangePersonalData.js ***!
-  \********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_loading_skeleton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-loading-skeleton */ "./.yarn/__virtual__/react-loading-skeleton-virtual-e500b29a1a/0/cache/react-loading-skeleton-npm-3.5.0-ec0f6b1af3-e6a1385d07.zip/node_modules/react-loading-skeleton/dist/index.js");
-/* harmony import */ var react_loading_skeleton_dist_skeleton_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-loading-skeleton/dist/skeleton.css */ "./.yarn/__virtual__/react-loading-skeleton-virtual-e500b29a1a/0/cache/react-loading-skeleton-npm-3.5.0-ec0f6b1af3-e6a1385d07.zip/node_modules/react-loading-skeleton/dist/skeleton.css");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/jsx-runtime.js");
-
-
-
-
-function FormChangePersonalData() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "mb-6",
-    style: {
-      padding: '1.5rem',
-      border: '1px solid #ddd',
-      borderRadius: '8px',
-      background: '#fff'
-    },
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      width: "50%",
-      height: "24px",
-      className: "mb-5"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      className: "row mb-6",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "col-xl-6",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          width: "30%",
-          height: "14px"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          width: "100%",
-          height: "51px"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "col-xl-6",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          width: "30%",
-          height: "14px"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          width: "100%",
-          height: "51px"
-        })]
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        width: "30%",
-        height: "14px"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        width: "100%",
-        height: "36px",
-        className: "mb-6"
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_loading_skeleton__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      width: "30%",
-      height: "48px",
-      style: {
-        borderRadius: '5px'
-      }
-    })]
-  });
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormChangePersonalData);
-
-/***/ }),
-
-/***/ "./assets/src/scripts/react/edit-account.js":
+/***/ "./assets/src/scripts/react/edit-profile.js":
 /*!**************************************************!*\
-  !*** ./assets/src/scripts/react/edit-account.js ***!
+  !*** ./assets/src/scripts/react/edit-profile.js ***!
   \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ "./.yarn/__virtual__/react-dom-virtual-d088ea75da/0/cache/react-dom-npm-19.0.0-b7981c573e-aa64a2f199.zip/node_modules/react-dom/client.js");
-/* harmony import */ var _components_formik_FormikUpdateUserData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/formik/FormikUpdateUserData */ "./assets/src/scripts/react/components/formik/FormikUpdateUserData.js");
-/* harmony import */ var _components_formik_FormikUpdateEmail__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/formik/FormikUpdateEmail */ "./assets/src/scripts/react/components/formik/FormikUpdateEmail.js");
-/* harmony import */ var _components_formik_FormikUpdatePassword__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/formik/FormikUpdatePassword */ "./assets/src/scripts/react/components/formik/FormikUpdatePassword.js");
-/* harmony import */ var _components_formik_FormikDeleteAccount__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/formik/FormikDeleteAccount */ "./assets/src/scripts/react/components/formik/FormikDeleteAccount.js");
-/* harmony import */ var _components_formik_FormikUpdateProfileImage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/formik/FormikUpdateProfileImage */ "./assets/src/scripts/react/components/formik/FormikUpdateProfileImage.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_formik_FormikEditShortDesc__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/formik/FormikEditShortDesc */ "./assets/src/scripts/react/components/formik/FormikEditShortDesc.js");
+/* harmony import */ var _components_formik_FormikEditLongDesc__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/formik/FormikEditLongDesc */ "./assets/src/scripts/react/components/formik/FormikEditLongDesc.js");
+/* harmony import */ var _components_formik_FormikEditCity__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/formik/FormikEditCity */ "./assets/src/scripts/react/components/formik/FormikEditCity.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./.yarn/cache/react-npm-19.0.0-e33c9aa1c0-2490969c50.zip/node_modules/react/jsx-runtime.js");
 
 
 
 
 
-
-
-var el_account_settings = document.getElementById('account-settings');
+var el_account_settings = document.getElementById('settings-edit-profile');
 var user_id = el_account_settings.getAttribute('data-user_id');
-var el_update_personal_data = document.getElementById('form-update-personal-data');
-var user_city = el_update_personal_data.getAttribute('data-user_city');
-var update_personal_data_root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(el_update_personal_data);
-update_personal_data_root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_formik_FormikUpdateUserData__WEBPACK_IMPORTED_MODULE_1__["default"], {
-  user_id: user_id,
-  user_city: user_city
-}));
-var el_update_email = document.getElementById('form-update-email');
-var update_email_root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(el_update_email);
-update_email_root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_formik_FormikUpdateEmail__WEBPACK_IMPORTED_MODULE_2__["default"], {
+
+// const user_city = el_edit_short_desc.getAttribute('data-user_city')
+
+var el_edit_short_desc = document.getElementById('form-edit-short-desc');
+var edit_short_desc_root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(el_edit_short_desc);
+edit_short_desc_root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_formik_FormikEditShortDesc__WEBPACK_IMPORTED_MODULE_1__["default"], {
   user_id: user_id
 }));
-var el_update_password = document.getElementById('form-update-password');
-var update_password_root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(el_update_password);
-update_password_root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_formik_FormikUpdatePassword__WEBPACK_IMPORTED_MODULE_3__["default"], {
+var el_edit_city = document.getElementById('form-edit-city');
+var edit_city = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(el_edit_city);
+edit_city.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_formik_FormikEditCity__WEBPACK_IMPORTED_MODULE_3__["default"], {
   user_id: user_id
 }));
-var el_delete_account = document.getElementById('form-delete-account');
-var delete_account_root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(el_delete_account);
-delete_account_root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_formik_FormikDeleteAccount__WEBPACK_IMPORTED_MODULE_4__["default"], {
+var el_edit_long_desc = document.getElementById('form-edit-long-desc');
+var edit_long_desc_root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(el_edit_long_desc);
+edit_long_desc_root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_formik_FormikEditLongDesc__WEBPACK_IMPORTED_MODULE_2__["default"], {
   user_id: user_id
-}));
-var el_update_image = document.getElementById('form-update-image');
-var profile_image = el_update_image.getAttribute('data-profile_image') ? el_update_image.getAttribute('data-profile_image') : edit_account_data.theme_uri + '/assets/dist/img/placeholder-profile.svg';
-var update_image_root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(el_update_image);
-update_image_root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_formik_FormikUpdateProfileImage__WEBPACK_IMPORTED_MODULE_5__["default"], {
-  user_id: user_id,
-  profile_image: profile_image
 }));
 
 /***/ }),
@@ -1583,7 +1103,7 @@ module.exports = /*#__PURE__*/JSON.parse('[{"city":"Beograd","_id":11000},{"city
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, ["/js/blocks/vendor"], () => (__webpack_exec__("./assets/src/scripts/react/edit-account.js")));
+/******/ __webpack_require__.O(0, ["/js/blocks/vendor"], () => (__webpack_exec__("./assets/src/scripts/react/edit-profile.js")));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

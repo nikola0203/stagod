@@ -1,4 +1,5 @@
 import Input from "./Input"
+import Textarea from "./Textarea"
 import FieldSelect from './FieldSelect'
 import Checkbox from './Checkbox'
 
@@ -9,6 +10,7 @@ function FormikControl(props) {
     case 'input':
       return <Input {...rest} />
     case 'textarea':
+      return <Textarea {...rest} />
     case 'select':
       return <FieldSelect {...rest} />
     case 'radio':
